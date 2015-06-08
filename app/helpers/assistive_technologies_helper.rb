@@ -1,0 +1,2 @@
+module AssistiveTechnologiesHelper
+end

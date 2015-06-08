@@ -1,0 +1,2 @@
+module AffordancesHelper
+end

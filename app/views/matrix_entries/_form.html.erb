@@ -1,0 +1,37 @@
+<%= form_for(@matrix_entry) do |f| %>
+  <% if @matrix_entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@matrix_entry.errors.count, "error") %> prohibited this matrix_entry from being saved:</h2>
+
+      <ul>
+      <% @matrix_entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :browser_reader_id %><br>
+    <%= f.text_field :browser_reader_id %>
+  </div>
+  <div class="field">
+    <%= f.label :renderer_id %><br>
+    <%= f.text_field :renderer_id %>
+  </div>
+  <div class="field">
+    <%= f.label :format_id %><br>
+    <%= f.text_field :format_id %>
+  </div>
+  <div class="field">
+    <%= f.label :platform_id %><br>
+    <%= f.text_field :platform_id %>
+  </div>
+  <div class="field">
+    <%= f.label :assistive_technology_id %><br>
+    <%= f.text_field :assistive_technology_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

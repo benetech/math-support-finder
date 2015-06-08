@@ -1,0 +1,33 @@
+<%= form_for(@media_attachment) do |f| %>
+  <% if @media_attachment.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@media_attachment.errors.count, "error") %> prohibited this media_attachment from being saved:</h2>
+
+      <ul>
+      <% @media_attachment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.text_field :type %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :matrix_entry_id %><br>
+    <%= f.text_field :matrix_entry_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

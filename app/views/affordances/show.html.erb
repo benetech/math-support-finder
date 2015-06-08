@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @affordance.type %>
+</p>
+
+<p>
+  <strong>Verified:</strong>
+  <%= @affordance.verified %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @affordance.details %>
+</p>
+
+<p>
+  <strong>Matrix entry:</strong>
+  <%= @affordance.matrix_entry %>
+</p>
+
+<%= link_to 'Edit', edit_affordance_path(@affordance) %> |
+<%= link_to 'Back', affordances_path %>

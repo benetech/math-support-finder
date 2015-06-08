@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  resources :content_sources
+  resources :affordances
+  resources :media_attachments
+  resources :matrix_entries
+  resources :assistive_technologies
+  resources :platforms
+  resources :formats
+  resources :renderers
+  resources :browser_readers
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

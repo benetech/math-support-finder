@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Content Sources</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Link</th>
+      <th>Version</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @content_sources.each do |content_source| %>
+      <tr>
+        <td><%= content_source.title %></td>
+        <td><%= content_source.description %></td>
+        <td><%= content_source.link %></td>
+        <td><%= content_source.version %></td>
+        <td><%= link_to 'Show', content_source %></td>
+        <td><%= link_to 'Edit', edit_content_source_path(content_source) %></td>
+        <td><%= link_to 'Destroy', content_source, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Content source', new_content_source_path %>

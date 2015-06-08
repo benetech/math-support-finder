@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Affordances</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Verified</th>
+      <th>Details</th>
+      <th>Matrix entry</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @affordances.each do |affordance| %>
+      <tr>
+        <td><%= affordance.type %></td>
+        <td><%= affordance.verified %></td>
+        <td><%= affordance.details %></td>
+        <td><%= affordance.matrix_entry %></td>
+        <td><%= link_to 'Show', affordance %></td>
+        <td><%= link_to 'Edit', edit_affordance_path(affordance) %></td>
+        <td><%= link_to 'Destroy', affordance, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Affordance', new_affordance_path %>

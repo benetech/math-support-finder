@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @media_attachment.title %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @media_attachment.type %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @media_attachment.link %>
+</p>
+
+<p>
+  <strong>Matrix entry:</strong>
+  <%= @media_attachment.matrix_entry %>
+</p>
+
+<%= link_to 'Edit', edit_media_attachment_path(@media_attachment) %> |
+<%= link_to 'Back', media_attachments_path %>

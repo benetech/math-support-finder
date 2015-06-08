@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Browser reader:</strong>
+  <%= @matrix_entry.browser_reader %>
+</p>
+
+<p>
+  <strong>Renderer:</strong>
+  <%= @matrix_entry.renderer %>
+</p>
+
+<p>
+  <strong>Format:</strong>
+  <%= @matrix_entry.format %>
+</p>
+
+<p>
+  <strong>Platform:</strong>
+  <%= @matrix_entry.platform %>
+</p>
+
+<p>
+  <strong>Assistive technology:</strong>
+  <%= @matrix_entry.assistive_technology %>
+</p>
+
+<%= link_to 'Edit', edit_matrix_entry_path(@matrix_entry) %> |
+<%= link_to 'Back', matrix_entries_path %>

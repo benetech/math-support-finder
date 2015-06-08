@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @assistive_technology.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @assistive_technology.description %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @assistive_technology.link %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @assistive_technology.version %>
+</p>
+
+<p>
+  <strong>Platform:</strong>
+  <%= @assistive_technology.platform %>
+</p>
+
+<%= link_to 'Edit', edit_assistive_technology_path(@assistive_technology) %> |
+<%= link_to 'Back', assistive_technologies_path %>
