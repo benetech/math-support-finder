@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 8) do
+ActiveRecord::Schema.define(version: 9) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,6 +69,15 @@ ActiveRecord::Schema.define(version: 8) do
 
   add_index "browser_readers_renderers", ["browser_reader_id"], name: "index_browser_readers_renderers_on_browser_reader_id", using: :btree
   add_index "browser_readers_renderers", ["renderer_id"], name: "index_browser_readers_renderers_on_renderer_id", using: :btree
+
+  create_table "comments", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "matrix_entry_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "comments", ["matrix_entry_id"], name: "index_comments_on_matrix_entry_id", using: :btree
 
   create_table "content_sources", force: :cascade do |t|
     t.string   "title"
@@ -142,6 +151,7 @@ ActiveRecord::Schema.define(version: 8) do
   end
 
   add_foreign_key "affordances", "matrix_entries"
+  add_foreign_key "comments", "matrix_entries"
   add_foreign_key "matrix_entries", "assistive_technologies"
   add_foreign_key "matrix_entries", "browser_readers"
   add_foreign_key "matrix_entries", "formats"
