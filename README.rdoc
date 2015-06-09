@@ -1,35 +1,39 @@
 Below are instructions for getting a development environment up and running.
 
 ==Checking Out Code
-The command "git clone http://github.com/benetech/math-support-matrix", sans the quotes, will clone the repository into a directory called math-support-matrix. This will be the directory we will be working in.
+This command will clone the repository into a directory called math-support-matrix. This will be the directory we will be working in.
+
+```bash
+git clone http://github.com/benetech/math-support-matrix
+```
 
 ==Vagrant
-Download and install Vagrant from: http://www.vagrantup.com/downloads.html
+[Download and install Vagrant](http://www.vagrantup.com/downloads.html)
 
 ==VirtualBox
-Download and install VirtualBox from: https://www.virtualbox.org/wiki/Downloads
+[Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 Also make sure that VirtualBox's installation directory is in your path.
 
 ==Spin Up the Environment
-Run the command "vagrant up" in the math-support-matrix directory. this will take a while to download the Linux distro, image it, install ruby/rails/other software. etc.
-
-Once it's done, you can login with "vagrant ssh". If you want to use other tools for ssh, just ssh to port 2222 on your local machine, and that's where ssh is listening to take you to the VirtualBox instance. The username and password are both "vagrant", sans the quotes.
+Run the command "vagrant up", sans the quotes, in the math-support-matrix directory. this will take a while to download the Linux distro, image it, install ruby/rails/other software. etc. Once it's done, you can login with "vagrant ssh". If you want to use other tools for ssh, just ssh to port 2222 on your local machine, and that's where ssh is listening to take you to the VirtualBox instance. The username and password are both "vagrant", sans the quotes.
 
 ==Run the App
 Once you're in the VirtualBox, then issue the following commands.
 
+```bash
 cd /vagrant
-
 rake db:drop db:create db:migrate
-
 rails server
+```
 
-once you do that, you can go to http://localhost:3000/ and you should see the application's homepage.
+once you do that, you can go to [http://localhost:3000/](http://localhost:3000/) and you should see the application's homepage.
 
 also, you may need to issue this on your local box if the port forwarding for port 3000 on virtual box isn't working:
 
+```bash
 ssh -N -L 3000:localhost:3000 vagrant@localhost -p 2222
+```
 
 Again, the password is "vagrant", sans the quotes.
 
