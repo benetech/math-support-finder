@@ -31,7 +31,7 @@ once you do that, you can go to [http://localhost:3000/](http://localhost:3000/)
 
 also, you may need to issue this on your local box if the port forwarding for port 3000 on virtual box isn't working:
 
-    ```bash
+    ```
     ssh -N -L 3000:localhost:3000 vagrant@localhost -p 2222
     ```
 
