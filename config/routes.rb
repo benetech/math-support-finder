@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   resources :content_sources
   resources :affordances
   resources :media_attachments
