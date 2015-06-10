@@ -1,3 +1,3 @@
 class MediaAttachment < ActiveRecord::Base
-  belongs_to :matrixEntry, inverse_of: :media_attachments
+  belongs_to :matrix_entry, inverse_of: :media_attachments
 end

@@ -18,7 +18,7 @@ class MatrixEntriesControllerTest < ActionController::TestCase
 
   test "should create matrix_entry" do
     assert_difference('MatrixEntry.count') do
-      post :create, matrix_entry: { assistive_technology_id: @matrix_entry.assistive_technology_id, browser_reader_id: @matrix_entry.browser_reader_id, format_id: @matrix_entry.format_id, platform_id: @matrix_entry.platform_id, renderer_id: @matrix_entry.renderer_id }
+      post :create, matrix_entry: { assistive_technology_id: @matrix_entry.assistive_technology_id, browser_reader_id: @matrix_entry.browser_reader_id, content_format_id: @matrix_entry.content_format_id, platform_id: @matrix_entry.platform_id, renderer_id: @matrix_entry.renderer_id }
     end
 
     assert_redirected_to matrix_entry_path(assigns(:matrix_entry))
@@ -35,7 +35,7 @@ class MatrixEntriesControllerTest < ActionController::TestCase
   end
 
   test "should update matrix_entry" do
-    patch :update, id: @matrix_entry, matrix_entry: { assistive_technology_id: @matrix_entry.assistive_technology_id, browser_reader_id: @matrix_entry.browser_reader_id, format_id: @matrix_entry.format_id, platform_id: @matrix_entry.platform_id, renderer_id: @matrix_entry.renderer_id }
+    patch :update, id: @matrix_entry, matrix_entry: { assistive_technology_id: @matrix_entry.assistive_technology_id, browser_reader_id: @matrix_entry.browser_reader_id, content_format_id: @matrix_entry.content_format_id, platform_id: @matrix_entry.platform_id, renderer_id: @matrix_entry.renderer_id }
     assert_redirected_to matrix_entry_path(assigns(:matrix_entry))
   end
 

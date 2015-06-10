@@ -1,6 +1,6 @@
-class CreateFormats < ActiveRecord::Migration
+class CreateContentFormats < ActiveRecord::Migration
   def change
-    create_table :formats do |t|
+    create_table :content_formats do |t|
       t.string :title
       t.text :description
       t.string :link
@@ -9,9 +9,9 @@ class CreateFormats < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    create_table :browser_readers_formats, id: false do |t|
+    create_table :browser_readers_content_formats, id: false do |t|
       t.references :browser_reader, index: true
-      t.references :format, index: true
+      t.references :content_format, index: true
     end
 
   end

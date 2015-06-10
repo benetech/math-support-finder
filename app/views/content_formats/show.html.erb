@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @content_format.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @content_format.description %>
+</p>
+
+<p>
+  <strong>Link:</strong>
+  <%= @content_format.link %>
+</p>
+
+<p>
+  <strong>Version:</strong>
+  <%= @content_format.version %>
+</p>
+
+<%= link_to 'Edit', edit_content_format_path(@content_format) %> |
+<%= link_to 'Back', content_formats_path %>

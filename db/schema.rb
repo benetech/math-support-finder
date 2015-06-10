@@ -46,13 +46,13 @@ ActiveRecord::Schema.define(version: 9) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "browser_readers_formats", id: false, force: :cascade do |t|
+  create_table "browser_readers_content_formats", id: false, force: :cascade do |t|
     t.integer "browser_reader_id"
-    t.integer "format_id"
+    t.integer "content_format_id"
   end
 
-  add_index "browser_readers_formats", ["browser_reader_id"], name: "index_browser_readers_formats_on_browser_reader_id", using: :btree
-  add_index "browser_readers_formats", ["format_id"], name: "index_browser_readers_formats_on_format_id", using: :btree
+  add_index "browser_readers_content_formats", ["browser_reader_id"], name: "index_browser_readers_content_formats_on_browser_reader_id", using: :btree
+  add_index "browser_readers_content_formats", ["content_format_id"], name: "index_browser_readers_content_formats_on_content_format_id", using: :btree
 
   create_table "browser_readers_platforms", id: false, force: :cascade do |t|
     t.integer "browser_reader_id"
@@ -79,6 +79,15 @@ ActiveRecord::Schema.define(version: 9) do
 
   add_index "comments", ["matrix_entry_id"], name: "index_comments_on_matrix_entry_id", using: :btree
 
+  create_table "content_formats", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "link"
+    t.string   "version"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "content_sources", force: :cascade do |t|
     t.string   "title"
     t.text     "description"
@@ -96,19 +105,10 @@ ActiveRecord::Schema.define(version: 9) do
   add_index "content_sources_matrix_entries", ["content_source_id"], name: "index_content_sources_matrix_entries_on_content_source_id", using: :btree
   add_index "content_sources_matrix_entries", ["matrix_entry_id"], name: "index_content_sources_matrix_entries_on_matrix_entry_id", using: :btree
 
-  create_table "formats", force: :cascade do |t|
-    t.string   "title"
-    t.text     "description"
-    t.string   "link"
-    t.string   "version"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
   create_table "matrix_entries", force: :cascade do |t|
     t.integer  "assistive_technology_id"
     t.integer  "browser_reader_id"
-    t.integer  "format_id"
+    t.integer  "content_format_id"
     t.integer  "platform_id"
     t.integer  "renderer_id"
     t.datetime "created_at",              null: false
@@ -117,7 +117,7 @@ ActiveRecord::Schema.define(version: 9) do
 
   add_index "matrix_entries", ["assistive_technology_id"], name: "index_matrix_entries_on_assistive_technology_id", using: :btree
   add_index "matrix_entries", ["browser_reader_id"], name: "index_matrix_entries_on_browser_reader_id", using: :btree
-  add_index "matrix_entries", ["format_id"], name: "index_matrix_entries_on_format_id", using: :btree
+  add_index "matrix_entries", ["content_format_id"], name: "index_matrix_entries_on_content_format_id", using: :btree
   add_index "matrix_entries", ["platform_id"], name: "index_matrix_entries_on_platform_id", using: :btree
   add_index "matrix_entries", ["renderer_id"], name: "index_matrix_entries_on_renderer_id", using: :btree
 
@@ -154,7 +154,7 @@ ActiveRecord::Schema.define(version: 9) do
   add_foreign_key "comments", "matrix_entries"
   add_foreign_key "matrix_entries", "assistive_technologies"
   add_foreign_key "matrix_entries", "browser_readers"
-  add_foreign_key "matrix_entries", "formats"
+  add_foreign_key "matrix_entries", "content_formats"
   add_foreign_key "matrix_entries", "platforms"
   add_foreign_key "matrix_entries", "renderers"
   add_foreign_key "media_attachments", "matrix_entries"

@@ -1,10 +1,10 @@
-<%= form_for(@format) do |f| %>
-  <% if @format.errors.any? %>
+<%= form_for(@content_format) do |f| %>
+  <% if @content_format.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@format.errors.count, "error") %> prohibited this format from being saved:</h2>
+      <h2><%= pluralize(@content_format.errors.count, "error") %> prohibited this content_format from being saved:</h2>
 
       <ul>
-      <% @format.errors.full_messages.each do |message| %>
+      <% @content_format.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

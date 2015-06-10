@@ -69,6 +69,6 @@ class MatrixEntriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def matrix_entry_params
-      params.require(:matrix_entry).permit(:browser_reader_id, :renderer_id, :format_id, :platform_id, :assistive_technology_id)
+      params.require(:matrix_entry).permit(:browser_reader_id, :renderer_id, :content_format_id, :platform_id, :assistive_technology_id)
     end
 end

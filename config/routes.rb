@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :matrix_entries
   resources :assistive_technologies
   resources :platforms
-  resources :formats
+  resources :content_formats
   resources :renderers
   resources :browser_readers
   # The priority is based upon order of creation: first created -> highest priority.

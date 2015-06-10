@@ -3,13 +3,13 @@
 one:
   browser_reader_id: 
   renderer_id: 
-  format_id: 
+  content_format_id: 
   platform_id: 
   assistive_technology_id: 
 
 two:
   browser_reader_id: 
   renderer_id: 
-  format_id: 
+  content_format_id: 
   platform_id: 
   assistive_technology_id: 
