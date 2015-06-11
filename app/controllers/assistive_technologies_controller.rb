@@ -19,6 +19,7 @@ class AssistiveTechnologiesController < ApplicationController
 
   # GET /assistive_technologies/1/edit
   def edit
+    @platforms = Platform.all
   end
 
   # POST /assistive_technologies

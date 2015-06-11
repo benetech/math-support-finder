@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :platform_id %><br>
-    <%= f.text_field :platform_id %>
+    <%= f.collection_select(:platform_id, @platforms.all, :id, :title_with_version) %>
   </div>
   <div class="actions">
     <%= f.submit %>
