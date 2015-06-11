@@ -1,3 +1,6 @@
+# possibly delete
+# may depend on tags and such
+
 class CreateContentSources < ActiveRecord::Migration
   def change
     create_table :content_sources do |t|
