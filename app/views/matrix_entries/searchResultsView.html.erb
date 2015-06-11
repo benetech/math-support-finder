@@ -49,7 +49,7 @@
         <button id="modifySearch" onclick="modifySearch()">Modify Search</button>
     </div>
     
-    <div class="search-results-table">
+    <div class="search-results-table"> 
         <table>
             <tr>
                 <td>Platform</td>
@@ -62,11 +62,13 @@
                 <td>Action</td>
             </tr>
         <!-- searchResults array -->
-        <% @searchResults.each do |result| %>
+            <% @matrix_entries.each do |t| %>
             <tr>
-                <td><%= searchResults.platform %></td>
-                <td><%= searchResults.assistiveTechnology %></td>
-                <!-- ... -->
+                <td><%= t.platform %></td>
+                <td><%= t.assistive_technology %></td>
+                <td><%= t.browser_reader %></td>
+                <td><%= t.content_format %></td>
+                <td><%= t.renderer %></td>
             </tr>
         <% end %>
         </table>
