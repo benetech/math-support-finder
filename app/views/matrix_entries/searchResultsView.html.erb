@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Search Results</title>
+    <!-- CSS -->
+    <link href="../../assets/stylesheets/searchResults.scss" rel="stylesheet">
+    <!-- Fonts -->
+    <!-- Scripts -->
+</head>
+    
+<body>
+    <div id="Search Results Page">
+        <p>Search Results Page</p>
+    </div>
+    <div id="Search Values">
+        <p>Search Values:</p>
+        <table>
+            <tr>
+                <td>Platform</td>
+                <!-- TO be replaced with variable -->
+                <td>Windows</td>
+            </tr>
+            <tr>
+                <td>Assistive_Technology</td>
+                <td>(select all)</td>
+            </tr>
+            <tr>
+                <td>Browser_Reader</td>
+                <td>Firefox</td>
+            </tr>
+            <tr>
+                <td>Content_format</td>
+                <td>HTML</td>
+            </tr>
+            <tr>
+                <td>Renderer</td>
+                <td>(select all)</td>
+            </tr>
+            <tr>
+                <td>Affordance</td>
+                <td>(select all)</td>
+            </tr>
+        </table>
+    </div>
+    
+    <div id="Buttons">
+        <button id="newSearch" onclick="newSearch()">New Search</button>
+        <button id="modifySearch" onclick="modifySearch()">Modify Search</button>
+    </div>
+    
+    <div class="search-results-table">
+        <table>
+            <tr>
+                <td>Platform</td>
+                <td>Assistive_Technology</td>
+                <td>Browser_Reader</td>
+                <td>Content_Format</td>
+                <td>Content_Format</td>
+                <td>Renderer</td>
+                <td>Affordance</td>
+                <td>Action</td>
+            </tr>
+        <!-- searchResults array -->
+        <% @searchResults.each do |result| %>
+            <tr>
+                <td><%= searchResults.platform %></td>
+                <td><%= searchResults.assistiveTechnology %></td>
+                <!-- ... -->
+            </tr>
+        <% end %>
+        </table>
+    </div>
+</body>
+    
+<script>
+document.getElementById("newSearch").onclick = newSearch();
+document.getElementById("modifySearch").onclick = modifySearch();
+</script>
+    
+</html>
+    
