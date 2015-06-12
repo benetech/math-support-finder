@@ -1,3 +1,4 @@
 class Affordance < ActiveRecord::Base
-  belongs_to :matrix_entry, inverse_of: :affordances
+  has_many :features, inverse_of: :affordance
+  has_many :matrix_entries, inverse_of: :affordance
 end

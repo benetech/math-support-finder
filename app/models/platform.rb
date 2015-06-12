@@ -1,9 +1,13 @@
 class Platform < ActiveRecord::Base
-  has_many :assistive_technologies, inverse_of: :platform
-  has_many :matrix_entries, inverse_of: :platform
-  has_and_belongs_to_many :browser_readers
+  has_many :platform_versions, inverse_of: :platform
+  has_many :matrix_entries, through: :platform_version
+end
+
+class PlatformVersion < ActiveRecord::Base
+  belongs_to :platform, inverse_of: :platform_versions
+  has_many :matrix_entries, inverse_of: :platform_version
 
   def title_with_version
-    "#{title} #{version}"
+    "#{platform.title} #{version}"
   end
 end
