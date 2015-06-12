@@ -3,10 +3,10 @@ class ApplicationController < ActionController::Base
   def index
 	# @affordances = Affordance.all
 	# @statuses = Status.all
-	# @content_formats = ContentFormat.all
-	# @platforms = Platform.all
-	# @renderers = Renderer.all
-	# @readers = BrowserReader.all
+	@content_formats = ContentFormat.all
+	@platforms = Platform.all
+	@renderers = Renderer.all
+	@readers = BrowserReader.all
 	@assistive_technologies = AssistiveTechnology.all
   end
 

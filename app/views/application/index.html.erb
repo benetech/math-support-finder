@@ -80,8 +80,7 @@
                     <h3 class="panel-title">Desired Interaction</h3>
                 </div>
                 <div class="panel-body">
-                    <div class="container-fluid form-horizontal">
-                        
+                    <div class="center-block form-horizontal" style="max-width: 640px">
                         <div class="row">
                             <div class="col-sm-8">
                                 <div class="form-group">
@@ -153,10 +152,7 @@
                                         Platform
                                     </label>
                                     <div class="col-sm-6">
-                                        <select class="form-control">
-                                          <option>1</option
-                                          <option>2</option>
-                                        </select>
+                                        <%= collection_select("", "", @platforms.all, :id, :title, {}, {class: "form-control"}) %>
                                     </div>
                                 </div>
                             </div>
@@ -181,10 +177,7 @@
                                         Reader
                                     </label>
                                     <div class="col-sm-6">
-                                        <select class="form-control">
-                                          <option>1</option>
-                                          <option>2</option>
-                                        </select>
+                                        <%= collection_select("", "", @readers.all, :id, :title, {}, {class: "form-control"}) %>
                                     </div>
                                 </div>
                             </div>
@@ -209,10 +202,7 @@
                                         Renderer
                                     </label>
                                     <div class="col-sm-6">
-                                        <select class="form-control">
-                                          <option>1</option>
-                                          <option>2</option>
-                                        </select>
+                                        <%= collection_select("", "", @renderers.all, :id, :title, {}, {class: "form-control"}) %>
                                     </div>
                                 </div>
                             </div>
@@ -237,10 +227,7 @@
                                         Content Format
                                     </label>
                                     <div class="col-sm-6">
-                                        <select class="form-control">
-                                          <option>1</option>
-                                          <option>2</option>
-                                        </select>
+                                        <%= collection_select("", "", @content_formats.all, :id, :title, {}, {class: "form-control"}) %>
                                     </div>
                                 </div>
                             </div>
