@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Search Results</title>
+    <!-- CSS -->
+    <link href="../../assets/stylesheets/searchResults.scss" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <!-- Fonts -->
+    <!-- Scripts -->
+</head>
+
+<body>
+    <div class="panel panel-default" style="margin: 20px 20px 20px 20px;">
+      <div class="panel-heading">Search Results Page</div>
+      <div class="panel-body">
+        <div id="Search Values">
+        <p>Search Values:</p>
+        <table class="table">
+            <tr>
+                <th>Field</th>
+                <th>Value searched</th>
+            </tr>
+            <tr>
+                <td>Platform</td>
+                <td>Windows</td>
+            </tr>
+            <tr>
+                <td>Assistive_Technology</td>
+                <td>(select all)</td>
+            </tr>
+            <tr>
+                <td>Browser_Reader</td>
+                <td>Firefox</td>
+            </tr>
+            <tr>
+                <td>Content_format</td>
+                <td>HTML</td>
+            </tr>
+            <tr>
+                <td>Renderer</td>
+                <td>(select all)</td>
+            </tr>
+            <tr>
+                <td>Affordance</td>
+                <td>(select all)</td>
+            </tr>
+        </table>
+    </div>
+      </div>
+    </div>
+
+    <div id="Buttons">
+        <button id="newSearch" onclick="newSearch()">New Search</button>
+        <button id="modifySearch" onclick="modifySearch()">Modify Search</button>
+    </div>
+
+    <div class="search-results-table">
+        <table class="table">
+            <tr>
+                <th>Platform</th>
+                <th>Assistive_Technology</th>
+                <th>Browser_Reader</th>
+                <th>Content_Format</th>
+                <th>Content_Format</th>
+                <th>Renderer</th>
+                <th>Affordance</th>
+                <th>Action</th>
+            </tr>
+        <!-- matrix entries -->
+            <% @search_results.each do |t| %>
+            <tr>
+                <td><%= t.platform %></td>
+                <td><%= t.assistive_technology %></td>
+                <td><%= t.browser_reader %></td>
+                <td><%= t.content_format %></td>
+                <td><%= t.renderer %></td>
+            </tr>
+        <% end %>
+        </table>
+    </div>
+</body>
+
+<script>
+document.getElementById("newSearch").onclick = newSearch();
+document.getElementById("modifySearch").onclick = modifySearch();
+</script>
+
+</html>
