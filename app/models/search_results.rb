@@ -1,3 +1,2 @@
-class Tag < ActiveRecord::Base
-  has_many :results
+class SearchView < ActiveRecord::Base
 end

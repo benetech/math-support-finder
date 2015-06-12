@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'search_view/index'
+
   resources :comments
   resources :content_sources
   resources :affordances
@@ -9,6 +11,7 @@ Rails.application.routes.draw do
   resources :content_formats
   resources :renderers
   resources :browser_readers
+  resources :search_results
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
