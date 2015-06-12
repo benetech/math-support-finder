@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 	# @platforms = Platform.all
 	# @renderers = Renderer.all
 	# @readers = BrowserReader.all
-	# @assistive_technologies = AssistiveTechnology.all
+	@assistive_technologies = AssistiveTechnology.all
   end
 
   # Prevent CSRF attacks by raising an exception.

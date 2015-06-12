@@ -64,7 +64,6 @@
 
     <!-- Page Content -->
     <div class="container">
-
         <div class="row">
             <div class="col-lg-12">
                 <h1>Welcome to the Math Reading Support Finder!</h1>
@@ -82,6 +81,7 @@
                 </div>
                 <div class="panel-body">
                     <div class="container-fluid form-horizontal">
+                        
                         <div class="row">
                             <div class="col-sm-8">
                                 <div class="form-group">
@@ -128,10 +128,7 @@
                                         Assistive Technology
                                     </label>
                                     <div class="col-sm-6">
-                                        <select class="form-control">
-                                          <option>1</option>
-                                          <option>2</option>
-                                        </select>
+                                        <%= collection_select("", "", @assistive_technologies.all, :id, :title, {}, {class: "form-control"}) %>
                                     </div>
                                 </div>
                             </div>
@@ -157,7 +154,7 @@
                                     </label>
                                     <div class="col-sm-6">
                                         <select class="form-control">
-                                          <option>1</option>
+                                          <option>1</option
                                           <option>2</option>
                                         </select>
                                     </div>
