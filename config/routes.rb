@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  resources :comments
-  resources :content_sources
   resources :affordances
-  resources :media_attachments
   resources :matrix_entries
   resources :assistive_technologies
   resources :platforms
   resources :content_formats
   resources :renderers
   resources :browser_readers
+  resources :statuses
+  resources :media_attachments
+  resources :comments
+  resources :content_sources
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
