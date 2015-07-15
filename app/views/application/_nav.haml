@@ -1,0 +1,47 @@
+.container
+  .navbar-header
+    %button.navbar-toggle.collapsed{"aria-controls" => "bs-navbar", "aria-expanded" => "false", "data-target" => "#bs-navbar", "data-toggle" => "collapse", :type => "button"}
+      %h3.sr-only Toggle navigation
+      %span.icon-bar
+      %span.icon-bar
+      %span.icon-bar
+    %a.navbar-brand{:href => "/"} Math Support Matrix
+  %nav#bs-navbar.collapse.navbar-collapse{role: "navigation"}
+    -if admin?
+      %h2.sr-only Navigation
+      %ul.nav.navbar-nav
+        - models = [ ]
+        - models.each do |m|
+          %li<
+            = link_to  m.capitalize, send("#{m}_path")
+    -elsif current_user
+      %h2.sr-only Navigation
+      %ul.nav.navbar-nav
+        - models = [ ]
+        - models.each do |m|
+          %li<
+            = link_to  m.capitalize, send("#{m}_path")
+    .navbar-right
+      -if current_user
+        %p.navbar-text
+          Hello
+          = link_to root_path, class: "navbar-link" do
+            =current_user
+
+      %h2.sr-only Global Actions
+      %ul.nav.navbar-nav
+        %li<
+          %a{href: "mailto:math-support-matrix@seeread.info", target: "_blank"}
+            %i.fa.fa-fw.fa-support
+            Support
+
+        - if current_user
+          %li<
+            = link_to destroy_user_session_path, :method => :delete do 
+              %i.fa.fa-fw.fa-sign-out
+              Log out
+        - else
+          %li<
+            = link_to user_session_path do
+              %i.fa.fa-fw.fa-sign-in
+              Log in

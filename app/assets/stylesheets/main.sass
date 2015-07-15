@@ -1,0 +1,46 @@
+//home
+$slide-inset: 5%
+.slide
+  width: 100%
+  position: relative
+  &.has-image
+    img
+      width: 100%
+    .title
+      position: absolute
+      bottom: $slide-inset
+      right: $slide-inset
+  &.has-no-image
+    .title
+      top: $slide-inset
+      left: $slide-inset
+      position: absolute
+
+caption
+  ul
+    list-style: none
+dt, th
+  font-weight: bold
+dd
+  margin-bottom: 1em
+.description-image
+  margin-bottom: 1em
+  max-width: 100%
+
+blockquote.blockquote
+  margin-bottom: 0px
+table
+  img
+    max-width: 100px
+
+html.turbolinks-progress-bar::before 
+  background-color: $brand-primary !important
+  height: 5px !important
+
+#footer
+  margin-top: 2em
+
+.new-link
+  margin-bottom: ms(0)
+  +min-screen($phone-wide + 1)
+    float: right

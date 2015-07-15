@@ -1,0 +1,93 @@
+//= depend_on_asset "AjaxLoader.gif"
+
+//nav
+.icon-bar
+  background-color: $brand-primary
+
+//alerts
+.alert
+  p 
+    margin: 0
+    text-align: center
+
+//slides
+.owl-item.loading
+  min-height: 4em
+  background: url(asset_path('AjaxLoader.gif')) no-repeat center center
+
+//select/tags
+//https://github.com/ivaynberg/select2/issues/1588
+.select2-no-results
+  display: none !important
+.select2-input
+  min-width: 100px
+.select2-container
+  padding: 0px
+  height: auto
+  min-height: 1em
+  ul.select2-choices
+    border: 0
+.select2-container.form-control
+  height: auto !important
+
+//datepicker
+.form-group.datepicker
+  > div
+    display: block
+  > label
+    padding-left: 1em
+    padding-right: 1em
+
+
+//general admin
+.form-actions, .devise-actions, .devise-header
+  +make-row
+.form-actions-inner, .devise-actions-inner, .devise-header-inner
+  +make-sm-column(9)
+  +make-sm-column-push(3)
+
+input[type="radio"], input[type="checkbox"]
+  margin-top: 1em
+.create, .new, .edit, .update
+  #main
+    @extend .container
+    .btn
+      text-transform: uppercase
+    .btn-success
+      margin-top: 1em
+      margin-bottom: 1em
+
+
+//admin
+.index-outer, .entity-outer
+  @extend .container
+.index:not(body), .entity
+  +make-row
+.index-inner, .entity-inner
+  +make-lg-column(12)
+
+//table
+.table-responsive
+  clear: both
+.entity-table, .index-table
+  @extend .table
+  @extend .table-striped
+  width: 100%
+  margin-bottom: ms(2)
+  tbody
+    th
+      text-align: right
+  th
+    +large-texts
+    text-transform: uppercase
+    padding: ms(0)
+  td
+    +texts
+    padding: ms(0)
+  thead th:last-child
+    text-align: right
+  
+//fix for remember me on sessions/new
+.radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]
+  top: -6px
+

@@ -66,25 +66,39 @@ Vagrant.configure(2) do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
    config.vm.provision "shell", inline: <<-SHELL
-     sudo apt-get update
-     sudo /usr/sbin/update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
-     sudo apt-get install -y graphviz git postgresql libpq-dev nodejs gawk g++ gcc make libreadline6-dev zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev ruby-dev
-     sudo mkdir -p /usr/local/pgsql/data
-     sudo chown postgres:postgres /usr/local/pgsql/data
-     sudo -u postgres /usr/lib/postgresql/9.3/bin/initdb -D /usr/local/pgsql/data
-     sudo -u postgres createuser -d -l -s -w vagrant
-     sudo -u postgres createdb -O vagrant Math-Support-Matrix
-     sudo -u postgres createdb -O vagrant Math-Support-Matrix_test
-     sudo -u postgres createdb -O vagrant Math-Support-Matrix_development
-     sudo -u postgres psql -c "ALTER USER vagrant WITH PASSWORD 'vagrant';"
-    sudo echo "gem: --no-document" > /root/.gemrc
-     echo "gem: --no-document" > ~/.gemrc
-     \\curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles --autolibs=0 --ruby
-     source /usr/local/rvm/scripts/rvm
-     gem install bundler
-     gem install rails
-     cd /vagrant
-     bundle install
-     bundle update
+     apt-get update
+     /usr/sbin/update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
+     curl -sL https://deb.nodesource.com/setup | sudo bash -
+     apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
+     add-apt-repository 'deb http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.0/ubuntu trusty main'
+     export DEBIAN_FRONTEND=noninteractive
+     debconf-set-selections <<< 'mariadb-server-10.0 mysql-server/root_password password PASS'
+     debconf-set-selections <<< 'mariadb-server-10.0 mysql-server/root_password_again password PASS'
+     apt-get update
+     apt-get install -y software-properties-common graphviz git libpq-dev gawk build-essential libreadline6-dev zlib1g-dev libssl-dev libyaml-dev autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev mariadb-server libmariadbclient-dev nodejs
+     mysql -uroot -pPASS -e "SET PASSWORD = PASSWORD('');"
+     apt-get upgrade -y
+
+     sudo -i -u vagrant git clone git://github.com/sstephenson/rbenv.git ~vagrant/.rbenv
+     sudo -i -u vagrant echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~vagrant/.bash_profile
+     sudo -i -u vagrant echo 'eval "$(rbenv init -)"' >> ~vagrant/.bash_profile
+     sudo -i -u vagrant exec $SHELL
+     sudo -i -u vagrant git clone git://github.com/sstephenson/ruby-build.git ~vagrant/.rbenv/plugins/ruby-build
+     sudo -i -u vagrant echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~vagrant/.bash_profile
+     sudo -i -u vagrant exec $SHELL
+
+     sudo -i -u vagrant rbenv install -v 2.2.2
+     sudo -i -u vagrant rbenv global 2.2.2
+     sudo -i -u vagrant echo "gem: --no-document" > ~vagrant/.gemrc
+
+     sudo -i -u vagrant gem install bundler
+     sudo -i -u vagrant gem install rails
+     sudo -i -u vagrant rbenv rehash
+
+     printf "Host *\nStrictHostKeyChecking no\n" >> ~vagrant/.ssh/config
+     sudo -i -u vagrant BUNDLE_GEMFILE=/vagrant/Gemfile bundle install
+     sudo -i -u vagrant BUNDLE_GEMFILE=/vagrant/Gemfile bundle update
+sudo -i -u vagrant sh -c 'cd /vagrant && exec rake db:create db:migrate'
    SHELL
 end
