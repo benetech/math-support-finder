@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 12) do
+ActiveRecord::Schema.define(version: 20150612004343) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,13 +81,15 @@ ActiveRecord::Schema.define(version: 12) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "browser_readers_content_formats", id: false, force: :cascade do |t|
+  create_table "browser_readers_formats", id: false, force: :cascade do |t|
     t.integer "browser_reader_id"
-    t.integer "content_format_id"
+    t.integer "format_id"
   end
 
   add_index "browser_readers_content_formats", ["browser_reader_id"], name: "brcf_browser_reader_id", using: :btree
   add_index "browser_readers_content_formats", ["content_format_id"], name: "brcf_content_format_id", using: :btree
+  add_index "browser_readers_formats", ["browser_reader_id"], name: "index_browser_readers_formats_on_browser_reader_id", using: :btree
+  add_index "browser_readers_formats", ["format_id"], name: "index_browser_readers_formats_on_format_id", using: :btree
 
   create_table "browser_readers_platforms", id: false, force: :cascade do |t|
     t.integer "browser_reader_id"
@@ -117,6 +119,7 @@ ActiveRecord::Schema.define(version: 12) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+  add_index "comments", ["matrix_entry_id"], name: "index_comments_on_matrix_entry_id", using: :btree
 
   create_table "content_sources", force: :cascade do |t|
     t.string   "title"
@@ -164,11 +167,24 @@ ActiveRecord::Schema.define(version: 12) do
     t.datetime "updated_at",                      null: false
   end
 
+  create_table "formats", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "link"
+    t.string   "version"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   add_index "matrix_entries", ["affordance_id"], name: "index_matrix_entries_on_affordance_id", using: :btree
   add_index "matrix_entries", ["assistive_technology_version_id"], name: "index_matrix_entries_on_assistive_technology_version_id", using: :btree
   add_index "matrix_entries", ["browser_reader_version_id"], name: "index_matrix_entries_on_browser_reader_version_id", using: :btree
   add_index "matrix_entries", ["content_format_id"], name: "index_matrix_entries_on_content_format_id", using: :btree
   add_index "matrix_entries", ["platform_version_id"], name: "index_matrix_entries_on_platform_version_id", using: :btree
+  add_index "matrix_entries", ["assistive_technology_id"], name: "index_matrix_entries_on_assistive_technology_id", using: :btree
+  add_index "matrix_entries", ["browser_reader_id"], name: "index_matrix_entries_on_browser_reader_id", using: :btree
+  add_index "matrix_entries", ["format_id"], name: "index_matrix_entries_on_format_id", using: :btree
+  add_index "matrix_entries", ["platform_id"], name: "index_matrix_entries_on_platform_id", using: :btree
   add_index "matrix_entries", ["renderer_id"], name: "index_matrix_entries_on_renderer_id", using: :btree
   add_index "matrix_entries", ["status_id"], name: "index_matrix_entries_on_status_id", using: :btree
 
@@ -216,6 +232,17 @@ ActiveRecord::Schema.define(version: 12) do
   add_foreign_key "matrix_entries", "browser_reader_versions"
   add_foreign_key "matrix_entries", "content_formats"
   add_foreign_key "matrix_entries", "platform_versions"
+  create_table "search_views", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "affordances", "matrix_entries"
+  add_foreign_key "comments", "matrix_entries"
+  add_foreign_key "matrix_entries", "assistive_technologies"
+  add_foreign_key "matrix_entries", "browser_readers"
+  add_foreign_key "matrix_entries", "formats"
+  add_foreign_key "matrix_entries", "platforms"
   add_foreign_key "matrix_entries", "renderers"
   add_foreign_key "matrix_entries", "statuses"
   add_foreign_key "platform_versions", "platforms"
