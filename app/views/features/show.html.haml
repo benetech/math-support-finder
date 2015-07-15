@@ -1,0 +1,28 @@
+-title = "Showing  #{@feature}"
+-meta title: title
+-cache ['v1', admin?,  @feature] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.entity-table
+          %caption.sr-only Key value pairs for this feature
+          %tbody
+            %tr
+              %th{scope: "row"}<
+                Title
+              %td<
+                = @feature.title
+            %tr
+              %th{scope: "row"}<
+                Notes
+              %td<
+                = @feature.notes
+        %nav.show-nav{role:"navigation"}
+          = link_to features_path, class: 'btn btn-info', title: "View the features index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Features
+          = link_to edit_feature_path(@feature), title: "Edit this feature", class: 'btn btn-primary' do
+            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+            Edit

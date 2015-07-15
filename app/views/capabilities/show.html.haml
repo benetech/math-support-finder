@@ -1,0 +1,38 @@
+-title = "Showing  #{@capability}"
+-meta title: title
+-cache ['v1', admin?,  @capability] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.entity-table
+          %caption.sr-only Key value pairs for this capability
+          %tbody
+            %tr
+              %th{scope: "row"}<
+                Feature
+              %td<
+                = @capability.feature
+            %tr
+              %th{scope: "row"}<
+                Affordance
+              %td<
+                = @capability.affordance
+            %tr
+              %th{scope: "row"}<
+                Configuration
+              %td<
+                = @capability.configuration
+            %tr
+              %th{scope: "row"}<
+                Verification status
+              %td<
+                = @capability.verification_status
+        %nav.show-nav{role:"navigation"}
+          = link_to capabilities_path, class: 'btn btn-info', title: "View the capabilities index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Capabilities
+          = link_to edit_capability_path(@capability), title: "Edit this capability", class: 'btn btn-primary' do
+            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+            Edit

@@ -1,0 +1,39 @@
+-title = 'Listing Browser_reader_versions'
+-meta title: title
+- cache ['v1', admin?,  @browser_reader_versions] do
+  .index-outer
+    .index
+      .index-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.index-table
+          %caption.sr-only Index table for browser_reader_versions
+          %thead
+            %tr
+              %th{scope: "col"}<
+                Browser reader
+              %th{scope: "col"}<
+                Version
+              %th{scope: "col"}<
+                Notes
+              %th{scope: "col"}<
+                Actions
+
+          %tbody
+            - @browser_reader_versions.each_with_index do |browser_reader_version, idx|
+              %tr{class: "item"}
+                %td= browser_reader_version.browser_reader
+                %td= browser_reader_version.version
+                %td= browser_reader_version.notes
+                %td.text-right<
+                  = link_to browser_reader_version, class: "btn btn-show", title: "Show this browser_reader_version" do
+                    %i.fa.fa-fw.fa-eye{title: "Eye"}
+                  = link_to edit_browser_reader_version_path(browser_reader_version), class: "btn btn-edit", title: "Edit this browser_reader_version"  do
+                    %i.fa.fa-fw.fa-pencil{title: "Pencil"}
+                  = link_to browser_reader_version, title: "Delete this browser_reader_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{browser_reader_version}?"} do
+                    %i.fa.fa-fw.fa-trash{title: "Trash can"}
+
+        %nav.index-nav{role:"navigation"}
+          = link_to new_browser_reader_version_path, class: 'btn btn-success new-link' do
+            %i.fa.fa-fw.fa-plus{title: "Plus"}
+            New Browser reader version

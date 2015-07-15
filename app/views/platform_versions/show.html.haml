@@ -1,0 +1,33 @@
+-title = "Showing  #{@platform_version}"
+-meta title: title
+-cache ['v1', admin?,  @platform_version] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.entity-table
+          %caption.sr-only Key value pairs for this platform_version
+          %tbody
+            %tr
+              %th{scope: "row"}<
+                Platform
+              %td<
+                = @platform_version.platform
+            %tr
+              %th{scope: "row"}<
+                Version
+              %td<
+                = @platform_version.version
+            %tr
+              %th{scope: "row"}<
+                Notes
+              %td<
+                = @platform_version.notes
+        %nav.show-nav{role:"navigation"}
+          = link_to platform_versions_path, class: 'btn btn-info', title: "View the platform_versions index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Platform_versions
+          = link_to edit_platform_version_path(@platform_version), title: "Edit this platform_version", class: 'btn btn-primary' do
+            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+            Edit

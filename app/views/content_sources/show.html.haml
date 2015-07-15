@@ -1,0 +1,28 @@
+-title = "Showing  #{@content_source}"
+-meta title: title
+-cache ['v1', admin?,  @content_source] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.entity-table
+          %caption.sr-only Key value pairs for this content_source
+          %tbody
+            %tr
+              %th{scope: "row"}<
+                Title
+              %td<
+                = @content_source.title
+            %tr
+              %th{scope: "row"}<
+                Notes
+              %td<
+                = @content_source.notes
+        %nav.show-nav{role:"navigation"}
+          = link_to content_sources_path, class: 'btn btn-info', title: "View the content_sources index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Content_sources
+          = link_to edit_content_source_path(@content_source), title: "Edit this content_source", class: 'btn btn-primary' do
+            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+            Edit

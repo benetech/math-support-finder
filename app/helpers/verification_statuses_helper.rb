@@ -1,0 +1,2 @@
+module VerificationStatusesHelper
+end

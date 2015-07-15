@@ -1,0 +1,28 @@
+-title = "Showing  #{@browser_reader}"
+-meta title: title
+-cache ['v1', admin?,  @browser_reader] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.entity-table
+          %caption.sr-only Key value pairs for this browser_reader
+          %tbody
+            %tr
+              %th{scope: "row"}<
+                Title
+              %td<
+                = @browser_reader.title
+            %tr
+              %th{scope: "row"}<
+                Notes
+              %td<
+                = @browser_reader.notes
+        %nav.show-nav{role:"navigation"}
+          = link_to browser_readers_path, class: 'btn btn-info', title: "View the browser_readers index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Browser_readers
+          = link_to edit_browser_reader_path(@browser_reader), title: "Edit this browser_reader", class: 'btn btn-primary' do
+            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+            Edit

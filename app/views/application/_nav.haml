@@ -7,20 +7,23 @@
       %span.icon-bar
     %a.navbar-brand{:href => "/"} Math Support Matrix
   %nav#bs-navbar.collapse.navbar-collapse{role: "navigation"}
-    -if admin?
-      %h2.sr-only Navigation
-      %ul.nav.navbar-nav
-        - models = [ ]
-        - models.each do |m|
-          %li<
-            = link_to  m.capitalize, send("#{m}_path")
-    -elsif current_user
-      %h2.sr-only Navigation
-      %ul.nav.navbar-nav
-        - models = [ ]
-        - models.each do |m|
-          %li<
-            = link_to  m.capitalize, send("#{m}_path")
+    -#-if admin?
+      -#%h2.sr-only Navigation
+      -#%ul.nav.navbar-nav
+        -#- models = [ ]
+        -#- models.each do |m|
+          -#%li<
+            -#= link_to  m.capitalize, send("#{m}_path")
+    -#-elsif current_user
+    %h2.sr-only Navigation
+    %ul.nav.navbar-nav
+      - models = ["affordances", "assistive_technologies", "assistive_technology_versions", "browser_readers", 
+                  "browser_reader_formats", "browser_reader_renderers", "browser_reader_versions", "capabilities", 
+                  "configurations", "content_sources", "content_source_configurations", "features", "formats", "pats", 
+                  "platforms", "platform_versions", "platform_browser_readers", "renderers", "renderer_versions", "verification_statuses", "workflow_statuses"] #user
+      - models.each do |m|
+        %li<
+          = link_to  m.titleize, send("#{m}_path")
     .navbar-right
       -if current_user
         %p.navbar-text

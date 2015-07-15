@@ -1,0 +1,28 @@
+-title = "Showing  #{@assistive_technology}"
+-meta title: title
+-cache ['v1', admin?,  @assistive_technology] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.entity-table
+          %caption.sr-only Key value pairs for this assistive_technology
+          %tbody
+            %tr
+              %th{scope: "row"}<
+                Title
+              %td<
+                = @assistive_technology.title
+            %tr
+              %th{scope: "row"}<
+                Notes
+              %td<
+                = @assistive_technology.notes
+        %nav.show-nav{role:"navigation"}
+          = link_to assistive_technologies_path, class: 'btn btn-info', title: "View the assistive_technologies index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Assistive_technologies
+          = link_to edit_assistive_technology_path(@assistive_technology), title: "Edit this assistive_technology", class: 'btn btn-primary' do
+            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+            Edit

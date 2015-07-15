@@ -1,0 +1,39 @@
+-title = 'Listing Renderer_versions'
+-meta title: title
+- cache ['v1', admin?,  @renderer_versions] do
+  .index-outer
+    .index
+      .index-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.index-table
+          %caption.sr-only Index table for renderer_versions
+          %thead
+            %tr
+              %th{scope: "col"}<
+                Renderer
+              %th{scope: "col"}<
+                Version
+              %th{scope: "col"}<
+                Notes
+              %th{scope: "col"}<
+                Actions
+
+          %tbody
+            - @renderer_versions.each_with_index do |renderer_version, idx|
+              %tr{class: "item"}
+                %td= renderer_version.renderer
+                %td= renderer_version.version
+                %td= renderer_version.notes
+                %td.text-right<
+                  = link_to renderer_version, class: "btn btn-show", title: "Show this renderer_version" do
+                    %i.fa.fa-fw.fa-eye{title: "Eye"}
+                  = link_to edit_renderer_version_path(renderer_version), class: "btn btn-edit", title: "Edit this renderer_version"  do
+                    %i.fa.fa-fw.fa-pencil{title: "Pencil"}
+                  = link_to renderer_version, title: "Delete this renderer_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{renderer_version}?"} do
+                    %i.fa.fa-fw.fa-trash{title: "Trash can"}
+
+        %nav.index-nav{role:"navigation"}
+          = link_to new_renderer_version_path, class: 'btn btn-success new-link' do
+            %i.fa.fa-fw.fa-plus{title: "Plus"}
+            New Renderer version

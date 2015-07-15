@@ -1,0 +1,42 @@
+-title = 'Listing Capabilities'
+-meta title: title
+- cache ['v1', admin?,  @capabilities] do
+  .index-outer
+    .index
+      .index-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.index-table
+          %caption.sr-only Index table for capabilities
+          %thead
+            %tr
+              %th{scope: "col"}<
+                Feature
+              %th{scope: "col"}<
+                Affordance
+              %th{scope: "col"}<
+                Configuration
+              %th{scope: "col"}<
+                Verification status
+              %th{scope: "col"}<
+                Actions
+
+          %tbody
+            - @capabilities.each_with_index do |capability, idx|
+              %tr{class: "item"}
+                %td= capability.feature
+                %td= capability.affordance
+                %td= capability.configuration
+                %td= capability.verification_status
+                %td.text-right<
+                  = link_to capability, class: "btn btn-show", title: "Show this capability" do
+                    %i.fa.fa-fw.fa-eye{title: "Eye"}
+                  = link_to edit_capability_path(capability), class: "btn btn-edit", title: "Edit this capability"  do
+                    %i.fa.fa-fw.fa-pencil{title: "Pencil"}
+                  = link_to capability, title: "Delete this capability" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{capability}?"} do
+                    %i.fa.fa-fw.fa-trash{title: "Trash can"}
+
+        %nav.index-nav{role:"navigation"}
+          = link_to new_capability_path, class: 'btn btn-success new-link' do
+            %i.fa.fa-fw.fa-plus{title: "Plus"}
+            New Capability

@@ -1,0 +1,28 @@
+-title = "Showing  #{@platform}"
+-meta title: title
+-cache ['v1', admin?,  @platform] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.entity-table
+          %caption.sr-only Key value pairs for this platform
+          %tbody
+            %tr
+              %th{scope: "row"}<
+                Title
+              %td<
+                = @platform.title
+            %tr
+              %th{scope: "row"}<
+                Notes
+              %td<
+                = @platform.notes
+        %nav.show-nav{role:"navigation"}
+          = link_to platforms_path, class: 'btn btn-info', title: "View the platforms index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Platforms
+          = link_to edit_platform_path(@platform), title: "Edit this platform", class: 'btn btn-primary' do
+            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+            Edit

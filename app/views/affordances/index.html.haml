@@ -1,0 +1,36 @@
+-title = 'Listing Affordances'
+-meta title: title
+- cache ['v1', admin?,  @affordances] do
+  .index-outer
+    .index
+      .index-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.index-table
+          %caption.sr-only Index table for affordances
+          %thead
+            %tr
+              %th{scope: "col"}<
+                Title
+              %th{scope: "col"}<
+                Notes
+              %th{scope: "col"}<
+                Actions
+
+          %tbody
+            - @affordances.each_with_index do |affordance, idx|
+              %tr{class: "item"}
+                %td= affordance.title
+                %td= affordance.notes
+                %td.text-right<
+                  = link_to affordance, class: "btn btn-show", title: "Show this affordance" do
+                    %i.fa.fa-fw.fa-eye{title: "Eye"}
+                  = link_to edit_affordance_path(affordance), class: "btn btn-edit", title: "Edit this affordance"  do
+                    %i.fa.fa-fw.fa-pencil{title: "Pencil"}
+                  = link_to affordance, title: "Delete this affordance" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{affordance}?"} do
+                    %i.fa.fa-fw.fa-trash{title: "Trash can"}
+
+        %nav.index-nav{role:"navigation"}
+          = link_to new_affordance_path, class: 'btn btn-success new-link' do
+            %i.fa.fa-fw.fa-plus{title: "Plus"}
+            New Affordance

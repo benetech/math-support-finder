@@ -1,0 +1,9 @@
+-title = "Editing #{@verification_status}"
+-meta title: title
+-cache ['v1', admin?,  @verification_status] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        = render 'form'

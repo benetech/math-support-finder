@@ -1,0 +1,2 @@
+module ContentSourceConfigurationsHelper
+end

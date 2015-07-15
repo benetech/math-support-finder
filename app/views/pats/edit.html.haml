@@ -1,0 +1,9 @@
+-title = "Editing #{@pat}"
+-meta title: title
+-cache ['v1', admin?,  @pat] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        = render 'form'

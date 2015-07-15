@@ -1,0 +1,36 @@
+-title = 'Listing Content_source_configurations'
+-meta title: title
+- cache ['v1', admin?,  @content_source_configurations] do
+  .index-outer
+    .index
+      .index-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.index-table
+          %caption.sr-only Index table for content_source_configurations
+          %thead
+            %tr
+              %th{scope: "col"}<
+                Configuration
+              %th{scope: "col"}<
+                Content source
+              %th{scope: "col"}<
+                Actions
+
+          %tbody
+            - @content_source_configurations.each_with_index do |content_source_configuration, idx|
+              %tr{class: "item"}
+                %td= content_source_configuration.configuration
+                %td= content_source_configuration.content_source
+                %td.text-right<
+                  = link_to content_source_configuration, class: "btn btn-show", title: "Show this content_source_configuration" do
+                    %i.fa.fa-fw.fa-eye{title: "Eye"}
+                  = link_to edit_content_source_configuration_path(content_source_configuration), class: "btn btn-edit", title: "Edit this content_source_configuration"  do
+                    %i.fa.fa-fw.fa-pencil{title: "Pencil"}
+                  = link_to content_source_configuration, title: "Delete this content_source_configuration" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{content_source_configuration}?"} do
+                    %i.fa.fa-fw.fa-trash{title: "Trash can"}
+
+        %nav.index-nav{role:"navigation"}
+          = link_to new_content_source_configuration_path, class: 'btn btn-success new-link' do
+            %i.fa.fa-fw.fa-plus{title: "Plus"}
+            New Content source configuration

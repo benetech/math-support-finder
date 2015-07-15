@@ -1,0 +1,2 @@
+module AssistiveTechnologyVersionsHelper
+end

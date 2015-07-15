@@ -144,8 +144,8 @@ Then we generated our scaffolds:
     rails g pizza_scaffold format title:string notes: text  --force
     rails g pizza_scaffold platform title:string notes:text --force
     rails g pizza_scaffold platform_version platform:references version:float notes:text --force
-    rails g pizza_scaffold renderer title:str notes:text --force
-    rails g pizza_scaffold renderer_version render:references version:float  notes:text  --force
+    rails g pizza_scaffold renderer title:string notes:text --force
+    rails g pizza_scaffold renderer_version renderer:references version:float  notes:text  --force
     rails g pizza_scaffold browser_reader title:string notes:text --force
     rails g pizza_scaffold browser_reader_version browser_reader:references version:float notes:text  --force
     rails g pizza_scaffold assistive_technology title:string notes:text --force
@@ -156,12 +156,12 @@ Then we generated our scaffolds:
         format:references workflow_status:references --force
     #content sources
     rails g pizza_scaffold content_source title:string notes:text --force
-    rails g pizza_scaffold content_source_configuration configuration:references content_source:references--force
+    rails g pizza_scaffold content_source_configuration configuration:references content_source:references --force
     #component suggestion
     rails g pizza_scaffold browser_reader_renderer browser_reader:references renderer:references --force
     rails g pizza_scaffold browser_reader_format browser_reader:references format:references --force
     rails g pizza_scaffold platform_browser_reader platform:references browser_reader:references --force
-    rails g pizza_scaffold platform_assistive_technology platform:references assistive_technologies:references --force
+    rails g pizza_scaffold pat platform:references assistive_technology:references --force #abbreviated for required shorter table name
     #capability components
     rails g pizza_scaffold affordance title:string notes:text --force
     rails g pizza_scaffold verification_status title:string --force
