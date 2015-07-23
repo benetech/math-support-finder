@@ -4,8 +4,8 @@
 #
 #  id          :integer          not null, primary key
 #  platform_id :integer
-#  version     :float(24)
-#  notes       :text(65535)
+#  version     :float
+#  notes       :text
 #  created_at  :datetime
 #  updated_at  :datetime
 #

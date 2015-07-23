@@ -13,24 +13,27 @@
 
 ActiveRecord::Schema.define(version: 20150715204841) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "affordances", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "notes",      limit: 65535
+    t.string   "title"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "assistive_technologies", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "notes",      limit: 65535
+    t.string   "title"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "assistive_technology_versions", force: :cascade do |t|
-    t.integer  "assistive_technology_id", limit: 4
-    t.float    "version",                 limit: 24
-    t.text     "notes",                   limit: 65535
+    t.integer  "assistive_technology_id"
+    t.float    "version"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -38,8 +41,8 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "assistive_technology_versions", ["assistive_technology_id"], name: "index_assistive_technology_versions_on_assistive_technology_id", using: :btree
 
   create_table "browser_reader_formats", force: :cascade do |t|
-    t.integer  "browser_reader_id", limit: 4
-    t.integer  "format_id",         limit: 4
+    t.integer  "browser_reader_id"
+    t.integer  "format_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,8 +51,8 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "browser_reader_formats", ["format_id"], name: "index_browser_reader_formats_on_format_id", using: :btree
 
   create_table "browser_reader_renderers", force: :cascade do |t|
-    t.integer  "browser_reader_id", limit: 4
-    t.integer  "renderer_id",       limit: 4
+    t.integer  "browser_reader_id"
+    t.integer  "renderer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58,9 +61,9 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "browser_reader_renderers", ["renderer_id"], name: "index_browser_reader_renderers_on_renderer_id", using: :btree
 
   create_table "browser_reader_versions", force: :cascade do |t|
-    t.integer  "browser_reader_id", limit: 4
-    t.float    "version",           limit: 24
-    t.text     "notes",             limit: 65535
+    t.integer  "browser_reader_id"
+    t.float    "version"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68,17 +71,17 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "browser_reader_versions", ["browser_reader_id"], name: "index_browser_reader_versions_on_browser_reader_id", using: :btree
 
   create_table "browser_readers", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "notes",      limit: 65535
+    t.string   "title"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "capabilities", force: :cascade do |t|
-    t.integer  "feature_id",             limit: 4
-    t.integer  "affordance_id",          limit: 4
-    t.integer  "configuration_id",       limit: 4
-    t.integer  "verification_status_id", limit: 4
+    t.integer  "feature_id"
+    t.integer  "affordance_id"
+    t.integer  "configuration_id"
+    t.integer  "verification_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -89,12 +92,12 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "capabilities", ["verification_status_id"], name: "index_capabilities_on_verification_status_id", using: :btree
 
   create_table "configurations", force: :cascade do |t|
-    t.integer  "platform_version_id",             limit: 4
-    t.integer  "renderer_version_id",             limit: 4
-    t.integer  "browser_reader_version_id",       limit: 4
-    t.integer  "assistive_technology_version_id", limit: 4
-    t.integer  "format_id",                       limit: 4
-    t.integer  "workflow_status_id",              limit: 4
+    t.integer  "platform_version_id"
+    t.integer  "renderer_version_id"
+    t.integer  "browser_reader_version_id"
+    t.integer  "assistive_technology_version_id"
+    t.integer  "format_id"
+    t.integer  "workflow_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -107,8 +110,8 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "configurations", ["workflow_status_id"], name: "index_configurations_on_workflow_status_id", using: :btree
 
   create_table "content_source_configurations", force: :cascade do |t|
-    t.integer  "configuration_id",  limit: 4
-    t.integer  "content_source_id", limit: 4
+    t.integer  "configuration_id"
+    t.integer  "content_source_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -117,30 +120,30 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "content_source_configurations", ["content_source_id"], name: "index_content_source_configurations_on_content_source_id", using: :btree
 
   create_table "content_sources", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "notes",      limit: 65535
+    t.string   "title"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "features", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "notes",      limit: 65535
+    t.string   "title"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "formats", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.string   "notes",      limit: 255
-    t.string   "text",       limit: 255
+    t.string   "title"
+    t.string   "notes"
+    t.string   "text"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "pats", force: :cascade do |t|
-    t.integer  "platform_id",             limit: 4
-    t.integer  "assistive_technology_id", limit: 4
+    t.integer  "platform_id"
+    t.integer  "assistive_technology_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -149,8 +152,8 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "pats", ["platform_id"], name: "index_pats_on_platform_id", using: :btree
 
   create_table "platform_browser_readers", force: :cascade do |t|
-    t.integer  "platform_id",       limit: 4
-    t.integer  "browser_reader_id", limit: 4
+    t.integer  "platform_id"
+    t.integer  "browser_reader_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -159,9 +162,9 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "platform_browser_readers", ["platform_id"], name: "index_platform_browser_readers_on_platform_id", using: :btree
 
   create_table "platform_versions", force: :cascade do |t|
-    t.integer  "platform_id", limit: 4
-    t.float    "version",     limit: 24
-    t.text     "notes",       limit: 65535
+    t.integer  "platform_id"
+    t.float    "version"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -169,16 +172,16 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "platform_versions", ["platform_id"], name: "index_platform_versions_on_platform_id", using: :btree
 
   create_table "platforms", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "notes",      limit: 65535
+    t.string   "title"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "renderer_versions", force: :cascade do |t|
-    t.integer  "renderer_id", limit: 4
-    t.float    "version",     limit: 24
-    t.text     "notes",       limit: 65535
+    t.integer  "renderer_id"
+    t.float    "version"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -186,18 +189,18 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "renderer_versions", ["renderer_id"], name: "index_renderer_versions_on_renderer_id", using: :btree
 
   create_table "renderers", force: :cascade do |t|
-    t.string   "title",      limit: 255
-    t.text     "notes",      limit: 65535
+    t.string   "title"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "taggings", force: :cascade do |t|
-    t.integer  "tag_id",        limit: 4
-    t.integer  "taggable_id",   limit: 4
-    t.string   "taggable_type", limit: 255
-    t.integer  "tagger_id",     limit: 4
-    t.string   "tagger_type",   limit: 255
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
     t.string   "context",       limit: 128
     t.datetime "created_at"
   end
@@ -206,39 +209,39 @@ ActiveRecord::Schema.define(version: 20150715204841) do
   add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
-    t.string  "name",           limit: 255
-    t.integer "taggings_count", limit: 4,   default: 0
+    t.string  "name"
+    t.integer "taggings_count", default: 0
   end
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "",    null: false
-    t.string   "encrypted_password",     limit: 255, default: "",    null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
-    t.boolean  "admin",                  limit: 1,   default: false
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "admin",                  default: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "verification_statuses", force: :cascade do |t|
-    t.string   "title",      limit: 255
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "workflow_statuses", force: :cascade do |t|
-    t.string   "title",      limit: 255
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

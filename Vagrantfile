@@ -71,13 +71,20 @@ Vagrant.configure(2) do |config|
 
      curl -sL https://deb.nodesource.com/setup | sudo bash -
      apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-     add-apt-repository 'deb http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.0/ubuntu trusty main'
      export DEBIAN_FRONTEND=noninteractive
-     debconf-set-selections <<< 'mariadb-server-10.0 mysql-server/root_password password PASS'
-     debconf-set-selections <<< 'mariadb-server-10.0 mysql-server/root_password_again password PASS'
      apt-get update
-     apt-get install -y software-properties-common graphviz git libpq-dev gawk build-essential libreadline6-dev zlib1g-dev libssl-dev libyaml-dev autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev mariadb-server libmariadbclient-dev nodejs
-     mysql -uroot -pPASS -e "SET PASSWORD = PASSWORD('');"
+     apt-get install -y software-properties-common graphviz git libpq-dev gawk build-essential libreadline6-dev zlib1g-dev libssl-dev libyaml-dev autoconf libgdbm-dev libncurses5-dev automake libtool bison pkg-config libffi-dev nodejs postgresql libpq-dev
+
+     sudo mkdir -p /usr/local/pgsql/data
+     sudo chown postgres:postgres /usr/local/pgsql/data
+     sudo -u postgres /usr/lib/postgresql/9.3/bin/initdb -D /usr/local/pgsql/data
+     sudo -u postgres createuser -d -l -s -w msm_dev
+     sudo -u postgres createuser -d -l -s -w msm_test
+     sudo -u postgres createdb -O msm_dev msm_dev
+     sudo -u postgres createdb -O msm_test msm_test
+     sudo -u postgres psql -c "ALTER USER msm_dev WITH PASSWORD 'password';"
+     sudo -u postgres psql -c "ALTER USER msm_test WITH PASSWORD 'password';"
+
      apt-get upgrade -y
 
      sudo -i -u vagrant git clone git://github.com/sstephenson/rbenv.git ~vagrant/.rbenv
@@ -99,6 +106,6 @@ Vagrant.configure(2) do |config|
      printf "Host *\nStrictHostKeyChecking no\n" >> ~vagrant/.ssh/config
      sudo -i -u vagrant BUNDLE_GEMFILE=/vagrant/Gemfile bundle install
      sudo -i -u vagrant BUNDLE_GEMFILE=/vagrant/Gemfile bundle update
-sudo -i -u vagrant sh -c 'cd /vagrant && exec rake db:create db:migrate'
+     sudo -i -u vagrant sh -c 'cd /vagrant && exec rake db:create db:migrate'
    SHELL
 end
