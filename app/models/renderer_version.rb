@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: renderer_versions
 #
@@ -16,9 +16,13 @@
 
 class RendererVersion < ActiveRecord::Base
   belongs_to :renderer
-  has_many :configurations, dependent: :nullify
+  has_many :setups, dependent: :nullify
 
   validates_associated :renderer
   validates_presence_of :renderer, :version
   validates :version, numericality: true
+
+  def to_s
+    [renderer.to_s, version.to_s].join(" ")
+  end
 end

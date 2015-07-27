@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: browser_reader_versions
 #
@@ -15,12 +15,15 @@
 #
 
 class BrowserReaderVersion < ActiveRecord::Base
-  has_many :configurations, dependent: :nullify
-
+  has_many :setups, dependent: :nullify
   belongs_to :browser_reader
 
   validates_associated :browser_reader
   validates_presence_of :browser_reader, :version
   validates :version, numericality: true
+
+  def to_s
+    [browser_reader.to_s, version.to_s].join(" ")
+  end
 
 end

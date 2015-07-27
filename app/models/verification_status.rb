@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: verification_statuses
 #
@@ -9,7 +9,8 @@
 #
 
 class VerificationStatus < ActiveRecord::Base
-  has_many :configurations, dependent: :nullify
+  has_many :capabilities, dependent: :nullify
+
   def to_s
     title
   end

@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: workflow_statuses
 #

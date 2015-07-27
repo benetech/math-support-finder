@@ -40,15 +40,15 @@ ActiveRecord::Schema.define(version: 20150727151043) do
 
   add_index "assistive_technology_versions", ["assistive_technology_id"], name: "index_assistive_technology_versions_on_assistive_technology_id", using: :btree
 
-  create_table "browser_reader_formats", force: :cascade do |t|
+  create_table "browser_reader_file_formats", force: :cascade do |t|
     t.integer  "browser_reader_id"
-    t.integer  "format_id"
+    t.integer  "file_format_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "browser_reader_formats", ["browser_reader_id"], name: "index_browser_reader_formats_on_browser_reader_id", using: :btree
-  add_index "browser_reader_formats", ["format_id"], name: "index_browser_reader_formats_on_format_id", using: :btree
+  add_index "browser_reader_file_formats", ["browser_reader_id"], name: "index_browser_reader_file_formats_on_browser_reader_id", using: :btree
+  add_index "browser_reader_file_formats", ["file_format_id"], name: "index_browser_reader_file_formats_on_file_format_id", using: :btree
 
   create_table "browser_reader_renderers", force: :cascade do |t|
     t.integer  "browser_reader_id"
@@ -80,44 +80,26 @@ ActiveRecord::Schema.define(version: 20150727151043) do
   create_table "capabilities", force: :cascade do |t|
     t.integer  "feature_id"
     t.integer  "affordance_id"
-    t.integer  "configuration_id"
+    t.integer  "setup_id"
     t.integer  "verification_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "capabilities", ["affordance_id"], name: "index_capabilities_on_affordance_id", using: :btree
-  add_index "capabilities", ["configuration_id"], name: "index_capabilities_on_configuration_id", using: :btree
   add_index "capabilities", ["feature_id"], name: "index_capabilities_on_feature_id", using: :btree
+  add_index "capabilities", ["setup_id"], name: "index_capabilities_on_setup_id", using: :btree
   add_index "capabilities", ["verification_status_id"], name: "index_capabilities_on_verification_status_id", using: :btree
 
-  create_table "configurations", force: :cascade do |t|
-    t.integer  "platform_version_id"
-    t.integer  "renderer_version_id"
-    t.integer  "browser_reader_version_id"
-    t.integer  "assistive_technology_version_id"
-    t.integer  "format_id"
-    t.integer  "workflow_status_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "configurations", ["assistive_technology_version_id"], name: "index_configurations_on_assistive_technology_version_id", using: :btree
-  add_index "configurations", ["browser_reader_version_id"], name: "index_configurations_on_browser_reader_version_id", using: :btree
-  add_index "configurations", ["format_id"], name: "index_configurations_on_format_id", using: :btree
-  add_index "configurations", ["platform_version_id"], name: "index_configurations_on_platform_version_id", using: :btree
-  add_index "configurations", ["renderer_version_id"], name: "index_configurations_on_renderer_version_id", using: :btree
-  add_index "configurations", ["workflow_status_id"], name: "index_configurations_on_workflow_status_id", using: :btree
-
-  create_table "content_source_configurations", force: :cascade do |t|
-    t.integer  "configuration_id"
+  create_table "content_source_setups", force: :cascade do |t|
+    t.integer  "setup_id"
     t.integer  "content_source_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "content_source_configurations", ["configuration_id"], name: "index_content_source_configurations_on_configuration_id", using: :btree
-  add_index "content_source_configurations", ["content_source_id"], name: "index_content_source_configurations_on_content_source_id", using: :btree
+  add_index "content_source_setups", ["content_source_id"], name: "index_content_source_setups_on_content_source_id", using: :btree
+  add_index "content_source_setups", ["setup_id"], name: "index_content_source_setups_on_setup_id", using: :btree
 
   create_table "content_sources", force: :cascade do |t|
     t.string   "title"
@@ -133,10 +115,9 @@ ActiveRecord::Schema.define(version: 20150727151043) do
     t.datetime "updated_at"
   end
 
-  create_table "formats", force: :cascade do |t|
+  create_table "file_formats", force: :cascade do |t|
     t.string   "title"
-    t.string   "notes"
-    t.string   "text"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -195,6 +176,24 @@ ActiveRecord::Schema.define(version: 20150727151043) do
     t.datetime "updated_at"
   end
 
+  create_table "setups", force: :cascade do |t|
+    t.integer  "platform_version_id"
+    t.integer  "renderer_version_id"
+    t.integer  "browser_reader_version_id"
+    t.integer  "assistive_technology_version_id"
+    t.integer  "file_format_id"
+    t.integer  "workflow_status_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "setups", ["assistive_technology_version_id"], name: "index_setups_on_assistive_technology_version_id", using: :btree
+  add_index "setups", ["browser_reader_version_id"], name: "index_setups_on_browser_reader_version_id", using: :btree
+  add_index "setups", ["file_format_id"], name: "index_setups_on_file_format_id", using: :btree
+  add_index "setups", ["platform_version_id"], name: "index_setups_on_platform_version_id", using: :btree
+  add_index "setups", ["renderer_version_id"], name: "index_setups_on_renderer_version_id", using: :btree
+  add_index "setups", ["workflow_status_id"], name: "index_setups_on_workflow_status_id", using: :btree
+
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
@@ -249,27 +248,27 @@ ActiveRecord::Schema.define(version: 20150727151043) do
   end
 
   add_foreign_key "assistive_technology_versions", "assistive_technologies"
-  add_foreign_key "browser_reader_formats", "browser_readers"
-  add_foreign_key "browser_reader_formats", "formats"
+  add_foreign_key "browser_reader_file_formats", "browser_readers"
+  add_foreign_key "browser_reader_file_formats", "file_formats"
   add_foreign_key "browser_reader_renderers", "browser_readers"
   add_foreign_key "browser_reader_renderers", "renderers"
   add_foreign_key "browser_reader_versions", "browser_readers"
   add_foreign_key "capabilities", "affordances"
-  add_foreign_key "capabilities", "configurations"
   add_foreign_key "capabilities", "features"
+  add_foreign_key "capabilities", "setups"
   add_foreign_key "capabilities", "verification_statuses"
-  add_foreign_key "configurations", "assistive_technology_versions"
-  add_foreign_key "configurations", "browser_reader_versions"
-  add_foreign_key "configurations", "formats"
-  add_foreign_key "configurations", "platform_versions"
-  add_foreign_key "configurations", "renderer_versions"
-  add_foreign_key "configurations", "workflow_statuses"
-  add_foreign_key "content_source_configurations", "configurations"
-  add_foreign_key "content_source_configurations", "content_sources"
+  add_foreign_key "content_source_setups", "content_sources"
+  add_foreign_key "content_source_setups", "setups"
   add_foreign_key "pats", "assistive_technologies"
   add_foreign_key "pats", "platforms"
   add_foreign_key "platform_browser_readers", "browser_readers"
   add_foreign_key "platform_browser_readers", "platforms"
   add_foreign_key "platform_versions", "platforms"
   add_foreign_key "renderer_versions", "renderers"
+  add_foreign_key "setups", "assistive_technology_versions"
+  add_foreign_key "setups", "browser_reader_versions"
+  add_foreign_key "setups", "file_formats"
+  add_foreign_key "setups", "platform_versions"
+  add_foreign_key "setups", "renderer_versions"
+  add_foreign_key "setups", "workflow_statuses"
 end

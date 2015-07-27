@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: pats
 #
@@ -18,4 +18,12 @@ class Pat < ActiveRecord::Base
 
   belongs_to :platform
   belongs_to :assistive_technology
+
+  validates_associated :platform, :assistive_technology
+  validates_presence_of :platform, :assistive_technology
+  validates :platform, uniqueness: {scope: :assistive_technology}
+
+  def to_s
+    [platform.to_s, assistive_technology.to_s].join(" - ")
+  end
 end

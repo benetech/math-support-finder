@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: affordances
 #
@@ -11,9 +11,12 @@
 
 class Affordance < ActiveRecord::Base
 
-  has_many :configurations, through: :capabilities
+  has_many :setups, through: :capabilities
 
   validates_presence_of :title
+
+  has_many :capabilities, dependent: :destroy
+  has_many :setups, through: :capabilities
 
   def to_s
     title

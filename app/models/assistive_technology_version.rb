@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: assistive_technology_versions
 #
@@ -16,10 +16,14 @@
 
 class AssistiveTechnologyVersion < ActiveRecord::Base
   belongs_to :assistive_technology
-  has_many :configurations, dependent: :nullify
+  has_many :setups, dependent: :nullify
 
   validates_associated :assistive_technology
   validates_presence_of :assistive_technology, :version
   validates :version, numericality: true
+
+  def to_s
+    [assistive_technology.to_s, version.to_s].join(" ")
+  end
 
 end

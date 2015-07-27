@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: renderers
 #
@@ -12,11 +12,16 @@
 class Renderer < ActiveRecord::Base
 
   has_many :renderer_versions, dependent: :destroy
-  has_many :configurations, through: :renderer_versions
+  has_many :setups, through: :renderer_versions
 
   validates_presence_of :title
 
   def to_s
     title
   end
+
+  def versions
+    renderer_versions
+  end
+
 end

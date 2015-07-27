@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: browser_reader_renderers
 #
@@ -18,4 +18,8 @@ class BrowserReaderRenderer < ActiveRecord::Base
 
   belongs_to :browser_reader
   belongs_to :renderer
+
+  def to_s
+    [browser_reader.to_s, renderer.to_s].join(" - ")
+  end
 end

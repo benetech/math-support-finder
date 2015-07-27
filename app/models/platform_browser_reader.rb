@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: platform_browser_readers
 #
@@ -18,4 +18,12 @@ class PlatformBrowserReader < ActiveRecord::Base
 
   belongs_to :platform
   belongs_to :browser_reader
+
+  validates :platform, uniqueness: {scope: :browser_reader}
+  validates_presence_of :browser_reader, :platform
+  validates_associated :browser_reader, :platform
+
+  def to_s
+    [platform.to_s, browser_reader.to_s].join(" - ")
+  end
 end

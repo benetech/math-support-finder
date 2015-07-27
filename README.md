@@ -1,16 +1,16 @@
 #MathSupportMatrix
 
-The MathSupportMatrix (MSM) is a discovery and reference tool for pairing math content sources with accessible configurations.
+The MathSupportMatrix (MSM) is a discovery and reference tool for pairing math content sources with accessible setups.
 
 ##About
 
 The tool allows users to search for a combination of assistive technology, browser/readers, formats, and other attributes of their computing environment so as to discover how best to consume digital mathematics accessibly with said combination. 
 
-We will seek to incorporate community feedback to identify more sources and configurations as well as their respective benefits and issues. 
+We will seek to incorporate community feedback to identify more sources and setups as well as their respective benefits and issues. 
 
-The site streamlines the process of adding new configurations, versions of renderers, browsers/readers, platforms, and assistive technologies. 
+The site streamlines the process of adding new setups, versions of renderers, browsers/readers, platforms, and assistive technologies. 
 
-Users will eventually contribute content sources that work well with one or more configurations. Benetech staff, for now, will be responsible for approving submitted configurations by testing them manually and then changing their status to an approved state that will allow these configurations to be live on the website. User ratings and comments about configurations could follow as well.
+Users will eventually contribute content sources that work well with one or more setups. Benetech staff, for now, will be responsible for approving submitted setups by testing them manually and then changing their status to an approved state that will allow these setups to be live on the website. User ratings and comments about setups could follow as well.
 
 MSM is built with Ruby on Rails, CoffeeScript, and SASS.
 
@@ -67,46 +67,46 @@ Here's a representation of it for [nomnoml](http://nomnoml.com)
     [<frame>Math Support Matrix data model|
       [User | id: int | email: string | admin: bool | timestamps]
 
-      [Configuration | id: int | title: str | notes: text | status_id: reference | format_id: reference | 
+      [Setup | id: int | title: str | notes: text | status_id: reference | file_format_id: reference | 
         platform_version_id: reference | browser_reader_version_id :  reference | assistive_technology_version_id : reference |
          renderer_version_id : reference  | affordance_id: reference | timestamps]
      
       [WorkflowStatus | id: int | title: str ]
-      [WorkflowStatus] <- [Configuration]
+      [WorkflowStatus] <- [Setup]
 
       [ContentSource | id: int | title: string | notes: text | timestamps]
-      [ContentSourceConfigurations ] -> [Configuration]
-      [ContentSourceConfigurations ] -> [ContentSource]
+      [ContentSourceSetup ] -> [Setup]
+      [ContentSourceSetup ] -> [ContentSource]
 
-      [Format | id: int | title: string | notes: text | timestamps]
-      [Configuration] -> [Format]
+      [FileFormat | id: int | title: string | notes: text | timestamps]
+      [Setup] -> [FileFormat]
 
       [Platform | id: int | title: str | notes: text | timestamps]
       [PlatformVersion | id: int | version: float | notes: text | timestamps]
       [Platform] <- [PlatformVersion]
-      [Configuration] -> [PlatformVersion]
+      [Setup] -> [PlatformVersion]
 
 
       [Renderer | id: int | title: str | notes: text | timestamps]
       [RendererVersion | id: int | version: float | notes: text | timestamps]
       [Renderer] <- [RendererVersion]
-      [Configuration] -> [RendererVersion]
+      [Setup] -> [RendererVersion]
 
       [BrowserReader | id: int | title: str | notes: text | timestamps]
       [BrowserReaderVersion | id: int | version: float | notes: text | timestamps]
       [BrowserReader] <- [BrowserReaderVersion]
-      [Configuration] -> [BrowserReaderVersion]
+      [Setup] -> [BrowserReaderVersion]
 
       [AssistiveTechnology | id: int | title: str | notes: text | timestamps]
       [AssistiveTechnologyVersion | id: int | title: str | notes: text | timestamps]
       [AssistiveTechnology] <- [AssistiveTechnologyVersion]
-      [Configuration] -> [AssistiveTechnologyVersion]
+      [Setup] -> [AssistiveTechnologyVersion]
 
       [BrowserReaderRenderer] -> [Renderer]
       [BrowserReaderRenderer] -> [BrowserReader]
 
-      [BrowserReaderFormat] -> [Format]
-      [BrowserReaderFormat] -> [BrowserReader]
+      [BrowserReaderFileFormat] -> [FileFormat]
+      [BrowserReaderFileFormat] -> [BrowserReader]
 
       [PlatformBrowserReader] -> [Platform]
       [PlatformBrowserReader] -> [BrowserReader]
@@ -117,10 +117,10 @@ Here's a representation of it for [nomnoml](http://nomnoml.com)
       [Affordance | id: int | title: str | notes: text |timestamps]
       [VerificationStatus | id: int | title: str ]
       [Feature | id: int | title: str | notes: text | timestamps]
-      [Capability | id: int | feature_id:reference | affordance_id: reference | configuration_id: reference | verification_status_id: ref | timestamps]
+      [Capability | id: int | feature_id:reference | affordance_id: reference | setup_id: reference | verification_status_id: ref | timestamps]
 
       [Capability] -> [VerificationStatus]
-      [Capability] -> [Configuration]
+      [Capability] -> [Setup]
       [Capability] -> [Affordance]
       [Capability] -> [Feature]
 
@@ -139,9 +139,9 @@ First, we initialized our generators and our user login system:
 
 Then we generated our scaffolds:
 
-    #configuration components
+    #setup components
     rails g pizza_scaffold workflow_status title:string --force
-    rails g pizza_scaffold format title:string notes:text  --force
+    rails g pizza_scaffold file_format title:string notes:text  --force
     rails g pizza_scaffold platform title:string notes:text --force
     rails g pizza_scaffold platform_version platform:references version:float notes:text --force
     rails g pizza_scaffold renderer title:string notes:text --force
@@ -150,28 +150,28 @@ Then we generated our scaffolds:
     rails g pizza_scaffold browser_reader_version browser_reader:references version:float notes:text  --force
     rails g pizza_scaffold assistive_technology title:string notes:text --force
     rails g pizza_scaffold assistive_technology_version assistive_technology:references version:float notes:text  --force
-    rails g pizza_scaffold configuration platform_version:references \
+    rails g pizza_scaffold setup platform_version:references \
         renderer_version:references browser_reader_version:references \
-        assistive_technology_version:references platform_version:references \
-        format:references workflow_status:references --force
+        assistive_technology_version:references \
+        file_format:references workflow_status:references --force
     #content sources
     rails g pizza_scaffold content_source title:string notes:text --force
-    rails g pizza_scaffold content_source_configuration configuration:references content_source:references --force
+    rails g pizza_scaffold content_source_setup setup:references content_source:references --force
     #component suggestion
     rails g pizza_scaffold browser_reader_renderer browser_reader:references renderer:references --force
-    rails g pizza_scaffold browser_reader_format browser_reader:references format:references --force
+    rails g pizza_scaffold browser_reader_file_format browser_reader:references file_format:references --force
     rails g pizza_scaffold platform_browser_reader platform:references browser_reader:references --force
     rails g pizza_scaffold pat platform:references assistive_technology:references --force #abbreviated for required shorter table name
     #capability components
     rails g pizza_scaffold affordance title:string notes:text --force
     rails g pizza_scaffold verification_status title:string --force
     rails g pizza_scaffold feature title:string notes:text --force
-    rails g pizza_scaffold capability feature:references affordance:references configuration:references verification_status:references --force
+    rails g pizza_scaffold capability feature:references affordance:references setup:references verification_status:references --force
 
 
     #to generate only the controllers and views
     rails g pizza_controller workflow_status title:string --force
-    rails g pizza_controller format title:string notes:text  --force
+    rails g pizza_controller file_format title:string notes:text  --force
     rails g pizza_controller platform title:string notes:text --force
     rails g pizza_controller platform_version platform:references version:float notes:text --force
     rails g pizza_controller renderer title:string notes:text --force
@@ -180,23 +180,23 @@ Then we generated our scaffolds:
     rails g pizza_controller browser_reader_version browser_reader:references version:float notes:text  --force
     rails g pizza_controller assistive_technology title:string notes:text --force
     rails g pizza_controller assistive_technology_version assistive_technology:references version:float notes:text  --force
-    rails g pizza_controller configuration platform_version:references \
+    rails g pizza_controller setup platform_version:references \
         renderer_version:references browser_reader_version:references \
-        assistive_technology_version:references platform_version:references \
-        format:references workflow_status:references --force
+        assistive_technology_version:references \
+        file_format:references workflow_status:references --force
     #content sources
     rails g pizza_controller content_source title:string notes:text --force
-    rails g pizza_controller content_source_configuration configuration:references content_source:references --force
+    rails g pizza_controller content_source_setup setup:references content_source:references --force
     #component suggestion
     rails g pizza_controller browser_reader_renderer browser_reader:references renderer:references --force
-    rails g pizza_controller browser_reader_format browser_reader:references format:references --force
+    rails g pizza_controller browser_reader_file_format browser_reader:references file_format:references --force
     rails g pizza_controller platform_browser_reader platform:references browser_reader:references --force
     rails g pizza_controller pat platform:references assistive_technology:references --force #abbreviated for required shorter table name
     #capability components
     rails g pizza_controller affordance title:string notes:text --force
     rails g pizza_controller verification_status title:string --force
     rails g pizza_controller feature title:string notes:text --force
-    rails g pizza_controller capability feature:references affordance:references configuration:references verification_status:references --force
+    rails g pizza_controller capability feature:references affordance:references setup:references verification_status:references --force
 
 ##Components
 - [RubyOnRails](http://rubyonrails.org/)

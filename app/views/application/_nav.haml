@@ -17,10 +17,11 @@
     -#-elsif current_user
     %h2.sr-only Navigation
     %ul.nav.navbar-nav
-      - models = ["affordances", "assistive_technologies", "assistive_technology_versions", "browser_readers", 
-                  "browser_reader_formats", "browser_reader_renderers", "browser_reader_versions", "capabilities", 
-                  "configurations", "content_sources", "content_source_configurations", "features", "formats", "pats", 
-                  "platforms", "platform_versions", "platform_browser_readers", "renderers", "renderer_versions", "verification_statuses", "workflow_statuses"] #user
+      - models = ["setups", "capabilities", "content_source_setups", "affordances", "assistive_technologies", "browser_readers", 
+                  "browser_reader_file_formats", "browser_reader_renderers", "content_sources", "features", "file_formats", "pats", 
+                  "platforms", "platform_browser_readers", "renderers", "verification_statuses", "workflow_statuses"] #user
+      - versions =["platform_versions", "browser_reader_versions", "assistive_technology_versions", "renderer_versions"]
+      - models += versions
       - models.each do |m|
         %li<
           = link_to  m.titleize, send("#{m}_path")

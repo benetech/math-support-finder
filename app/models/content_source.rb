@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: content_sources
 #
@@ -11,8 +11,9 @@
 
 class ContentSource < ActiveRecord::Base
 
-  has_many :content_source_configurations, dependent: :destroy
-  has_many :configurations, through: :content_source_configurations, dependent: :nullify
+  has_many :content_source_setups, dependent: :destroy
+  has_many :setups, through: :content_source_setups
+
   validates_presence_of :title
 
   def to_s

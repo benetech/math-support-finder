@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: workflow_statuses
 #
@@ -9,6 +9,8 @@
 #
 
 class WorkflowStatus < ActiveRecord::Base
+  has_many :setups, dependent: :nullify
+
   def to_s
     title
   end

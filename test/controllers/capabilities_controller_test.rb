@@ -18,7 +18,7 @@ class CapabilitiesControllerTest < ActionController::TestCase
 
   test "should create capability" do
     assert_difference('Capability.count') do
-      post :create, capability: { affordance_id: @capability.affordance_id, configuration_id: @capability.configuration_id, feature_id: @capability.feature_id, verification_status_id: @capability.verification_status_id }
+      post :create, capability: { affordance_id: @capability.affordance_id, setup_id: @capability.setup_id, feature_id: @capability.feature_id, verification_status_id: @capability.verification_status_id }
     end
 
     assert_redirected_to capability_path(assigns(:capability))
@@ -35,7 +35,7 @@ class CapabilitiesControllerTest < ActionController::TestCase
   end
 
   test "should update capability" do
-    patch :update, id: @capability, capability: { affordance_id: @capability.affordance_id, configuration_id: @capability.configuration_id, feature_id: @capability.feature_id, verification_status_id: @capability.verification_status_id }
+    patch :update, id: @capability, capability: { affordance_id: @capability.affordance_id, setup_id: @capability.setup_id, feature_id: @capability.feature_id, verification_status_id: @capability.verification_status_id }
     assert_redirected_to capability_path(assigns(:capability))
   end
 

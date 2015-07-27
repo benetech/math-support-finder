@@ -1,4 +1,4 @@
-# == Schema Information
+# == Schema Infile_formation
 #
 # Table name: platform_versions
 #
@@ -16,10 +16,14 @@
 
 class PlatformVersion < ActiveRecord::Base
   belongs_to :platform
-  has_many :configurations, dependent: :nullify
+  has_many :setups, dependent: :nullify
 
   validates_associated :platform
   validates_presence_of :platform, :version
   validates :version, numericality: true
+
+  def to_s
+    [platform.to_s, version.to_s].join(" ")
+  end
 
 end

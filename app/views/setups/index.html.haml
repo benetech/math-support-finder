@@ -1,0 +1,48 @@
+-title = 'Listing Setups'
+-meta title: title
+- cache ['v1', admin?,  @setups] do
+  .index-outer
+    .index
+      .index-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        %table.index-table
+          %caption.sr-only Index table for setups
+          %thead
+            %tr
+              %th{scope: "col"}<
+                Platform version
+              %th{scope: "col"}<
+                Renderer version
+              %th{scope: "col"}<
+                Browser reader version
+              %th{scope: "col"}<
+                Assistive technology version
+              %th{scope: "col"}<
+                File Format
+              %th{scope: "col"}<
+                Workflow status
+              %th{scope: "col"}<
+                Actions
+
+          %tbody
+            - @setups.each_with_index do |setup, idx|
+              %tr{class: "item"}
+                %td= setup.platform_version
+                %td= setup.renderer_version
+                %td= setup.browser_reader_version
+                %td= setup.assistive_technology_version
+                %td= setup.file_format
+                %td= setup.workflow_status
+                %td.text-right<
+                  = link_to setup, class: "btn btn-show", title: "Show this setup" do
+                    %i.fa.fa-fw.fa-eye{title: "Eye"}
+                  = link_to edit_setup_path(setup), class: "btn btn-edit", title: "Edit this setup"  do
+                    %i.fa.fa-fw.fa-pencil{title: "Pencil"}
+                  = link_to setup, title: "Delete this setup" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{setup}?"} do
+                    %i.fa.fa-fw.fa-trash{title: "Trash can"}
+
+        %nav.index-nav{role:"navigation"}
+          = link_to new_setup_path, class: 'btn btn-success new-link' do
+            %i.fa.fa-fw.fa-plus{title: "Plus"}
+            New Setup
