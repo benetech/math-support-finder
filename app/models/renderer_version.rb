@@ -15,6 +15,10 @@
 #
 
 class RendererVersion < ActiveRecord::Base
-
   belongs_to :renderer
+  has_many :configurations, dependent: :nullify
+
+  validates_associated :renderer
+  validates_presence_of :renderer, :version
+  validates :version, numericality: true
 end

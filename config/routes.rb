@@ -1,4 +1,10 @@
 Plate::Application.routes.draw do
+  resources :formats do
+  end
+
+  resources :assistive_technologies do
+  end
+
   resources :pats
   resources :capabilities
   resources :features
@@ -20,7 +26,10 @@ Plate::Application.routes.draw do
   resources :platforms
   resources :formats
   resources :workflow_statuses
-  devise_for :users
+  scope "/admin" do
+    resources :users
+  end
+  devise_for :users, :controllers => { registrations: 'registrations' }
   root :to => "home#index"
   #get "/pages/*id" => 'pages#show', as: :page, format: false
   #root :to => "pages#show", id: 'home'

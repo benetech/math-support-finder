@@ -15,6 +15,12 @@
 #
 
 class BrowserReaderVersion < ActiveRecord::Base
+  has_many :configurations, dependent: :nullify
 
   belongs_to :browser_reader
+
+  validates_associated :browser_reader
+  validates_presence_of :browser_reader, :version
+  validates :version, numericality: true
+
 end

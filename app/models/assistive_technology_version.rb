@@ -15,6 +15,11 @@
 #
 
 class AssistiveTechnologyVersion < ActiveRecord::Base
-
   belongs_to :assistive_technology
+  has_many :configurations, dependent: :nullify
+
+  validates_associated :assistive_technology
+  validates_presence_of :assistive_technology, :version
+  validates :version, numericality: true
+
 end

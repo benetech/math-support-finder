@@ -18,4 +18,7 @@ class BrowserReaderFormat < ActiveRecord::Base
 
   belongs_to :browser_reader
   belongs_to :format
+
+  validates_presence_of :browser_reader, :format
+  validates_associated :browser_reader, :format
 end

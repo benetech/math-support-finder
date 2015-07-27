@@ -11,4 +11,11 @@
 
 class Feature < ActiveRecord::Base
 
+  validates_presence_of :title
+
+  has_many :configurations, through: :capabilities
+
+  def to_s
+    title
+  end
 end

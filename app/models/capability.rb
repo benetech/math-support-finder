@@ -24,4 +24,8 @@ class Capability < ActiveRecord::Base
   belongs_to :affordance
   belongs_to :configuration
   belongs_to :verification_status
+
+  validates_presence_of :feature, :affordance, :configuration, :verification_status
+  validates_associated :feature, :affordance, :configuration, :verification_status
+
 end

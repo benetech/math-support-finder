@@ -11,4 +11,11 @@
 
 class Affordance < ActiveRecord::Base
 
+  has_many :configurations, through: :capabilities
+
+  validates_presence_of :title
+
+  def to_s
+    title
+  end
 end

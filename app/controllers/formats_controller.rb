@@ -48,6 +48,6 @@ class FormatsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def format_params
-      params.require(:format).permit(:title, :notes, :text)
+      params.require(:format).permit(:title, :notes)
     end
 end

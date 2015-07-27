@@ -15,8 +15,6 @@
               %th{scope: "col"}<
                 Notes
               %th{scope: "col"}<
-                Text
-              %th{scope: "col"}<
                 Actions
 
           %tbody
@@ -24,7 +22,6 @@
               %tr{class: "item"}
                 %td= format.title
                 %td= format.notes
-                %td= format.text
                 %td.text-right<
                   = link_to format, class: "btn btn-show", title: "Show this format" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}

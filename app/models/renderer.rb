@@ -11,4 +11,12 @@
 
 class Renderer < ActiveRecord::Base
 
+  has_many :renderer_versions, dependent: :destroy
+  has_many :configurations, through: :renderer_versions
+
+  validates_presence_of :title
+
+  def to_s
+    title
+  end
 end

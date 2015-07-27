@@ -18,7 +18,7 @@ class FormatsControllerTest < ActionController::TestCase
 
   test "should create format" do
     assert_difference('Format.count') do
-      post :create, format: { notes: @format.notes, text: @format.text, title: @format.title }
+      post :create, format: { notes: @format.notes, title: @format.title }
     end
 
     assert_redirected_to format_path(assigns(:format))
@@ -35,7 +35,7 @@ class FormatsControllerTest < ActionController::TestCase
   end
 
   test "should update format" do
-    patch :update, id: @format, format: { notes: @format.notes, text: @format.text, title: @format.title }
+    patch :update, id: @format, format: { notes: @format.notes, title: @format.title }
     assert_redirected_to format_path(assigns(:format))
   end
 

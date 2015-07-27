@@ -15,6 +15,11 @@
 #
 
 class PlatformVersion < ActiveRecord::Base
-
   belongs_to :platform
+  has_many :configurations, dependent: :nullify
+
+  validates_associated :platform
+  validates_presence_of :platform, :version
+  validates :version, numericality: true
+
 end

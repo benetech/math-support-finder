@@ -16,6 +16,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  admin                  :boolean          default(FALSE)
+#  first_name             :string
+#  last_name              :string
 #
 # Indexes
 #

@@ -9,5 +9,9 @@
 #
 
 class VerificationStatus < ActiveRecord::Base
+  has_many :configurations, dependent: :nullify
+  def to_s
+    title
+  end
 
 end

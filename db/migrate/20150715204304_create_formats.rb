@@ -2,8 +2,7 @@ class CreateFormats < ActiveRecord::Migration
   def change
     create_table :formats do |t|
       t.string :title
-      t.string :notes
-      t.string :text
+      t.text :notes
 
       t.timestamps
     end

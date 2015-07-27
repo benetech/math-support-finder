@@ -16,6 +16,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  admin                  :boolean          default(FALSE)
+#  first_name             :string
+#  last_name              :string
 #
 # Indexes
 #
@@ -28,4 +30,13 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def to_s
+    if !first_name.blank? or !last_name.blank?
+      [first_name, last_name].join(' ')
+    else
+      email
+    end
+  end
+
 end

@@ -18,4 +18,7 @@ class ContentSourceConfiguration < ActiveRecord::Base
 
   belongs_to :configuration
   belongs_to :content_source
+
+  validates_presence_of :configuration, :content_source
+  validates_associated :configuration, :content_source
 end
