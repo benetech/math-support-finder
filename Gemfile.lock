@@ -71,6 +71,8 @@ GEM
       execjs
       json
     bcrypt (3.1.10)
+    be_valid_asset (1.3.0)
+      rspec
     better_errors (2.1.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -80,6 +82,16 @@ GEM
     bootstrap-sass (3.3.5.1)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.3.0)
+    brakeman (3.0.5)
+      erubis (~> 2.6)
+      fastercsv (~> 1.5)
+      haml (>= 3.0, < 5.0)
+      highline (~> 1.6.20)
+      multi_json (~> 1.2)
+      ruby2ruby (~> 2.1.1)
+      ruby_parser (~> 3.7.0)
+      sass (~> 3.0)
+      terminal-table (~> 1.4)
     browser (0.8.0)
     builder (3.2.2)
     byebug (5.0.0)
@@ -107,6 +119,16 @@ GEM
     capistrano-thin (1.1.0)
       capistrano (~> 3.0)
       thin (~> 1.6)
+    capybara (2.4.4)
+      mime-types (>= 1.16)
+      nokogiri (>= 1.3.3)
+      rack (>= 1.0.0)
+      rack-test (>= 0.5.4)
+      xpath (~> 2.0)
+    capybara-accessible (0.2.1)
+      capybara (~> 2.0)
+    childprocess (0.5.6)
+      ffi (~> 1.0, >= 1.0.11)
     chronic (0.10.2)
     chunky_png (1.3.4)
     cocoon (1.2.6)
@@ -138,7 +160,10 @@ GEM
       compass (~> 1.0.0)
       sass-rails (<= 5.0.1)
       sprockets (< 2.13)
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
     daemons (1.2.3)
+    database_cleaner (1.4.1)
     debug_inspector (0.0.2)
     devise (3.5.1)
       bcrypt (~> 3.0)
@@ -147,14 +172,26 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    diff-lcs (1.2.5)
     dotenv (2.0.2)
     dotenv-rails (2.0.2)
       dotenv (= 2.0.2)
       railties (~> 4.0)
+    em-websocket (0.5.1)
+      eventmachine (>= 0.12.9)
+      http_parser.rb (~> 0.6.0)
     erubis (2.7.0)
     eventmachine (1.0.7)
     excon (0.45.4)
     execjs (2.5.2)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
+    faker (1.4.3)
+      i18n (~> 0.5)
+    fastercsv (1.5.5)
     ffi (1.9.10)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
@@ -258,6 +295,38 @@ GEM
     formatador (0.2.5)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
+    guard (2.12.8)
+      formatador (>= 0.2.4)
+      listen (>= 2.7, <= 4.0)
+      lumberjack (~> 1.0)
+      nenv (~> 0.1)
+      notiffany (~> 0.0)
+      pry (>= 0.9.12)
+      shellany (~> 0.0)
+      thor (>= 0.18.1)
+    guard-brakeman (0.8.3)
+      brakeman (>= 2.1.1)
+      guard (>= 2.0.0)
+    guard-bundler (2.1.0)
+      bundler (~> 1.0)
+      guard (~> 2.2)
+      guard-compat (~> 1.1)
+    guard-coffeescript (2.0.1)
+      coffee-script (>= 2.2.0)
+      guard (>= 2.1.0)
+      guard-compat (~> 1.1)
+    guard-compat (1.2.1)
+    guard-livereload (2.4.0)
+      em-websocket (~> 0.5)
+      guard (~> 2.8)
+      multi_json (~> 1.8)
+    guard-rspec (4.6.2)
+      guard (~> 2.1)
+      guard-compat (~> 1.1)
+      rspec (>= 2.99.0, < 4.0)
+    guard-sass (1.6.0)
+      guard (>= 2.8.0)
+      sass (>= 3.1)
     haml (4.0.6)
       tilt
     haml-rails (0.9.0)
@@ -267,12 +336,14 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 4.0.1)
     high_voltage (2.4.0)
+    highline (1.6.21)
     hike (1.2.3)
     html2haml (2.0.0)
       erubis (~> 2.7.0)
       haml (~> 4.0.0)
       nokogiri (~> 1.6.0)
       ruby_parser (~> 3.5)
+    http_parser.rb (0.6.0)
     httparty (0.13.5)
       json (~> 1.8)
       multi_xml (>= 0.5.2)
@@ -294,12 +365,17 @@ GEM
       activesupport (>= 3.0.0)
     language_list (1.1.0)
     libv8 (3.16.14.11)
+    listen (3.0.2)
+      rb-fsevent (>= 0.9.3)
+      rb-inotify (>= 0.9)
     loofah (2.0.2)
       nokogiri (>= 1.5.9)
+    lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
     metamagic (3.1.7)
       rails (>= 3.0.0)
+    method_source (0.8.2)
     mime-types (2.6.1)
     mini_portile (0.6.2)
     minitest (5.7.0)
@@ -307,16 +383,24 @@ GEM
       compass (>= 0.12.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
+    nenv (0.2.0)
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    notiffany (0.0.6)
+      nenv (~> 0.1)
+      shellany (~> 0.0)
     oj (2.12.10)
     orm_adapter (0.5.0)
     pg (0.18.2)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -359,9 +443,35 @@ GEM
     ref (2.0.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rspec (3.3.0)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
+    rspec-core (3.3.1)
+      rspec-support (~> 3.3.0)
+    rspec-expectations (3.3.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-mocks (3.3.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.3.0)
+    rspec-rails (3.3.2)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (~> 3.3.0)
+      rspec-expectations (~> 3.3.0)
+      rspec-mocks (~> 3.3.0)
+      rspec-support (~> 3.3.0)
+    rspec-support (3.3.0)
+    ruby2ruby (2.1.4)
+      ruby_parser (~> 3.1)
+      sexp_processor (~> 4.0)
     ruby_parser (3.7.0)
       sexp_processor (~> 4.1)
+    rubyzip (1.1.7)
     rugged (0.19.0)
+    safe_yaml (1.0.4)
     sass (3.4.16)
     sass-mediaqueries-rails (1.3)
       sass (>= 3.2.0)
@@ -377,10 +487,21 @@ GEM
     seed_dump (3.2.2)
       activerecord (~> 4)
       activesupport (~> 4)
+    selenium-webdriver (2.46.2)
+      childprocess (~> 0.5)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
     sexp_processor (4.6.0)
+    shellany (0.0.1)
+    shoulda-matchers (2.8.0)
+      activesupport (>= 3.0.0)
     sitemap_generator (5.0.5)
       builder
+    slop (3.6.0)
     spring (1.3.6)
+    spring-commands-rspec (1.0.4)
+      spring (>= 0.9.1)
     sprockets (2.12.4)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -397,6 +518,7 @@ GEM
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
     terminal-notifier (1.6.3)
+    terminal-table (1.5.2)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
@@ -427,8 +549,14 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    webmock (1.21.0)
+      addressable (>= 2.3.6)
+      crack (>= 0.3.2)
+    websocket (1.2.2)
     whenever (0.9.4)
       chronic (>= 0.6.3)
+    xpath (2.0.0)
+      nokogiri (~> 1.3)
 
 PLATFORMS
   ruby
@@ -440,8 +568,10 @@ DEPENDENCIES
   apipie-rails
   asset_sync
   autoprefixer-rails
+  be_valid_asset
   better_errors
   bootstrap-sass (>= 3.2)
+  brakeman
   browser
   byebug
   capistrano (>= 3.2.1)
@@ -451,13 +581,24 @@ DEPENDENCIES
   capistrano-rails
   capistrano-rbenv (>= 2.0)
   capistrano-thin
+  capybara-accessible
   cocoon
   coffee-rails (>= 4.1.0)
   compass-h5bp
   compass-rails (~> 2.0.4)
+  database_cleaner
   devise
   dotenv-rails
   execjs
+  factory_girl_rails
+  faker
+  guard
+  guard-brakeman
+  guard-bundler
+  guard-coffeescript
+  guard-livereload
+  guard-rspec
+  guard-sass
   haml-rails
   high_voltage
   jbuilder
@@ -472,15 +613,20 @@ DEPENDENCIES
   railroady
   rails (= 4.2.2)
   ransack
+  rb-fsevent
   responders
+  rspec-rails
   sass-mediaqueries-rails
   sass-rails (~> 5.0.1)
   sdoc (~> 0.4.0)
   seed_dump
   select2-rails!
+  selenium-webdriver
+  shoulda-matchers
   simple_form!
   sitemap_generator
   spring
+  spring-commands-rspec
   sprockets
   sprockets-rails (~> 2.0.1)
   sprockets_better_errors
@@ -492,6 +638,7 @@ DEPENDENCIES
   uglifier (>= 2.7.1)
   validate_url
   web-console (~> 2.0)
+  webmock
   whenever
 
 BUNDLED WITH

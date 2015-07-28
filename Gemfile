@@ -84,15 +84,15 @@ group :development do
   #gem "html2haml"
   #gem "binding_of_caller"
   #gem "quiet_assets"
-  #gem 'brakeman', :require => false
+  gem 'brakeman', :require => false
   gem 'spring'
-  #gem 'guard'
+  gem 'guard'
   #gem 'guard-cucumber'
-  #gem 'guard-brakeman'
-  #gem 'guard-bundler'
-  #gem 'guard-coffeescript'
-  #gem 'guard-sass'
-  #gem 'guard-livereload'
+  gem 'guard-brakeman'
+  gem 'guard-bundler'
+  gem 'guard-coffeescript'
+  gem 'guard-sass'
+  gem 'guard-livereload'
 end
 
 group :development, :test do
@@ -101,21 +101,22 @@ group :development, :test do
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'railroady'
-  #gem 'rspec-rails'
-  #gem 'guard-rspec'
-  #gem 'spring-commands-rspec'
-  #gem 'rb-fsevent' #osx file system changes
-  #gem 'factory_girl_rails'
-  #gem 'faker'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'spring-commands-rspec'
+  gem 'rb-fsevent' #osx file system changes
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :test do
-  #gem 'shoulda-matchers'
+  gem 'shoulda-matchers'
   #gem 'cucumber-rails', require: false
-  #gem 'database_cleaner'
-  #gem 'webmock'
-  #gem 'selenium-webdriver'
-  #gem 'capybara-accessible'
+  gem 'database_cleaner'
+  gem 'be_valid_asset'
+  gem 'webmock'
+  gem 'selenium-webdriver'
+  gem 'capybara-accessible'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

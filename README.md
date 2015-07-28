@@ -54,7 +54,6 @@ Also, you may need to issue this in a separate terminal on your local box if the
 
 Again, the password is "vagrant" without the quotes.
 
-Happy Hacking.
 
 ##Data model
 To generate the data model diagram, you can do:
@@ -201,7 +200,7 @@ Then we generated our scaffolds:
 ##Components
 - [RubyOnRails](http://rubyonrails.org/)
 - [accecess](http://lukyvj.github.io/accecss/)
-- [MariaDB](https://mariadb.org/) 
+- [PostGRES](http://www.postgresql.org/)
 - [rbenv](http://rbenv.org/) with [plugins](https://github.com/sstephenson/rbenv/wiki/Plugins) for gems, bundler, build, and binstubs
 - [bundler](http://bundler.io/)
 - [SASS](http://sass-lang.com/)
