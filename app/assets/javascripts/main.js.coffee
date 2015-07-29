@@ -67,6 +67,6 @@ $ ->
 
 
     #ajax search
-    $(".autosubmit select").change (e) ->
+    $(".autosubmit select").off().change (e) ->
       console.log 'autosubmitted'
       $(this).closest('form').submit()

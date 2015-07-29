@@ -1,6 +1,6 @@
 .results#setups-results
   %header{role: "header"}
-    %h2 
+    %h2#setups-results-title
       Results
       %span.sr-only ,
       %span.badge= @setups.total_count
@@ -10,17 +10,17 @@
     %thead
       %tr
         %th{scope: "col"}<
-          Platform version
+          Platform 
         %th{scope: "col"}<
-          Renderer version
+          Renderer 
         %th{scope: "col"}<
-          Browser reader version
+          Browser Reader 
         %th{scope: "col"}<
-          Assistive technology version
+          Assistive Technology 
         %th{scope: "col"}<
           File Format
         %th{scope: "col"}<
-          Workflow status
+          Status
         %th{scope: "col"}<
           Link
 

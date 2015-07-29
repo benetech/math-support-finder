@@ -1,2 +1,2 @@
-$('#setups-results').html('<%= escape_javascript(render("results")) %>')
-console.log 'results returned'
+$('#setups-results').replaceWith('<%= escape_javascript(render("results")) %>')
+$('#setups-results-title').focus()
