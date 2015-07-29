@@ -22,6 +22,10 @@
         %th{scope: "col"}<
           Status
         %th{scope: "col"}<
+          Capabilities
+        %th{scope: "col"}<
+          Content Sources
+        %th{scope: "col"}<
           Link
 
     %tbody
@@ -34,6 +38,14 @@
           %td= setup.file_format
           %td= setup.workflow_status
           %td
-            =link_to setups_path(setup), class: "btn btn-primary" do
+            -setup.capabilities.each do |c|
+              #{c.affordance} : #{c.feature}
+              %br
+          %td
+            -setup.content_sources.each do |c|
+              #{c}
+              %br
+          %td
+            =link_to setup_path(setup), class: "btn btn-primary" do
               %i.fa.fa-link
               %span.sr-only Read more
