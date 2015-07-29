@@ -14,6 +14,13 @@ GIT
       actionpack (~> 4.0)
       activemodel (~> 4.0)
 
+GIT
+  remote: https://github.com/seeread/mortise.git
+  revision: 6752d880aaf798bb17f1210be9f71fafaa7b505f
+  specs:
+    mortise (0.3.0)
+      httparty (~> 0.13)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -608,6 +615,7 @@ DEPENDENCIES
   language_list
   metamagic
   modular-scale
+  mortise!
   oj
   pg
   railroady

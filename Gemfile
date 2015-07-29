@@ -117,6 +117,8 @@ group :test do
   gem 'webmock'
   gem 'selenium-webdriver'
   gem 'capybara-accessible'
+  gem 'mortise', :git=>'https://github.com/seeread/mortise.git' #tenon
+  #gem 'mortise', :path=>'vendor/mortise' #tenon
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
