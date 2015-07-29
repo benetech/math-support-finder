@@ -33,6 +33,7 @@ $ ->
       $(@).toggleClass 'fa-check'
           .toggleClass 'fa-times'
 
+    #bulk actions
     $('.bulk').off().on 'click', (e) ->
       bulk          = $(@).data('bulk') #used for strong params
       url           = $(@).data('url')
@@ -64,3 +65,8 @@ $ ->
         error: (jqXHR, textStatus, errorThrown) ->
           alert textStatus, errorThrown
 
+
+    #ajax search
+    $(".autosubmit select").change (e) ->
+      console.log 'autosubmitted'
+      $(this).closest('form').submit()

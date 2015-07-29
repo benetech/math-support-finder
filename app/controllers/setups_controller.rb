@@ -4,7 +4,8 @@ class SetupsController < ApplicationController
 
   # GET /setups
   def index
-    @setups = Setup.all
+    @q = Setup.ransack(params[:q])
+    @setups = @q.result.page(params[:page])
   end
 
   # GET /setups/1

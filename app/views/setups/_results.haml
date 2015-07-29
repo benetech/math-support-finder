@@ -1,0 +1,39 @@
+.results#setups-results
+  %header{role: "header"}
+    %h2 
+      Results
+      %span.sr-only ,
+      %span.badge= @setups.total_count
+
+  %table.index-table
+    %caption.sr-only Results table for setups
+    %thead
+      %tr
+        %th{scope: "col"}<
+          Platform version
+        %th{scope: "col"}<
+          Renderer version
+        %th{scope: "col"}<
+          Browser reader version
+        %th{scope: "col"}<
+          Assistive technology version
+        %th{scope: "col"}<
+          File Format
+        %th{scope: "col"}<
+          Workflow status
+        %th{scope: "col"}<
+          Link
+
+    %tbody
+      - @setups.each_with_index do |setup, idx|
+        %tr{class: "item"}
+          %td= setup.platform_version
+          %td= setup.renderer_version
+          %td= setup.browser_reader_version
+          %td= setup.assistive_technology_version
+          %td= setup.file_format
+          %td= setup.workflow_status
+          %td
+            =link_to setups_path(setup), class: "btn btn-primary" do
+              %i.fa.fa-link
+              %span.sr-only Read more

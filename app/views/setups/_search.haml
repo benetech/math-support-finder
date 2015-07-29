@@ -1,0 +1,17 @@
+.row
+  .col-sm-6
+    %h2 Find a setup
+    = search_form_for(q, html: {multipart: true, class: 'form-horizontal autosubmit', remote: true, format: 'js'}, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes}) do |f|
+      - @platforms = Platform.all
+      - @browser_readers = BrowserReader.all
+      - @assistive_technologies = AssistiveTechnology.all
+
+      .form-inputs
+        = f.input  :platform_version_platform_id_eq, collection: @platforms, as: :select, prompt: "Pick your platform", label: "Platform", required: false
+        = f.input  :browser_reader_version_browser_reader_id_eq, collection: @browser_readers, as: :select, prompt: "Pick your browser reader", label: "Browser Reader", required: false
+        = f.input  :assistive_technology_version_assistive_technology_id_eq, collection: @assistive_technologies, as: :select, prompt: "Pick your assistive technology", label: "Assistive Technology", required: false
+        -#=f.input :country_id, collection: @continents, as: :grouped_select, group_method: :countries
+      .form-actions
+        .form-actions-inner
+          = f.button :submit, class: 'btn btn-success'
+=render "setups/results"
