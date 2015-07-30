@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730222731) do
+ActiveRecord::Schema.define(version: 20150730223905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,16 @@ ActiveRecord::Schema.define(version: 20150730222731) do
   end
 
   add_index "assistive_technology_versions", ["assistive_technology_id"], name: "index_assistive_technology_versions_on_assistive_technology_id", using: :btree
+
+  create_table "browser_reader_assistive_technologies", force: :cascade do |t|
+    t.integer  "browser_reader_id"
+    t.integer  "assistive_technology_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "browser_reader_assistive_technologies", ["assistive_technology_id"], name: "brat_assistive_technology_id", using: :btree
+  add_index "browser_reader_assistive_technologies", ["browser_reader_id"], name: "brat_browser_reader_id", using: :btree
 
   create_table "browser_reader_file_formats", force: :cascade do |t|
     t.integer  "browser_reader_id"
@@ -258,6 +268,8 @@ ActiveRecord::Schema.define(version: 20150730222731) do
   end
 
   add_foreign_key "assistive_technology_versions", "assistive_technologies"
+  add_foreign_key "browser_reader_assistive_technologies", "assistive_technologies"
+  add_foreign_key "browser_reader_assistive_technologies", "browser_readers"
   add_foreign_key "browser_reader_file_formats", "browser_readers"
   add_foreign_key "browser_reader_file_formats", "file_formats"
   add_foreign_key "browser_reader_renderers", "browser_readers"

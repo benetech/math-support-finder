@@ -105,8 +105,11 @@ PlatformVersion.create!([
 PlatformBrowserReader.create!([
   {id: 1, platform_id: 1, browser_reader_id: 1, created_at: "2015-07-27 17:37:35", updated_at: "2015-07-27 17:37:35"}
 ])
-Pat.create!([
+PlatformAssistiveTechnology.create!([
   {id: 1, platform_id: 1, assistive_technology_id: 1, created_at: "2015-07-27 17:37:35", updated_at: "2015-07-27 17:37:35"}
+])
+BrowserReaderAssistiveTechnology.create!([
+  {id: 1, browser_reader_id: 1, assistive_technology_id: 1, created_at: "2015-07-27 17:37:35", updated_at: "2015-07-27 17:37:35"}
 ])
 Setup.create!([
   {id: 1, platform_version_id: 1, renderer_version_id: 1, browser_reader_version_id: 1, assistive_technology_version_id: 1, file_format_id: 1, workflow_status_id: 1, created_at: "2015-07-27 17:32:00", updated_at: "2015-07-27 17:32:00"}

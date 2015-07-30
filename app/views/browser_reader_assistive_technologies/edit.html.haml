@@ -1,0 +1,9 @@
+-title = "Editing #{@browser_reader_assistive_technology}"
+-meta title: title
+-cache ['v1', admin?,  @browser_reader_assistive_technology] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header{role: "header"}
+          %h1#page-title{tabindex: -1}=title
+        = render 'form'

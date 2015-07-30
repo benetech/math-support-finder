@@ -163,7 +163,8 @@ Then we generated our scaffolds:
     rails g pizza_scaffold browser_reader_renderer browser_reader:references renderer:references --force
     rails g pizza_scaffold browser_reader_file_format browser_reader:references file_format:references --force
     rails g pizza_scaffold platform_browser_reader platform:references browser_reader:references --force
-    rails g pizza_scaffold platform_assistive_technology platform:references assistive_technology:references --force #abbreviated for required shorter table name
+    rails g pizza_scaffold platform_assistive_technology platform:references assistive_technology:references --force 
+    rails g pizza_scaffold browser_reader_assistive_technology browser_reader:references assistive_technology:references --force 
     #capability components
     rails g pizza_scaffold affordance title:string notes:text --force
     rails g pizza_scaffold verification_status title:string --force
@@ -193,7 +194,9 @@ Then we generated our scaffolds:
     rails g pizza_controller browser_reader_renderer browser_reader:references renderer:references --force
     rails g pizza_controller browser_reader_file_format browser_reader:references file_format:references --force
     rails g pizza_controller platform_browser_reader platform:references browser_reader:references --force
-    rails g pizza_controller platform_assistive_technology platform:references assistive_technology:references --force #abbreviated for required shorter table name
+    rails g pizza_controller platform_assistive_technology platform:references assistive_technology:references --force 
+    rails g pizza_controller browser_reader_assistive_technology browser_reader:references assistive_technology:references --force 
+
     #capability components
     rails g pizza_controller affordance title:string notes:text --force
     rails g pizza_controller verification_status title:string --force

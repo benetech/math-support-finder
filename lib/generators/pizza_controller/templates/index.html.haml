@@ -4,7 +4,7 @@
   .index-outer
     .index
       .index-inner
-        %header{role: "header"}
+        %header
           %h1#page-title{tabindex: -1}=title
 <%- if options[:sortable] -%>
         %table.index-table.sortable{:data => {update_url: sort_<%=plural_table_name %>_path}}

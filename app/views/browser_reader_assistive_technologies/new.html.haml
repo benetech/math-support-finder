@@ -1,8 +1,8 @@
--title = 'New <%= singular_table_name.titleize %>'
+-title = 'New Browser Reader Assistive Technology'
 -meta title: title
 .entity-outer
   .entity
     .entity-inner
-      %header
+      %header{role: "header"}
         %h1#page-title{tabindex: -1}=title
       = render 'form'
