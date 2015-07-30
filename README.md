@@ -113,6 +113,9 @@ Here's a representation of it for [nomnoml](http://nomnoml.com)
       [PlatformAssistiveTechnology] -> [AssistiveTechnology]
       [PlatformAssistiveTechnology] -> [Platform]
 
+      [BrowserReaderAssistiveTechnology] -> [AssistiveTechnology]
+      [BrowserReaderAssistiveTechnology] -> [BrowserReader]
+
       [Affordance | id: int | title: str | notes: text |timestamps]
       [VerificationStatus | id: int | title: str ]
       [Feature | id: int | title: str | notes: text | timestamps]
@@ -160,7 +163,7 @@ Then we generated our scaffolds:
     rails g pizza_scaffold browser_reader_renderer browser_reader:references renderer:references --force
     rails g pizza_scaffold browser_reader_file_format browser_reader:references file_format:references --force
     rails g pizza_scaffold platform_browser_reader platform:references browser_reader:references --force
-    rails g pizza_scaffold pat platform:references assistive_technology:references --force #abbreviated for required shorter table name
+    rails g pizza_scaffold platform_assistive_technology platform:references assistive_technology:references --force #abbreviated for required shorter table name
     #capability components
     rails g pizza_scaffold affordance title:string notes:text --force
     rails g pizza_scaffold verification_status title:string --force
@@ -190,7 +193,7 @@ Then we generated our scaffolds:
     rails g pizza_controller browser_reader_renderer browser_reader:references renderer:references --force
     rails g pizza_controller browser_reader_file_format browser_reader:references file_format:references --force
     rails g pizza_controller platform_browser_reader platform:references browser_reader:references --force
-    rails g pizza_controller pat platform:references assistive_technology:references --force #abbreviated for required shorter table name
+    rails g pizza_controller platform_assistive_technology platform:references assistive_technology:references --force #abbreviated for required shorter table name
     #capability components
     rails g pizza_controller affordance title:string notes:text --force
     rails g pizza_controller verification_status title:string --force

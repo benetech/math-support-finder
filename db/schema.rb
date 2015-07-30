@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727151043) do
+ActiveRecord::Schema.define(version: 20150730222731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,16 @@ ActiveRecord::Schema.define(version: 20150727151043) do
 
   add_index "pats", ["assistive_technology_id"], name: "index_pats_on_assistive_technology_id", using: :btree
   add_index "pats", ["platform_id"], name: "index_pats_on_platform_id", using: :btree
+
+  create_table "platform_assistive_technologies", force: :cascade do |t|
+    t.integer  "platform_id"
+    t.integer  "assistive_technology_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "platform_assistive_technologies", ["assistive_technology_id"], name: "pat_assistive_technology_id", using: :btree
+  add_index "platform_assistive_technologies", ["platform_id"], name: "pat_platform_id", using: :btree
 
   create_table "platform_browser_readers", force: :cascade do |t|
     t.integer  "platform_id"
@@ -261,6 +271,8 @@ ActiveRecord::Schema.define(version: 20150727151043) do
   add_foreign_key "content_source_setups", "setups"
   add_foreign_key "pats", "assistive_technologies"
   add_foreign_key "pats", "platforms"
+  add_foreign_key "platform_assistive_technologies", "assistive_technologies"
+  add_foreign_key "platform_assistive_technologies", "platforms"
   add_foreign_key "platform_browser_readers", "browser_readers"
   add_foreign_key "platform_browser_readers", "platforms"
   add_foreign_key "platform_versions", "platforms"

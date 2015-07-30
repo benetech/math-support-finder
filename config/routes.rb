@@ -1,5 +1,5 @@
 Plate::Application.routes.draw do
-  resources :pats
+  resources :platform_assistive_technologies 
   resources :capabilities
   resources :features
   resources :verification_statuses
