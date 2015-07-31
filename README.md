@@ -52,7 +52,11 @@ Also, you may need to issue this in a separate terminal on your local box if the
 
     ssh -N -L 3000:localhost:3000 vagrant@localhost -p 2222
 
-Again, the password is "vagrant" without the quotes.
+Again, the password is ```vagrant```.
+
+To run the tests while you are developing, run ```guard``` in another terminal:
+
+    guard
 
 
 ##Data model
@@ -205,12 +209,12 @@ Then we generated our scaffolds:
 
 ##Components
 - [RubyOnRails](http://rubyonrails.org/)
-- [accecess](http://lukyvj.github.io/accecss/)
 - [PostGRES](http://www.postgresql.org/)
 - [rbenv](http://rbenv.org/) with [plugins](https://github.com/sstephenson/rbenv/wiki/Plugins) for gems, bundler, build, and binstubs
 - [bundler](http://bundler.io/)
 - [SASS](http://sass-lang.com/)
 - [Coffeescript](http://coffeescript.org/)
+- [Tenon](http://tenon.io)
 
 ##Links
 - [benetech/math-support-matrix repo](http://github.com/benetech/math-support-matrix)
