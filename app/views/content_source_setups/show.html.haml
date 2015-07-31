@@ -4,14 +4,14 @@
   .entity-outer
     .entity
       .entity-inner
-        %header{role: "header"}
+        %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
           %caption.sr-only Key value pairs for this content_source_setup
           %tbody
             %tr
               %th{scope: "row"}<
-                setup
+                Setup
               %td<
                 = @content_source_setup.setup
             %tr

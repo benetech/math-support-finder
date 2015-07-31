@@ -29,7 +29,7 @@ class FeaturesController < ApplicationController
 
   # PATCH/PUT /features/1
   def update
-    flash[:notice] = "#{@feature} was successfully updated." if @feature.save
+    flash[:notice] = "#{@feature} was successfully updated." if @feature.update(feature_params)
     respond_with @feature
   end
 

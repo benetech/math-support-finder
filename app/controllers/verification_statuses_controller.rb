@@ -29,7 +29,7 @@ class VerificationStatusesController < ApplicationController
 
   # PATCH/PUT /verification_statuses/1
   def update
-    flash[:notice] = "#{@verification_status} was successfully updated." if @verification_status.save
+    flash[:notice] = "#{@verification_status} was successfully updated." if @verification_status.update(verification_status_params)
     respond_with @verification_status
   end
 

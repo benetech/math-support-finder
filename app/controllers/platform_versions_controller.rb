@@ -29,7 +29,7 @@ class PlatformVersionsController < ApplicationController
 
   # PATCH/PUT /platform_versions/1
   def update
-    flash[:notice] = "#{@platform_version} was successfully updated." if @platform_version.save
+    flash[:notice] = "#{@platform_version} was successfully updated." if @platform_version.update(platform_version_params)
     respond_with @platform_version
   end
 

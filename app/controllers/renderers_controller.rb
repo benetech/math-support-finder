@@ -29,7 +29,7 @@ class RenderersController < ApplicationController
 
   # PATCH/PUT /renderers/1
   def update
-    flash[:notice] = "#{@renderer} was successfully updated." if @renderer.save
+    flash[:notice] = "#{@renderer} was successfully updated." if @renderer.update(renderer_params)
     respond_with @renderer
   end
 

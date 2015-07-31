@@ -29,7 +29,7 @@ class CapabilitiesController < ApplicationController
 
   # PATCH/PUT /capabilities/1
   def update
-    flash[:notice] = "#{@capability} was successfully updated." if @capability.save
+    flash[:notice] = "#{@capability} was successfully updated." if @capability.update(capability_params)
     respond_with @capability
   end
 

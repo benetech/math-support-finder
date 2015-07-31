@@ -29,7 +29,7 @@ class BrowserReaderAssistiveTechnologiesController < ApplicationController
 
   # PATCH/PUT /browser_reader_assistive_technologies/1
   def update
-    flash[:notice] = "#{@browser_reader_assistive_technology} was successfully updated." if @browser_reader_assistive_technology.save
+    flash[:notice] = "#{@browser_reader_assistive_technology} was successfully updated." if @browser_reader_assistive_technology.update(browser_reader_assistive_technology_params)
     respond_with @browser_reader_assistive_technology
   end
 

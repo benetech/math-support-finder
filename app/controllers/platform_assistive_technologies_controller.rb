@@ -29,7 +29,7 @@ class PlatformAssistiveTechnologiesController < ApplicationController
 
   # PATCH/PUT /platform_assistive_technologies/1
   def update
-    flash[:notice] = "#{@platform_assistive_technology} was successfully updated." if @platform_assistive_technology.save
+    flash[:notice] = "#{@platform_assistive_technology} was successfully updated." if @platform_assistive_technology.update(platform_assistive_technology_params)
     respond_with @platform_assistive_technology
   end
 

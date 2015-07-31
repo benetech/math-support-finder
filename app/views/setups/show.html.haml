@@ -4,7 +4,7 @@
   .entity-outer
     .entity
       .entity-inner
-        %header{role: "header"}
+        %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
           %caption.sr-only Key value pairs for this setup
@@ -31,7 +31,7 @@
                 = @setup.assistive_technology_version
             %tr
               %th{scope: "row"}<
-                FileFormat
+                File format
               %td<
                 = @setup.file_format
             %tr

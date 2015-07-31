@@ -29,7 +29,7 @@ class BrowserReaderVersionsController < ApplicationController
 
   # PATCH/PUT /browser_reader_versions/1
   def update
-    flash[:notice] = "#{@browser_reader_version} was successfully updated." if @browser_reader_version.save
+    flash[:notice] = "#{@browser_reader_version} was successfully updated." if @browser_reader_version.update(browser_reader_version_params)
     respond_with @browser_reader_version
   end
 

@@ -29,7 +29,7 @@ class WorkflowStatusesController < ApplicationController
 
   # PATCH/PUT /workflow_statuses/1
   def update
-    flash[:notice] = "#{@workflow_status} was successfully updated." if @workflow_status.save
+    flash[:notice] = "#{@workflow_status} was successfully updated." if @workflow_status.update(workflow_status_params)
     respond_with @workflow_status
   end
 

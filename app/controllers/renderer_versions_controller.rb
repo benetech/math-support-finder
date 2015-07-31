@@ -29,7 +29,7 @@ class RendererVersionsController < ApplicationController
 
   # PATCH/PUT /renderer_versions/1
   def update
-    flash[:notice] = "#{@renderer_version} was successfully updated." if @renderer_version.save
+    flash[:notice] = "#{@renderer_version} was successfully updated." if @renderer_version.update(renderer_version_params)
     respond_with @renderer_version
   end
 

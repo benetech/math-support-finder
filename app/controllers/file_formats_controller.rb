@@ -29,14 +29,14 @@ class FileFormatsController < ApplicationController
 
   # PATCH/PUT /file_formats/1
   def update
-    flash[:notice] = "#{@file_format} was successfully updated." if @file_format.save
+    flash[:notice] = "#{@file_format} was successfully updated." if @file_format.update(file_format_params)
     respond_with @file_format
   end
 
   # DELETE /file_formats/1
   def destroy
     @file_format.destroy
-    flash[:notice] = 'FileFormat was successfully destroyed.'
+    flash[:notice] = 'File format was successfully destroyed.'
     respond_with @file_format
   end
 

@@ -29,7 +29,7 @@ class ContentSourceSetupsController < ApplicationController
 
   # PATCH/PUT /content_source_setups/1
   def update
-    flash[:notice] = "#{@content_source_setup} was successfully updated." if @content_source_setup.save
+    flash[:notice] = "#{@content_source_setup} was successfully updated." if @content_source_setup.update(content_source_setup_params)
     respond_with @content_source_setup
   end
 

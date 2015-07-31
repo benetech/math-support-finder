@@ -4,8 +4,7 @@ class SetupsController < ApplicationController
 
   # GET /setups
   def index
-    @q = Setup.ransack(params[:q])
-    @setups = @q.result.page(params[:page])
+    @setups = Setup.all
   end
 
   # GET /setups/1
@@ -30,7 +29,7 @@ class SetupsController < ApplicationController
 
   # PATCH/PUT /setups/1
   def update
-    flash[:notice] = "#{@setup} was successfully updated." if @setup.save
+    flash[:notice] = "#{@setup} was successfully updated." if @setup.update(setup_params)
     respond_with @setup
   end
 

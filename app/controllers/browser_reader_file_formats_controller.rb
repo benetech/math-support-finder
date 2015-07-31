@@ -29,14 +29,14 @@ class BrowserReaderFileFormatsController < ApplicationController
 
   # PATCH/PUT /browser_reader_file_formats/1
   def update
-    flash[:notice] = "#{@browser_reader_file_format} was successfully updated." if @browser_reader_file_format.save
+    flash[:notice] = "#{@browser_reader_file_format} was successfully updated." if @browser_reader_file_format.update(browser_reader_file_format_params)
     respond_with @browser_reader_file_format
   end
 
   # DELETE /browser_reader_file_formats/1
   def destroy
     @browser_reader_file_format.destroy
-    flash[:notice] = 'Browser reader file_format was successfully destroyed.'
+    flash[:notice] = 'Browser reader file format was successfully destroyed.'
     respond_with @browser_reader_file_format
   end
 

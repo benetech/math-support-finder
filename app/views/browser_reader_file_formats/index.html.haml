@@ -4,16 +4,16 @@
   .index-outer
     .index
       .index-inner
-        %header{role: "header"}
+        %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for browser reader file formats
+          %caption.sr-only Index table for browser_reader_file_formats
           %thead
             %tr
               %th{scope: "col"}<
                 Browser reader
               %th{scope: "col"}<
-                File Format
+                File format
               %th{scope: "col"}<
                 Actions
 
@@ -33,4 +33,4 @@
         %nav.index-nav{role:"navigation"}
           = link_to new_browser_reader_file_format_path, class: 'btn btn-success new-link' do
             %i.fa.fa-fw.fa-plus{title: "Plus"}
-            New Browser Reader File Format
+            New Browser reader file format

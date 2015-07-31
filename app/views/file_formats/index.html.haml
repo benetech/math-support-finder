@@ -4,7 +4,7 @@
   .index-outer
     .index
       .index-inner
-        %header{role: "header"}
+        %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
           %caption.sr-only Index table for file_formats
@@ -33,4 +33,4 @@
         %nav.index-nav{role:"navigation"}
           = link_to new_file_format_path, class: 'btn btn-success new-link' do
             %i.fa.fa-fw.fa-plus{title: "Plus"}
-            New File Format
+            New File format

@@ -29,7 +29,7 @@ class AssistiveTechnologiesController < ApplicationController
 
   # PATCH/PUT /assistive_technologies/1
   def update
-    flash[:notice] = "#{@assistive_technology} was successfully updated." if @assistive_technology.save
+    flash[:notice] = "#{@assistive_technology} was successfully updated." if @assistive_technology.update(assistive_technology_params)
     respond_with @assistive_technology
   end
 

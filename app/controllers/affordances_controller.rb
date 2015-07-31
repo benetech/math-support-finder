@@ -29,7 +29,7 @@ class AffordancesController < ApplicationController
 
   # PATCH/PUT /affordances/1
   def update
-    flash[:notice] = "#{@affordance} was successfully updated." if @affordance.save
+    flash[:notice] = "#{@affordance} was successfully updated." if @affordance.update(affordance_params)
     respond_with @affordance
   end
 
