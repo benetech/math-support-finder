@@ -19,7 +19,7 @@ class PlatformBrowserReader < ActiveRecord::Base
   belongs_to :platform
   belongs_to :browser_reader
 
-  validates :platform, uniqueness: {scope: :browser_reader}
+  validates :platform_id, uniqueness: {scope: :browser_reader_id}
   validates_presence_of :browser_reader, :platform
   validates_associated :browser_reader, :platform
 

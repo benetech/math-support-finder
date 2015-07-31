@@ -34,7 +34,7 @@ class <%= controller_class_name %>Controller < ApplicationController
 
   # PATCH/PUT <%= route_url %>/1
   def update
-    flash[:notice] = "#{@<%= singular_table_name %>} was successfully updated." if @<%= orm_instance.save %>
+    flash[:notice] = "#{@<%= singular_table_name %>} was successfully updated." if @<%= orm_instance.update %>(<%= "#{singular_table_name}_params" %>)
     respond_with @<%= singular_table_name %>
   end
 

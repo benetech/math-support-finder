@@ -21,7 +21,7 @@ class ContentSourceSetup < ActiveRecord::Base
 
   validates_presence_of :setup, :content_source
   validates_associated :setup, :content_source
-  validates :setup, uniqueness: {scope: :content_source}
+  validates :setup_id, uniqueness: {scope: :content_source_id}
 
   def to_s
     [setup.to_s, content_source.to_s].join(" - ")

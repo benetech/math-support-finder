@@ -19,6 +19,15 @@ class BrowserReaderRenderer < ActiveRecord::Base
   belongs_to :browser_reader
   belongs_to :renderer
 
+  validates :browser_reader, uniqueness: {scope: :renderer}
+  validates_presence_of :renderer, :browser_reader
+  validates_associated :renderer, :browser_reader
+
+  def to_s
+    [ browser_reader.to_s, renderer.to_s,].join(" - ")
+  end
+
+
   def to_s
     [browser_reader.to_s, renderer.to_s].join(" - ")
   end

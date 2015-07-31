@@ -15,7 +15,15 @@
 #
 
 class BrowserReaderAssistiveTechnology < ActiveRecord::Base
-
   belongs_to :browser_reader
   belongs_to :assistive_technology
+
+  validates :assistive_technology_id, uniqueness: {scope: :browser_reader_id}
+  validates_presence_of :assistive_technology, :browser_reader
+  validates_associated :assistive_technology, :browser_reader
+
+  def to_s
+    [ browser_reader.to_s, assistive_technology.to_s,].join(" - ")
+  end
+
 end

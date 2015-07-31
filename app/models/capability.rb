@@ -27,6 +27,8 @@ class Capability < ActiveRecord::Base
 
   validates_presence_of :feature, :affordance, :setup, :verification_status
   validates_associated :feature, :affordance, :setup, :verification_status
+  #validates :setup_id, uniqueness: {scope: [:feature_id, :affordance_id]}
+  validates_uniqueness_of :setup_id, :scope => [:feature_id, :affordance_id]
 
   def to_s
     "Capability " + id.to_s

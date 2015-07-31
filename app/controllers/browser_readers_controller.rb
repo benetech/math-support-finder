@@ -29,7 +29,8 @@ class BrowserReadersController < ApplicationController
 
   # PATCH/PUT /browser_readers/1
   def update
-    flash[:notice] = "#{@browser_reader} was successfully updated." if @browser_reader.save
+    flash[:notice] = "#{@browser_reader} was successfully updated." if @browser_reader.update(browser_reader_params)
+    puts browser_reader_params
     respond_with @browser_reader
   end
 
@@ -48,6 +49,6 @@ class BrowserReadersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def browser_reader_params
-      params.require(:browser_reader).permit(:title, :notes)
+      params.require(:browser_reader).permit(:title, :notes, renderer_ids: [], platform_ids: [], assistive_technology_ids: [])
     end
 end

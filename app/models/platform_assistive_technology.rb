@@ -18,4 +18,13 @@ class PlatformAssistiveTechnology < ActiveRecord::Base
 
   belongs_to :platform
   belongs_to :assistive_technology
+
+  validates :platform_id, uniqueness: {scope: :assistive_technology_id}
+  validates_presence_of :assistive_technology, :platform
+  validates_associated :assistive_technology, :platform
+
+  def to_s
+    [platform.to_s, assistive_technology.to_s].join(" - ")
+  end
+
 end

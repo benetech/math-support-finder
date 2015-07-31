@@ -11,7 +11,10 @@
 
 class FileFormat < ActiveRecord::Base
 
-  has_many :configurations, dependent: :nullify
+  has_many :setups, dependent: :nullify
+
+  has_many :browser_reader_file_formats, dependent: :destroy
+  has_many :browser_readers, through: :browser_reader_file_formats
 
   validates_presence_of :title
 
