@@ -3,9 +3,9 @@
   .form-inputs
     = f.input :title
     = f.input :notes
-    = f.association :renderers
+    = f.association :renderers, as: :check_boxes
     = f.association :platforms, as: :check_boxes
-    = f.association :assistive_technologies, as: :radio_buttons
+    = f.association :assistive_technologies, as: :check_boxes
 
   .form-actions
     .form-actions-inner
