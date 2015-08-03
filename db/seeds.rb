@@ -40,15 +40,15 @@ BrowserReader.create!([
   {id: 7, title: "Firefox (mobile)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
   {id: 8, title: "iBooks (desktop)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
   {id: 9, title: "iBooks (mobile)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
-  {id: 10, title: "IE (desktop)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
-  {id: 11, title: "IE (mobile)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
+  {id: 10, title: "Internet Explorer (desktop)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
+  {id: 11, title: "Internet Explorer (mobile)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
   {id: 12, title: "Kindle", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
-  {id: 13, title: "MS Powerpoint (PC)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
-  {id: 14, title: "MS Powerpoint (Mac)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
-  {id: 15, title: "MS Powerpoint (mobile)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
-  {id: 16, title: "MS Word (PC)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
-  {id: 17, title: "MS Word (Mac)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
-  {id: 18, title: "MS Word (mobile)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
+  {id: 13, title: "Powerpoint (PC)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
+  {id: 14, title: "Powerpoint (Mac)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
+  {id: 15, title: "Powerpoint (mobile)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
+  {id: 16, title: "Word (PC)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
+  {id: 17, title: "Word (Mac)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
+  {id: 18, title: "Word (mobile)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
   {id: 19, title: "Safari (Mac)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"},
   {id: 20, title: "Safari (iOS)", notes: "", created_at: "2015-07-27 15:13:07", updated_at: "2015-07-27 15:13:07"}
 ])
@@ -58,8 +58,8 @@ FileFormat.create!([
   {id: 3, title: "HTML (webpage)", notes: "", created_at: "2015-07-27 17:14:38", updated_at: "2015-07-27 17:14:38"},
   {id: 4, title: "iBook", notes: "", created_at: "2015-07-27 17:14:38", updated_at: "2015-07-27 17:14:38"},
   {id: 5, title: "Mobi", notes: "", created_at: "2015-07-27 17:14:38", updated_at: "2015-07-27 17:14:38"},
-  {id: 6, title: "MS Word", notes: "", created_at: "2015-07-27 17:14:38", updated_at: "2015-07-27 17:14:38"},
-  {id: 7, title: "MS Powerpoint", notes: "", created_at: "2015-07-27 17:14:38", updated_at: "2015-07-27 17:14:38"},
+  {id: 6, title: "Microsoft Word", notes: "", created_at: "2015-07-27 17:14:38", updated_at: "2015-07-27 17:14:38"},
+  {id: 7, title: "Microsoft Powerpoint", notes: "", created_at: "2015-07-27 17:14:38", updated_at: "2015-07-27 17:14:38"},
   {id: 8, title: "PDF", notes: "", created_at: "2015-07-27 17:14:38", updated_at: "2015-07-27 17:14:38"}
 ])
 Renderer.create!([
