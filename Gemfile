@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'dotenv-rails'
+gem 'dotenv-deployment'
 gem 'rails', '4.2.2'
 gem 'language_list'
 gem 'sass-rails', '~> 5.0.1' #sass and sprockets upgrades can be delicate 

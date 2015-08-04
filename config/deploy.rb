@@ -22,10 +22,9 @@ set :ssh_options, { :forward_agent => true,
 set :keep_releases, 5
 
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/assets}
-set :linked_files, %w{.env .env.production .env.staging} #TODO make this smarter
 
 namespace :deploy do
-  before :check:linked_files, "dotenv:upload"
+  before 'deploy:check:linked_files', 'dotenv:upload'
   before :restart, "assets:precompile"
   after :publishing, :restart
   #before :restart, "deploy:sitemap:clean"
