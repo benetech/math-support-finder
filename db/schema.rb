@@ -132,16 +132,6 @@ ActiveRecord::Schema.define(version: 20150730223905) do
     t.datetime "updated_at"
   end
 
-  create_table "pats", force: :cascade do |t|
-    t.integer  "platform_id"
-    t.integer  "assistive_technology_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "pats", ["assistive_technology_id"], name: "index_pats_on_assistive_technology_id", using: :btree
-  add_index "pats", ["platform_id"], name: "index_pats_on_platform_id", using: :btree
-
   create_table "platform_assistive_technologies", force: :cascade do |t|
     t.integer  "platform_id"
     t.integer  "assistive_technology_id"
@@ -281,8 +271,6 @@ ActiveRecord::Schema.define(version: 20150730223905) do
   add_foreign_key "capabilities", "verification_statuses"
   add_foreign_key "content_source_setups", "content_sources"
   add_foreign_key "content_source_setups", "setups"
-  add_foreign_key "pats", "assistive_technologies"
-  add_foreign_key "pats", "platforms"
   add_foreign_key "platform_assistive_technologies", "assistive_technologies"
   add_foreign_key "platform_assistive_technologies", "platforms"
   add_foreign_key "platform_browser_readers", "browser_readers"
