@@ -51,6 +51,7 @@ gem 'oj' #optimized json
 gem "thin", ">= 1.6.3" # webserver
 gem 'turbolinks' #crazy fake ajax
 gem 'responders' #respond_with ala  http://www.justinweiss.com/blog/2014/11/03/respond-to-without-all-the-pain/
+gem 'logglier'
 #gem 'bootstrap_form'
 #gem 'pagedown-bootstrap-rails' #markdown editor & processor
 #gem 'redcarpet'

@@ -215,6 +215,7 @@ Then we generated our scaffolds:
 - [SASS](http://sass-lang.com/)
 - [Coffeescript](http://coffeescript.org/)
 - [Tenon](http://tenon.io)
+- [Loggly](https://msmseeread.loggly.com/login/?next=/#)
 
 ##Links
 - [benetech/math-support-matrix repo](http://github.com/benetech/math-support-matrix)
