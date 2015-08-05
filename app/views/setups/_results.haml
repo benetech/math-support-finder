@@ -1,51 +1,83 @@
 .results#setups-results
   %header
-    %h2#setups-results-title
+    %h2#setups-results-title{tabindex: -1}
       Results
       %span.sr-only ,
       %span.badge= @setups.total_count
 
-  %table.index-table
-    %caption.sr-only Results table for setups
-    %thead
-      %tr
-        %th{scope: "col"}<
-          Platform 
-        %th{scope: "col"}<
-          Renderer 
-        %th{scope: "col"}<
-          Browser Reader 
-        %th{scope: "col"}<
-          Assistive Technology 
-        %th{scope: "col"}<
-          File Format
-        %th{scope: "col"}<
-          Status
-        %th{scope: "col"}<
-          Capabilities
-        %th{scope: "col"}<
-          Content Sources
-        %th{scope: "col"}<
-          Link
 
-    %tbody
-      - @setups.each_with_index do |setup, idx|
-        %tr{class: "item"}
-          %td= setup.platform_version
-          %td= setup.renderer_version
-          %td= setup.browser_reader_version
-          %td= setup.assistive_technology_version
-          %td= setup.file_format
-          %td= setup.workflow_status
-          %td
-            -setup.capabilities.each do |c|
-              #{c.affordance} : #{c.feature}
-              %br
-          %td
-            -setup.content_sources.each do |c|
-              #{c}
-              %br
-          %td
-            =link_to setup_path(setup), class: "btn btn-primary" do
-              %i.fa.fa-link
-              %span.sr-only Read more
+  = search_form_for(@q, html: {multipart: true, class: 'form-vertical autosubmit', remote: true}, format: 'js', wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
+
+    %table.index-table.table-responsive
+      %caption.sr-only Results table for setups
+      %thead
+        %tr
+          %th{scope: "col"}<
+            = sort_link @q, :created_at, 'Date'
+          %th{scope: "col"}<
+            = sort_link @q, :platform_name, 'Platform'
+          %th{scope: "col"}<
+            = sort_link @q, :renderer_name, 'Renderer'
+          %th{scope: "col"}<
+            = sort_link @q, :browser_reader_name, 'Browser Reader'
+          %th{scope: "col"}<
+            = sort_link @q, :assistive_technology_name, 'Assistive Technology'
+          %th{scope: "col"}<
+            = sort_link @q, :file_format_name, 'File Format'
+          %th{scope: "col"}<
+            = sort_link @q, :status_name, 'Status'
+          %th{scope: "col"}<
+            = sort_link @q, :capabilities_count, 'Capabilities'
+          %th{scope: "col"}<
+            = sort_link @q, :content_sources_count, 'Content Sources'
+          %th{scope: "col"}<
+            Link
+        %tr
+          %th<
+          %th<
+            = f.input  :platform_version_platform_id_eq, collection: @platforms, as: :select, prompt: "Pick your platform", label: false, required: false
+          %th<
+            = f.input  :renderer_version_renderer_id_eq, collection: @renderers, as: :select, prompt: "Pick your renderer", label: false, required: false
+          %th<
+            = f.input  :browser_reader_version_browser_reader_id_eq, collection: @browser_readers, as: :select, prompt: "Pick your browser reader", label: false, required: false
+          %th<
+            = f.input  :assistive_technology_version_assistive_technology_id_eq, collection: @assistive_technologies, as: :select, prompt: "Pick your assistive technology", label: false, required: false
+          %th<
+            = f.input  :file_format_id_eq, collection: @file_formats, as: :select, prompt: "Pick your file format", label: false, required: false
+          %th<
+            = f.input  :workflow_status_id_eq, collection: @workflow_status, as: :select, prompt: "Pick your status", label: false, required: false
+          %th<
+            = f.input  :capabilities_id_eq, collection: @capabilities, as: :select, prompt: "Pick your capabilities", label: false, required: false
+          %th<
+            = f.input  :content_sources_id_eq, collection: @content_sources, as: :select, prompt: "Pick your content source", label: false, required: false
+          %th<
+            .btn-group
+              = link_to setups_path(search_cancel: true), class: 'btn btn-danger' do
+                %span.sr-only Clear
+                %i.fa.fa-fw.fa-close
+              = button_tag type: "submit", class: "btn btn-success" do
+                %span.sr-only Search
+                %i.fa.fa-fw.fa-search
+
+      %tbody
+        - @setups.each_with_index do |setup, idx|
+          %tr{class: "item"}
+            %td= setup.id
+            %td= setup.platform_version
+            %td= setup.renderer_version
+            %td= setup.browser_reader_version
+            %td= setup.assistive_technology_version
+            %td= setup.file_format
+            %td= setup.workflow_status
+            %td
+              -setup.capabilities.each do |c|
+                #{c.affordance} : #{c.feature}
+                %br
+            %td
+              -setup.content_sources.each do |c|
+                #{c}
+                %br
+            %td
+              =link_to setup_path(setup), class: "btn btn-primary" do
+                %i.fa.fa-link
+                %span.sr-only Read more

@@ -9,6 +9,20 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end unless :devise_controller?
 
+  def prep_setup_search
+    @platforms = Platform.all
+    @browser_readers = BrowserReader.all
+    @renderers = Renderer.all
+    @assistive_technologies = AssistiveTechnology.all
+    @file_formats= FileFormat.all
+    @workflow_status= WorkflowStatus.all
+    @capabilities= Capability.all
+    @content_sources= ContentSource.all
+
+    @q = Setup.ransack(params[:q])
+    @setups = @q.result.page(params[:page])
+  end
+
   protected
     def admin
       redirect_to(root_url) unless current_user and current_user.admin?

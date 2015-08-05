@@ -74,6 +74,8 @@ input[type="radio"], input[type="checkbox"]
   @extend .table-striped
   width: 100%
   margin-bottom: ms(2)
+  .form-group
+    margin-bottom: 0
   tbody
     th
       text-align: right
@@ -84,8 +86,11 @@ input[type="radio"], input[type="checkbox"]
   td
     +texts
     padding: ms(0)
-  thead th:last-child
+.index-table
+  tr > th:last-child, tr > td:last-child
     text-align: right
+.show-nav
+  text-align: right
   
 //fix for remember me on sessions/new
 .radio input[type="radio"], .radio-inline input[type="radio"], .checkbox input[type="checkbox"], .checkbox-inline input[type="checkbox"]

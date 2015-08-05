@@ -6,19 +6,16 @@
     url: request.url,
   }
 
-.container
-  .row
-    .col-md-12
-      %header
-        %h1#page-title=title
+.container-fluid
+  %header
+    %h1#page-title=title
     - if !current_user
-      .col-md-6
-        %p<
-          The MathSupportMatrix (MSM) is a discovery and reference tool for pairing math content sources with accessible setups.
-        %p>
-          = link_to "Create an account", new_registration_path(resource_name)
-          or
-          = link_to "log in", new_session_path(resource_name)
-
+      %p<
+        The MathSupportMatrix (MSM) is a discovery and reference tool for pairing math content sources with accessible setups.
+      %p>
+        = link_to "Create an account", new_registration_path(resource_name)
+        or
+        = link_to "log in", new_session_path(resource_name)
 
   =render "setups/search", q: @q
+  =render "setups/results", q: @q
