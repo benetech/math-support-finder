@@ -118,7 +118,7 @@ Affordance.create!([
   {id: 1, technology_id: 1, feature_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}
 ])
 Capability.create!([
-  {id: 1, affordance_id: 1, setup_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}
+  {id: 1, affordance_id: 1, setup_id: 1, verification_status_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}
 ])
 ContentSourceSetup.create!([
   {id: 1, setup_id: 1, content_source_id: 1, created_at: "2015-07-27 17:33:26", updated_at: "2015-07-27 17:33:26"}
