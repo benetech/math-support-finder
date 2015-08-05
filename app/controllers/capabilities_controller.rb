@@ -48,6 +48,6 @@ class CapabilitiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def capability_params
-      params.require(:capability).permit(:feature_id, :affordance_id, :setup_id, :verification_status_id)
+      params.require(:capability).permit(:affordance_id, :setup_id, :verification_status_id)
     end
 end

@@ -11,8 +11,6 @@
           %thead
             %tr
               %th{scope: "col"}<
-                Feature
-              %th{scope: "col"}<
                 Affordance
               %th{scope: "col"}<
                 Setup
@@ -24,7 +22,6 @@
           %tbody
             - @capabilities.each_with_index do |capability, idx|
               %tr{class: "item"}
-                %td= capability.feature
                 %td= capability.affordance
                 %td= capability.setup
                 %td= capability.verification_status

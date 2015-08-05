@@ -1,4 +1,4 @@
-# == Schema Infile_formation
+# == Schema Information
 #
 # Table name: features
 #
@@ -13,8 +13,9 @@ class Feature < ActiveRecord::Base
 
   validates_presence_of :title
 
-  has_many :capabilities, dependent: :destroy
-  has_many :setups, through: :capabilities
+  has_many :affordances, dependent: :destroy
+  has_many :capabilities, through: :affordances
+  has_many :capabilities, through: :affordances
 
   def to_s
     title

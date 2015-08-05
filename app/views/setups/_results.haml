@@ -13,7 +13,8 @@
       %thead
         %tr
           %th{scope: "col"}<
-            = sort_link @q, :created_at, 'Date'
+            -#= sort_link @q, :created_at, 'Date'
+            = sort_link @q, :id, 'ID'
           %th{scope: "col"}<
             = sort_link @q, :platform_name, 'Platform'
           %th{scope: "col"}<
@@ -27,9 +28,9 @@
           %th{scope: "col"}<
             = sort_link @q, :status_name, 'Status'
           %th{scope: "col"}<
-            = sort_link @q, :capabilities_count, 'Capabilities'
+            = sort_link @q, :affordances_count, 'Affordances' #TODO improve perf
           %th{scope: "col"}<
-            = sort_link @q, :content_sources_count, 'Content Sources'
+            = sort_link @q, :content_sources_count, 'Content Sources'#TODO improve perf
           %th{scope: "col"}<
             Link
         %tr
@@ -47,7 +48,7 @@
           %th<
             = f.input  :workflow_status_id_eq, collection: @workflow_status, as: :select, prompt: "Pick your status", label: false, required: false
           %th<
-            = f.input  :capabilities_id_eq, collection: @capabilities, as: :select, prompt: "Pick your capabilities", label: false, required: false
+            = f.input  :affordances_id_eq, collection: @affordances, as: :select, prompt: "Pick your affordances", label: false, required: false
           %th<
             = f.input  :content_sources_id_eq, collection: @content_sources, as: :select, prompt: "Pick your content source", label: false, required: false
           %th<
@@ -70,8 +71,8 @@
             %td= setup.file_format
             %td= setup.workflow_status
             %td
-              -setup.capabilities.each do |c|
-                #{c.affordance} : #{c.feature}
+              -setup.affordances.each do |a|
+                #{a}
                 %br
             %td
               -setup.content_sources.each do |c|

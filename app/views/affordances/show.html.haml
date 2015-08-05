@@ -11,14 +11,14 @@
           %tbody
             %tr
               %th{scope: "row"}<
-                Title
+                Feature
               %td<
-                = @affordance.title
+                = @affordance.feature
             %tr
               %th{scope: "row"}<
-                Notes
+                Technology
               %td<
-                = @affordance.notes
+                = @affordance.technology
         %nav.show-nav{role:"navigation"}
           = link_to affordances_path, class: 'btn btn-info', title: "View the affordances index" do
             %i.fa.fa-fw.fa-list{title: 'List'}

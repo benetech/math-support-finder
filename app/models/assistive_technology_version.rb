@@ -1,4 +1,4 @@
-# == Schema Infile_formation
+# == Schema Information
 #
 # Table name: assistive_technology_versions
 #

@@ -120,15 +120,17 @@ Here's a representation of it for [nomnoml](http://nomnoml.com)
       [BrowserReaderAssistiveTechnology] -> [AssistiveTechnology]
       [BrowserReaderAssistiveTechnology] -> [BrowserReader]
 
-      [Affordance | id: int | title: str | notes: text |timestamps]
-      [VerificationStatus | id: int | title: str ]
+      [Technology | id: int | title: str | notes: text |timestamps]
       [Feature | id: int | title: str | notes: text | timestamps]
-      [Capability | id: int | feature_id:reference | affordance_id: reference | setup_id: reference | verification_status_id: ref | timestamps]
+      [Affordance | id: int | technology_id : reference | feature_id: reference | timestamps]
+      [VerificationStatus | id: int | title: str ]
+      [Capability | id: int | affordance_id:reference | setup_id: reference | verification_status_id: ref | timestamps]
 
       [Capability] -> [VerificationStatus]
       [Capability] -> [Setup]
       [Capability] -> [Affordance]
-      [Capability] -> [Feature]
+      [Affordance] -> [Feature]
+      [Affordance] -> [Technology]
 
     ]
 
@@ -170,10 +172,11 @@ Then we generated our scaffolds:
     rails g pizza_scaffold platform_assistive_technology platform:references assistive_technology:references --force 
     rails g pizza_scaffold browser_reader_assistive_technology browser_reader:references assistive_technology:references --force 
     #capability components
-    rails g pizza_scaffold affordance title:string notes:text --force
+    rails g pizza_scaffold technology title:string notes:text --force
     rails g pizza_scaffold verification_status title:string --force
     rails g pizza_scaffold feature title:string notes:text --force
-    rails g pizza_scaffold capability feature:references affordance:references setup:references verification_status:references --force
+    rails g pizza_scaffold affordance feature:references technology:references --force
+    rails g pizza_scaffold capability affordance:references setup:references verification_status:references --force
 
 
     #to generate only the controllers and views
@@ -202,10 +205,11 @@ Then we generated our scaffolds:
     rails g pizza_controller browser_reader_assistive_technology browser_reader:references assistive_technology:references --force 
 
     #capability components
-    rails g pizza_controller affordance title:string notes:text --force
+    rails g pizza_controller technology title:string notes:text --force
     rails g pizza_controller verification_status title:string --force
     rails g pizza_controller feature title:string notes:text --force
-    rails g pizza_controller capability feature:references affordance:references setup:references verification_status:references --force
+    rails g pizza_controller affordance feature:references technology:references --force
+    rails g pizza_controller capability affordance:references setup:references verification_status:references --force
 
 ##Components
 - [RubyOnRails](http://rubyonrails.org/)

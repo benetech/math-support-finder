@@ -12,7 +12,7 @@ WorkflowStatus.create!([
   {id: 4, title: "Invalid", created_at: "2015-07-27 14:54:33", updated_at: "2015-07-27 14:54:33"},
   {id: 5, title: "Desired", created_at: "2015-07-27 14:54:33", updated_at: "2015-07-27 14:54:33"}
 ])
-Affordance.create!([
+Technology.create!([
   {id: 1, title: "Braile", notes: "", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"},
   {id: 2, title: "Speech", notes: "", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"},
   {id: 3, title: "Visual", notes: "", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"}
@@ -114,8 +114,11 @@ BrowserReaderAssistiveTechnology.create!([
 Setup.create!([
   {id: 1, platform_version_id: 1, renderer_version_id: 1, browser_reader_version_id: 1, assistive_technology_version_id: 1, file_format_id: 1, workflow_status_id: 1, created_at: "2015-07-27 17:32:00", updated_at: "2015-07-27 17:32:00"}
 ])
+Affordance.create!([
+  {id: 1, technology_id: 1, feature_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}
+])
 Capability.create!([
-  {id: 1, feature_id: 1, affordance_id: 1, setup_id: 1, verification_status_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}
+  {id: 1, affordance_id: 1, setup_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}
 ])
 ContentSourceSetup.create!([
   {id: 1, setup_id: 1, content_source_id: 1, created_at: "2015-07-27 17:33:26", updated_at: "2015-07-27 17:33:26"}

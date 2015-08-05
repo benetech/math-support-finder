@@ -48,6 +48,6 @@ class AffordancesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def affordance_params
-      params.require(:affordance).permit(:title, :notes)
+      params.require(:affordance).permit(:feature_id, :technology_id)
     end
 end

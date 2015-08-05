@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
     @assistive_technologies = AssistiveTechnology.all
     @file_formats= FileFormat.all
     @workflow_status= WorkflowStatus.all
-    @capabilities= Capability.all
+    @affordances= Affordance.all
     @content_sources= ContentSource.all
 
     @q = Setup.ransack(params[:q])

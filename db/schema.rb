@@ -11,17 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150730223905) do
+ActiveRecord::Schema.define(version: 20150805161912) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "affordances", force: :cascade do |t|
-    t.string   "title"
-    t.text     "notes"
+    t.integer  "feature_id"
+    t.integer  "technology_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "affordances", ["feature_id"], name: "index_affordances_on_feature_id", using: :btree
+  add_index "affordances", ["technology_id"], name: "index_affordances_on_technology_id", using: :btree
 
   create_table "assistive_technologies", force: :cascade do |t|
     t.string   "title"
@@ -88,7 +91,6 @@ ActiveRecord::Schema.define(version: 20150730223905) do
   end
 
   create_table "capabilities", force: :cascade do |t|
-    t.integer  "feature_id"
     t.integer  "affordance_id"
     t.integer  "setup_id"
     t.integer  "verification_status_id"
@@ -97,7 +99,6 @@ ActiveRecord::Schema.define(version: 20150730223905) do
   end
 
   add_index "capabilities", ["affordance_id"], name: "index_capabilities_on_affordance_id", using: :btree
-  add_index "capabilities", ["feature_id"], name: "index_capabilities_on_feature_id", using: :btree
   add_index "capabilities", ["setup_id"], name: "index_capabilities_on_setup_id", using: :btree
   add_index "capabilities", ["verification_status_id"], name: "index_capabilities_on_verification_status_id", using: :btree
 
@@ -224,6 +225,13 @@ ActiveRecord::Schema.define(version: 20150730223905) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
+  create_table "technologies", force: :cascade do |t|
+    t.string   "title"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -257,6 +265,8 @@ ActiveRecord::Schema.define(version: 20150730223905) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "affordances", "features"
+  add_foreign_key "affordances", "technologies"
   add_foreign_key "assistive_technology_versions", "assistive_technologies"
   add_foreign_key "browser_reader_assistive_technologies", "assistive_technologies"
   add_foreign_key "browser_reader_assistive_technologies", "browser_readers"
@@ -266,7 +276,6 @@ ActiveRecord::Schema.define(version: 20150730223905) do
   add_foreign_key "browser_reader_renderers", "renderers"
   add_foreign_key "browser_reader_versions", "browser_readers"
   add_foreign_key "capabilities", "affordances"
-  add_foreign_key "capabilities", "features"
   add_foreign_key "capabilities", "setups"
   add_foreign_key "capabilities", "verification_statuses"
   add_foreign_key "content_source_setups", "content_sources"

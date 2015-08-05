@@ -1,4 +1,4 @@
-# == Schema Infile_formation
+# == Schema Information
 #
 # Table name: content_source_setups
 #
