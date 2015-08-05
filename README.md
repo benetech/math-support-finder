@@ -20,14 +20,22 @@ This command will clone the repository into a directory called math-support-matr
 
     git clone http://github.com/benetech/math-support-matrix
 
+You may need to edit ```.env.development``` and if you are deploying, you will need to populate the relevant ```.env.staging``` or ```.env.production```.
+
+You can set it up locally with your own PostGRES if you like or ...
+
+To run the tests while you are developing, run ```guard``` in another terminal:
+
+    guard
+
+
+###With Vagrant
+
 We use Vagrant. [Download and install Vagrant](http://www.vagrantup.com/downloads.html)
 
 Vagrant uses VirtualBox.  [Download and install VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 You may need to make sure that VirtualBox's installation directory is in your path.
-
-
-###Spin Up the Environment
 
 Run the command ```vagrant up``` in the math-support-matrix directory. This will take a while to download the Linux distro, image it, install ruby/rails/other software. etc. Once it's done, you can login with ```vagrant ssh```. 
 
@@ -38,6 +46,30 @@ Once you're in the VirtualBox, then issue the following commands.
     cd /vagrant
     rake db:drop db:create db:migrate db:seed
     rake db:drop db:create db:migrate db:seed RAILS_ENV=test
+
+###With Docker
+
+Setup Docker
+
+    #for OSX
+    brew update
+    brew install boot2docker docker docker-compose
+    boot2docker init
+    eval "$(boot2docker shellinit)"
+    boot2docker up
+
+    #here we go
+    #build the image on it's own...
+    docker build -t math-support-matrix .
+    #or with a postgres image...
+    docker-compose build
+    docker-compose up
+    docker-compose run bundle exec rake db:create db:seed db:migrate
+
+    #check the ip
+    boot2docker ip
+    #and open it in your browser
+
 
 ##Running
 
@@ -53,10 +85,6 @@ Also, you may need to issue this in a separate terminal on your local box if the
     ssh -N -L 3000:localhost:3000 vagrant@localhost -p 2222
 
 Again, the password is ```vagrant```.
-
-To run the tests while you are developing, run ```guard``` in another terminal:
-
-    guard
 
 
 ##Data model
@@ -220,6 +248,8 @@ Then we generated our scaffolds:
 - [Coffeescript](http://coffeescript.org/)
 - [Tenon](http://tenon.io)
 - [Loggly](https://msmseeread.loggly.com/login/?next=/#)
+- [Docker](https://www.docker.com/)
+- [Vagrant](https://www.vagrantup.com/)
 
 ##Links
 - [benetech/math-support-matrix repo](http://github.com/benetech/math-support-matrix)

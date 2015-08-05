@@ -1,0 +1,19 @@
+web:
+  env_file: .env
+  env_file: .env.development
+  build: .
+  volumes:
+    - .:/math-support-matrix
+  ports:
+    - "3000:3000"
+  links:
+    - db
+  environment:
+    - DEBUG=true
+db:
+  image: postgres
+  ports:
+    - "5432"
+  environment:
+    POSTGRES_USER: msm_dev
+    POSTGRES_PASSWORD: password
