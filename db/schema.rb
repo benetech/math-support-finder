@@ -194,6 +194,7 @@ ActiveRecord::Schema.define(version: 20150805161912) do
     t.integer  "assistive_technology_version_id"
     t.integer  "file_format_id"
     t.integer  "workflow_status_id"
+    t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
