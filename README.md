@@ -161,7 +161,7 @@ Then we generated our scaffolds:
     rails g pizza_scaffold setup platform_version:references \
         renderer_version:references browser_reader_version:references \
         assistive_technology_version:references \
-        file_format:references workflow_status:references --force
+        file_format:references workflow_status:references notes:text --force
     #content sources
     rails g pizza_scaffold content_source title:string notes:text --force
     rails g pizza_scaffold content_source_setup setup:references content_source:references --force
@@ -178,7 +178,6 @@ Then we generated our scaffolds:
     rails g pizza_scaffold affordance feature:references technology:references --force
     rails g pizza_scaffold capability affordance:references setup:references verification_status:references --force
 
-
     #to generate only the controllers and views
     rails g pizza_controller workflow_status title:string --force
     rails g pizza_controller file_format title:string notes:text  --force
@@ -193,7 +192,7 @@ Then we generated our scaffolds:
     rails g pizza_controller setup platform_version:references \
         renderer_version:references browser_reader_version:references \
         assistive_technology_version:references \
-        file_format:references workflow_status:references --force
+        file_format:references workflow_status:references notes:text --force
     #content sources
     rails g pizza_controller content_source title:string notes:text --force
     rails g pizza_controller content_source_setup setup:references content_source:references --force

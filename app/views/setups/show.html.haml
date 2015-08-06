@@ -39,6 +39,11 @@
                 Workflow status
               %td<
                 = @setup.workflow_status
+            %tr
+              %th{scope: "row"}<
+                Notes
+              %td<
+                = @setup.notes
         %nav.show-nav{role:"navigation"}
           = link_to setups_path, class: 'btn btn-info', title: "View the setups index" do
             %i.fa.fa-fw.fa-list{title: 'List'}

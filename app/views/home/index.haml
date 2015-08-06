@@ -1,4 +1,4 @@
-- title= "Welcome to Math Support Matrix"
+- title= "Welcome to the Math Support Matrix"
 - if current_user
   -title += ", #{current_user}!"
 -meta title: title,
@@ -6,16 +6,20 @@
     url: request.url,
   }
 
-.container-fluid
+.container
   %header
     %h1#page-title=title
-    - if !current_user
+  .row
+    .col-md-6
       %p<
-        The MathSupportMatrix (MSM) is a discovery and reference tool for pairing math content sources with accessible setups.
-      %p>
-        = link_to "Create an account", new_registration_path(resource_name)
-        or
-        = link_to "log in", new_session_path(resource_name)
+        The Math Support Matrix (MSM) is a discovery and reference tool for pairing math content sources with accessible setups.
+      - if !current_user
+        %p>
+          = link_to "Create an account", new_registration_path(resource_name)
+          or
+          = link_to "log in", new_session_path(resource_name)
 
-  =render "setups/search", q: @q
-  =render "setups/results", q: @q
+    .col-md-6
+      =render "setups/search", q: @q
+  #setups-results-wrap{style: "display: none;"}
+    =render "setups/results", q: @q

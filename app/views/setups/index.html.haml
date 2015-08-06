@@ -23,6 +23,8 @@
               %th{scope: "col"}<
                 Workflow status
               %th{scope: "col"}<
+                Notes
+              %th{scope: "col"}<
                 Actions
 
           %tbody
@@ -34,6 +36,7 @@
                 %td= setup.assistive_technology_version
                 %td= setup.file_format
                 %td= setup.workflow_status
+                %td= setup.notes
                 %td.text-right<
                   = link_to setup, class: "btn btn-show", title: "Show this setup" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
