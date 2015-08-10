@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: technologies
+# Table name: outputs
 #
 #  id         :integer          not null, primary key
 #  title      :string
@@ -9,11 +9,10 @@
 #  updated_at :datetime
 #
 
-class Technology < ActiveRecord::Base
+class Output < ActiveRecord::Base
   validates_presence_of :title
 
   has_many :affordances, dependent: :destroy
-  has_many :capabilities, through: :affordances
   has_many :capabilities, through: :affordances
 
   def to_s

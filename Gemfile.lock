@@ -404,6 +404,8 @@ GEM
       shellany (~> 0.0)
     oj (2.12.10)
     orm_adapter (0.5.0)
+    pagedown-bootstrap-rails (2.1.2)
+      railties (> 3.1)
     pg (0.18.2)
     polyamorous (1.2.0)
       activerecord (>= 3.0)
@@ -450,6 +452,7 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     rdoc (4.2.0)
+    redcarpet (3.3.2)
     ref (2.0.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
@@ -622,11 +625,13 @@ DEPENDENCIES
   modular-scale
   mortise!
   oj
+  pagedown-bootstrap-rails
   pg
   railroady
   rails (= 4.2.2)
   ransack
   rb-fsevent
+  redcarpet
   responders
   rspec-rails
   sass-mediaqueries-rails

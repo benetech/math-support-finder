@@ -29,6 +29,7 @@ module Plate
     config.generators do |g|
       g.stylesheets false
       g.javascripts false
+      g.helper false
       g.test_framework :rspec
       g.fallbacks[:rspec] = :test_unit
       g.fixture_replacement :factory_girl

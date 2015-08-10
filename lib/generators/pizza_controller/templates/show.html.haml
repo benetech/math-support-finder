@@ -7,14 +7,19 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this <%= singular_table_name %>
+          %caption.sr-only Attributes for <%= singular_table_name %>
           %tbody
 <% for attribute in attributes -%>
             %tr
               %th{scope: "row"}<
                 <%= attribute.human_name %>
               %td<
+<% if attribute.name == 'notes' -%>
+                = raw to_html(@<%= singular_table_name %>.notes)
+<% else -%>
                 = @<%= singular_table_name %>.<%= attribute.name %>
+<% end -%>
+
 <% end -%>
         %nav.show-nav{role:"navigation"}
           = link_to <%= index_helper %>_path, class: 'btn btn-info', title: "View the <%= plural_table_name%> index" do
@@ -23,3 +28,5 @@
           = link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), title: "Edit this <%= singular_table_name %>", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-success' do
+            Add another <%= singular_table_name %>

@@ -18,13 +18,13 @@ ActiveRecord::Schema.define(version: 20150805161912) do
 
   create_table "affordances", force: :cascade do |t|
     t.integer  "feature_id"
-    t.integer  "technology_id"
+    t.integer  "output_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "affordances", ["feature_id"], name: "index_affordances_on_feature_id", using: :btree
-  add_index "affordances", ["technology_id"], name: "index_affordances_on_technology_id", using: :btree
+  add_index "affordances", ["output_id"], name: "index_affordances_on_output_id", using: :btree
 
   create_table "assistive_technologies", force: :cascade do |t|
     t.string   "title"
@@ -133,6 +133,13 @@ ActiveRecord::Schema.define(version: 20150805161912) do
     t.datetime "updated_at"
   end
 
+  create_table "outputs", force: :cascade do |t|
+    t.string   "title"
+    t.text     "notes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "platform_assistive_technologies", force: :cascade do |t|
     t.integer  "platform_id"
     t.integer  "assistive_technology_id"
@@ -226,13 +233,6 @@ ActiveRecord::Schema.define(version: 20150805161912) do
 
   add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
-  create_table "technologies", force: :cascade do |t|
-    t.string   "title"
-    t.text     "notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
@@ -267,7 +267,7 @@ ActiveRecord::Schema.define(version: 20150805161912) do
   end
 
   add_foreign_key "affordances", "features"
-  add_foreign_key "affordances", "technologies"
+  add_foreign_key "affordances", "outputs"
   add_foreign_key "assistive_technology_versions", "assistive_technologies"
   add_foreign_key "browser_reader_assistive_technologies", "assistive_technologies"
   add_foreign_key "browser_reader_assistive_technologies", "browser_readers"

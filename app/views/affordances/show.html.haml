@@ -16,9 +16,9 @@
                 = @affordance.feature
             %tr
               %th{scope: "row"}<
-                Technology
+                Output
               %td<
-                = @affordance.technology
+                = @affordance.output
         %nav.show-nav{role:"navigation"}
           = link_to affordances_path, class: 'btn btn-info', title: "View the affordances index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
@@ -26,3 +26,5 @@
           = link_to edit_affordance_path(@affordance), title: "Edit this affordance", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_affordance_path(@affordance), class: 'btn btn-success' do
+            Add another affordance

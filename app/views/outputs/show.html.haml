@@ -1,0 +1,32 @@
+-title = "Showing  #{@output}"
+-meta title: title
+-cache ['v1', admin?,  @output] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header
+          %h1#page-title{tabindex: -1}=title
+        %table.entity-table
+          %caption.sr-only Attributes for output
+          %tbody
+            %tr
+              %th{scope: "row"}<
+                Title
+              %td<
+                = @output.title
+
+            %tr
+              %th{scope: "row"}<
+                Notes
+              %td<
+                = raw to_html(@output.notes)
+
+        %nav.show-nav{role:"navigation"}
+          = link_to outputs_path, class: 'btn btn-info', title: "View the outputs index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Outputs
+          = link_to edit_output_path(@output), title: "Edit this output", class: 'btn btn-primary' do
+            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+            Edit
+          = link_to new_output_path(@output), class: 'btn btn-success' do
+            Add another output

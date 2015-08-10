@@ -172,10 +172,10 @@ Then we generated our scaffolds:
     rails g pizza_scaffold platform_assistive_technology platform:references assistive_technology:references --force 
     rails g pizza_scaffold browser_reader_assistive_technology browser_reader:references assistive_technology:references --force 
     #capability components
-    rails g pizza_scaffold technology title:string notes:text --force
+    rails g pizza_scaffold output title:string notes:text --force
     rails g pizza_scaffold verification_status title:string --force
     rails g pizza_scaffold feature title:string notes:text --force
-    rails g pizza_scaffold affordance feature:references technology:references --force
+    rails g pizza_scaffold affordance feature:references output:references --force
     rails g pizza_scaffold capability affordance:references setup:references verification_status:references --force
 
     #to generate only the controllers and views
@@ -204,10 +204,10 @@ Then we generated our scaffolds:
     rails g pizza_controller browser_reader_assistive_technology browser_reader:references assistive_technology:references --force 
 
     #capability components
-    rails g pizza_controller technology title:string notes:text --force
+    rails g pizza_controller output title:string notes:text --force
     rails g pizza_controller verification_status title:string --force
     rails g pizza_controller feature title:string notes:text --force
-    rails g pizza_controller affordance feature:references technology:references --force
+    rails g pizza_controller affordance feature:references output:references --force
     rails g pizza_controller capability affordance:references setup:references verification_status:references --force
 
 ##Components
