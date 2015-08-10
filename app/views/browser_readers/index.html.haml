@@ -1,5 +1,21 @@
 -title = 'Listing Browser Readers'
 -meta title: title
+-#- source = browser_readers_url
+-#- caption = ""
+-#- caption_twitter = ""
+-#-description = ""
+-#-thumb = ""
+-#-keywords = %w{' '}
+-#-meta title: title
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#img_size =  browser.mobile? ? :index : :grande
+-#cache ['v1', admin?,  img_size, @browser_readers] do
 - cache ['v1', admin?,  @browser_readers] do
   .index-outer
     .index
@@ -27,7 +43,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_browser_reader_path(browser_reader), class: "btn btn-edit", title: "Edit this browser_reader"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to browser_reader, title: "Delete this browser_reader" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Browser Reader}?"} do
+                  = link_to browser_reader, title: "Delete this browser_reader" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{browser_reader}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

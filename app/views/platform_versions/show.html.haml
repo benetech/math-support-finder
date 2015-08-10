@@ -1,5 +1,23 @@
 -title = "Showing  #{@platform_version}"
 -meta title: title
+
+-#- source = platform_version_url(@platform_version)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @platform_version] do
+
 -cache ['v1', admin?,  @platform_version] do
   .entity-outer
     .entity

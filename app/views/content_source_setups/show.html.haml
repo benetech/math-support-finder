@@ -1,5 +1,23 @@
 -title = "Showing  #{@content_source_setup}"
 -meta title: title
+
+-#- source = content_source_setup_url(@content_source_setup)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @content_source_setup] do
+
 -cache ['v1', admin?,  @content_source_setup] do
   .entity-outer
     .entity

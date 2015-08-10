@@ -1,5 +1,21 @@
 -title = 'Listing Content Source Setups'
 -meta title: title
+-#- source = content_source_setups_url
+-#- caption = ""
+-#- caption_twitter = ""
+-#-description = ""
+-#-thumb = ""
+-#-keywords = %w{' '}
+-#-meta title: title
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#img_size =  browser.mobile? ? :index : :grande
+-#cache ['v1', admin?,  img_size, @content_source_setups] do
 - cache ['v1', admin?,  @content_source_setups] do
   .index-outer
     .index
@@ -27,7 +43,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_content_source_setup_path(content_source_setup), class: "btn btn-edit", title: "Edit this content_source_setup"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to content_source_setup, title: "Delete this content_source_setup" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Content Source Setup}?"} do
+                  = link_to content_source_setup, title: "Delete this content_source_setup" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{content_source_setup}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

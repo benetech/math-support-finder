@@ -1,5 +1,21 @@
 -title = 'Listing Platforms'
 -meta title: title
+-#- source = platforms_url
+-#- caption = ""
+-#- caption_twitter = ""
+-#-description = ""
+-#-thumb = ""
+-#-keywords = %w{' '}
+-#-meta title: title
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#img_size =  browser.mobile? ? :index : :grande
+-#cache ['v1', admin?,  img_size, @platforms] do
 - cache ['v1', admin?,  @platforms] do
   .index-outer
     .index
@@ -27,7 +43,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_platform_path(platform), class: "btn btn-edit", title: "Edit this platform"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to platform, title: "Delete this platform" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Platform}?"} do
+                  = link_to platform, title: "Delete this platform" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

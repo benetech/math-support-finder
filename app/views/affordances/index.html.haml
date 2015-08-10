@@ -43,7 +43,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_affordance_path(affordance), class: "btn btn-edit", title: "Edit this affordance"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to affordance, title: "Delete this affordance" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Affordance}?"} do
+                  = link_to affordance, title: "Delete this affordance" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{affordance}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

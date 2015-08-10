@@ -1,5 +1,23 @@
 -title = "Showing  #{@verification_status}"
 -meta title: title
+
+-#- source = verification_status_url(@verification_status)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @verification_status] do
+
 -cache ['v1', admin?,  @verification_status] do
   .entity-outer
     .entity

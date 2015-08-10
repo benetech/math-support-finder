@@ -1,5 +1,23 @@
 -title = "Showing  #{@renderer}"
 -meta title: title
+
+-#- source = renderer_url(@renderer)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @renderer] do
+
 -cache ['v1', admin?,  @renderer] do
   .entity-outer
     .entity

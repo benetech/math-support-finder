@@ -1,5 +1,21 @@
 -title = 'Listing Platform Versions'
 -meta title: title
+-#- source = platform_versions_url
+-#- caption = ""
+-#- caption_twitter = ""
+-#-description = ""
+-#-thumb = ""
+-#-keywords = %w{' '}
+-#-meta title: title
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#img_size =  browser.mobile? ? :index : :grande
+-#cache ['v1', admin?,  img_size, @platform_versions] do
 - cache ['v1', admin?,  @platform_versions] do
   .index-outer
     .index
@@ -30,7 +46,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_platform_version_path(platform_version), class: "btn btn-edit", title: "Edit this platform_version"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to platform_version, title: "Delete this platform_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Platform Version}?"} do
+                  = link_to platform_version, title: "Delete this platform_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform_version}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

@@ -1,5 +1,23 @@
 -title = "Showing  #{@browser_reader_assistive_technology}"
 -meta title: title
+
+-#- source = browser_reader_assistive_technology_url(@browser_reader_assistive_technology)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @browser_reader_assistive_technology] do
+
 -cache ['v1', admin?,  @browser_reader_assistive_technology] do
   .entity-outer
     .entity

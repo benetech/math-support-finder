@@ -1,5 +1,21 @@
 -title = 'Listing Renderer Versions'
 -meta title: title
+-#- source = renderer_versions_url
+-#- caption = ""
+-#- caption_twitter = ""
+-#-description = ""
+-#-thumb = ""
+-#-keywords = %w{' '}
+-#-meta title: title
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#img_size =  browser.mobile? ? :index : :grande
+-#cache ['v1', admin?,  img_size, @renderer_versions] do
 - cache ['v1', admin?,  @renderer_versions] do
   .index-outer
     .index
@@ -30,7 +46,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_renderer_version_path(renderer_version), class: "btn btn-edit", title: "Edit this renderer_version"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to renderer_version, title: "Delete this renderer_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Renderer Version}?"} do
+                  = link_to renderer_version, title: "Delete this renderer_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{renderer_version}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

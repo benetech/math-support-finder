@@ -1,5 +1,21 @@
 -title = 'Listing Outputs'
 -meta title: title
+-#- source = outputs_url
+-#- caption = ""
+-#- caption_twitter = ""
+-#-description = ""
+-#-thumb = ""
+-#-keywords = %w{' '}
+-#-meta title: title
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#img_size =  browser.mobile? ? :index : :grande
+-#cache ['v1', admin?,  img_size, @outputs] do
 - cache ['v1', admin?,  @outputs] do
   .index-outer
     .index
@@ -27,7 +43,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_output_path(output), class: "btn btn-edit", title: "Edit this output"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to output, title: "Delete this output" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Output}?"} do
+                  = link_to output, title: "Delete this output" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{output}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}
