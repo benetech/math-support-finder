@@ -39,11 +39,11 @@
                 %td= browser_reader_renderer.browser_reader
                 %td= browser_reader_renderer.renderer
                 %td.text-right<
-                  = link_to browser_reader_renderer, class: "btn btn-show", title: "Show this browser_reader_renderer" do
+                  = link_to browser_reader_renderer, class: "btn btn-show", title: "Show #{browser_reader_renderer}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
-                  = link_to edit_browser_reader_renderer_path(browser_reader_renderer), class: "btn btn-edit", title: "Edit this browser_reader_renderer"  do
+                  = link_to edit_browser_reader_renderer_path(browser_reader_renderer), class: "btn btn-edit", title: "Edit #{browser_reader_renderer}"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to browser_reader_renderer, title: "Delete this browser_reader_renderer" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{browser_reader_renderer}?"} do
+                  = link_to browser_reader_renderer, title: "Delete this Browser Reader Renderer" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{browser_reader_renderer}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

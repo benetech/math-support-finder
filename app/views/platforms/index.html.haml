@@ -39,11 +39,11 @@
                 %td= platform.title
                 %td= platform.notes
                 %td.text-right<
-                  = link_to platform, class: "btn btn-show", title: "Show this platform" do
+                  = link_to platform, class: "btn btn-show", title: "Show #{platform}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
-                  = link_to edit_platform_path(platform), class: "btn btn-edit", title: "Edit this platform"  do
+                  = link_to edit_platform_path(platform), class: "btn btn-edit", title: "Edit #{platform}"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to platform, title: "Delete this platform" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform}?"} do
+                  = link_to platform, title: "Delete this Platform" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

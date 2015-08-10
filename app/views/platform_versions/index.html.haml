@@ -42,11 +42,11 @@
                 %td= platform_version.version
                 %td= platform_version.notes
                 %td.text-right<
-                  = link_to platform_version, class: "btn btn-show", title: "Show this platform_version" do
+                  = link_to platform_version, class: "btn btn-show", title: "Show #{platform_version}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
-                  = link_to edit_platform_version_path(platform_version), class: "btn btn-edit", title: "Edit this platform_version"  do
+                  = link_to edit_platform_version_path(platform_version), class: "btn btn-edit", title: "Edit #{platform_version}"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to platform_version, title: "Delete this platform_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform_version}?"} do
+                  = link_to platform_version, title: "Delete this Platform Version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform_version}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}
