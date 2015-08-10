@@ -7,7 +7,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Attributes for platform
+          %caption.sr-only Attributes for Platform
           %tbody
             %tr
               %th{scope: "row"}<
@@ -25,8 +25,8 @@
           = link_to platforms_path, class: 'btn btn-info', title: "View the platforms index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Platforms
-          = link_to edit_platform_path(@platform), title: "Edit this platform", class: 'btn btn-primary' do
+          = link_to edit_platform_path(@platform), title: "Edit this Platform", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
           = link_to new_platform_path(@platform), class: 'btn btn-success' do
-            Add another platform
+            Add another Platform

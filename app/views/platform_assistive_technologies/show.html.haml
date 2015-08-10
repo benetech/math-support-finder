@@ -1,5 +1,23 @@
 -title = "Showing  #{@platform_assistive_technology}"
 -meta title: title
+
+-#- source = platform_assistive_technology_url(@platform_assistive_technology)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @platform_assistive_technology] do
+
 -cache ['v1', admin?,  @platform_assistive_technology] do
   .entity-outer
     .entity
@@ -7,7 +25,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Attributes for platform_assistive_technology
+          %caption.sr-only Attributes for Platform Assistive Technology
           %tbody
             %tr
               %th{scope: "row"}<
@@ -25,8 +43,8 @@
           = link_to platform_assistive_technologies_path, class: 'btn btn-info', title: "View the platform_assistive_technologies index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Platform Assistive Technologies
-          = link_to edit_platform_assistive_technology_path(@platform_assistive_technology), title: "Edit this platform_assistive_technology", class: 'btn btn-primary' do
+          = link_to edit_platform_assistive_technology_path(@platform_assistive_technology), title: "Edit this Platform Assistive Technology", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
           = link_to new_platform_assistive_technology_path(@platform_assistive_technology), class: 'btn btn-success' do
-            Add another platform_assistive_technology
+            Add another Platform Assistive Technology

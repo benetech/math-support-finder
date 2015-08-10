@@ -7,7 +7,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Attributes for assistive_technology
+          %caption.sr-only Attributes for Assistive Technology
           %tbody
             %tr
               %th{scope: "row"}<
@@ -25,8 +25,8 @@
           = link_to assistive_technologies_path, class: 'btn btn-info', title: "View the assistive_technologies index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Assistive Technologies
-          = link_to edit_assistive_technology_path(@assistive_technology), title: "Edit this assistive_technology", class: 'btn btn-primary' do
+          = link_to edit_assistive_technology_path(@assistive_technology), title: "Edit this Assistive Technology", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
           = link_to new_assistive_technology_path(@assistive_technology), class: 'btn btn-success' do
-            Add another assistive_technology
+            Add another Assistive Technology

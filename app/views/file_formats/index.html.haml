@@ -7,7 +7,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for file_formats
+          %caption.sr-only Index table for File Formats
           %thead
             %tr
               %th{scope: "col"}<
@@ -27,7 +27,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_file_format_path(file_format), class: "btn btn-edit", title: "Edit this file_format"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to file_format, title: "Delete this file_format" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{file_format}?"} do
+                  = link_to file_format, title: "Delete this file_format" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{File Format}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

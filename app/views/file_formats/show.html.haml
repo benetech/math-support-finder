@@ -7,7 +7,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Attributes for file_format
+          %caption.sr-only Attributes for File Format
           %tbody
             %tr
               %th{scope: "row"}<
@@ -25,8 +25,8 @@
           = link_to file_formats_path, class: 'btn btn-info', title: "View the file_formats index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             File Formats
-          = link_to edit_file_format_path(@file_format), title: "Edit this file_format", class: 'btn btn-primary' do
+          = link_to edit_file_format_path(@file_format), title: "Edit this File Format", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
           = link_to new_file_format_path(@file_format), class: 'btn btn-success' do
-            Add another file_format
+            Add another File Format

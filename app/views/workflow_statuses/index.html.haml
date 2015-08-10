@@ -7,7 +7,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for workflow_statuses
+          %caption.sr-only Index table for Workflow Statuses
           %thead
             %tr
               %th{scope: "col"}<
@@ -24,7 +24,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_workflow_status_path(workflow_status), class: "btn btn-edit", title: "Edit this workflow_status"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to workflow_status, title: "Delete this workflow_status" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{workflow_status}?"} do
+                  = link_to workflow_status, title: "Delete this workflow_status" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Workflow Status}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

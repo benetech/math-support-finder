@@ -7,7 +7,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for browser_reader_versions
+          %caption.sr-only Index table for Browser Reader Versions
           %thead
             %tr
               %th{scope: "col"}<
@@ -30,7 +30,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_browser_reader_version_path(browser_reader_version), class: "btn btn-edit", title: "Edit this browser_reader_version"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to browser_reader_version, title: "Delete this browser_reader_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{browser_reader_version}?"} do
+                  = link_to browser_reader_version, title: "Delete this browser_reader_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Browser Reader Version}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

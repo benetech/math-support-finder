@@ -7,7 +7,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for renderer_versions
+          %caption.sr-only Index table for Renderer Versions
           %thead
             %tr
               %th{scope: "col"}<
@@ -30,7 +30,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_renderer_version_path(renderer_version), class: "btn btn-edit", title: "Edit this renderer_version"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to renderer_version, title: "Delete this renderer_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{renderer_version}?"} do
+                  = link_to renderer_version, title: "Delete this renderer_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Renderer Version}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

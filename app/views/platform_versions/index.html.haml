@@ -7,7 +7,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for platform_versions
+          %caption.sr-only Index table for Platform Versions
           %thead
             %tr
               %th{scope: "col"}<
@@ -30,7 +30,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_platform_version_path(platform_version), class: "btn btn-edit", title: "Edit this platform_version"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to platform_version, title: "Delete this platform_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform_version}?"} do
+                  = link_to platform_version, title: "Delete this platform_version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Platform Version}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

@@ -1,5 +1,21 @@
 -title = 'Listing Platform Assistive Technologies'
 -meta title: title
+-#- source = platform_assistive_technologies_url
+-#- caption = ""
+-#- caption_twitter = ""
+-#-description = ""
+-#-thumb = ""
+-#-keywords = %w{' '}
+-#-meta title: title
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#img_size =  browser.mobile? ? :index : :grande
+-#cache ['v1', admin?,  img_size, @platform_assistive_technologies] do
 - cache ['v1', admin?,  @platform_assistive_technologies] do
   .index-outer
     .index
@@ -7,7 +23,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for platform_assistive_technologies
+          %caption.sr-only Index table for Platform Assistive Technologies
           %thead
             %tr
               %th{scope: "col"}<
@@ -27,7 +43,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_platform_assistive_technology_path(platform_assistive_technology), class: "btn btn-edit", title: "Edit this platform_assistive_technology"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to platform_assistive_technology, title: "Delete this platform_assistive_technology" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform_assistive_technology}?"} do
+                  = link_to platform_assistive_technology, title: "Delete this platform_assistive_technology" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Platform Assistive Technology}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

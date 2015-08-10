@@ -7,7 +7,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Attributes for platform_version
+          %caption.sr-only Attributes for Platform Version
           %tbody
             %tr
               %th{scope: "row"}<
@@ -31,8 +31,8 @@
           = link_to platform_versions_path, class: 'btn btn-info', title: "View the platform_versions index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Platform Versions
-          = link_to edit_platform_version_path(@platform_version), title: "Edit this platform_version", class: 'btn btn-primary' do
+          = link_to edit_platform_version_path(@platform_version), title: "Edit this Platform Version", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
           = link_to new_platform_version_path(@platform_version), class: 'btn btn-success' do
-            Add another platform_version
+            Add another Platform Version

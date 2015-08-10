@@ -7,7 +7,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for assistive_technologies
+          %caption.sr-only Index table for Assistive Technologies
           %thead
             %tr
               %th{scope: "col"}<
@@ -27,7 +27,7 @@
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
                   = link_to edit_assistive_technology_path(assistive_technology), class: "btn btn-edit", title: "Edit this assistive_technology"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to assistive_technology, title: "Delete this assistive_technology" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{assistive_technology}?"} do
+                  = link_to assistive_technology, title: "Delete this assistive_technology" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{Assistive Technology}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

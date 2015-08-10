@@ -7,7 +7,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Attributes for capability
+          %caption.sr-only Attributes for Capability
           %tbody
             %tr
               %th{scope: "row"}<
@@ -31,8 +31,8 @@
           = link_to capabilities_path, class: 'btn btn-info', title: "View the capabilities index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Capabilities
-          = link_to edit_capability_path(@capability), title: "Edit this capability", class: 'btn btn-primary' do
+          = link_to edit_capability_path(@capability), title: "Edit this Capability", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
           = link_to new_capability_path(@capability), class: 'btn btn-success' do
-            Add another capability
+            Add another Capability
