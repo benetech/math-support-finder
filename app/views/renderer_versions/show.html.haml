@@ -7,23 +7,26 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this renderer_version
+          %caption.sr-only Attributes for renderer_version
           %tbody
             %tr
               %th{scope: "row"}<
                 Renderer
               %td<
                 = @renderer_version.renderer
+
             %tr
               %th{scope: "row"}<
                 Version
               %td<
                 = @renderer_version.version
+
             %tr
               %th{scope: "row"}<
                 Notes
               %td<
-                = @renderer_version.notes
+                = raw to_html(@renderer_version.notes)
+
         %nav.show-nav{role:"navigation"}
           = link_to renderer_versions_path, class: 'btn btn-info', title: "View the renderer_versions index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
@@ -31,3 +34,5 @@
           = link_to edit_renderer_version_path(@renderer_version), title: "Edit this renderer_version", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_renderer_version_path(@renderer_version), class: 'btn btn-success' do
+            Add another renderer_version

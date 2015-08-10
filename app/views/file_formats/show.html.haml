@@ -7,18 +7,20 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this file_format
+          %caption.sr-only Attributes for file_format
           %tbody
             %tr
               %th{scope: "row"}<
                 Title
               %td<
                 = @file_format.title
+
             %tr
               %th{scope: "row"}<
                 Notes
               %td<
-                = @file_format.notes
+                = raw to_html(@file_format.notes)
+
         %nav.show-nav{role:"navigation"}
           = link_to file_formats_path, class: 'btn btn-info', title: "View the file_formats index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
@@ -26,3 +28,5 @@
           = link_to edit_file_format_path(@file_format), title: "Edit this file_format", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_file_format_path(@file_format), class: 'btn btn-success' do
+            Add another file_format

@@ -7,18 +7,20 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this browser_reader_assistive_technology
+          %caption.sr-only Attributes for browser_reader_assistive_technology
           %tbody
             %tr
               %th{scope: "row"}<
                 Browser reader
               %td<
                 = @browser_reader_assistive_technology.browser_reader
+
             %tr
               %th{scope: "row"}<
                 Assistive technology
               %td<
                 = @browser_reader_assistive_technology.assistive_technology
+
         %nav.show-nav{role:"navigation"}
           = link_to browser_reader_assistive_technologies_path, class: 'btn btn-info', title: "View the browser_reader_assistive_technologies index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
@@ -26,3 +28,5 @@
           = link_to edit_browser_reader_assistive_technology_path(@browser_reader_assistive_technology), title: "Edit this browser_reader_assistive_technology", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_browser_reader_assistive_technology_path(@browser_reader_assistive_technology), class: 'btn btn-success' do
+            Add another browser_reader_assistive_technology

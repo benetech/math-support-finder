@@ -7,18 +7,20 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this browser_reader_file_format
+          %caption.sr-only Attributes for browser_reader_file_format
           %tbody
             %tr
               %th{scope: "row"}<
                 Browser reader
               %td<
                 = @browser_reader_file_format.browser_reader
+
             %tr
               %th{scope: "row"}<
                 File format
               %td<
                 = @browser_reader_file_format.file_format
+
         %nav.show-nav{role:"navigation"}
           = link_to browser_reader_file_formats_path, class: 'btn btn-info', title: "View the browser_reader_file_formats index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
@@ -26,3 +28,5 @@
           = link_to edit_browser_reader_file_format_path(@browser_reader_file_format), title: "Edit this browser_reader_file_format", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_browser_reader_file_format_path(@browser_reader_file_format), class: 'btn btn-success' do
+            Add another browser_reader_file_format

@@ -7,18 +7,20 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this feature
+          %caption.sr-only Attributes for feature
           %tbody
             %tr
               %th{scope: "row"}<
                 Title
               %td<
                 = @feature.title
+
             %tr
               %th{scope: "row"}<
                 Notes
               %td<
-                = @feature.notes
+                = raw to_html(@feature.notes)
+
         %nav.show-nav{role:"navigation"}
           = link_to features_path, class: 'btn btn-info', title: "View the features index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
@@ -26,3 +28,5 @@
           = link_to edit_feature_path(@feature), title: "Edit this feature", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_feature_path(@feature), class: 'btn btn-success' do
+            Add another feature

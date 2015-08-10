@@ -7,43 +7,50 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this setup
+          %caption.sr-only Attributes for setup
           %tbody
             %tr
               %th{scope: "row"}<
                 Platform version
               %td<
                 = @setup.platform_version
+
             %tr
               %th{scope: "row"}<
                 Renderer version
               %td<
                 = @setup.renderer_version
+
             %tr
               %th{scope: "row"}<
                 Browser reader version
               %td<
                 = @setup.browser_reader_version
+
             %tr
               %th{scope: "row"}<
                 Assistive technology version
               %td<
                 = @setup.assistive_technology_version
+
             %tr
               %th{scope: "row"}<
                 File format
               %td<
                 = @setup.file_format
+
             %tr
               %th{scope: "row"}<
                 Workflow status
               %td<
                 = @setup.workflow_status
+
             %tr
               %th{scope: "row"}<
                 Notes
               %td<
-                = @setup.notes
+                = raw to_html(@setup.notes)
+
         %nav.show-nav{role:"navigation"}
           = link_to setups_path, class: 'btn btn-info', title: "View the setups index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
@@ -51,3 +58,5 @@
           = link_to edit_setup_path(@setup), title: "Edit this setup", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_setup_path(@setup), class: 'btn btn-success' do
+            Add another setup

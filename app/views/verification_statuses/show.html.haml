@@ -7,13 +7,14 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this verification_status
+          %caption.sr-only Attributes for verification_status
           %tbody
             %tr
               %th{scope: "row"}<
                 Title
               %td<
                 = @verification_status.title
+
         %nav.show-nav{role:"navigation"}
           = link_to verification_statuses_path, class: 'btn btn-info', title: "View the verification_statuses index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
@@ -21,3 +22,5 @@
           = link_to edit_verification_status_path(@verification_status), title: "Edit this verification_status", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_verification_status_path(@verification_status), class: 'btn btn-success' do
+            Add another verification_status

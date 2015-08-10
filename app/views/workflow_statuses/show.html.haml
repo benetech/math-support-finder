@@ -7,13 +7,14 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this workflow_status
+          %caption.sr-only Attributes for workflow_status
           %tbody
             %tr
               %th{scope: "row"}<
                 Title
               %td<
                 = @workflow_status.title
+
         %nav.show-nav{role:"navigation"}
           = link_to workflow_statuses_path, class: 'btn btn-info', title: "View the workflow_statuses index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
@@ -21,3 +22,5 @@
           = link_to edit_workflow_status_path(@workflow_status), title: "Edit this workflow_status", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_workflow_status_path(@workflow_status), class: 'btn btn-success' do
+            Add another workflow_status

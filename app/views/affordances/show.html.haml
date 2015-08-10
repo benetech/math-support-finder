@@ -7,18 +7,20 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this affordance
+          %caption.sr-only Attributes for affordance
           %tbody
             %tr
               %th{scope: "row"}<
                 Feature
               %td<
                 = @affordance.feature
+
             %tr
               %th{scope: "row"}<
                 Output
               %td<
                 = @affordance.output
+
         %nav.show-nav{role:"navigation"}
           = link_to affordances_path, class: 'btn btn-info', title: "View the affordances index" do
             %i.fa.fa-fw.fa-list{title: 'List'}

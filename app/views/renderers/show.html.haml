@@ -7,18 +7,20 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this renderer
+          %caption.sr-only Attributes for renderer
           %tbody
             %tr
               %th{scope: "row"}<
                 Title
               %td<
                 = @renderer.title
+
             %tr
               %th{scope: "row"}<
                 Notes
               %td<
-                = @renderer.notes
+                = raw to_html(@renderer.notes)
+
         %nav.show-nav{role:"navigation"}
           = link_to renderers_path, class: 'btn btn-info', title: "View the renderers index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
@@ -26,3 +28,5 @@
           = link_to edit_renderer_path(@renderer), title: "Edit this renderer", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_renderer_path(@renderer), class: 'btn btn-success' do
+            Add another renderer

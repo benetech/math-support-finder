@@ -7,23 +7,26 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this browser_reader_version
+          %caption.sr-only Attributes for browser_reader_version
           %tbody
             %tr
               %th{scope: "row"}<
                 Browser reader
               %td<
                 = @browser_reader_version.browser_reader
+
             %tr
               %th{scope: "row"}<
                 Version
               %td<
                 = @browser_reader_version.version
+
             %tr
               %th{scope: "row"}<
                 Notes
               %td<
-                = @browser_reader_version.notes
+                = raw to_html(@browser_reader_version.notes)
+
         %nav.show-nav{role:"navigation"}
           = link_to browser_reader_versions_path, class: 'btn btn-info', title: "View the browser_reader_versions index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
@@ -31,3 +34,5 @@
           = link_to edit_browser_reader_version_path(@browser_reader_version), title: "Edit this browser_reader_version", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_browser_reader_version_path(@browser_reader_version), class: 'btn btn-success' do
+            Add another browser_reader_version

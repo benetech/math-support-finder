@@ -1,11 +1,9 @@
 = simple_form_for @browser_reader, validate: true, html: {multipart: true, class: 'form-horizontal'}, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input} do |f|
   = f.error_notification
   .form-inputs
-    = f.input :title
-    = f.input :notes
-    = f.association :renderers, as: :check_boxes
-    = f.association :platforms, as: :check_boxes
-    = f.association :assistive_technologies, as: :check_boxes
+    = f.input :title 
+    = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
+
 
   .form-actions
     .form-actions-inner
