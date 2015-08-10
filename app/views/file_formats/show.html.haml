@@ -39,6 +39,11 @@
               %td<
                 = raw to_html(@file_format.notes)
 
+            -object = @file_format
+            -multi = ["browser_readers"]
+            = render "multi", multi: multi, object: object
+
+
         %nav.show-nav{role:"navigation"}
           = link_to file_formats_path, class: 'btn btn-info', title: "View the file_formats index" do
             %i.fa.fa-fw.fa-list{title: 'List'}

@@ -31,7 +31,7 @@
               %th{scope: "row"}<
                 Assistive technology
               %td<
-                = @assistive_technology_version.assistive_technology
+                =link_to @assistive_technology_version.assistive_technology, assitive_technology_path(@assistive_technology_version.assistive_technology)
 
             %tr
               %th{scope: "row"}<

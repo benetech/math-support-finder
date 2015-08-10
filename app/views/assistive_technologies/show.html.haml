@@ -38,6 +38,12 @@
                 Notes
               %td<
                 = raw to_html(@assistive_technology.notes)
+            -object = @assistive_technology
+            -multi = ["browser_readers", "platforms"]
+            = render "multi", multi: multi, object: object
+
+        -object = @assistive_technology
+        = render "versions", object: object
 
         %nav.show-nav{role:"navigation"}
           = link_to assistive_technologies_path, class: 'btn btn-info', title: "View the assistive_technologies index" do

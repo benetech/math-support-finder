@@ -39,6 +39,13 @@
               %td<
                 = raw to_html(@browser_reader.notes)
 
+            -object = @browser_reader
+            -multi = ["assistive_technologies", "file_formats", "platforms", "renderers"]
+            = render "multi", multi: multi, object: object
+
+        -object = @browser_reader
+        = render "versions", object: object
+
         %nav.show-nav{role:"navigation"}
           = link_to browser_readers_path, class: 'btn btn-info', title: "View the browser_readers index" do
             %i.fa.fa-fw.fa-list{title: 'List'}

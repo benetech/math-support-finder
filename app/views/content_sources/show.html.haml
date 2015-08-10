@@ -38,6 +38,10 @@
                 Notes
               %td<
                 = raw to_html(@content_source.notes)
+            -object = @content_source
+            -multi = ["setups"]
+            = render "multi", multi: multi, object: object
+
 
         %nav.show-nav{role:"navigation"}
           = link_to content_sources_path, class: 'btn btn-info', title: "View the content_sources index" do

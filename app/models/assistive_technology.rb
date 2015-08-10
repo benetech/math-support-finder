@@ -13,8 +13,11 @@ class AssistiveTechnology < ActiveRecord::Base
   has_many :assistive_technology_versions
   has_many :setups, through: :assitive_technology_versions
 
-  has_many :platform_assitive_technologies, dependent: :destroy
+  has_many :platform_assistive_technologies, dependent: :destroy
   has_many :platforms, through: :platform_assistive_technologies
+
+  has_many :browser_reader_assistive_technologies, dependent: :destroy
+  has_many :browser_readers, through: :browser_reader_assistive_technologies
 
   validates_presence_of :title
 

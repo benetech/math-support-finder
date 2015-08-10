@@ -31,13 +31,13 @@
               %th{scope: "row"}<
                 Feature
               %td<
-                = @affordance.feature
+                = link_to @affordance.feature, feature_path(@affordance.feature)
 
             %tr
               %th{scope: "row"}<
                 Output
               %td<
-                = @affordance.output
+                = link_to @affordance.output, output_path(@affordance.output)
 
         %nav.show-nav{role:"navigation"}
           = link_to affordances_path, class: 'btn btn-info', title: "View the affordances index" do

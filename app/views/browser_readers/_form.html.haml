@@ -3,8 +3,11 @@
   .form-inputs
     = f.input :title 
     = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
-
-
+    = f.association :assistive_technologies, as: :check_boxes      
+    = f.association :file_formats, as: :check_boxes      
+    = f.association :platforms, as: :check_boxes       
+    = f.association :renderers, as: :check_boxes       
+ 
   .form-actions
     .form-actions-inner
       = f.button :submit, class: 'btn btn-success'

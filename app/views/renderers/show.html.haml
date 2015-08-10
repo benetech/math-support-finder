@@ -38,6 +38,12 @@
                 Notes
               %td<
                 = raw to_html(@renderer.notes)
+            -object = @renderer
+            -multi = ["browser_readers"]
+            = render "multi", multi: multi, object: object
+
+        -object = @renderer
+        = render "versions", object: object
 
         %nav.show-nav{role:"navigation"}
           = link_to renderers_path, class: 'btn btn-info', title: "View the renderers index" do

@@ -8,6 +8,7 @@
     = f.association :file_format 
     = f.association :workflow_status 
     = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
+    = f.association :content_sources, as: :check_boxes
 
 
   .form-actions

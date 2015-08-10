@@ -29,6 +29,25 @@
           %tbody
             %tr
               %th{scope: "row"}<
+                Workflow status
+              %td<
+                = @setup.workflow_status
+
+            %tr
+              %th{scope: "row"}<
+                Notes
+              %td<
+                = raw to_html(@setup.notes)
+            -object = @setup
+            -multi = ["affordances"]
+            = render "multi", multi: multi, object: object
+
+            -object = @setup
+            -multi = ["content_sources"]
+            = render "multi", multi: multi, object: object
+
+            %tr
+              %th{scope: "row"}<
                 Platform version
               %td<
                 = @setup.platform_version
@@ -56,18 +75,6 @@
                 File format
               %td<
                 = @setup.file_format
-
-            %tr
-              %th{scope: "row"}<
-                Workflow status
-              %td<
-                = @setup.workflow_status
-
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = raw to_html(@setup.notes)
 
         %nav.show-nav{role:"navigation"}
           = link_to setups_path, class: 'btn btn-info', title: "View the setups index" do

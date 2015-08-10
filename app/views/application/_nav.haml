@@ -10,8 +10,7 @@
     %h2.sr-only Navigation
     %ul.nav.navbar-nav
       -if admin?
-        - section = "Main"
-        - models = ["setups", "capabilities", "content_sources"] 
+        -#- models = ["setups", "capabilities", "content_sources"] 
         %li<
           = link_to "Setups", setups_path
         -#%li.divider{:role => "separator"}
@@ -42,7 +41,7 @@
             Affordances
             %span.caret
           %ul.dropdown-menu
-            - models = ["features", "outputs"]
+            - models = ["capabilities", "features", "outputs"]
             - models.each do |m|
               %li= link_to  m.titleize, send("#{m}_path")
         %li<

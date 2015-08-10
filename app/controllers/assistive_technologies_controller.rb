@@ -48,6 +48,6 @@ class AssistiveTechnologiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def assistive_technology_params
-      params.require(:assistive_technology).permit(:title, :notes)
+      params.require(:assistive_technology).permit(:title, :notes, browser_reader_ids: [], platform_ids: [])
     end
 end

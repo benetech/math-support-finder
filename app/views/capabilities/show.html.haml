@@ -30,14 +30,12 @@
             %tr
               %th{scope: "row"}<
                 Affordance
-              %td<
-                = @capability.affordance
+              %td<= link_to @capability.affordance, affordance_path(@capability.affordance)
 
             %tr
               %th{scope: "row"}<
                 Setup
-              %td<
-                = @capability.setup
+              %td<= link_to @capability.setup, setup_path(@capability.setup)
 
             %tr
               %th{scope: "row"}<

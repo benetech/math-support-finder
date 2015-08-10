@@ -31,7 +31,7 @@
               %th{scope: "row"}<
                 Renderer
               %td<
-                = @renderer_version.renderer
+                = link_to @renderer_version.renderer, renderer_path( @renderer_version.renderer)
 
             %tr
               %th{scope: "row"}<

@@ -39,6 +39,11 @@
               %td<
                 = raw to_html(@feature.notes)
 
+            -object = @feature
+            -multi = ["outputs"]
+            = render "multi", multi: multi, object: object
+
+
         %nav.show-nav{role:"navigation"}
           = link_to features_path, class: 'btn btn-info', title: "View the features index" do
             %i.fa.fa-fw.fa-list{title: 'List'}

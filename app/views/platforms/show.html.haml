@@ -39,6 +39,14 @@
               %td<
                 = raw to_html(@platform.notes)
 
+
+            -object = @platform
+            -multi = ["assistive_technologies", "browser_readers" ]
+            = render "multi", multi: multi, object: object
+
+        -object = @platform
+        = render "versions", object: object
+
         %nav.show-nav{role:"navigation"}
           = link_to platforms_path, class: 'btn btn-info', title: "View the platforms index" do
             %i.fa.fa-fw.fa-list{title: 'List'}

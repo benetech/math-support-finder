@@ -48,6 +48,6 @@ class PlatformsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def platform_params
-      params.require(:platform).permit(:title, :notes)
+      params.require(:platform).permit(:title, :notes, browser_reader_ids: [], assistive_technology_ids: [])
     end
 end

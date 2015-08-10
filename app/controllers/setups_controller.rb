@@ -48,6 +48,6 @@ class SetupsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def setup_params
-      params.require(:setup).permit(:platform_version_id, :renderer_version_id, :browser_reader_version_id, :assistive_technology_version_id, :file_format_id, :workflow_status_id, :notes)
+      params.require(:setup).permit(:platform_version_id, :renderer_version_id, :browser_reader_version_id, :assistive_technology_version_id, :file_format_id, :workflow_status_id, :notes, content_sources_id: [])
     end
 end

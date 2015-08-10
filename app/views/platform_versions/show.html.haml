@@ -31,7 +31,7 @@
               %th{scope: "row"}<
                 Platform
               %td<
-                = @platform_version.platform
+                = link_to @platform_version.platform, platform_path(@platform_version.platform)
 
             %tr
               %th{scope: "row"}<

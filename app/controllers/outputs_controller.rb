@@ -48,6 +48,6 @@ class OutputsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def output_params
-      params.require(:output).permit(:title, :notes)
+      params.require(:output).permit(:title, :notes, feature_ids: [])
     end
 end

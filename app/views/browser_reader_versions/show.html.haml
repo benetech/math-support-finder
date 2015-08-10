@@ -31,7 +31,7 @@
               %th{scope: "row"}<
                 Browser reader
               %td<
-                = @browser_reader_version.browser_reader
+                = link_to @browser_reader_version.browser_reader, browser_reader_path(@browser_reader_version.browser_reader)
 
             %tr
               %th{scope: "row"}<

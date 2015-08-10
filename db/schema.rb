@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150805161912) do
 
   create_table "assistive_technology_versions", force: :cascade do |t|
     t.integer  "assistive_technology_id"
-    t.float    "version"
+    t.string   "version"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20150805161912) do
 
   create_table "browser_reader_versions", force: :cascade do |t|
     t.integer  "browser_reader_id"
-    t.float    "version"
+    t.string   "version"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(version: 20150805161912) do
 
   create_table "platform_versions", force: :cascade do |t|
     t.integer  "platform_id"
-    t.float    "version"
+    t.string   "version"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -179,7 +179,7 @@ ActiveRecord::Schema.define(version: 20150805161912) do
 
   create_table "renderer_versions", force: :cascade do |t|
     t.integer  "renderer_id"
-    t.float    "version"
+    t.string   "version"
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
