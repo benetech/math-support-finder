@@ -31,7 +31,7 @@
         = render "entity", object: object, multi: multi
         = render "versions", object: object
 
-        -if current_user
+        -if admin?
           %nav.show-nav{role:"navigation"}
             = link_to browser_readers_path, class: 'btn btn-info', title: "View the browser_readers index" do
               %i.fa.fa-fw.fa-list{title: 'List'}

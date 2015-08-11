@@ -28,7 +28,7 @@
         - parent= link_to @platform_version.platform, platform_path( @platform_version.platform)
         = render "version", object: object, parent: parent
 
-        -if current_user
+        -if admin?
           %nav.show-nav{role:"navigation"}
             = link_to platform_versions_path, class: 'btn btn-info', title: "View the platform_versions index" do
               %i.fa.fa-fw.fa-list{title: 'List'}

@@ -51,7 +51,7 @@
           "verification_statuses", "workflow_statuses", "content_source_setups", "affordances",
     %h2.sr-only Global Actions
     .navbar-right
-      - if current_user
+      - if admin?
         %p.navbar-text
           Hello
           = link_to root_path, class: "navbar-link" do
@@ -62,7 +62,7 @@
             %i.fa.fa-fw.fa-support
             Support
 
-        - if current_user
+        - if admin?
           %li<
             = link_to destroy_user_session_path, :method => :delete do 
               %i.fa.fa-fw.fa-sign-out

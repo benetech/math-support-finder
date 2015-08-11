@@ -30,7 +30,7 @@
         = render "entity", multi: multi, object: object
         = render "versions", object: object
 
-        -if current_user
+        -if admin?
           %nav.show-nav{role:"navigation"}
             = link_to platforms_path, class: 'btn btn-info', title: "View the platforms index" do
               %i.fa.fa-fw.fa-list{title: 'List'}

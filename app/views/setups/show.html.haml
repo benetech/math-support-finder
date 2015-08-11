@@ -34,13 +34,13 @@
               %table.table
                 - @setup.capabilities.each do |capability|
                   - klass = "item "
-                  -if current_user
+                  -if admin?
                     - klass += capability.verification_status.css_class
                   %tr{class: klass}
-                    -if current_user
+                    -if admin?
                       %td= labeled capability.verification_status
                     %td= capability.affordance
-                    -if current_user
+                    -if admin?
                       %td 
                         %span.actions<
                           = link_to capability, class: "btn btn-sm btn-show", title: "Show #{capability}" do
@@ -50,7 +50,7 @@
                           = link_to capability, title: "Delete this Capability" , class: "btn btn-sm btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{capability}?"} do
                             %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
-              -if current_user
+              -if admin?
                 .panel-footer= link_to "Add another capability", new_capability_path(setup_id: @setup.id), class: 'btn btn-success'
             .panel.panel-default
               %h2.panel-heading Details
@@ -84,7 +84,7 @@
                             %li= link_to c, content_source_path(c)
 
 
-        -if current_user
+        -if admin?
           %nav.show-nav{role:"navigation"}
             = link_to edit_setup_path(@setup), title: "Edit this Setup", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}

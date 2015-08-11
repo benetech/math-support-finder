@@ -30,7 +30,7 @@
         - parent= link_to @renderer_version.renderer, renderer_path( @renderer_version.renderer)
         = render "version", object: object, parent: parent
 
-        -if current_user
+        -if admin?
           %nav.show-nav{role:"navigation"}
             = link_to renderer_versions_path, class: 'btn btn-info', title: "View the renderer_versions index" do
               %i.fa.fa-fw.fa-list{title: 'List'}
