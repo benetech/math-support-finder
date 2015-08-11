@@ -59,6 +59,10 @@ module ApplicationHelper
     h to_text(content)
   end
 
+  def labeled(object)
+    raw "<span class='label label-#{object.css_class}'>#{object.to_s}</span>"
+  end
+
   def active_controller_check(c_name)
     if controller.controller_name == c_name
       'active '

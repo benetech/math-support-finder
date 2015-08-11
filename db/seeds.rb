@@ -2,8 +2,8 @@ User.create!([
   {id: 1, email: "msm_user@seeread.info", password: "12341234", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, created_at: "2015-07-27 17:11:14", updated_at: "2015-07-27 17:11:14", admin: true, first_name: "Test", last_name: "User"}
 ])
 VerificationStatus.create!([
-  {id: 1, title: "True", created_at: "2015-07-27 15:01:30", updated_at: "2015-07-27 15:01:30"},
-  {id: 2, title: "False", created_at: "2015-07-27 15:01:30", updated_at: "2015-07-27 15:01:30"}
+  {id: 1, title: "Verified", created_at: "2015-07-27 15:01:30", updated_at: "2015-07-27 15:01:30"},
+  {id: 2, title: "Unverified", created_at: "2015-07-27 15:01:30", updated_at: "2015-07-27 15:01:30"}
 ])
 WorkflowStatus.create!([
   {id: 1, title: "Untested", created_at: "2015-07-27 14:54:33", updated_at: "2015-07-27 14:54:33"},

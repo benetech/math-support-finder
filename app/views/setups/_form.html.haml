@@ -6,10 +6,11 @@
     = f.association :browser_reader_version 
     = f.association :assistive_technology_version 
     = f.association :file_format 
+    %hr
     = f.association :workflow_status 
     = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
+    %hr
     = f.association :content_sources, as: :check_boxes
-
 
   .form-actions
     .form-actions-inner

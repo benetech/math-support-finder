@@ -50,5 +50,5 @@
           = link_to edit_capability_path(@capability), title: "Edit this Capability", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
-          = link_to new_capability_path(@capability), class: 'btn btn-success' do
-            Add another Capability
+          = link_to new_capability_path(setup_id: @capability.setup.id), class: 'btn btn-success' do
+            Add another Capability for this setup

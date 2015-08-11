@@ -27,9 +27,9 @@
           %thead
             %tr
               %th{scope: "col"}<
-                Affordance
-              %th{scope: "col"}<
                 Setup
+              %th{scope: "col"}<
+                Affordance
               %th{scope: "col"}<
                 Verification status
               %th{scope: "col"}<
@@ -38,8 +38,8 @@
           %tbody
             - @capabilities.each_with_index do |capability, idx|
               %tr{class: "item"}
+                %td= link_to capability.setup, setup_path(capability.setup)
                 %td= capability.affordance
-                %td= capability.setup
                 %td= capability.verification_status
                 %td.text-right<
                   = link_to capability, class: "btn btn-show", title: "Show #{capability}" do

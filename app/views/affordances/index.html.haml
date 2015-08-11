@@ -27,17 +27,17 @@
           %thead
             %tr
               %th{scope: "col"}<
-                Feature
-              %th{scope: "col"}<
                 Output
+              %th{scope: "col"}<
+                Feature
               %th{scope: "col"}<
                 Actions
 
           %tbody
             - @affordances.each_with_index do |affordance, idx|
               %tr{class: "item"}
-                %td= affordance.feature
                 %td= affordance.output
+                %td= affordance.feature
                 %td.text-right<
                   = link_to affordance, class: "btn btn-show", title: "Show #{affordance}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}

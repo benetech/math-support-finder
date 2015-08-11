@@ -2,9 +2,8 @@
   = f.error_notification
   .form-inputs
     = f.association :affordance 
-    = f.association :setup 
+    = f.association :setup , selected: params[:setup_id]
     = f.association :verification_status 
-
 
   .form-actions
     .form-actions-inner
