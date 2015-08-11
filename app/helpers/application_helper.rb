@@ -44,6 +44,9 @@ module ApplicationHelper
   end
 
   def to_html(content)
+    if content.nil?
+      return ""
+    end
     set_markdown
     @markdown.render(content)
   end
