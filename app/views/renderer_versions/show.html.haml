@@ -23,34 +23,20 @@
     .entity
       .entity-inner
         %header
-          %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Attributes for Renderer Version
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Renderer
-              %td<
-                = link_to @renderer_version.renderer, renderer_path( @renderer_version.renderer)
+          %h1#page-title{tabindex: -1}
+            =title
+            
+        - object = @renderer_version
+        - parent= link_to @renderer_version.renderer, renderer_path( @renderer_version.renderer)
+        = render "version", object: object, parent: parent
 
-            %tr
-              %th{scope: "row"}<
-                Version
-              %td<
-                = @renderer_version.version
-
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = raw to_html(@renderer_version.notes)
-
-        %nav.show-nav{role:"navigation"}
-          = link_to renderer_versions_path, class: 'btn btn-info', title: "View the renderer_versions index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            Renderer Versions
-          = link_to edit_renderer_version_path(@renderer_version), title: "Edit this Renderer Version", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
-          = link_to new_renderer_version_path(@renderer_version), class: 'btn btn-success' do
-            Add another Renderer Version
+        -if current_user
+          %nav.show-nav{role:"navigation"}
+            = link_to renderer_versions_path, class: 'btn btn-info', title: "View the renderer_versions index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              Renderer Versions
+            = link_to edit_renderer_version_path(@renderer_version), title: "Edit this Renderer Version", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_renderer_version_path(@renderer_version), class: 'btn btn-success' do
+              Add another Renderer Version

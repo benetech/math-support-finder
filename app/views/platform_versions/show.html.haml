@@ -24,33 +24,17 @@
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Attributes for Platform Version
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Platform
-              %td<
-                = link_to @platform_version.platform, platform_path(@platform_version.platform)
+        - object = @platform_version
+        - parent= link_to @platform_version.platform, platform_path( @platform_version.platform)
+        = render "version", object: object, parent: parent
 
-            %tr
-              %th{scope: "row"}<
-                Version
-              %td<
-                = @platform_version.version
-
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = raw to_html(@platform_version.notes)
-
-        %nav.show-nav{role:"navigation"}
-          = link_to platform_versions_path, class: 'btn btn-info', title: "View the platform_versions index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            Platform Versions
-          = link_to edit_platform_version_path(@platform_version), title: "Edit this Platform Version", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
-          = link_to new_platform_version_path(@platform_version), class: 'btn btn-success' do
-            Add another Platform Version
+        -if current_user
+          %nav.show-nav{role:"navigation"}
+            = link_to platform_versions_path, class: 'btn btn-info', title: "View the platform_versions index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              Platform Versions
+            = link_to edit_platform_version_path(@platform_version), title: "Edit this Platform Version", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_platform_version_path(@platform_version), class: 'btn btn-success' do
+              Add another Platform Version

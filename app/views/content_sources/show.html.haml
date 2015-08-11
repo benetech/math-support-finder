@@ -24,31 +24,25 @@
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Attributes for Content Source
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Title
-              %td<
-                = @content_source.title
+        .row
+          .col-md-8
+            = raw to_html(@content_source.notes)
+          .col-md-4
+            .panel.panel-default
+              %h2.panel-heading
+                Setups
+              %ul.list-group
+                -@content_source.setups.each do |s|
+                  %li.list-group-item
+                    = link_to s, setup_path(s)
 
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = raw to_html(@content_source.notes)
-            -object = @content_source
-            -multi = ["setups"]
-            = render "multi", multi: multi, object: object
-
-
-        %nav.show-nav{role:"navigation"}
-          = link_to content_sources_path, class: 'btn btn-info', title: "View the content_sources index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            Content Sources
-          = link_to edit_content_source_path(@content_source), title: "Edit this Content Source", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
-          = link_to new_content_source_path(@content_source), class: 'btn btn-success' do
-            Add another Content Source
+        -if admin?
+          %nav.show-nav{role:"navigation"}
+            = link_to content_sources_path, class: 'btn btn-info', title: "View the content_sources index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              Content Sources
+            = link_to edit_content_source_path(@content_source), title: "Edit this Content Source", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_content_source_path(@content_source), class: 'btn btn-success' do
+              Add another Content Source

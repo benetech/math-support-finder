@@ -24,35 +24,19 @@
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Attributes for Platform
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Title
-              %td<
-                = @platform.title
-
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = raw to_html(@platform.notes)
-
-
-            -object = @platform
-            -multi = ["assistive_technologies", "browser_readers" ]
-            = render "multi", multi: multi, object: object
 
         -object = @platform
+        -multi = ["assistive_technologies", "browser_readers" ]
+        = render "entity", multi: multi, object: object
         = render "versions", object: object
 
-        %nav.show-nav{role:"navigation"}
-          = link_to platforms_path, class: 'btn btn-info', title: "View the platforms index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            Platforms
-          = link_to edit_platform_path(@platform), title: "Edit this Platform", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
-          = link_to new_platform_path(@platform), class: 'btn btn-success' do
-            Add another Platform
+        -if current_user
+          %nav.show-nav{role:"navigation"}
+            = link_to platforms_path, class: 'btn btn-info', title: "View the platforms index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              Platforms
+            = link_to edit_platform_path(@platform), title: "Edit this Platform", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_platform_path(@platform), class: 'btn btn-success' do
+              Add another Platform

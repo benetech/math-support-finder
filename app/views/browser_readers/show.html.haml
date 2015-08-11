@@ -24,34 +24,20 @@
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Attributes for Browser Reader
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Title
-              %td<
-                = @browser_reader.title
-
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = raw to_html(@browser_reader.notes)
-
-            -object = @browser_reader
-            -multi = ["assistive_technologies", "file_formats", "platforms", "renderers"]
-            = render "multi", multi: multi, object: object
 
         -object = @browser_reader
+        -multi = ["assistive_technologies", "file_formats", "platforms", "renderers"]
+
+        = render "entity", object: object, multi: multi
         = render "versions", object: object
 
-        %nav.show-nav{role:"navigation"}
-          = link_to browser_readers_path, class: 'btn btn-info', title: "View the browser_readers index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            Browser Readers
-          = link_to edit_browser_reader_path(@browser_reader), title: "Edit this Browser Reader", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
-          = link_to new_browser_reader_path(@browser_reader), class: 'btn btn-success' do
-            Add another Browser Reader
+        -if current_user
+          %nav.show-nav{role:"navigation"}
+            = link_to browser_readers_path, class: 'btn btn-info', title: "View the browser_readers index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              Browser Readers
+            = link_to edit_browser_reader_path(@browser_reader), title: "Edit this Browser Reader", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_browser_reader_path(@browser_reader), class: 'btn btn-success' do
+              Add another Browser Reader

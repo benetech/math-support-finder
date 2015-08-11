@@ -24,33 +24,16 @@
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Attributes for Assistive Technology Version
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Assistive technology
-              %td<
-                =link_to @assistive_technology_version.assistive_technology, assitive_technology_path(@assistive_technology_version.assistive_technology)
-
-            %tr
-              %th{scope: "row"}<
-                Version
-              %td<
-                = @assistive_technology_version.version
-
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = raw to_html(@assistive_technology_version.notes)
-
-        %nav.show-nav{role:"navigation"}
-          = link_to assistive_technology_versions_path, class: 'btn btn-info', title: "View the assistive_technology_versions index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            Assistive Technology Versions
-          = link_to edit_assistive_technology_version_path(@assistive_technology_version), title: "Edit this Assistive Technology Version", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
-          = link_to new_assistive_technology_version_path(@assistive_technology_version), class: 'btn btn-success' do
-            Add another Assistive Technology Version
+        - object = @assistive_technology_version
+        - parent = link_to @assistive_technology_version.assistive_technology, assistive_technology_path( @assistive_technology_version.assistive_technology)
+        = render "version", object: object, parent: parent
+        -if admin?
+          %nav.show-nav{role:"navigation"}
+            = link_to assistive_technology_versions_path, class: 'btn btn-info', title: "View the assistive_technology_versions index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              Assistive Technology Versions
+            = link_to edit_assistive_technology_version_path(@assistive_technology_version), title: "Edit this Assistive Technology Version", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_assistive_technology_version_path(@assistive_technology_version), class: 'btn btn-success' do
+              Add another Assistive Technology Version

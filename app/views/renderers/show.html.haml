@@ -24,25 +24,9 @@
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Attributes for Renderer
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Title
-              %td<
-                = @renderer.title
-
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = raw to_html(@renderer.notes)
-            -object = @renderer
-            -multi = ["browser_readers"]
-            = render "multi", multi: multi, object: object
-
         -object = @renderer
+        -multi = ["browser_readers"]
+        = render "entity", multi: multi, object: object
         = render "versions", object: object
 
         %nav.show-nav{role:"navigation"}

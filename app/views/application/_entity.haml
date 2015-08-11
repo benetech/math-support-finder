@@ -1,0 +1,9 @@
+.row
+  .col-md-8
+    = to_html object.notes
+  .col-md-4
+    .panel.panel-default
+      %h2.panel-heading Associations
+      %table.table
+        %tbody
+          = render "multi", multi: multi, object: object

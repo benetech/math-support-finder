@@ -27,7 +27,7 @@
 
         .row
           .col-md-8
-            = raw to_html(@setup.notes)
+            = to_html(@setup.notes)
           .col-md-4
             .panel.panel-default
               %h2.panel-heading Capabilities
@@ -62,26 +62,26 @@
                     %td=labeled @setup.workflow_status
                   %tr
                     %th{scope: "row"} Platform 
-                    %td= @setup.platform_version
+                    %td= link_to @setup.platform_version, platform_version_path(@setup.platform_version)
                   %tr
                     %th{scope: "row"} Renderer
-                    %td= @setup.renderer_version
+                    %td= link_to @setup.renderer_version, renderer_version_path(@setup.renderer_version)
                   %tr
                     %th{scope: "row"} Browser reader 
-                    %td= @setup.browser_reader_version
+                    %td= link_to @setup.browser_reader_version, browser_reader_version_path(@setup.browser_reader_version)
                   %tr
                     %th{scope: "row"} Assistive technology 
-                    %td= @setup.assistive_technology_version
+                    %td= link_to @setup.assistive_technology_version, assistive_technology_version_path(@setup.assistive_technology_version)
                   %tr
                     %th{scope: "row"} File format
-                    %td= @setup.file_format
+                    %td= link_to @setup.file_format, file_format_path(@setup.file_format)
                   -if @setup.content_sources.length > 0
                     %tr 
                       %th{scope: "row"} Content sources
                       %td
                         %ul.list-unstyled
                           - @setup.content_sources.each do |c|
-                            %li=c
+                            %li= link_to c, content_source_path(c)
 
 
         -if current_user
