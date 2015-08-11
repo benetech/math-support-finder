@@ -28,6 +28,6 @@ class Capability < ActiveRecord::Base
   validates_uniqueness_of :setup_id, :scope => [:affordance_id]
 
   def to_s
-    [setup.to_s, affordance.to_s].join(" - ")
+    [setup.to_s, affordance.to_s].join(" – ")
   end
 end

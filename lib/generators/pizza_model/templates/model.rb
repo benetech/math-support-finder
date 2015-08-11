@@ -18,5 +18,10 @@ class <%= class_name %> < <%= parent_class_name.classify %>
 <% if attributes.any?(&:password_digest?) -%>
   has_secure_password
 <% end -%>
+<% if attributes.any? {|attribute| attribute.name == 'title'} -%>
+  def to_s
+    title
+  end
+<% end -%>
 end
 <% end -%>

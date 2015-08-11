@@ -27,13 +27,9 @@ class BrowserReader < ActiveRecord::Base
   has_many :setups, through: :browser_reader_versions
 
   validates_presence_of :title
-  #validates_associated :browser_reader_assistive_technologies
 
   def to_s
     title
   end
 
-  def versions
-    browser_reader_versions
-  end
 end

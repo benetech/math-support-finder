@@ -46,5 +46,5 @@
           = link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), title: "Edit this <%= singular_table_name.titleize %>", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
-          = link_to new_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-success' do
+          = link_to new_<%= singular_table_name %>_path, class: 'btn btn-success' do
             Add another <%= singular_table_name.titleize %>

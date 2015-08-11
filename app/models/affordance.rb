@@ -26,6 +26,6 @@ class Affordance < ActiveRecord::Base
   validates :feature_id, uniqueness: {scope: :output_id}
 
   def to_s
-    [output.to_s, feature.to_s].join(" - ")
+    [output.to_s, feature.to_s].join(" – ")
   end
 end
