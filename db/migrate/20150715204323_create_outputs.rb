@@ -1,6 +1,6 @@
-class CreateTechnologies < ActiveRecord::Migration
+class CreateOutputs < ActiveRecord::Migration
   def change
-    create_table :technologies do |t|
+    create_table :outputs do |t|
       t.string :title
       t.text :notes
 

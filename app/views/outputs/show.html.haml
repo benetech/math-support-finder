@@ -1,0 +1,55 @@
+-title = "Showing  #{@output}"
+-meta title: title
+
+-#- source = output_url(@output)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @output] do
+
+-cache ['v1', admin?,  @output] do
+  .entity-outer
+    .entity
+      .entity-inner
+        %header
+          %h1#page-title{tabindex: -1}=title
+        %table.entity-table
+          %caption.sr-only Attributes for Output
+          %tbody
+            %tr
+              %th{scope: "row"}<
+                Title
+              %td<
+                = @output.title
+
+            %tr
+              %th{scope: "row"}<
+                Notes
+              %td<
+                = raw to_html(@output.notes)
+
+            -object = @output
+            -multi = ["features"]
+            = render "multi", multi: multi, object: object
+
+
+        %nav.show-nav{role:"navigation"}
+          = link_to outputs_path, class: 'btn btn-info', title: "View the outputs index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Outputs
+          = link_to edit_output_path(@output), title: "Edit this Output", class: 'btn btn-primary' do
+            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+            Edit
+          = link_to new_output_path(@output), class: 'btn btn-success' do
+            Add another Output

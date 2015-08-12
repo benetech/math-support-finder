@@ -12,9 +12,6 @@ $baseline: 1.3
 //styled type
 =titles
 =alt-titles
-=subtitles
-  text-transform: uppercase
-  letter-spacing: 1px
 =alt-subtitles
 =texts
 =large-texts
@@ -31,8 +28,8 @@ h2
   +min-screen($phone-wide + 1)
     font-size: ms(1.5)
     line-height: ms(2) * $baseline
-    margin-top: ms(1)
-    margin-bottom: ms(1)
+    margin-top: 0
+    margin-bottom: 0
 h3
   +max-screen($phone-wide)
   +min-screen($phone-wide + 1)
@@ -41,13 +38,12 @@ h3
     margin-top: ms(1)
     margin-bottom: ms(1)
 h4
-  +subtitles
   +max-screen($phone-wide)
   +min-screen($phone-wide + 1)
     font-size: ms(0)
     line-height: ms(1) * $baseline
-    margin-top: ms(1)
-    margin-bottom: ms(1)
+    margin-top: 0
+    margin-bottom: 0
 p, ul, ol, pre, table, blockquote , h5, h6
   +texts
   +max-screen($phone-wide)

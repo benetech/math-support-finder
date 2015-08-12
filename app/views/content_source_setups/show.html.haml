@@ -1,5 +1,23 @@
 -title = "Showing  #{@content_source_setup}"
 -meta title: title
+
+-#- source = content_source_setup_url(@content_source_setup)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @content_source_setup] do
+
 -cache ['v1', admin?,  @content_source_setup] do
   .entity-outer
     .entity
@@ -7,22 +25,26 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this content_source_setup
+          %caption.sr-only Attributes for Content Source Setup
           %tbody
             %tr
               %th{scope: "row"}<
                 Setup
               %td<
                 = @content_source_setup.setup
+
             %tr
               %th{scope: "row"}<
                 Content source
               %td<
                 = @content_source_setup.content_source
+
         %nav.show-nav{role:"navigation"}
           = link_to content_source_setups_path, class: 'btn btn-info', title: "View the content_source_setups index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Content Source Setups
-          = link_to edit_content_source_setup_path(@content_source_setup), title: "Edit this content_source_setup", class: 'btn btn-primary' do
+          = link_to edit_content_source_setup_path(@content_source_setup), title: "Edit this Content Source Setup", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_content_source_setup_path(@content_source_setup), class: 'btn btn-success' do
+            Add another Content Source Setup

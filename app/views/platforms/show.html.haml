@@ -1,28 +1,42 @@
 -title = "Showing  #{@platform}"
 -meta title: title
+
+-#- source = platform_url(@platform)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @platform] do
+
 -cache ['v1', admin?,  @platform] do
   .entity-outer
     .entity
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Key value pairs for this platform
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Title
-              %td<
-                = @platform.title
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = @platform.notes
-        %nav.show-nav{role:"navigation"}
-          = link_to platforms_path, class: 'btn btn-info', title: "View the platforms index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            Platforms
-          = link_to edit_platform_path(@platform), title: "Edit this platform", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
+
+        -object = @platform
+        -multi = ["assistive_technologies", "browser_readers" ]
+        = render "entity", multi: multi, object: object
+        = render "versions", object: object
+
+        -if admin?
+          %nav.show-nav{role:"navigation"}
+            = link_to platforms_path, class: 'btn btn-info', title: "View the platforms index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              Platforms
+            = link_to edit_platform_path(@platform), title: "Edit this Platform", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_platform_path(@platform), class: 'btn btn-success' do
+              Add another Platform

@@ -9,6 +9,7 @@
 #  assistive_technology_version_id :integer
 #  file_format_id                  :integer
 #  workflow_status_id              :integer
+#  notes                           :text
 #  created_at                      :datetime
 #  updated_at                      :datetime
 #

@@ -1,5 +1,23 @@
 -title = "Showing  #{@affordance}"
 -meta title: title
+
+-#- source = affordance_url(@affordance)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @affordance] do
+
 -cache ['v1', admin?,  @affordance] do
   .entity-outer
     .entity
@@ -7,22 +25,26 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this affordance
+          %caption.sr-only Attributes for Affordance
           %tbody
             %tr
               %th{scope: "row"}<
                 Feature
               %td<
-                = @affordance.feature
+                = link_to @affordance.feature, feature_path(@affordance.feature)
+
             %tr
               %th{scope: "row"}<
-                Technology
+                Output
               %td<
-                = @affordance.technology
+                = link_to @affordance.output, output_path(@affordance.output)
+
         %nav.show-nav{role:"navigation"}
           = link_to affordances_path, class: 'btn btn-info', title: "View the affordances index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Affordances
-          = link_to edit_affordance_path(@affordance), title: "Edit this affordance", class: 'btn btn-primary' do
+          = link_to edit_affordance_path(@affordance), title: "Edit this Affordance", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_affordance_path(@affordance), class: 'btn btn-success' do
+            Add another Affordance

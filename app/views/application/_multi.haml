@@ -1,0 +1,12 @@
+-object ||= nil
+-multi ||= []
+
+-multi.each do |m|
+  - entities = object.send(m)
+  - if entities.length > 0
+    %tr
+      %th{scope: "row"}=m.titleize
+      %td<
+        %ul.list-inline
+          - entities.each do |entity|
+            %li=link_to entity, send("#{m.singularize}_path", entity)

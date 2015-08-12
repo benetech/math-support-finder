@@ -1,9 +1,9 @@
 User.create!([
-  {id: 1, email: "msm_user@seeread.info", password: "12341234", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, created_at: "2015-07-27 17:11:14", updated_at: "2015-07-27 17:11:14", admin: false, first_name: "Test", last_name: "User"}
+  {id: 1, email: "msm_user@seeread.info", password: "12341234", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, created_at: "2015-07-27 17:11:14", updated_at: "2015-07-27 17:11:14", admin: true, first_name: "Test", last_name: "User"}
 ])
 VerificationStatus.create!([
-  {id: 1, title: "True", created_at: "2015-07-27 15:01:30", updated_at: "2015-07-27 15:01:30"},
-  {id: 2, title: "False", created_at: "2015-07-27 15:01:30", updated_at: "2015-07-27 15:01:30"}
+  {id: 1, title: "Verified", created_at: "2015-07-27 15:01:30", updated_at: "2015-07-27 15:01:30"},
+  {id: 2, title: "Unverified", created_at: "2015-07-27 15:01:30", updated_at: "2015-07-27 15:01:30"}
 ])
 WorkflowStatus.create!([
   {id: 1, title: "Untested", created_at: "2015-07-27 14:54:33", updated_at: "2015-07-27 14:54:33"},
@@ -12,7 +12,7 @@ WorkflowStatus.create!([
   {id: 4, title: "Invalid", created_at: "2015-07-27 14:54:33", updated_at: "2015-07-27 14:54:33"},
   {id: 5, title: "Desired", created_at: "2015-07-27 14:54:33", updated_at: "2015-07-27 14:54:33"}
 ])
-Technology.create!([
+Output.create!([
   {id: 1, title: "Braile", notes: "", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"},
   {id: 2, title: "Speech", notes: "", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"},
   {id: 3, title: "Visual", notes: "", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"}
@@ -115,7 +115,7 @@ Setup.create!([
   {id: 1, platform_version_id: 1, renderer_version_id: 1, browser_reader_version_id: 1, assistive_technology_version_id: 1, file_format_id: 1, workflow_status_id: 1, created_at: "2015-07-27 17:32:00", updated_at: "2015-07-27 17:32:00"}
 ])
 Affordance.create!([
-  {id: 1, technology_id: 1, feature_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}
+  {id: 1, output_id: 1, feature_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}
 ])
 Capability.create!([
   {id: 1, affordance_id: 1, setup_id: 1, verification_status_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}

@@ -1,5 +1,21 @@
 -title = 'Listing Workflow Statuses'
 -meta title: title
+-#- source = workflow_statuses_url
+-#- caption = ""
+-#- caption_twitter = ""
+-#-description = ""
+-#-thumb = ""
+-#-keywords = %w{' '}
+-#-meta title: title
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#img_size =  browser.mobile? ? :index : :grande
+-#cache ['v1', admin?,  img_size, @workflow_statuses] do
 - cache ['v1', admin?,  @workflow_statuses] do
   .index-outer
     .index
@@ -7,7 +23,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for workflow_statuses
+          %caption.sr-only Index table for Workflow Statuses
           %thead
             %tr
               %th{scope: "col"}<
@@ -20,11 +36,11 @@
               %tr{class: "item"}
                 %td= workflow_status.title
                 %td.text-right<
-                  = link_to workflow_status, class: "btn btn-show", title: "Show this workflow_status" do
+                  = link_to workflow_status, class: "btn btn-show", title: "Show #{workflow_status}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
-                  = link_to edit_workflow_status_path(workflow_status), class: "btn btn-edit", title: "Edit this workflow_status"  do
+                  = link_to edit_workflow_status_path(workflow_status), class: "btn btn-edit", title: "Edit #{workflow_status}"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to workflow_status, title: "Delete this workflow_status" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{workflow_status}?"} do
+                  = link_to workflow_status, title: "Delete this Workflow Status" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{workflow_status}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

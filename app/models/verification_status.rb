@@ -15,4 +15,13 @@ class VerificationStatus < ActiveRecord::Base
     title
   end
 
+  def css_class
+    case id
+    when 1
+      "success"
+    when 2
+      "danger"
+    end
+  end
+
 end

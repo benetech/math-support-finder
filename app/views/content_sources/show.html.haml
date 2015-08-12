@@ -1,28 +1,48 @@
 -title = "Showing  #{@content_source}"
 -meta title: title
+
+-#- source = content_source_url(@content_source)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @content_source] do
+
 -cache ['v1', admin?,  @content_source] do
   .entity-outer
     .entity
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Key value pairs for this content_source
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Title
-              %td<
-                = @content_source.title
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = @content_source.notes
-        %nav.show-nav{role:"navigation"}
-          = link_to content_sources_path, class: 'btn btn-info', title: "View the content_sources index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            Content Sources
-          = link_to edit_content_source_path(@content_source), title: "Edit this content_source", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
+        .row
+          .col-md-8
+            = raw to_html(@content_source.notes)
+          .col-md-4
+            .panel.panel-default
+              %h2.panel-heading
+                Setups
+              %ul.list-group
+                -@content_source.setups.each do |s|
+                  %li.list-group-item
+                    = link_to s, setup_path(s)
+
+        -if admin?
+          %nav.show-nav{role:"navigation"}
+            = link_to content_sources_path, class: 'btn btn-info', title: "View the content_sources index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              Content Sources
+            = link_to edit_content_source_path(@content_source), title: "Edit this Content Source", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_content_source_path(@content_source), class: 'btn btn-success' do
+              Add another Content Source

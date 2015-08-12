@@ -48,6 +48,6 @@ class RenderersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def renderer_params
-      params.require(:renderer).permit(:title, :notes)
+      params.require(:renderer).permit(:title, :notes, browser_reader_ids: [])
     end
 end

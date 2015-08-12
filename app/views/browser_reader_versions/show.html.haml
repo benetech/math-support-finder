@@ -1,33 +1,41 @@
 -title = "Showing  #{@browser_reader_version}"
 -meta title: title
+
+-#- source = browser_reader_version_url(@browser_reader_version)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @browser_reader_version] do
+
 -cache ['v1', admin?,  @browser_reader_version] do
   .entity-outer
     .entity
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Key value pairs for this browser_reader_version
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Browser reader
-              %td<
-                = @browser_reader_version.browser_reader
-            %tr
-              %th{scope: "row"}<
-                Version
-              %td<
-                = @browser_reader_version.version
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = @browser_reader_version.notes
-        %nav.show-nav{role:"navigation"}
-          = link_to browser_reader_versions_path, class: 'btn btn-info', title: "View the browser_reader_versions index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            Browser Reader Versions
-          = link_to edit_browser_reader_version_path(@browser_reader_version), title: "Edit this browser_reader_version", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
+
+        - object = @browser_reader_version
+        - parent= link_to @browser_reader_version.browser_reader, browser_reader_path( @browser_reader_version.browser_reader)
+        = render "version", object: object, parent: parent
+
+        -if admin?
+          %nav.show-nav{role:"navigation"}
+            = link_to browser_reader_versions_path, class: 'btn btn-info', title: "View the browser_reader_versions index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              Browser Reader Versions
+            = link_to edit_browser_reader_version_path(@browser_reader_version), title: "Edit this Browser Reader Version", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_browser_reader_version_path(@browser_reader_version), class: 'btn btn-success' do
+              Add another Browser Reader Version

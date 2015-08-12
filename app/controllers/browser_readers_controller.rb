@@ -48,6 +48,10 @@ class BrowserReadersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def browser_reader_params
-      params.require(:browser_reader).permit(:title, :notes, renderer_ids: [], platform_ids: [], assistive_technology_ids: [])
+      params.require(:browser_reader).permit(:title, :notes,
+                                             renderer_ids: [], 
+                                             platform_ids: [], 
+                                             assistive_technology_ids: [], 
+                                             file_format_ids: [])
     end
 end

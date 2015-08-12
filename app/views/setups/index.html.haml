@@ -1,5 +1,21 @@
 -title = 'Listing Setups'
 -meta title: title
+-#- source = setups_url
+-#- caption = ""
+-#- caption_twitter = ""
+-#-description = ""
+-#-thumb = ""
+-#-keywords = %w{' '}
+-#-meta title: title
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#img_size =  browser.mobile? ? :index : :grande
+-#cache ['v1', admin?,  img_size, @setups] do
 - cache ['v1', admin?,  @setups] do
   .index-outer
     .index
@@ -7,39 +23,42 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for setups
+          %caption.sr-only Index table for Setups
           %thead
             %tr
               %th{scope: "col"}<
-                Platform version
+                Workflow status
               %th{scope: "col"}<
-                Renderer version
+                Browser reader 
               %th{scope: "col"}<
-                Browser reader version
-              %th{scope: "col"}<
-                Assistive technology version
+                Assistive technology 
               %th{scope: "col"}<
                 File format
               %th{scope: "col"}<
-                Workflow status
+                Platform 
+              %th{scope: "col"}<
+                Renderer
               %th{scope: "col"}<
                 Actions
 
           %tbody
             - @setups.each_with_index do |setup, idx|
-              %tr{class: "item"}
-                %td= setup.platform_version
-                %td= setup.renderer_version
+              - klass = "item "
+              - klass += setup.workflow_status.css_class
+
+              %tr{class: klass}
+                %td= labeled setup.workflow_status
                 %td= setup.browser_reader_version
                 %td= setup.assistive_technology_version
                 %td= setup.file_format
-                %td= setup.workflow_status
+                %td= setup.platform_version
+                %td= setup.renderer_version
                 %td.text-right<
-                  = link_to setup, class: "btn btn-show", title: "Show this setup" do
+                  = link_to setup, class: "btn btn-show", title: "Show #{setup}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
-                  = link_to edit_setup_path(setup), class: "btn btn-edit", title: "Edit this setup"  do
+                  = link_to edit_setup_path(setup), class: "btn btn-edit", title: "Edit #{setup}"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to setup, title: "Delete this setup" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{setup}?"} do
+                  = link_to setup, title: "Delete this Setup" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{setup}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

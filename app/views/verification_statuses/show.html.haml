@@ -1,5 +1,23 @@
 -title = "Showing  #{@verification_status}"
 -meta title: title
+
+-#- source = verification_status_url(@verification_status)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @verification_status] do
+
 -cache ['v1', admin?,  @verification_status] do
   .entity-outer
     .entity
@@ -7,17 +25,20 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this verification_status
+          %caption.sr-only Attributes for Verification Status
           %tbody
             %tr
               %th{scope: "row"}<
                 Title
               %td<
                 = @verification_status.title
+
         %nav.show-nav{role:"navigation"}
           = link_to verification_statuses_path, class: 'btn btn-info', title: "View the verification_statuses index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Verification Statuses
-          = link_to edit_verification_status_path(@verification_status), title: "Edit this verification_status", class: 'btn btn-primary' do
+          = link_to edit_verification_status_path(@verification_status), title: "Edit this Verification Status", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_verification_status_path(@verification_status), class: 'btn btn-success' do
+            Add another Verification Status

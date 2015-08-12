@@ -1,6 +1,5 @@
 Plate::Application.routes.draw do
-
-  resources :technologies
+  resources :outputs
   resources :browser_reader_assistive_technologies
   resources :platform_assistive_technologies 
   resources :capabilities

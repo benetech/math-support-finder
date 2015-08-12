@@ -1,5 +1,23 @@
 -title = "Showing  #{@platform_browser_reader}"
 -meta title: title
+
+-#- source = platform_browser_reader_url(@platform_browser_reader)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @platform_browser_reader] do
+
 -cache ['v1', admin?,  @platform_browser_reader] do
   .entity-outer
     .entity
@@ -7,22 +25,26 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this platform_browser_reader
+          %caption.sr-only Attributes for Platform Browser Reader
           %tbody
             %tr
               %th{scope: "row"}<
                 Platform
               %td<
                 = @platform_browser_reader.platform
+
             %tr
               %th{scope: "row"}<
                 Browser reader
               %td<
                 = @platform_browser_reader.browser_reader
+
         %nav.show-nav{role:"navigation"}
           = link_to platform_browser_readers_path, class: 'btn btn-info', title: "View the platform_browser_readers index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Platform Browser Readers
-          = link_to edit_platform_browser_reader_path(@platform_browser_reader), title: "Edit this platform_browser_reader", class: 'btn btn-primary' do
+          = link_to edit_platform_browser_reader_path(@platform_browser_reader), title: "Edit this Platform Browser Reader", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_platform_browser_reader_path(@platform_browser_reader), class: 'btn btn-success' do
+            Add another Platform Browser Reader

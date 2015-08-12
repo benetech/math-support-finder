@@ -4,7 +4,7 @@
 #
 #  id                      :integer          not null, primary key
 #  assistive_technology_id :integer
-#  version                 :float
+#  version                 :string
 #  notes                   :text
 #  created_at              :datetime
 #  updated_at              :datetime

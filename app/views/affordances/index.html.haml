@@ -1,5 +1,21 @@
 -title = 'Listing Affordances'
 -meta title: title
+-#- source = affordances_url
+-#- caption = ""
+-#- caption_twitter = ""
+-#-description = ""
+-#-thumb = ""
+-#-keywords = %w{' '}
+-#-meta title: title
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#img_size =  browser.mobile? ? :index : :grande
+-#cache ['v1', admin?,  img_size, @affordances] do
 - cache ['v1', admin?,  @affordances] do
   .index-outer
     .index
@@ -7,27 +23,27 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for affordances
+          %caption.sr-only Index table for Affordances
           %thead
             %tr
               %th{scope: "col"}<
-                Feature
+                Output
               %th{scope: "col"}<
-                Technology
+                Feature
               %th{scope: "col"}<
                 Actions
 
           %tbody
             - @affordances.each_with_index do |affordance, idx|
               %tr{class: "item"}
+                %td= affordance.output
                 %td= affordance.feature
-                %td= affordance.technology
                 %td.text-right<
-                  = link_to affordance, class: "btn btn-show", title: "Show this affordance" do
+                  = link_to affordance, class: "btn btn-show", title: "Show #{affordance}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
-                  = link_to edit_affordance_path(affordance), class: "btn btn-edit", title: "Edit this affordance"  do
+                  = link_to edit_affordance_path(affordance), class: "btn btn-edit", title: "Edit #{affordance}"  do
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to affordance, title: "Delete this affordance" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{affordance}?"} do
+                  = link_to affordance, title: "Delete this Affordance" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{affordance}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         %nav.index-nav{role:"navigation"}

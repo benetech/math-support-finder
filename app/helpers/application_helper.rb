@@ -44,12 +44,11 @@ module ApplicationHelper
   end
 
   def to_html(content)
+    if content.nil?
+      return ""
+    end
     set_markdown
-    @markdown.render(content)
-  end
-    def to_html(content)
-    set_markdown
-    @markdown.render(content)
+    raw @markdown.render(content)
   end
 
   def to_text(content)
@@ -58,6 +57,10 @@ module ApplicationHelper
 
   def to_html_attr(content)
     h to_text(content)
+  end
+
+  def labeled(object)
+    raw "<span class='label label-#{object.css_class}'>#{object.to_s}</span>"
   end
 
   def active_controller_check(c_name)

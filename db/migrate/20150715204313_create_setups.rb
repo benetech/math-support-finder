@@ -7,6 +7,7 @@ class CreateSetups < ActiveRecord::Migration
       t.references :assistive_technology_version, index: true, foreign_key: true
       t.references :file_format, index: true, foreign_key: true
       t.references :workflow_status, index: true, foreign_key: true
+      t.text :notes
 
       t.timestamps
     end

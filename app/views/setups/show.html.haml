@@ -1,48 +1,101 @@
 -title = "Showing  #{@setup}"
 -meta title: title
+
+-#- source = setup_url(@setup)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @setup] do
+
 -cache ['v1', admin?,  @setup] do
   .entity-outer
     .entity
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Key value pairs for this setup
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Platform version
-              %td<
-                = @setup.platform_version
-            %tr
-              %th{scope: "row"}<
-                Renderer version
-              %td<
-                = @setup.renderer_version
-            %tr
-              %th{scope: "row"}<
-                Browser reader version
-              %td<
-                = @setup.browser_reader_version
-            %tr
-              %th{scope: "row"}<
-                Assistive technology version
-              %td<
-                = @setup.assistive_technology_version
-            %tr
-              %th{scope: "row"}<
-                File format
-              %td<
-                = @setup.file_format
-            %tr
-              %th{scope: "row"}<
-                Workflow status
-              %td<
-                = @setup.workflow_status
-        %nav.show-nav{role:"navigation"}
-          = link_to setups_path, class: 'btn btn-info', title: "View the setups index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            Setups
-          = link_to edit_setup_path(@setup), title: "Edit this setup", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
+
+        .row
+          .col-md-8
+            = to_html(@setup.notes)
+          .col-md-4
+            .panel.panel-default
+              %h2.panel-heading Capabilities
+              %table.table
+                - @setup.capabilities.each do |capability|
+                  - klass = "item "
+                  -if admin?
+                    - klass += capability.verification_status.css_class
+                  %tr{class: klass}
+                    -if admin?
+                      %td= labeled capability.verification_status
+                    %td= capability.affordance
+                    -if admin?
+                      %td 
+                        %span.actions<
+                          = link_to capability, class: "btn btn-sm btn-show", title: "Show #{capability}" do
+                            %i.fa.fa-fw.fa-eye{title: "Eye"}
+                          = link_to edit_capability_path(capability), class: "btn btn-sm btn-edit", title: "Edit #{capability}"  do
+                            %i.fa.fa-fw.fa-pencil{title: "Pencil"}
+                          = link_to capability, title: "Delete this Capability" , class: "btn btn-sm btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{capability}?"} do
+                            %i.fa.fa-fw.fa-trash{title: "Trash can"}
+
+              -if admin?
+                .panel-footer= link_to "Add another capability", new_capability_path(setup_id: @setup.id), class: 'btn btn-success'
+            .panel.panel-default
+              %h2.panel-heading Details
+              %table.table
+                %caption.sr-only Attributes for Setup
+                %tbody
+                  %tr
+                    %th{scope: "row"} Workflow status
+                    %td=labeled @setup.workflow_status
+                  %tr
+                    %th{scope: "row"} Platform 
+                    %td= link_to @setup.platform_version, platform_version_path(@setup.platform_version)
+                  %tr
+                    %th{scope: "row"} Renderer
+                    %td= link_to @setup.renderer_version, renderer_version_path(@setup.renderer_version)
+                  %tr
+                    %th{scope: "row"} Browser reader 
+                    %td= link_to @setup.browser_reader_version, browser_reader_version_path(@setup.browser_reader_version)
+                  %tr
+                    %th{scope: "row"} Assistive technology 
+                    %td= link_to @setup.assistive_technology_version, assistive_technology_version_path(@setup.assistive_technology_version)
+                  %tr
+                    %th{scope: "row"} File format
+                    %td= link_to @setup.file_format, file_format_path(@setup.file_format)
+                  -if @setup.content_sources.length > 0
+                    %tr 
+                      %th{scope: "row"} Content sources
+                      %td
+                        %ul.list-unstyled
+                          - @setup.content_sources.each do |c|
+                            %li= link_to c, content_source_path(c)
+
+
+        -if admin?
+          %nav.show-nav{role:"navigation"}
+            = link_to edit_setup_path(@setup), title: "Edit this Setup", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to setups_path, class: 'btn btn-info', title: "View the setups index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              Setups
+            = link_to new_setup_path(@setup), class: 'btn btn-success' do
+              Add another Setup
+
+        -#%h3 Content Sources
+        -#%ul
+        -#- @setup.content_sources.each do |c|
+          -#%li= link_to c, content_source_path(c)

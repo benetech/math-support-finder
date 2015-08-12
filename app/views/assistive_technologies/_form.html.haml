@@ -2,8 +2,9 @@
   = f.error_notification
   .form-inputs
     = f.input :title
-    = f.input :notes
-
+    = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
+    = f.association :browser_readers, as: :check_boxes
+    = f.association :platforms, as: :check_boxes
 
   .form-actions
     .form-actions-inner

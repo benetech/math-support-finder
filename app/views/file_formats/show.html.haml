@@ -1,28 +1,40 @@
 -title = "Showing  #{@file_format}"
 -meta title: title
+
+-#- source = file_format_url(@file_format)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @file_format] do
+
 -cache ['v1', admin?,  @file_format] do
   .entity-outer
     .entity
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Key value pairs for this file_format
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Title
-              %td<
-                = @file_format.title
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = @file_format.notes
-        %nav.show-nav{role:"navigation"}
-          = link_to file_formats_path, class: 'btn btn-info', title: "View the file_formats index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            File Formats
-          = link_to edit_file_format_path(@file_format), title: "Edit this file_format", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
+
+        -object = @file_format
+        -multi = ["browser_readers"]
+        = render "entity", multi: multi, object: object
+        -if admin?
+          %nav.show-nav{role:"navigation"}
+            = link_to file_formats_path, class: 'btn btn-info', title: "View the file_formats index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              File Formats
+            = link_to edit_file_format_path(@file_format), title: "Edit this File Format", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_file_format_path(@file_format), class: 'btn btn-success' do
+              Add another File Format

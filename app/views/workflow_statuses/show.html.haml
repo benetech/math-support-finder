@@ -1,5 +1,23 @@
 -title = "Showing  #{@workflow_status}"
 -meta title: title
+
+-#- source = workflow_status_url(@workflow_status)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @workflow_status] do
+
 -cache ['v1', admin?,  @workflow_status] do
   .entity-outer
     .entity
@@ -7,17 +25,20 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Key value pairs for this workflow_status
+          %caption.sr-only Attributes for Workflow Status
           %tbody
             %tr
               %th{scope: "row"}<
                 Title
               %td<
                 = @workflow_status.title
+
         %nav.show-nav{role:"navigation"}
           = link_to workflow_statuses_path, class: 'btn btn-info', title: "View the workflow_statuses index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Workflow Statuses
-          = link_to edit_workflow_status_path(@workflow_status), title: "Edit this workflow_status", class: 'btn btn-primary' do
+          = link_to edit_workflow_status_path(@workflow_status), title: "Edit this Workflow Status", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_workflow_status_path(@workflow_status), class: 'btn btn-success' do
+            Add another Workflow Status

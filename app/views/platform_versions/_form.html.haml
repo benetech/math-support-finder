@@ -1,9 +1,9 @@
 = simple_form_for @platform_version, validate: true, html: {multipart: true, class: 'form-horizontal'}, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input} do |f|
   = f.error_notification
   .form-inputs
-    = f.association :platform
-    = f.input :version
-    = f.input :notes
+    = f.association :platform , selected: params[:platform_id]
+    = f.input :version 
+    = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
 
 
   .form-actions

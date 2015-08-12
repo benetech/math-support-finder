@@ -1,0 +1,15 @@
+.row
+  .col-md-8
+    = raw to_html(object.notes)
+  .col-md-4
+    .panel.panel-default
+      - if object.setups.length > 0
+        %h2.panel-heading
+          Setups
+        %ul.list-group
+          -object.setups.each do |s|
+            %li.list-group-item
+              = link_to s, setup_path(s)
+    %h3
+      Read more about
+      = parent

@@ -1,28 +1,40 @@
 -title = "Showing  #{@renderer}"
 -meta title: title
+
+-#- source = renderer_url(@renderer)
+-#- caption = ""
+-#- caption_twitter = ""
+-#- description = ""
+-#- thumb = ""
+-#- keywords = %w{' '}
+-#- meta title: title,
+  -#keywords: keywords,
+  -#description: description,
+  -#og: { title: :title,
+    -#description: description,
+    -#image: thumb,
+    -#url: request.url,
+  -#}
+-#- img_size =  browser.mobile? ? :index : :grande
+-#-cache ['v1', admin?,  img_size, @renderer] do
+
 -cache ['v1', admin?,  @renderer] do
   .entity-outer
     .entity
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Key value pairs for this renderer
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Title
-              %td<
-                = @renderer.title
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = @renderer.notes
+        -object = @renderer
+        -multi = ["browser_readers"]
+        = render "entity", multi: multi, object: object
+        = render "versions", object: object
+
         %nav.show-nav{role:"navigation"}
           = link_to renderers_path, class: 'btn btn-info', title: "View the renderers index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Renderers
-          = link_to edit_renderer_path(@renderer), title: "Edit this renderer", class: 'btn btn-primary' do
+          = link_to edit_renderer_path(@renderer), title: "Edit this Renderer", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
+          = link_to new_renderer_path(@renderer), class: 'btn btn-success' do
+            Add another Renderer
