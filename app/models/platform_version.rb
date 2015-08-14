@@ -20,7 +20,6 @@ class PlatformVersion < ActiveRecord::Base
 
   validates_associated :platform
   validates_presence_of :platform, :version
-  validates :version, numericality: true
 
   def to_s
     [platform.to_s, version.to_s].join(" ")

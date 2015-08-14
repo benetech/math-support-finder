@@ -20,7 +20,7 @@ class AssistiveTechnologyVersion < ActiveRecord::Base
 
   validates_associated :assistive_technology
   validates_presence_of :assistive_technology, :version
-  validates :version, numericality: true
+  validates :version
 
   def to_s
     [assistive_technology.to_s, version.to_s].join(" ")

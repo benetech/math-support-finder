@@ -20,7 +20,6 @@ class BrowserReaderVersion < ActiveRecord::Base
 
   validates_associated :browser_reader
   validates_presence_of :browser_reader, :version
-  validates :version, numericality: true
 
   def to_s
     [browser_reader.to_s, version.to_s].join(" ")

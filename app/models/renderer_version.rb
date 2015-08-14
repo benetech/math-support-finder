@@ -20,7 +20,6 @@ class RendererVersion < ActiveRecord::Base
 
   validates_associated :renderer
   validates_presence_of :renderer, :version
-  validates :version, numericality: true
 
   def to_s
     [renderer.to_s, version.to_s].join(" ")
