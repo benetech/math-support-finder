@@ -45,6 +45,7 @@ class Setup < ActiveRecord::Base
 
   has_many :capabilities, dependent: :destroy
   has_many :affordances, through: :capabilities
+  has_many :outputs, through: :affordances
 
   validates_presence_of :platform_version, :renderer_version, :browser_reader_version, :assistive_technology_version, :file_format, :workflow_status
   validates_associated :platform_version, :renderer_version, :browser_reader_version, :assistive_technology_version, :file_format, :workflow_status

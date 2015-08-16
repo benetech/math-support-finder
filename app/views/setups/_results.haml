@@ -13,56 +13,45 @@
         %tr
           -if admin?
             %th{scope: "col"}<
-              -#= sort_link @q, :created_at, 'Date'
               = sort_link @q, :id, 'ID'
-          %th{scope: "col"}<
-            = sort_link @q, :browser_reader_name, 'Browser Reader'
-          %th{scope: "col"}<
-            = sort_link @q, :assistive_technology_name, 'Assistive Technology'
-          %th{scope: "col"}<
-            = sort_link @q, :file_format_name, 'File Format'
           %th{scope: "col"}<
             = sort_link @q, :platform_name, 'Platform'
           %th{scope: "col"}<
-            = sort_link @q, :renderer_name, 'Renderer'
-          -if admin?
-            %th{scope: "col"}<
-              = sort_link @q, :status_name, 'Status'
+            = sort_link @q, :assistive_technology_name, 'Assistive Technology'
           %th{scope: "col"}<
-            = sort_link @q, :affordances_count, 'Affordances' #TODO improve perf
-          -if admin?
-            %th{scope: "col"}<
-              = sort_link @q, :content_sources_count, 'Content Sources'#TODO improve perf
+            = sort_link @q, :browser_reader_name, 'Reader'
+          %th{scope: "col"}<
+            = sort_link @q, :file_format_name, 'File Format'
+          %th{scope: "col"}<
+            = sort_link @q, :renderer_name, 'Renderer'
+          %th{scope: "col"}<
+            = sort_link @q, :outputs_count, 'Outputs' #TODO improve perf
+          %th{scope: "col"}<
+            = sort_link @q, :status_name, 'Status'
           %th{scope: "col"}<
             Action
         %tr
           -if admin?
             %th<
           %th<
-            = f.input  :browser_reader_version_browser_reader_id_eq, collection: @browser_readers, as: :select, include_blank: "Any browser reader", label: false, required: false
+            = f.input  :platform_version_platform_id_eq, collection: @platforms, as: :select, include_blank: "Any platform", label: false, required: false
           %th<
             = f.input  :assistive_technology_version_assistive_technology_id_eq, collection: @assistive_technologies, as: :select, include_blank: "Any assistive technology", label: false, required: false
           %th<
+            = f.input  :browser_reader_version_browser_reader_id_eq, collection: @browser_readers, as: :select, include_blank: "Any reader", label: false, required: false
+          %th<
             = f.input  :file_format_id_eq, collection: @file_formats, as: :select, include_blank: "Any file format", label: false, required: false
           %th<
-            = f.input  :platform_version_platform_id_eq, collection: @platforms, as: :select, include_blank: "Any platform", label: false, required: false
-          %th<
             = f.input  :renderer_version_renderer_id_eq, collection: @renderers, as: :select, include_blank: "Any renderer", label: false, required: false
-          -if admin?
-            %th<
-              = f.input  :workflow_status_id_eq, collection: @workflow_status, as: :select, include_blank: "Any status", label: false, required: false
           %th<
-            = f.input  :affordances_id_eq, collection: @affordances, as: :select, include_blank: "Any affordances", label: false, required: false
-          -if admin?
-            %th<
-              = f.input  :content_sources_id_eq, collection: @content_sources, as: :select, include_blank: "Any content source", label: false, required: false
+            = f.input  :outputs_id_eq, collection: @outputs, as: :select, include_blank: "Any outputs", label: false, required: false
+          %th<
+            = f.input  :workflow_status_id_eq, collection: @workflow_status, as: :select, include_blank: "Any status", label: false, required: false
           %th<
             .btn-group
-              -#= link_to setups_path(search_cancel: true), class: '' do
               = link_to setups_path(search_cancel: true), class: 'btn btn-danger btn-sm' do
                 %span.sr-only Clear
                 %i.fa.fa-fw.fa-close
-              -#= button_tag type: "submit", class: "" do
               = button_tag type: "submit", class: "btn btn-success btn-sm" do
                 %span.sr-only Search
                 %i.fa.fa-fw.fa-search
@@ -72,23 +61,16 @@
           %tr{class: "item"}
             -if admin?
               %td= setup.id
-            %td= setup.browser_reader_version
-            %td= setup.assistive_technology_version
-            %td= setup.file_format
             %td= setup.platform_version
+            %td= setup.assistive_technology_version
+            %td= setup.browser_reader_version
+            %td= setup.file_format
             %td= setup.renderer_version
-            -if admin?
-              %td= setup.workflow_status
             %td
-              -setup.affordances.each do |a|
+              -setup.outputs.uniq.each do |a|
                 #{a}
                 %br
-            -if admin?
-              %td
-                -setup.content_sources.each do |c|
-                  #{c}
-                  %br
+            %td= setup.workflow_status
             %td
-              =link_to setup_path(setup), class: "btn btn-primary" do
-                %i.fa.fa-link
-                %span.sr-only Read more
+              =link_to setup_path(setup) do
+                Learn more
