@@ -91,9 +91,7 @@ Here's a representation of it for [nomnoml](http://nomnoml.com)
 
 
       [Renderer | id: int | title: str | notes: text | timestamps]
-      [RendererVersion | id: int | version: string | notes: text | timestamps]
-      [Renderer] <- [RendererVersion]
-      [Setup] -> [RendererVersion]
+      [Setup] -> [Renderer]
 
       [BrowserReader | id: int | title: str | notes: text | timestamps]
       [BrowserReaderVersion | id: int | version: string | notes: text | timestamps]
