@@ -14,17 +14,17 @@
           %th{scope: "col"}<
             Actions
     %tbody
-    - versions.each do |v|
-      %tr{class: "item"}
-        %td= link_to v.version, v
-        %td
-          =to_text(v.notes).truncate(140)
-        -if admin?
-          %td<
-            = link_to send("edit_" + object.model_name.singular + "_version_path", v), class: "btn btn-edit", title: "Edit #{v}"  do
-              %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-            = link_to v, title: "Delete this #{object.model_name.singular.titleize} version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{v}?"} do
-              %i.fa.fa-fw.fa-trash{title: "Trash can"}
+      - versions.each do |v|
+        %tr{class: "item"}
+          %td= link_to v.version, v
+          %td
+            =to_text(v.notes).truncate(140)
+          -if admin?
+            %td<
+              = link_to send("edit_" + object.model_name.singular + "_version_path", v), class: "btn btn-edit", title: "Edit #{v}"  do
+                %i.fa.fa-fw.fa-pencil{title: "Pencil"}
+              = link_to v, title: "Delete this #{object.model_name.singular.titleize} version" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{v}?"} do
+                %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
 -if admin?
   = link_to "New #{object.model_name.singular.titleize} version", send("new_" + object.model_name.singular + "_version_path", {"#{object.model_name.singular}_id" => object.id}), class: "btn btn-success"
