@@ -21,6 +21,7 @@ class Platform < ActiveRecord::Base
   has_many :setups, through: :platform_versions
 
   validates_presence_of :title
+  default_scope { order('LOWER(title)') }
 
   def to_s
     title
