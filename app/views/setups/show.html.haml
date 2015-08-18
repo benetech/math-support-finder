@@ -46,7 +46,7 @@
                     %td= link_to @setup.file_format, file_format_path(@setup.file_format)
                   %tr
                     %th{scope: "row"} Renderer
-                    %td= link_to @setup.renderer_version, renderer_version_path(@setup.renderer_version)
+                    %td= link_to @setup.renderer, renderer_path(@setup.renderer)
                   %tr
                     %th{scope: "row"} Workflow status
                     %td=labeled @setup.workflow_status

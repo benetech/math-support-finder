@@ -20,11 +20,7 @@ Plate::Application.routes.draw do
   resources :browser_readers do
     #resources :browser_reader_versions
   end
-
-  resources :renderer_versions
-  resources :renderers do
-    #resources :renderer_versions
-  end
+  resources :renderers
   resources :platform_versions
   resources :platforms do
     #resources :platform_versions

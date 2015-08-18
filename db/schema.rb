@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805161912) do
+ActiveRecord::Schema.define(version: 20150818000402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -177,16 +177,6 @@ ActiveRecord::Schema.define(version: 20150805161912) do
     t.datetime "updated_at"
   end
 
-  create_table "renderer_versions", force: :cascade do |t|
-    t.integer  "renderer_id"
-    t.string   "version"
-    t.text     "notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "renderer_versions", ["renderer_id"], name: "index_renderer_versions_on_renderer_id", using: :btree
-
   create_table "renderers", force: :cascade do |t|
     t.string   "title"
     t.text     "notes"
@@ -196,7 +186,6 @@ ActiveRecord::Schema.define(version: 20150805161912) do
 
   create_table "setups", force: :cascade do |t|
     t.integer  "platform_version_id"
-    t.integer  "renderer_version_id"
     t.integer  "browser_reader_version_id"
     t.integer  "assistive_technology_version_id"
     t.integer  "file_format_id"
@@ -204,13 +193,14 @@ ActiveRecord::Schema.define(version: 20150805161912) do
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "renderer_id"
   end
 
   add_index "setups", ["assistive_technology_version_id"], name: "index_setups_on_assistive_technology_version_id", using: :btree
   add_index "setups", ["browser_reader_version_id"], name: "index_setups_on_browser_reader_version_id", using: :btree
   add_index "setups", ["file_format_id"], name: "index_setups_on_file_format_id", using: :btree
   add_index "setups", ["platform_version_id"], name: "index_setups_on_platform_version_id", using: :btree
-  add_index "setups", ["renderer_version_id"], name: "index_setups_on_renderer_version_id", using: :btree
+  add_index "setups", ["renderer_id"], name: "index_setups_on_renderer_id", using: :btree
   add_index "setups", ["workflow_status_id"], name: "index_setups_on_workflow_status_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
@@ -286,11 +276,9 @@ ActiveRecord::Schema.define(version: 20150805161912) do
   add_foreign_key "platform_browser_readers", "browser_readers"
   add_foreign_key "platform_browser_readers", "platforms"
   add_foreign_key "platform_versions", "platforms"
-  add_foreign_key "renderer_versions", "renderers"
   add_foreign_key "setups", "assistive_technology_versions"
   add_foreign_key "setups", "browser_reader_versions"
   add_foreign_key "setups", "file_formats"
   add_foreign_key "setups", "platform_versions"
-  add_foreign_key "setups", "renderer_versions"
   add_foreign_key "setups", "workflow_statuses"
 end

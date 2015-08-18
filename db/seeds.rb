@@ -68,9 +68,6 @@ Renderer.create!([
   {id: 3, title: "MathType", notes: "", created_at: "2015-07-27 15:39:26", updated_at: "2015-07-27 15:39:26"},
   {id: 4, title: "Native", notes: "", created_at: "2015-07-27 15:39:26", updated_at: "2015-07-27 15:39:26"}
 ])
-RendererVersion.create!([
-  {id: 1, renderer_id: 1, version: 1.0, notes: "", created_at: "2015-07-27 15:53:16", updated_at: "2015-07-27 15:53:16"}
-])
 BrowserReaderFileFormat.create!([
   {id: 1, browser_reader_id: 1, file_format_id: 1, created_at: "2015-07-27 17:27:09", updated_at: "2015-07-27 17:27:09"}
 ])
@@ -112,7 +109,7 @@ BrowserReaderAssistiveTechnology.create!([
   {id: 1, browser_reader_id: 1, assistive_technology_id: 1, created_at: "2015-07-27 17:37:35", updated_at: "2015-07-27 17:37:35"}
 ])
 Setup.create!([
-  {id: 1, platform_version_id: 1, renderer_version_id: 1, browser_reader_version_id: 1, assistive_technology_version_id: 1, file_format_id: 1, workflow_status_id: 1, created_at: "2015-07-27 17:32:00", updated_at: "2015-07-27 17:32:00"}
+  {id: 1, platform_version_id: 1, renderer_id: 1, browser_reader_version_id: 1, assistive_technology_version_id: 1, file_format_id: 1, workflow_status_id: 1, created_at: "2015-07-27 17:32:00", updated_at: "2015-07-27 17:32:00"}
 ])
 Affordance.create!([
   {id: 1, output_id: 1, feature_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}

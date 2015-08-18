@@ -37,7 +37,7 @@
               %th{scope: "row"}<
                 Notes
               %td<
-                = raw to_html(@output.notes)
+                = to_html(@output.notes)
 
             -object = @output
             -multi = ["features"]

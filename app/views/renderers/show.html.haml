@@ -27,7 +27,6 @@
         -object = @renderer
         -multi = ["browser_readers"]
         = render "entity", multi: multi, object: object
-        = render "versions", object: object
 
         %nav.show-nav{role:"navigation"}
           = link_to renderers_path, class: 'btn btn-info', title: "View the renderers index" do

@@ -42,7 +42,7 @@
           %th<
             = f.input  :file_format_id_eq, collection: @file_formats, as: :select, include_blank: "Any file format", label: false, required: false
           %th<
-            = f.input  :renderer_version_renderer_id_eq, collection: @renderers, as: :select, include_blank: "Any renderer", label: false, required: false
+            = f.input  :renderer_id_eq, collection: @renderers, as: :select, include_blank: "Any renderer", label: false, required: false
           %th<
             = f.input  :outputs_id_eq, collection: @outputs, as: :select, include_blank: "Any outputs", label: false, required: false
           %th<
@@ -65,7 +65,7 @@
             %td= setup.assistive_technology_version
             %td= setup.browser_reader_version
             %td= setup.file_format
-            %td= setup.renderer_version
+            %td= setup.renderer
             %td
               -setup.outputs.uniq.each do |a|
                 #{a}
