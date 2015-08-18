@@ -1,15 +1,15 @@
 .panel.panel-default#simple-search
   %h2.panel-heading
-    Search for a setup or 
-    = link_to setups_path(format: :js), remote: true do
-      browse
+    Search for a setup
   = search_form_for(q, html: {multipart: true, class: 'form-vertical', remote: true}, format: 'js', wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
 
     .panel-body
       .form-inputs
-        = f.input  :platform_version_platform_id_eq, collection: @platforms, as: :select, prompt: "Pick your platform", label: "Platform", required: false
-        = f.input  :browser_reader_version_browser_reader_id_eq, collection: @browser_readers, as: :select, prompt: "Pick your browser or reader", label: "Browser or Reader", required: false
-        = f.input  :assistive_technology_version_assistive_technology_id_eq, collection: @assistive_technologies, as: :select, prompt: "Pick your assistive technology", label: "Assistive Technology", required: false
-        = f.input  :file_format_id_eq, collection: @file_formats, as: :select, prompt: "Pick your file format", label: "File Format", required: false
+        = f.input  :platform_version_platform_id_eq, collection: @platforms, as: :select, prompt: "All platforms", label: "Platform", required: false
+        = f.input  :browser_reader_version_browser_reader_id_eq, collection: @browser_readers, as: :select, prompt: "All browsers", label: "Browser or Reader", required: false
+        = f.input  :assistive_technology_version_assistive_technology_id_eq, collection: @assistive_technologies, as: :select, prompt: "All assistive technologies", label: "Assistive Technology", required: false
+        = f.input  :file_format_id_eq, collection: @file_formats, as: :select, prompt: "All file formats", label: "File Format", required: false
     .panel-footer
       = f.button :submit, class: 'btn btn-success'
+      = link_to setups_path(format: :js), class: "btn btn-primary", remote: true do
+        browse all
