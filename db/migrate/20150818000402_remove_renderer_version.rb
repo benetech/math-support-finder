@@ -8,5 +8,6 @@ class RemoveRendererVersion < ActiveRecord::Migration
     Setup.all.each do |s|
       s.renderer = Renderer.first
       s.save!
+    end
   end
 end
