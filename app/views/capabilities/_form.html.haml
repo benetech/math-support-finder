@@ -1,9 +1,12 @@
 = simple_form_for @capability, validate: true, html: {multipart: true, class: 'form-horizontal'}, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input} do |f|
   = f.error_notification
   .form-inputs
-    = f.association :affordance 
-    = f.association :setup , selected: params[:setup_id]
-    = f.association :verification_status 
+    -if params[:setup_id]
+      = f.association :setup , selected: params[:setup_id]
+    -else
+      = f.association :setup , selected: params[:setup_id]
+    = f.association :affordance, prompt: "Pick your affordance"
+    = f.association :verification_status, prompt: "Pick the verification status"
 
   .form-actions
     .form-actions-inner

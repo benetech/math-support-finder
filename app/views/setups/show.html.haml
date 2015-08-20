@@ -54,7 +54,7 @@
             .panel.panel-default
               %h2.panel-heading Capabilities
               %table.table
-                - @setup.capabilities.each do |capability|
+                - @setup.capabilities.for_setup.each do |capability|
                   - klass = "item "
                   -if admin?
                     - klass += capability.verification_status.css_class

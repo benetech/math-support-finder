@@ -37,10 +37,15 @@
 
           %tbody
             - @capabilities.each_with_index do |capability, idx|
-              %tr{class: "item"}
+              -if capability.verification_status_id == 1
+                -klass = "success" 
+              -else
+                -klass = "danger" 
+              - klass += " item"
+              %tr{class: klass}
                 %td= link_to capability.setup, setup_path(capability.setup)
-                %td= capability.affordance
-                %td= capability.verification_status
+                %td= link_to capability.affordance, affordance_path(capability.affordance)
+                %td= labeled capability.verification_status
                 %td.text-right<
                   = link_to capability, class: "btn btn-show", title: "Show #{capability}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
