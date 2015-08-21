@@ -53,6 +53,6 @@ class CapabilitiesController < ApplicationController
     end
 
     def set_setup
-      @setup = Setup.find(params[:setup_id])
+      @setup = Setup.find(params[:setup_id]) if params[:setup_id]
     end
 end

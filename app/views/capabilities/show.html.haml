@@ -44,7 +44,7 @@
                 = labeled @capability.verification_status
 
         %nav.show-nav{role:"navigation"}
-          = link_to capabilities_path, class: 'btn btn-info', title: "View the capabilities index" do
+          -#= link_to capabilities_path, class: 'btn btn-info', title: "View the capabilities index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Capabilities
           = link_to edit_capability_path(@capability), title: "Edit this Capability", class: 'btn btn-primary' do

@@ -26,7 +26,7 @@
           %h1#page-title{tabindex: -1}=title
 
         .row
-          .col-md-8
+          .col-md-4
             .panel.panel-default
               %h2.panel-heading Selected setup
               %table.table
@@ -53,20 +53,19 @@
 
             .panel.panel-default
               %h2.panel-heading Capabilities
-              %table.table
+              %table.index-table
                 - @setup.capabilities.for_setup.each do |capability|
                   - klass = "item "
-                  -if admin?
-                    - klass += capability.verification_status.css_class
+                  - klass += capability.verification_status.css_class
                   %tr{class: klass}
-                    -if admin?
-                      %td= labeled capability.verification_status
-                    %td= capability.affordance
+                    %td
+                      =link_to capability.affordance.output, output_path(capability.affordance.output)
+                      %span -
+                      =link_to capability.affordance.feature, feature_path(capability.affordance.feature)
+                    %td= labeled capability.verification_status
                     -if admin?
                       %td 
                         %span.actions<
-                          = link_to capability, class: "btn btn-sm btn-show", title: "Show #{capability}" do
-                            %i.fa.fa-fw.fa-eye{title: "Eye"}
                           = link_to edit_capability_path(capability), class: "btn btn-sm btn-edit", title: "Edit #{capability}"  do
                             %i.fa.fa-fw.fa-pencil{title: "Pencil"}
                           = link_to capability, title: "Delete this Capability" , class: "btn btn-sm btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{capability}?"} do
@@ -76,6 +75,7 @@
                 .panel-footer= link_to "Add another capability", new_capability_path(setup_id: @setup.id), class: 'btn btn-success'
 
 
+          .col-md-8
             %h2 Notes
             = to_html(@setup.notes)
 
@@ -84,7 +84,6 @@
               %ul
                 - @setup.content_sources.each do |c|
                   %li= link_to c, content_source_path(c)
-          .col-md-4
 
         -if admin?
           %nav.show-nav{role:"navigation"}

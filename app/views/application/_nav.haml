@@ -41,7 +41,7 @@
             Affordances
             %span.caret
           %ul.dropdown-menu
-            - models = ["capabilities", "features", "outputs"]
+            - models = ["features", "outputs"]
             - models.each do |m|
               %li= link_to  m.titleize, send("#{m}_path")
         %li<
