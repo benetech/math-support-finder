@@ -121,10 +121,8 @@ Here's a representation of it for [nomnoml](http://nomnoml.com)
       [Technology | id: int | title: str | notes: text |timestamps]
       [Feature | id: int | title: str | notes: text | timestamps]
       [Affordance | id: int | technology_id : reference | feature_id: reference | timestamps]
-      [VerificationStatus | id: int | title: str ]
-      [Capability | id: int | affordance_id:reference | setup_id: reference | verification_status_id: ref | timestamps]
+      [Capability | id: int | affordance_id:reference | setup_id: reference | verification_status: bool | timestamps]
 
-      [Capability] -> [VerificationStatus]
       [Capability] -> [Setup]
       [Capability] -> [Affordance]
       [Affordance] -> [Feature]
@@ -171,10 +169,9 @@ Then we generated our scaffolds:
     rails g pizza_scaffold browser_reader_assistive_technology browser_reader:references assistive_technology:references --force 
     #capability components
     rails g pizza_scaffold output title:string notes:text --force
-    rails g pizza_scaffold verification_status title:string --force
     rails g pizza_scaffold feature title:string notes:text --force
     rails g pizza_scaffold affordance feature:references output:references --force
-    rails g pizza_scaffold capability affordance:references setup:references verification_status:references --force
+    rails g pizza_scaffold capability affordance:references setup:references verification_status:boolean --force
 
     #to generate only the controllers and views
     bin/rails g pizza_controller workflow_status title:string --force
@@ -203,10 +200,9 @@ Then we generated our scaffolds:
 
     #capability components
     bin/rails g pizza_controller output title:string notes:text --force
-    bin/rails g pizza_controller verification_status title:string --force
     bin/rails g pizza_controller feature title:string notes:text --force
     bin/rails g pizza_controller affordance feature:references output:references --force
-    bin/rails g pizza_controller capability affordance:references setup:references verification_status:references --force
+    bin/rails g pizza_controller capability affordance:references setup:references verification_status:boolean --force
 
 ##Components
 - [RubyOnRails](http://rubyonrails.org/)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818000402) do
+ActiveRecord::Schema.define(version: 20150821193510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,14 +93,13 @@ ActiveRecord::Schema.define(version: 20150818000402) do
   create_table "capabilities", force: :cascade do |t|
     t.integer  "affordance_id"
     t.integer  "setup_id"
-    t.integer  "verification_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "verification_status", default: false
   end
 
   add_index "capabilities", ["affordance_id"], name: "index_capabilities_on_affordance_id", using: :btree
   add_index "capabilities", ["setup_id"], name: "index_capabilities_on_setup_id", using: :btree
-  add_index "capabilities", ["verification_status_id"], name: "index_capabilities_on_verification_status_id", using: :btree
 
   create_table "content_source_setups", force: :cascade do |t|
     t.integer  "setup_id"
@@ -244,12 +243,6 @@ ActiveRecord::Schema.define(version: 20150818000402) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "verification_statuses", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "workflow_statuses", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -268,7 +261,6 @@ ActiveRecord::Schema.define(version: 20150818000402) do
   add_foreign_key "browser_reader_versions", "browser_readers"
   add_foreign_key "capabilities", "affordances"
   add_foreign_key "capabilities", "setups"
-  add_foreign_key "capabilities", "verification_statuses"
   add_foreign_key "content_source_setups", "content_sources"
   add_foreign_key "content_source_setups", "setups"
   add_foreign_key "platform_assistive_technologies", "assistive_technologies"

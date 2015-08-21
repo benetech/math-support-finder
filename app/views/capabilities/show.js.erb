@@ -1,0 +1,4 @@
+$("#flash-messages").html('<%= j render partial: "alerts", flash: flash %>');
+$('#disable-me')
+  .parents('tr')
+  .replaceWith('<%= j render partial: "capability", locals: {capability: @capability} %>');

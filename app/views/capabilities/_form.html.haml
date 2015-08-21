@@ -1,4 +1,4 @@
-= simple_form_for @capability, validate: true, html: {multipart: true, class: 'form-horizontal'}, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input} do |f|
+= simple_form_for @capability, validate: true, html: {multipart: true, class: 'form-horizontal'}, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean} do |f|
   = f.error_notification
   .form-inputs
     -if @setup
@@ -9,7 +9,7 @@
     -else
       = f.association :setup, prompt: "Please pick your setup"
       = f.association :affordance, prompt: "Pick your affordance"
-    = f.association :verification_status, prompt: "Pick the verification status"
+    = f.input :verification_status, labeled: "Verified?"
 
   .form-actions
     .form-actions-inner

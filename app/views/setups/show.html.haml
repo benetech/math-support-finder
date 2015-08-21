@@ -53,23 +53,16 @@
 
             .panel.panel-default
               %h2.panel-heading Capabilities
-              %table.index-table
-                - @setup.capabilities.for_setup.each do |capability|
-                  - klass = "item "
-                  - klass += capability.verification_status.css_class
-                  %tr{class: klass}
-                    %td
-                      =link_to capability.affordance.output, output_path(capability.affordance.output)
-                      %span -
-                      =link_to capability.affordance.feature, feature_path(capability.affordance.feature)
-                    %td= labeled capability.verification_status
-                    -if admin?
-                      %td 
-                        %span.actions<
-                          = link_to edit_capability_path(capability), class: "btn btn-sm btn-edit", title: "Edit #{capability}"  do
-                            %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                          = link_to capability, title: "Delete this Capability" , class: "btn btn-sm btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{capability}?"} do
-                            %i.fa.fa-fw.fa-trash{title: "Trash can"}
+              %table.table
+                %thead
+                  %tr
+                    %th{scope: 'col'}
+                      Affordance
+                    %th{scope: 'col'}
+                      Verified?
+                %tbody
+                  - @setup.capabilities.for_setup.each do |capability|
+                    = render "capabilities/capability", capability: capability
 
               -if admin? and @setup.capabilities.count < Affordance.all.count
                 .panel-footer= link_to "Add another capability", new_capability_path(setup_id: @setup.id), class: 'btn btn-success'
@@ -93,8 +86,12 @@
             = link_to setups_path, class: 'btn btn-info', title: "View the setups index" do
               %i.fa.fa-fw.fa-list{title: 'List'}
               Setups
-            = link_to new_setup_path(@setup), class: 'btn btn-success' do
+            = link_to new_setup_path, class: 'btn btn-success' do
+              %i.fa.fa-fw.fa-plus{title: 'plus'}
               Add another Setup
+            = link_to new_setup_path(id: @setup.id), class: 'btn btn-success' do
+              %i.fa.fa-fw.fa-mail-forward{title: 'forward arrow'}
+              Copy this setup
 
         -#%h3 Content Sources
         -#%ul
