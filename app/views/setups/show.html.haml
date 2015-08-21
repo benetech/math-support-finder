@@ -71,7 +71,7 @@
                           = link_to capability, title: "Delete this Capability" , class: "btn btn-sm btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{capability}?"} do
                             %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
-              -if admin?
+              -if admin? and @setup.capabilities.count < Affordance.all.count
                 .panel-footer= link_to "Add another capability", new_capability_path(setup_id: @setup.id), class: 'btn btn-success'
 
 

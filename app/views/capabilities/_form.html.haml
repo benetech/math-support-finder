@@ -2,12 +2,12 @@
   = f.error_notification
   .form-inputs
     -if @setup
-      = f.association :setup , selected: @setup
-      - disallowed_ids = @setup.affordances.collect
+      = f.association :setup , selected: @setup.id
+      - disallowed_ids = @setup.affordances.collect{|a| a.id}
       - affordance_options = Affordance.all.collect{|a| a unless disallowed_ids.include?(a.id)}.compact
-      = f.association :affordance, prompt: "Pick your affordance", options: affordance_options
+      = f.association :affordance, prompt: "Pick your affordance", collection: affordance_options
     -else
-      = f.association :setup 
+      = f.association :setup, prompt: "Please pick your setup"
       = f.association :affordance, prompt: "Pick your affordance"
     = f.association :verification_status, prompt: "Pick the verification status"
 
