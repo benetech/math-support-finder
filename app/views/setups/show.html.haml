@@ -64,8 +64,8 @@
                   - @setup.capabilities.for_setup.each do |capability|
                     = render "capabilities/capability", capability: capability
 
-              -if admin? and @setup.capabilities.count < Affordance.all.count
-                .panel-footer= link_to "Add another capability", new_capability_path(setup_id: @setup.id), class: 'btn btn-success'
+              -#-if admin? and @setup.capabilities.count < Affordance.all.count
+                -#.panel-footer= link_to "Add another capability", new_capability_path(setup_id: @setup.id), class: 'btn btn-success'
 
 
           .col-md-8
