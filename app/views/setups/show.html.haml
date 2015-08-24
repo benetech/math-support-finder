@@ -61,7 +61,10 @@
                     %th{scope: 'col'}
                       Verified?
                 %tbody
-                  - @setup.capabilities.for_setup.each do |capability|
+                  -# in memory sort
+                  - capabilities = @setup.capabilities
+                  - @setup.affordances.sorted.each do |a|
+                    - capability = capabilities.find{|c| a.id == c.affordance_id}
                     = render "capabilities/capability", capability: capability
 
               -#-if admin? and @setup.capabilities.count < Affordance.all.count

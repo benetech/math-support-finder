@@ -25,7 +25,7 @@ class Affordance < ActiveRecord::Base
   validates_associated :feature, :output
   validates :feature_id, uniqueness: {scope: :output_id}
 
-  default_scope { joins(:feature, :output).order('LOWER(outputs.title), LOWER(features.title)') }
+  scope :sorted, -> { joins(:feature, :output).order("features.title asc, outputs.title asc" ) }
 
   def to_s
     [output.to_s, feature.to_s].join(" – ")

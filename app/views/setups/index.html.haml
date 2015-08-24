@@ -69,3 +69,5 @@
           = link_to new_setup_path, class: 'btn btn-success new-link' do
             %i.fa.fa-fw.fa-plus{title: "Plus"}
             New Setup
+      .col-md-6
+        =render "search", q: @q

@@ -10,7 +10,7 @@
     = f.association :workflow_status, prompt: "Please indicate a file format"
     = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
     %hr
-    = f.association :affordances, as: :check_boxes       
+    = f.association :affordances, as: :check_boxes, collection: Affordance.all.sorted
     %hr
     = f.association :content_sources, as: :check_boxes
 

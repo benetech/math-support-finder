@@ -16,7 +16,7 @@ class Output < ActiveRecord::Base
   has_many :features, through: :affordances
 
   validates_presence_of :title
-  default_scope { order('LOWER(title)') }
+  default_scope { order(:title) }
 
 
   def to_s
