@@ -36,5 +36,5 @@
             = link_to edit_platform_version_path(@platform_version), title: "Edit this Platform Version", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit
-            = link_to new_platform_version_path(@platform_version), class: 'btn btn-success' do
+            = link_to new_platform_version_path(platform_id: @platform_version.platform_id), class: 'btn btn-success' do
               Add another Platform Version

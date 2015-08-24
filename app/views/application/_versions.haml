@@ -18,7 +18,7 @@
         %tr{class: "item"}
           %td= link_to v.version, v
           %td
-            =to_text(v.notes).truncate(140)
+            =to_text(v.notes).truncate(50)
           -if admin?
             %td<
               = link_to send("edit_" + object.model_name.singular + "_version_path", v), class: "btn btn-edit", title: "Edit #{v}"  do

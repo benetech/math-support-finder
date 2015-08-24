@@ -31,13 +31,19 @@
               %th{scope: "col"}<
                 Notes
               %th{scope: "col"}<
+                Versions
+              %th{scope: "col"}<
                 Actions
 
           %tbody
             - @assistive_technologies.each_with_index do |assistive_technology, idx|
               %tr{class: "item"}
                 %td= assistive_technology.title
-                %td= assistive_technology.notes
+                %td= to_text(assistive_technology.notes).truncate(50)
+                %td<
+                  -assistive_technology.assistive_technology_versions.each do |v|
+                    =link_to v.version, assistive_technology_version_path(v)
+                    %span 
                 %td.text-right<
                   = link_to assistive_technology, class: "btn btn-show", title: "Show #{assistive_technology}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}

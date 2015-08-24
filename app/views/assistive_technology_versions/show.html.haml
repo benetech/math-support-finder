@@ -35,5 +35,5 @@
             = link_to edit_assistive_technology_version_path(@assistive_technology_version), title: "Edit this Assistive Technology Version", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit
-            = link_to new_assistive_technology_version_path(@assistive_technology_version), class: 'btn btn-success' do
+            = link_to new_assistive_technology_version_path(assistive_technology: @assistive_technology_version.assitive_technology_id), class: 'btn btn-success' do
               Add another Assistive Technology Version

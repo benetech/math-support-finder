@@ -31,13 +31,21 @@
               %th{scope: "col"}<
                 Notes
               %th{scope: "col"}<
+                Versions
+              %th{scope: "col"}<
                 Actions
 
           %tbody
             - @platforms.each_with_index do |platform, idx|
               %tr{class: "item"}
                 %td= platform.title
-                %td= platform.notes
+                %td= to_text(platform.notes).truncate(50)
+
+                %td<
+                  -platform.platform_versions.each do |v|
+                    =link_to v.version, platform_version_path(v)
+                    %span 
+
                 %td.text-right<
                   = link_to platform, class: "btn btn-show", title: "Show #{platform}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}

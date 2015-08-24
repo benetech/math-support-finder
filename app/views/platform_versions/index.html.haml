@@ -40,7 +40,8 @@
               %tr{class: "item"}
                 %td= platform_version.platform
                 %td= platform_version.version
-                %td= platform_version.notes
+                %td= to_text(platform_version.notes).truncate(50)
+
                 %td.text-right<
                   = link_to platform_version, class: "btn btn-show", title: "Show #{platform_version}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}

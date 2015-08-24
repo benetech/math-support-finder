@@ -31,13 +31,21 @@
               %th{scope: "col"}<
                 Notes
               %th{scope: "col"}<
+                Versions
+              %th{scope: "col"}<
                 Actions
 
           %tbody
             - @browser_readers.each_with_index do |browser_reader, idx|
               %tr{class: "item"}
                 %td= browser_reader.title
-                %td= browser_reader.notes
+                %td= to_text(browser_reader.notes).truncate(50)
+
+                %td<
+                  -browser_reader.browser_reader_versions.each do |v|
+                    =link_to v.version, browser_reader_version_path(v)
+                    %span
+                    
                 %td.text-right<
                   = link_to browser_reader, class: "btn btn-show", title: "Show #{browser_reader}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}

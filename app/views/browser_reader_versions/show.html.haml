@@ -37,5 +37,5 @@
             = link_to edit_browser_reader_version_path(@browser_reader_version), title: "Edit this Browser Reader Version", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit
-            = link_to new_browser_reader_version_path(@browser_reader_version), class: 'btn btn-success' do
+            = link_to new_browser_reader_version_path(browser_reader_id: @browser_reader_version.browser_reader_id), class: 'btn btn-success' do
               Add another Browser Reader Version
