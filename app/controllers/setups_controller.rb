@@ -1,6 +1,8 @@
 class SetupsController < ApplicationController
   before_action :set_setup, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :json
+  before_action :clear_search_index, :only => [:index, :results]
+
+  respond_to :html, :json, :js
 
   # GET /setups
   def index
@@ -47,6 +49,10 @@ class SetupsController < ApplicationController
     @setup.destroy
     flash[:notice] = 'Setup was successfully destroyed.'
     respond_with @setup
+  end
+
+  def results
+    prep_setup_search
   end
 
   private

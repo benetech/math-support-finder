@@ -9,6 +9,21 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end unless :devise_controller?
 
+  def search_params
+    params[:q]
+  end
+
+  def clear_search_index
+    if params[:search_cancel]
+      params.delete(:search_cancel)
+      if(!search_params.nil?)
+        search_params.each do |key, param|
+          search_params[key] = nil
+        end
+      end
+    end
+  end
+
   def prep_setup_search
     @platforms = Platform.all
     @browser_readers = BrowserReader.all

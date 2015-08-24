@@ -1,7 +1,7 @@
 .panel.panel-default#simple-search
   %h2.panel-heading
     Search for a setup
-  = search_form_for(q, html: {multipart: true, class: 'form-vertical', remote: true}, format: 'js', wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
+  = search_form_for(@q, url: {controller: "setups", action: "results"}, html: {multipart: true, class: 'form-vertical'}, wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
 
     .panel-body
       .form-inputs
@@ -11,5 +11,5 @@
         = f.input  :file_format_id_eq, collection: @file_formats, as: :select, prompt: "All file formats", label: "File Format", required: false
     .panel-footer
       = f.button :submit, class: 'btn btn-success'
-      = link_to setups_path(format: :js), class: "btn btn-primary", remote: true do
+      = link_to results_setups_path, class: "btn btn-primary" do
         browse all

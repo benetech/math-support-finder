@@ -20,6 +20,6 @@
           = link_to "log in", new_session_path(resource_name)
 
     .col-md-6
-      =render "setups/search", q: @q
+      =render "setups/search"
   #setups-results-wrap{style: "display: none;"}
-    =render "setups/results", q: @q
+    =render "setups/results"
