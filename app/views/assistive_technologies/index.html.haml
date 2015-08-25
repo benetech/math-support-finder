@@ -43,7 +43,7 @@
                 %td<
                   -assistive_technology.assistive_technology_versions.each do |v|
                     =link_to v.version, assistive_technology_version_path(v)
-                    %span 
+                    %br
                 %td.text-right<
                   = link_to assistive_technology, class: "btn btn-show", title: "Show #{assistive_technology}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}

@@ -44,7 +44,7 @@
                 %td<
                   -browser_reader.browser_reader_versions.each do |v|
                     =link_to v.version, browser_reader_version_path(v)
-                    %span
+                    %br
                     
                 %td.text-right<
                   = link_to browser_reader, class: "btn btn-show", title: "Show #{browser_reader}" do

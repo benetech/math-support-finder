@@ -44,7 +44,7 @@
                 %td<
                   -platform.platform_versions.each do |v|
                     =link_to v.version, platform_version_path(v)
-                    %span 
+                    %br
 
                 %td.text-right<
                   = link_to platform, class: "btn btn-show", title: "Show #{platform}" do
