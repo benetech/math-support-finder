@@ -11,15 +11,15 @@
       %caption.sr-only Results table for setups
       %thead
         %tr
-          -if admin?
-            %th{scope: "col"}<
-              = sort_link @q, :id, 'ID'
+          -#-if admin?
+            -#%th{scope: "col"}<
+              -#= sort_link @q, :id, 'ID'
           %th{scope: "col"}<
             = sort_link @q, :platform_name, 'Platform'
           %th{scope: "col"}<
             = sort_link @q, :assistive_technology_name, 'Assistive Technology'
           %th{scope: "col"}<
-            = sort_link @q, :browser_reader_name, 'Reader'
+            = sort_link @q, :browser_reader_name, 'Read with'
           %th{scope: "col"}<
             = sort_link @q, :file_format_name, 'File Format'
           %th{scope: "col"}<
@@ -31,8 +31,8 @@
           %th{scope: "col"}<
             Action
         %tr
-          -if admin?
-            %th<
+          -#-if admin?
+            -#%th<
           %th<
             = f.input  :platform_version_platform_id_eq, collection: @platforms, as: :select, include_blank: "Any platform", label: false, required: false
           %th<
@@ -59,8 +59,8 @@
       %tbody
         - @setups.each_with_index do |setup, idx|
           %tr{class: "item"}
-            -if admin?
-              %td= setup.id
+            -#-if admin?
+              -#%td= setup.id
             %td= setup.platform_version
             %td= setup.assistive_technology_version
             %td= setup.browser_reader_version

@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
     @outputs= Output.all
 
     @q = Setup.ransack(params[:q])
-    @setups = @q.result.page(params[:page])
+    @setups = @q.result(distinct: true).page(params[:page])
   end
 
   protected

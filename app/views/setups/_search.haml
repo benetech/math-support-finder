@@ -6,7 +6,7 @@
     .panel-body
       .form-inputs
         = f.input  :platform_version_platform_id_eq, collection: @platforms, as: :select, prompt: "All platforms", label: "Platform", required: false
-        = f.input  :browser_reader_version_browser_reader_id_eq, collection: @browser_readers, as: :select, prompt: "All browsers", label: "Browser or Reader", required: false
+        = f.input  :browser_reader_version_browser_reader_id_eq, collection: @browser_readers, as: :select, prompt: "All browsers", label: "Read with", required: false
         = f.input  :assistive_technology_version_assistive_technology_id_eq, collection: @assistive_technologies, as: :select, prompt: "All assistive technologies", label: "Assistive Technology", required: false
         = f.input  :file_format_id_eq, collection: @file_formats, as: :select, prompt: "All file formats", label: "File Format", required: false
     .panel-footer
