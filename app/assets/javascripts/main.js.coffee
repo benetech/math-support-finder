@@ -73,7 +73,7 @@ $ ->
     #strongly suggesting options for setups filtering
     window.triggerCount = 0
 
-    $results =$('#setups-results')
+    $results =$('#setups-results, #setup_search')
     if $results.length > 0
       $selects = $('select', $results)
       $selects.change () ->
