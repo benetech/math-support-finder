@@ -48,6 +48,8 @@ class Setup < ActiveRecord::Base
   validates_presence_of :platform_version, :renderer, :browser_reader_version, :assistive_technology_version, :file_format, :workflow_status
   validates_associated :platform_version, :renderer, :browser_reader_version, :assistive_technology_version, :file_format, :workflow_status
 
+  paginates_per 50
+
   def to_s
     "Setup " + id.to_s
   end
