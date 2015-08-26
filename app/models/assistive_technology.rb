@@ -29,4 +29,8 @@ class AssistiveTechnology < ActiveRecord::Base
   def versions
     assistive_technology_versions
   end
+
+  def version_ids
+    versions.collect{|v| v.id}
+  end
 end

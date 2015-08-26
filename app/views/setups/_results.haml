@@ -11,9 +11,6 @@
       %caption.sr-only Results table for setups
       %thead
         %tr
-          -#-if admin?
-            -#%th{scope: "col"}<
-              -#= sort_link @q, :id, 'ID'
           %th{scope: "col"}<
             = sort_link @q, :platform_name, 'Platform'
           %th{scope: "col"}<
@@ -34,19 +31,26 @@
           -#-if admin?
             -#%th<
           %th<
-            = f.input  :platform_version_platform_id_eq, collection: @platforms, as: :select, include_blank: "Any platform", label: false, required: false
+            = f.input  :platform_version_platform_id_eq, as: :select, include_blank: "Any platform", label: false, required: false,
+              collection: @platforms.map{|e| [e.title, e.id, {data: {mappings: {assistive_technology_version_assistive_technology_id_eq: e.assistive_technologies.map{|a| a.version_ids}.flatten, browser_reader_version_browser_reader_id_eq: e.browser_readers.map{|a| a.version_ids}.flatten }}}]}
           %th<
-            = f.input  :assistive_technology_version_assistive_technology_id_eq, collection: @assistive_technologies, as: :select, include_blank: "Any assistive technology", label: false, required: false
+            = f.input  :assistive_technology_version_assistive_technology_id_eq, as: :select, include_blank: "Any assistive technology", label: false, required: false,
+              collection: @assistive_technologies.map{|e| [e.title, e.id, {data: {mappings: {browser_reader_version_browser_reader_id_eq: e.browser_readers.map{|a| a.version_ids}.flatten, platform_version_platform_id_eq: e.platforms.map{|a| a.version_ids}.flatten }}}]}
           %th<
-            = f.input  :browser_reader_version_browser_reader_id_eq, collection: @browser_readers, as: :select, include_blank: "Any reader", label: false, required: false
+            = f.input  :browser_reader_version_browser_reader_id_eq, as: :select, include_blank: "Any reader", label: false, required: false,
+              collection: @browser_readers.map{|e| [e.title, e.id, {data: {mappings: {assistive_technology_version_assistive_technology_id_eq: e.assistive_technologies.map{|a| a.version_ids}.flatten, file_format_id_eq: e.file_formats.map{|a| a.id}.flatten, renderer_id_eq: e.renderers.map{|a| a.id}.flatten, platform_version_platform_id_eq: e.platforms.map{|a| a.version_ids}.flatten }}}]}
           %th<
-            = f.input  :file_format_id_eq, collection: @file_formats, as: :select, include_blank: "Any file format", label: false, required: false
+            = f.input  :file_format_id_eq, as: :select, include_blank: "Any file format", label: false, required: false,
+              collection: @file_formats.map{|e| [e.title, e.id, {data: {mappings: {browser_reader_version_browser_reader_id_eq: e.browser_readers.map{|a| a.version_ids}.flatten}}}]}
           %th<
-            = f.input  :renderer_id_eq, collection: @renderers, as: :select, include_blank: "Any renderer", label: false, required: false
+            = f.input  :renderer_id_eq, as: :select, include_blank: "Any renderer", label: false, required: false,
+              collection: @renderers.map{|e| [e.title, e.id, {data: {mappings: {browser_reader_version_browser_reader_id_eq: e.browser_readers.map{|a| a.version_ids}.flatten}}}]}
           %th<
-            = f.input  :outputs_id_eq, collection: @outputs, as: :select, include_blank: "Any outputs", label: false, required: false
+            = f.input  :outputs_id_eq, as: :select, include_blank: "Any outputs", label: false, required: false,
+              collection: @outputs
           %th<
-            = f.input  :workflow_status_id_eq, collection: @workflow_status, as: :select, include_blank: "Any status", label: false, required: false
+            = f.input  :workflow_status_id_eq, as: :select, include_blank: "Any status", label: false, required: false,
+              collection: @workflow_status
           %th<
             .btn-group
               = link_to results_setups_path(search_cancel: true), class: 'btn btn-danger btn-sm' do

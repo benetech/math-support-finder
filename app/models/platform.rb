@@ -31,4 +31,7 @@ class Platform < ActiveRecord::Base
     platform_versions
   end
 
+  def version_ids
+    versions.collect{|v| v.id}
+  end
 end

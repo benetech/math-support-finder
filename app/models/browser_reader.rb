@@ -33,5 +33,11 @@ class BrowserReader < ActiveRecord::Base
   def to_s
     title
   end
+  def versions
+    browser_reader_versions
+  end
 
+  def version_ids
+    versions.collect{|v| v.id}
+  end
 end
