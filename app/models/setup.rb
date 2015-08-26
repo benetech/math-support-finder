@@ -25,13 +25,13 @@
 
 class Setup < ActiveRecord::Base
 
-  belongs_to :platform_version
+  belongs_to :platform_version, touch: true
   delegate  :platform, to: :platform_version, allow_nil: true
 
-  belongs_to :browser_reader_version
+  belongs_to :browser_reader_version, touch: true
   delegate  :browser_reader, to: :browser_reader_version, allow_nil: true
 
-  belongs_to :assistive_technology_version
+  belongs_to :assistive_technology_version, touch: true
   delegate  :assistive_technology, to: :assistive_technology_version, allow_nil: true
 
   belongs_to :renderer
@@ -49,6 +49,10 @@ class Setup < ActiveRecord::Base
   validates_associated :platform_version, :renderer, :browser_reader_version, :assistive_technology_version, :file_format, :workflow_status
 
   paginates_per 50
+
+  scope :sorted, -> { joins(:platform_version, :assistive_technology_version, :browser_reader_version).order('platform_version.title asc, assistive_technology_version.title asc, browser_reader_version.title asc') }
+  default_scope  {order('updated_at desc')}
+
 
   def to_s
     "Setup " + id.to_s
