@@ -72,20 +72,6 @@ $ ->
 
     #strongly suggesting options for setups filtering
     window.triggerCount = 0
-
-    $results =$('#setups-results, #setup_search')
-    if $results.length > 0
-      $selects = $('select', $results)
-      $selects.change () ->
-        #console.log('changed')
-        window.triggerCount = 0
-        #reset all
-        $results.find('option').removeProp('disabled')
-        $selected = $('option:selected', this)
-        mappings =  $selected.data('mappings')
-        #console.log mappings
-        triggerMappings(mappings)
-
     triggerMappings = (mappings) ->
       window.triggerCount++
       #console.log window.triggerCount
@@ -101,4 +87,22 @@ $ ->
                 $(@).attr('disabled', true)
               else if options.indexOf(@.value) > -1 and $(@).is(':selected')
                 triggerMappings($(@).data('mappings'))
-          
+
+    $results =$('#setups-results, #setup_search')
+    if $results.length > 0
+      $selects = $('select', $results)
+      $selects.change () ->
+        #console.log('changed')
+        window.triggerCount = 0
+        #reset all
+        $results.find('option').removeProp('disabled')
+        $selected = $('option:selected', this)
+        mappings =  $selected.data('mappings')
+        #console.log mappings
+        triggerMappings(mappings)
+
+      #trigger on selected
+      $selects.find('option:selected').each () ->
+        if @.value
+          console.log @.value
+          $(@).parents('select').trigger('change')

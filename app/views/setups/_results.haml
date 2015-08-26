@@ -4,6 +4,10 @@
       Results
       %span.sr-only ,
       %span.badge= @setups.total_count
+      %small
+        =link_to request.url do
+          %span.sr-only Link to these results
+          %i.fa.fa-link.fa-fw
 
   = search_form_for(@q, url: {controller: :setups, action: :results},  html: {multipart: true, class: 'form-vertical', remote: true}, format: 'js', wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
 
@@ -56,7 +60,9 @@
               = link_to results_setups_path(search_cancel: true), class: 'btn btn-danger btn-sm' do
                 %span.sr-only Clear
                 %i.fa.fa-fw.fa-close
-              = button_tag type: "submit", class: "btn btn-success btn-sm" do
+
+              - disable_with = "<i id='disable-me' class='fa fa-spinner fa-spin fa-fw'></i>"
+              = button_tag type: "submit", class: "btn btn-success btn-sm", data: {disable_with: disable_with} do
                 %span.sr-only Search
                 %i.fa.fa-fw.fa-search
 
