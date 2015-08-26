@@ -25,6 +25,7 @@ class ApplicationController < ActionController::Base
   end
 
   def prep_setup_search
+
     @platforms = Platform.all
     @browser_readers = BrowserReader.all
     @renderers = Renderer.all
@@ -35,6 +36,8 @@ class ApplicationController < ActionController::Base
 
     @q = Setup.ransack(params[:q])
     @setups = @q.result(distinct: true).page(params[:page])
+
+    @cache_key = [@q, @setups , @platforms , @browser_readers , @renderers , @assistive_technologies , @file_formats , @workflow_status , @outputs].to_set.hash
   end
 
   protected
