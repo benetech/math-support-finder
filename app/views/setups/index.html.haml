@@ -27,17 +27,17 @@
           %thead
             %tr
               %th{scope: "col"}<
-                Workflow status
-              %th{scope: "col"}<
-                Browser reader 
+                Platform 
               %th{scope: "col"}<
                 Assistive technology 
               %th{scope: "col"}<
+                Read with
+              %th{scope: "col"}<
                 File format
               %th{scope: "col"}<
-                Platform 
-              %th{scope: "col"}<
                 Renderer
+              %th{scope: "col"}<
+                Workflow status
               %th{scope: "col"}<
                 Actions
 
@@ -47,12 +47,12 @@
               - klass += setup.workflow_status.css_class
 
               %tr{class: klass}
-                %td= labeled setup.workflow_status
-                %td= setup.browser_reader_version
-                %td= setup.assistive_technology_version
-                %td= setup.file_format
                 %td= setup.platform_version
+                %td= setup.assistive_technology_version
+                %td= setup.browser_reader_version
+                %td= setup.file_format
                 %td= setup.renderer
+                %td= labeled setup.workflow_status
                 %td.text-right<
                   = link_to setup, class: "btn btn-show", title: "Show #{setup}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
