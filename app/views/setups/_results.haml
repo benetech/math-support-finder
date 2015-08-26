@@ -17,19 +17,19 @@
       %thead
         %tr
           %th{scope: "col"}<
-            = sort_link @q, :platform_name, 'Platform'
+            = sort_link @q, :platform_version_platform_title, 'Platform'
           %th{scope: "col"}<
-            = sort_link @q, :assistive_technology_name, 'Assistive Technology'
+            = sort_link @q, :assistive_technology_version_assistive_technology_title, 'Assistive Technology'
           %th{scope: "col"}<
-            = sort_link @q, :browser_reader_name, 'Read with'
+            = sort_link @q, :browser_reader_version_browser_reader_title, 'Read with'
           %th{scope: "col"}<
-            = sort_link @q, :file_format_name, 'File Format'
+            = sort_link @q, :file_format_title, 'File Format'
           %th{scope: "col"}<
-            = sort_link @q, :renderer_name, 'Renderer'
+            = sort_link @q, :renderer_title, 'Renderer'
           %th{scope: "col"}<
             = sort_link @q, :outputs_count, 'Outputs' #TODO improve perf
           %th{scope: "col"}<
-            = sort_link @q, :status_name, 'Status'
+            = sort_link @q, :status_title, 'Status'
           %th{scope: "col"}<
             Action
         %tr
@@ -68,7 +68,7 @@
                 %i.fa.fa-fw.fa-search
 
       %tbody
-        - @setups.each_with_index do |setup, idx|
+        - @setups.to_a.uniq.each_with_index do |setup, idx|
           %tr{class: "item"}
             -#-if admin?
               -#%td= setup.id

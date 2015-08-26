@@ -35,7 +35,8 @@ class ApplicationController < ActionController::Base
     @outputs= Output.all
 
     @q = Setup.ransack(params[:q])
-    @setups = @q.result(distinct: true).page(params[:page])
+    @q.sorts = ['platform_version_platform_title asc'] if @q.sorts.empty?
+    @setups = @q.result.page(params[:page])
 
     @cache_key = [@q, @setups , @platforms , @browser_readers , @renderers , @assistive_technologies , @file_formats , @workflow_status , @outputs].to_set.hash
   end
