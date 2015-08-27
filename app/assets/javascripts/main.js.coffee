@@ -80,9 +80,10 @@ $ ->
         for id, options of mappings
           if options.length > 0
             css_id = '#q_' + id
-            console.log css_id, options
+            #console.log css_id, options
             $('option', css_id).each () ->
-              if @.value and options.indexOf(@.value) == -1
+              #console.log @.value, options
+              if @.value && options.indexOf(parseInt(@.value)) == -1
                 #console.log 'disabling ', @
                 $(@).attr('disabled', true)
               else if options.indexOf(@.value) > -1 and $(@).is(':selected')
