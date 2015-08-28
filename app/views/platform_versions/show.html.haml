@@ -33,8 +33,9 @@
             = link_to platform_versions_path, class: 'btn btn-info', title: "View the platform_versions index" do
               %i.fa.fa-fw.fa-list{title: 'List'}
               Platform Versions
-            = link_to edit_platform_version_path(@platform_version), title: "Edit this Platform Version", class: 'btn btn-primary' do
-              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-              Edit
-            = link_to new_platform_version_path(platform_id: @platform_version.platform_id), class: 'btn btn-success' do
-              Add another Platform Version
+            -if admin?
+              = link_to edit_platform_version_path(@platform_version), title: "Edit this Platform Version", class: 'btn btn-primary' do
+                %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+                Edit
+              = link_to new_platform_version_path(platform_id: @platform_version.platform_id), class: 'btn btn-success' do
+                Add another Platform Version

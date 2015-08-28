@@ -41,12 +41,14 @@
                 %td.text-right<
                   = link_to browser_reader_assistive_technology, class: "btn btn-show", title: "Show #{browser_reader_assistive_technology}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
-                  = link_to edit_browser_reader_assistive_technology_path(browser_reader_assistive_technology), class: "btn btn-edit", title: "Edit #{browser_reader_assistive_technology}"  do
-                    %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to browser_reader_assistive_technology, title: "Delete this Browser Reader Assistive Technology" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{browser_reader_assistive_technology}?"} do
-                    %i.fa.fa-fw.fa-trash{title: "Trash can"}
+                  -if admin?
+                    = link_to edit_browser_reader_assistive_technology_path(browser_reader_assistive_technology), class: "btn btn-edit", title: "Edit #{browser_reader_assistive_technology}"  do
+                      %i.fa.fa-fw.fa-pencil{title: "Pencil"}
+                    = link_to browser_reader_assistive_technology, title: "Delete this Browser Reader Assistive Technology" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{browser_reader_assistive_technology}?"} do
+                      %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
-        %nav.index-nav{role:"navigation"}
-          = link_to new_browser_reader_assistive_technology_path, class: 'btn btn-success new-link' do
-            %i.fa.fa-fw.fa-plus{title: "Plus"}
-            New Browser reader assistive technology
+        -if admin?
+          %nav.index-nav{role:"navigation"}
+            = link_to new_browser_reader_assistive_technology_path, class: 'btn btn-success new-link' do
+              %i.fa.fa-fw.fa-plus{title: "Plus"}
+              New Browser reader assistive technology

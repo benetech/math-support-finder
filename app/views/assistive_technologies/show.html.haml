@@ -29,11 +29,11 @@
         = render "entity", multi: multi, object: object
         = render "versions", object: object
 
-        -if admin?
-          %nav.show-nav{role:"navigation"}
-            = link_to assistive_technologies_path, class: 'btn btn-info', title: "View the assistive_technologies index" do
-              %i.fa.fa-fw.fa-list{title: 'List'}
-              Assistive Technologies
+        %nav.show-nav{role:"navigation"}
+          = link_to assistive_technologies_path, class: 'btn btn-info', title: "View the assistive_technologies index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Assistive Technologies
+          -if admin?
             = link_to edit_assistive_technology_path(@assistive_technology), title: "Edit this Assistive Technology", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit

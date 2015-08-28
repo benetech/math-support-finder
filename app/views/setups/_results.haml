@@ -1,9 +1,8 @@
 .results#setups-results
   %header
-    %h2#setups-results-title{tabindex: -1}<
-      Results
-      %span.sr-only ,
+    %h1#setups-results-title{tabindex: -1}<
       %span.badge= @setups.total_count
+      Results
       %small
         =link_to request.url do
           %span.sr-only Link to these results
@@ -85,3 +84,9 @@
             %td
               =link_to setup_path(setup) do
                 Learn more
+
+  - if  @setups.count == 0
+    %p 
+      There are no supported results.  Please change your parameters or 
+      =link_to "mailto:math-support-matrix@seeread.info" do
+        email support.

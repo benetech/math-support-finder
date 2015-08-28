@@ -48,12 +48,12 @@
               - klass += setup.workflow_status.css_class
 
               %tr{class: klass}
-                %td= setup.platform_version
-                %td= setup.assistive_technology_version
-                %td= setup.browser_reader_version
-                %td= setup.file_format
-                %td= setup.renderer
-                %td= labeled setup.workflow_status
+                %td= link_to setup.platform_version, platform_version_path(setup.platform_version)
+                %td= link_to setup.assistive_technology_version, assistive_technology_path(setup.assistive_technology_version)
+                %td= link_to setup.browser_reader_version, browser_reader_version_path(setup.browser_reader_version)
+                %td= link_to setup.file_format, file_format_path(setup.file_format)
+                %td= link_to setup.renderer, renderer_path(setup.renderer)
+                %td= link_to labeled(setup.workflow_status), workflow_status_path(setup.workflow_status)
                 %td.text-right<
                   = link_to setup, class: "btn btn-show", title: "Show #{setup}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}

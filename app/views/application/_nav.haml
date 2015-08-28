@@ -40,15 +40,15 @@
         %li<
           %a{href: "mailto:math-support-matrix@seeread.info", target: "_blank"}
             %i.fa.fa-fw.fa-support
-            Support
+            Email Support
 
         - if current_user
           %li<
             = link_to destroy_user_session_path, :method => :delete do 
               %i.fa.fa-fw.fa-sign-out
-              Log out
+              Log Out
         - else
           %li<
             = link_to user_session_path do
               %i.fa.fa-fw.fa-sign-in
-              Log in
+              Admin Log In

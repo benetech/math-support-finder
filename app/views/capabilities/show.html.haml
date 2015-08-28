@@ -46,12 +46,13 @@
                 %span{class: klass}=@capability.verification_status.to_s.titleize
 
 
-        %nav.show-nav{role:"navigation"}
-          -#= link_to capabilities_path, class: 'btn btn-info', title: "View the capabilities index" do
-            %i.fa.fa-fw.fa-list{title: 'List'}
-            Capabilities
-          = link_to edit_capability_path(@capability), title: "Edit this Capability", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
-          = link_to new_capability_path(setup_id: @capability.setup.id), class: 'btn btn-success' do
-            Add another Capability for this setup
+        -if admin?
+          %nav.show-nav{role:"navigation"}
+            -#= link_to capabilities_path, class: 'btn btn-info', title: "View the capabilities index" do
+              %i.fa.fa-fw.fa-list{title: 'List'}
+              Capabilities
+            = link_to edit_capability_path(@capability), title: "Edit this Capability", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_capability_path(setup_id: @capability.setup.id), class: 'btn btn-success' do
+              Add another Capability for this setup

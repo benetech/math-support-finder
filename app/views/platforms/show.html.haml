@@ -30,11 +30,11 @@
         = render "entity", multi: multi, object: object
         = render "versions", object: object
 
-        -if admin?
-          %nav.show-nav{role:"navigation"}
-            = link_to platforms_path, class: 'btn btn-info', title: "View the platforms index" do
-              %i.fa.fa-fw.fa-list{title: 'List'}
-              Platforms
+        %nav.show-nav{role:"navigation"}
+          = link_to platforms_path, class: 'btn btn-info', title: "View the platforms index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Platforms
+          -if admin?
             = link_to edit_platform_path(@platform), title: "Edit this Platform", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit

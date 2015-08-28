@@ -1,5 +1,7 @@
 class WorkflowStatusesController < ApplicationController
   before_action :set_workflow_status, only: [:show, :edit, :update, :destroy]
+  before_filter :admin, except: [:show, :index]
+
   respond_to :html, :json
 
   # GET /workflow_statuses
