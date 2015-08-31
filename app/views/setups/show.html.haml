@@ -32,7 +32,7 @@
             
 
         .row
-          .col-md-4
+          .col-md-6
             .panel.panel-default
               %h2.panel-heading Selected setup
               %table.table
@@ -41,21 +41,28 @@
                   %tr
                     %th{scope: "row"} Platform 
                     %td= link_to @setup.platform_version, platform_version_path(@setup.platform_version)
+                    %td= to_html @setup.platform_version.notes
                   %tr
                     %th{scope: "row"} Assistive technology 
                     %td= link_to @setup.assistive_technology_version, assistive_technology_version_path(@setup.assistive_technology_version)
+                    %td= to_html @setup.assistive_technology_version.notes
                   %tr
                     %th{scope: "row"} Reader 
                     %td= link_to @setup.browser_reader_version, browser_reader_version_path(@setup.browser_reader_version)
+                    %td= to_html @setup.browser_reader_version.notes
                   %tr
                     %th{scope: "row"} File format
                     %td= link_to @setup.file_format, file_format_path(@setup.file_format)
+                    %td= to_html @setup.file_format.notes
                   %tr
                     %th{scope: "row"} Renderer
                     %td= link_to @setup.renderer, renderer_path(@setup.renderer)
+                    %td= to_html @setup.renderer.notes
                   %tr
                     %th{scope: "row"} Workflow status
                     %td=labeled @setup.workflow_status
+                    %td
+
 
             .panel.panel-default
               %h2.panel-heading Capabilities
@@ -80,7 +87,7 @@
                 -#.panel-footer= link_to "Add another capability", new_capability_path(setup_id: @setup.id), class: 'btn btn-success'
 
 
-          .col-md-8
+          .col-md-6
             %h2 Notes
             = to_html(@setup.notes)
 
