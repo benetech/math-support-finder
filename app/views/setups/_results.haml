@@ -16,18 +16,25 @@
       %thead
         %tr
           %th{scope: "col"}<
+            %span.sr-only Sort
             = sort_link @q, :platform_version_platform_title, 'Platform'
           %th{scope: "col"}<
+            %span.sr-only Sort
             = sort_link @q, :assistive_technology_version_assistive_technology_title, 'Assistive Technology'
           %th{scope: "col"}<
+            %span.sr-only Sort
             = sort_link @q, :browser_reader_version_browser_reader_title, 'Read with'
           %th{scope: "col"}<
+            %span.sr-only Sort
             = sort_link @q, :file_format_title, 'File Format'
           %th{scope: "col"}<
+            %span.sr-only Sort
             = sort_link @q, :renderer_title, 'Renderer'
           %th{scope: "col"}<
+            %span.sr-only Sort
             = sort_link @q, :outputs_count, 'Outputs' #TODO improve perf
           %th{scope: "col"}<
+            %span.sr-only Sort
             = sort_link @q, :status_title, 'Status'
           %th{scope: "col"}<
             Action
@@ -57,7 +64,7 @@
               collection: @workflow_status
           %th<
             .btn-group
-              = link_to results_setups_path(search_cancel: true), class: 'btn btn-danger btn-sm' do
+              = link_to results_setups_path(search_cancel: true), role: "button", class: 'btn btn-danger btn-sm' do
                 %span.sr-only Clear
                 %i.fa.fa-fw.fa-close
 
