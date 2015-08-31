@@ -26,11 +26,11 @@ class WorkflowStatus < ActiveRecord::Base
     when 2
       "success"
     when 3
-      "primary"
+      "info"
     when 4
       "danger"
     when 5
-      "info"
+      "desired"
     end
   end
 

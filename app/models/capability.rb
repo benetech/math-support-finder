@@ -28,4 +28,12 @@ class Capability < ActiveRecord::Base
   def to_s
     [setup.to_s, affordance.to_s].join(" – ")
   end
+
+  def verification_text
+    if verification_status 
+      "Verified"
+    else
+      "Unverified"
+    end
+  end
 end

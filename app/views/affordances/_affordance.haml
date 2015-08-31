@@ -1,11 +1,13 @@
-- klass = "item "
+- klass = "item danger"
 -#- klass += capability.verification_status ? "success" : "warning"
 %tr{class: klass}
   %td
     =link_to affordance.output, output_path(affordance.output)
     %span -
     =link_to affordance.feature, feature_path(affordance.feature)
-  %td ?
+  %td 
+    %span.label.label-danger
+      Not available
   -#%td<
     -#-if admin?
       -#- toggle = !capability.verification_status

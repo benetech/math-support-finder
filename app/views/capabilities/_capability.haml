@@ -16,8 +16,8 @@
         class: klass, method: :patch, remote: true, 
         data: {disable_with: disable_with} do
         %span.sr-only Toggle verification
-        = capability.verification_status ? "Verified" : "Not verified"
+        = capability.verification_text
     -else
       - klass = "label label-"
       - klass += capability.verification_status ? "success" : "warning"
-      %span{class: klass}= capability.verification_status ? "Verified" : "Not verified"
+      %span{class: klass}= capability.verification_text

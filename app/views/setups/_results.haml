@@ -68,7 +68,9 @@
 
       %tbody
         - @setups.to_a.uniq.each_with_index do |setup, idx|
-          %tr{class: "item"}
+          -klass = "item "
+          -klass += setup.workflow_status.css_class
+          %tr{class: klass}
             -#-if admin?
               -#%td= setup.id
             %td= setup.platform_version
@@ -80,7 +82,8 @@
               -setup.outputs.uniq.each do |a|
                 #{a}
                 %br
-            %td= setup.workflow_status
+            %td
+              = raw setup.workflow_status.label
             %td
               =link_to setup_path(setup) do
                 Learn more
