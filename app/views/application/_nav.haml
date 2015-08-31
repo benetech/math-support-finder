@@ -9,6 +9,9 @@
   %nav#bs-navbar.collapse.navbar-collapse{role: "navigation"}
     %h2.sr-only Navigation
     %ul.nav.navbar-nav
+      %li<
+        = link_to results_setups_path, class: "" do
+          Browse
       -if admin?
         %li<
           = link_to "Setups", setups_path
@@ -30,6 +33,8 @@
               %li= link_to  m.titleize, send("#{m}_path")
         %li<
           = link_to "Content Sources", content_sources_path
+
+
     %h2.sr-only Global Actions
     .navbar-right
       - if current_user
