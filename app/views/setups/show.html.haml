@@ -23,7 +23,13 @@
     .entity
       .entity-inner
         %header
-          %h1#page-title{tabindex: -1}=title
+          %h1#page-title{tabindex: -1}
+            =title
+            %small
+              Last Updated:
+              %time= @setup.updated_at.strftime("%a, %d %b %Y")
+            
+            
 
         .row
           .col-md-4
@@ -53,19 +59,22 @@
 
             .panel.panel-default
               %h2.panel-heading Capabilities
-              %table.table
-                %thead
-                  %tr
-                    %th{scope: 'col'}
+              %table.table<
+                %thead<
+                  %tr<
+                    %th{scope: 'col'}<
                       Affordance
-                    %th{scope: 'col'}
-                      Verified?
-                %tbody
+                    %th{scope: 'col'}<
+                      Status
+
+                %tbody<
                   -# in memory sort
                   - capabilities = @setup.capabilities
                   - @setup.affordances.sorted.each do |a|
                     - capability = capabilities.find{|c| a.id == c.affordance_id}
                     = render "capabilities/capability", capability: capability
+                  - @setup.other_affordances.sorted.each do |a|
+                    = render "affordances/affordance", affordance: a
 
               -#-if admin? and @setup.capabilities.count < Affordance.all.count
                 -#.panel-footer= link_to "Add another capability", new_capability_path(setup_id: @setup.id), class: 'btn btn-success'

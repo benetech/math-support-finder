@@ -1,0 +1,24 @@
+- klass = "item "
+-#- klass += capability.verification_status ? "success" : "warning"
+%tr{class: klass}
+  %td
+    =link_to affordance.output, output_path(affordance.output)
+    %span -
+    =link_to affordance.feature, feature_path(affordance.feature)
+  %td ?
+  -#%td<
+    -#-if admin?
+      -#- toggle = !capability.verification_status
+      -#- disable_with = "<i id='disable-me' class='fa fa-spinner fa-spin fa-fw'></i>"
+      -#- klass='btn btn-' 
+      -#- klass += capability.verification_status ? "success" : "warning"
+
+      -#= button_to capability_path(capability), params: {"capability[verification_status]": toggle },
+        -#class: klass, method: :patch, remote: true, 
+        -#data: {disable_with: disable_with} do
+        -#%span.sr-only Toggle verification
+        -#= capability.verification_status ? "Verified" : "Not verified"
+    -#-else
+      -#- klass = "label label-"
+      -#- klass += capability.verification_status ? "success" : "warning"
+      -#%span{class: klass}= capability.verification_status ? "Verified" : "Not verified"
