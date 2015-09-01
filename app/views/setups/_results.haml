@@ -9,7 +9,7 @@
           %i.fa.fa-link.fa-fw
 
   = paginate @setups
-  = search_form_for(@q, url: {controller: :setups, action: :results},  html: {multipart: true, class: 'form-vertical', remote: true}, format: 'js', wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
+  = search_form_for(@q, url: {controller: :setups, action: :results},  html: {multipart: true, class: 'form-vertical'}, wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
 
     %table.index-table.table-responsive
       %caption.sr-only Results table for setups
