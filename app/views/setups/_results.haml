@@ -90,13 +90,16 @@
                 #{a}
                 %br
             %td
-              = raw setup.workflow_status.label
+              %p.text-center
+                = raw setup.workflow_status.label
+              %p.text-center
+                %small.text-center
+                  On
+                  %time= setup.updated_at.strftime("%a, %d %b %Y")
             %td
-              =link_to setup_path(setup) do
-                Learn more
+              =link_to setup_path(setup), class: 'btn btn-primary' do
+                Details
 
   - if  @setups.count == 0
-    %p 
-      There are no supported results.  Please change your parameters or 
-      =link_to "mailto:math-support-matrix@seeread.info" do
-        email support.
+    %h3
+      There are no supported results for your search.  Please try changing your parameters.  If you still can’t find the setup you need, <a href="mailto:math-support-matrix@seeread.info">email support</a> to request it or learn more.

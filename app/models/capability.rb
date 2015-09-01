@@ -33,7 +33,7 @@ class Capability < ActiveRecord::Base
     if verification_status 
       "Verified"
     else
-      "Unverified"
+      "Not Verified"
     end
   end
 end
