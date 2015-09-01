@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
     @outputs= Output.all
 
     @q = Setup.ransack(params[:q])
+
     nested = ['platform_version_version desc',  'assistive_technology_version desc', 'browser_reader_version desc']
     if @q.sorts.empty?
       @q.sorts = ['platform_version_platform_title asc']  + nested
@@ -42,7 +43,17 @@ class ApplicationController < ActionController::Base
       sorts = [params[:q][:s]]
       @q.sorts = sorts + nested
     end
-    @setups = @q.result.page(params[:page])
+
+    if !current_user
+      @workflow_status= WorkflowStatus.where(id: [2, 3, 4])
+      @setups = @q.result.where(workflow_status_id: [2,3,4])
+    else
+      @workflow_status= WorkflowStatus.all
+      @setups = @q.result
+    end
+
+    @setups = @setups.page(params[:page])
+
 
     @cache_key = [@q, @setups , @platforms , @browser_readers , @renderers , @assistive_technologies , @file_formats , @workflow_status , @outputs].to_set.hash
   end
