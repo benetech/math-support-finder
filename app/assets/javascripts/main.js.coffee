@@ -18,6 +18,7 @@ $ ->
     Analytical.track()
 
   $(document).on 'page:change', ->
+    $('.truncate').jTruncate({length: 100})
     $('#main').removeClass('fadeOut').addClass('animated fadeIn')
     #set focus
     $('#page-title').focus()

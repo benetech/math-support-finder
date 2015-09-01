@@ -12,6 +12,7 @@ class SetupsController < ApplicationController
 
   # GET /setups/1
   def show
+    @outputs = Output.all
   end
 
   # GET /setups/new
