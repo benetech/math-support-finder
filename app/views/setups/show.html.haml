@@ -32,7 +32,7 @@
             
 
         .row
-          .col-md-6
+          .col-md-8
             .panel.panel-default
               %h2.panel-heading Selected setup
               %table.table
@@ -78,7 +78,7 @@
                   - outputs = []
                   -@outputs.each do |o|
                     %th{scope: 'col'}<
-                      =link_to o, output_path(o)
+                      =o
                     - these_outputs = []
                     - affordances = @setup.affordances.sorted.where output_id: o.id
                     - affordances.each do |a|
@@ -103,7 +103,7 @@
                 -#.panel-footer= link_to "Add another capability", new_capability_path(setup_id: @setup.id), class: 'btn btn-success'
 
 
-          .col-md-6
+          .col-md-4
             %h2 Notes
             = to_html(@setup.notes)
 

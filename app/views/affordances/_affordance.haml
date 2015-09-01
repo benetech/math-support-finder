@@ -1,6 +1,8 @@
 - klass = "item danger"
 -#- klass += capability.verification_status ? "success" : "warning"
-%td{class: klass}
-  =link_to affordance.feature, feature_path(affordance.feature)
-  %span.label.label-danger.float-right
-    Not available
+%td{class: klass}<
+  %div{style: "float: left; width:50%"}<
+    =link_to affordance.feature, affordance_path(affordance)
+  %div{style: "float: right; width:50%; text-align: right"}<
+    %span.label.label-danger.float-right
+      Not available
