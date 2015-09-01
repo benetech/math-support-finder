@@ -81,14 +81,18 @@ $ ->
 
     #strongly suggesting options for setups filtering
     window.triggerCount = 0
-    triggerMappings = (mappings) ->
+    triggerMappings = (mappings, form_id) ->
       window.triggerCount++
       #console.log window.triggerCount
       #console.log mappings
       if triggerCount < 5
         for id, options of mappings
           if options.length > 0
-            css_id = '#q_' + id
+            #console.log form_id
+            if form_id.indexOf('-form') > -1
+              css_id = id
+            else
+              css_id = '#q_' + id
             #console.log css_id, options
             $('option', css_id).each () ->
               #console.log @.value, options
@@ -96,9 +100,9 @@ $ ->
                 #console.log 'disabling ', @
                 $(@).attr('disabled', true)
               else if options.indexOf(@.value) > -1 and $(@).is(':selected')
-                triggerMappings($(@).data('mappings'))
+                triggerMappings($(@).data('mappings'), form_id)
 
-    $results =$('#setups-results, #setup_search')
+    $results =$('#setups-results, #setup_search, #setup-form')
     if $results.length > 0
       $selects = $('select', $results)
       $selects.change () ->
@@ -109,7 +113,7 @@ $ ->
         $selected = $('option:selected', this)
         mappings =  $selected.data('mappings')
         #console.log mappings
-        triggerMappings(mappings)
+        triggerMappings(mappings, $results.attr('id'))
 
       #trigger on selected
       $selects.find('option:selected').each () ->

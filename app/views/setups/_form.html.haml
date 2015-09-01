@@ -1,30 +1,36 @@
-= simple_form_for @setup, validate: true, html: {multipart: true, class: 'form-horizontal'}, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input} do |f|
-  = f.error_notification
-  .form-inputs
-    = f.association :platform_version, prompt: "Please pick a platform"
-    = f.association :assistive_technology_version , prompt: "Please pick an assistive technology"
-    = f.association :browser_reader_version , prompt: "Please pick a browser reader"
-    = f.association :file_format, prompt: "Please pick a file format"
-    = f.association :renderer, prompt: "Please pick a renderer"
-    %hr
-    = f.association :workflow_status, prompt: "Please indicate a file format"
-    = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
-    %hr
-    = f.association :affordances, as: :check_boxes, collection: Affordance.all.sorted
-    %hr
-    = f.association :content_sources, as: :check_boxes
+#setup-form
+  = simple_form_for @setup, validate: true, html: {multipart: true, class: 'form-horizontal'}, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input} do |f|
+    = f.error_notification
+    .form-inputs
+      = f.association :platform_version, prompt: "Please pick a platform", collection: PlatformVersion.all.map{|e| [e, e.id, {data: {mappings: {setup_assistive_technology_version_id: e.platform.assistive_technologies.map{|a| a.id}.flatten, setup_browser_reader_version__id: e.platform.browser_readers.map{|a| a.id}.flatten }}}]}
 
-  .form-actions
-    .form-actions-inner
-      = f.button :submit, class: 'btn btn-success'
-      - if action_name == 'edit'
+      = f.association :assistive_technology_version , prompt: "Please pick an assistive technology", collection: AssistiveTechnologyVersion.all.map{|e| [e, e.id, {data: {mappings: {setup_browser_reader_version_id: e.assistive_technology.browser_readers.map{|a| a.id}.flatten, setup_platform_version_id: e.assistive_technology.platforms.map{|a| a.id}.flatten }}}]}
+
+      = f.association :browser_reader_version , prompt: "Please pick a browser reader", collection: BrowserReaderVersion.all.map{|e| [e, e.id, {data: {mappings: {setup_assistive_technology_version_id: e.browser_reader.assistive_technologies.map{|a| a.id}.flatten, setup_file_format_id: e.browser_reader.file_formats.map{|a| a.id}.flatten, setup_renderer_id: e.browser_reader.renderers.map{|a| a.id}.flatten, platform_version_id: e.browser_reader.platforms.map{|a| a.id}.flatten }}}]}
+
+      = f.association :file_format, prompt: "Please pick a file format", collection: FileFormat.all.map{|e| [e, e.id, {data: {mappings: {setup_browser_reader_id: e.browser_readers.map{|a| a.id}.flatten}}}]}
+
+      = f.association :renderer, prompt: "Please pick a renderer", collection: @renderers.all.map{|e| [e, e.id, {data: {mappings: {setup_browser_reader_version_id: e.browser_readers.map{|a| a.id}.flatten}}}]}
+
+      %hr
+      = f.association :workflow_status, prompt: "Please indicate a file format"
+      = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
+      %hr
+      = f.association :affordances, as: :check_boxes, collection: Affordance.all.sorted
+      %hr
+      = f.association :content_sources, as: :check_boxes
+
+    .form-actions
+      .form-actions-inner
+        = f.button :submit, class: 'btn btn-success'
+        - if action_name == 'edit'
+          %br
+          %br
+          = link_to @setup, class: 'btn btn-info' do
+            %i.fa.fa-fw.fa-eye{title: "Eye"}
+            View this setup
         %br
         %br
-        = link_to @setup, class: 'btn btn-info' do
-          %i.fa.fa-fw.fa-eye{title: "Eye"}
-          View this setup
-      %br
-      %br
-      = link_to setups_path, class: 'btn btn-info' do
-        %i.fa.fa-fw.fa-list{title: "List"}
-        View all Setups
+        = link_to setups_path, class: 'btn btn-info' do
+          %i.fa.fa-fw.fa-list{title: "List"}
+          View all Setups

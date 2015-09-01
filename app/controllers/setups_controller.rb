@@ -17,12 +17,13 @@ class SetupsController < ApplicationController
 
   # GET /setups/new
   def new
+    @renderers = Renderer.all #can't call Renderer in view
     if params[:id]
       setup = Setup.find(params[:id])
       @setup = setup.dup
       @setup.affordances  = setup.affordances
       @setup.content_sources = setup.content_sources
-      puts @setup.attributes
+      #puts @setup.attributes
       flash[:notice] = "We have copied over the previous setup."
     else
       @setup = Setup.new
@@ -31,6 +32,7 @@ class SetupsController < ApplicationController
 
   # GET /setups/1/edit
   def edit
+    @renderers = Renderer.all #can't call Renderer in view
   end
 
   # POST /setups
