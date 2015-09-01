@@ -20,19 +20,9 @@
             Components
             %span.caret
           %ul.dropdown-menu
-            - models = [ "platforms", "assistive_technologies", "browser_readers",  "renderers", "file_formats"]
+            - models = [ "platforms", "assistive_technologies", "browser_readers",  "file_formats", "renderers", "affordances", "features", "outputs", "content_sources"]
             - models.each do |m|
               %li= link_to  m.titleize, send("#{m}_path")
-        %li.dropdown{:role => "presentation"}<
-          %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}<
-            Affordances
-            %span.caret
-          %ul.dropdown-menu
-            - models = ["features", "outputs"]
-            - models.each do |m|
-              %li= link_to  m.titleize, send("#{m}_path")
-        %li<
-          = link_to "Content Sources", content_sources_path
 
 
     %h2.sr-only Global Actions

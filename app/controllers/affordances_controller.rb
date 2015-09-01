@@ -6,7 +6,7 @@ class AffordancesController < ApplicationController
 
   # GET /affordances
   def index
-    @affordances = Affordance.all
+    @affordances = Affordance.sorted
   end
 
   # GET /affordances/1
