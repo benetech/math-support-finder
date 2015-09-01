@@ -33,12 +33,6 @@
               %td<
                 = @feature.title
 
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                = to_html(@feature.notes)
-
             -object = @feature
             -multi = ["outputs"]
             = render "multi", multi: multi, object: object

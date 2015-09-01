@@ -3,7 +3,7 @@
   .form-inputs
     = f.association :output 
     = f.association :feature 
-
+    = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
 
   .form-actions
     .form-actions-inner

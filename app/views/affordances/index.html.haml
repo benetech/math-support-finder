@@ -31,6 +31,8 @@
               %th{scope: "col"}<
                 Feature
               %th{scope: "col"}<
+                Notes
+              %th{scope: "col"}<
                 Actions
 
           %tbody
@@ -38,6 +40,7 @@
               %tr{class: "item"}
                 %td= affordance.output
                 %td= affordance.feature
+                %td= to_html affordance.notes
                 %td.text-right<
                   = link_to affordance, class: "btn btn-show", title: "Show #{affordance}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}

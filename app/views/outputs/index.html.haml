@@ -29,15 +29,12 @@
               %th{scope: "col"}<
                 Title
               %th{scope: "col"}<
-                Notes
-              %th{scope: "col"}<
                 Actions
 
           %tbody
             - @outputs.each_with_index do |output, idx|
               %tr{class: "item"}
                 %td= output.title
-                %td= to_text(output.notes).truncate(50)
 
                 %td.text-right<
                   = link_to output, class: "btn btn-show", title: "Show #{output}" do

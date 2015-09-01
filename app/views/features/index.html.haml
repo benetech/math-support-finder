@@ -29,16 +29,12 @@
               %th{scope: "col"}<
                 Title
               %th{scope: "col"}<
-                Notes
-              %th{scope: "col"}<
                 Actions
 
           %tbody
             - @features.each_with_index do |feature, idx|
               %tr{class: "item"}
                 %td= feature.title
-                %td= to_text(feature.notes).truncate(50)
-
                 %td.text-right<
                   = link_to feature, class: "btn btn-show", title: "Show #{feature}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
