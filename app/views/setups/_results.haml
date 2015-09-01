@@ -16,25 +16,18 @@
       %thead
         %tr
           %th{scope: "col"}<
-            %span.sr-only Sort
             = sort_link @q, :platform_version_platform_title, 'Platform'
           %th{scope: "col"}<
-            %span.sr-only Sort
             = sort_link @q, :assistive_technology_version_assistive_technology_title, 'Assistive Technology'
           %th{scope: "col"}<
-            %span.sr-only Sort
             = sort_link @q, :browser_reader_version_browser_reader_title, 'Read with'
           %th{scope: "col"}<
-            %span.sr-only Sort
             = sort_link @q, :file_format_title, 'File Format'
           %th{scope: "col"}<
-            %span.sr-only Sort
             = sort_link @q, :renderer_title, 'Renderer'
           %th{scope: "col"}<
-            %span.sr-only Sort
             = sort_link @q, :outputs_count, 'Outputs' #TODO improve perf
           %th{scope: "col"}<
-            %span.sr-only Sort
             = sort_link @q, :status_title, 'Status'
           %th{scope: "col"}<
             Action
@@ -62,16 +55,16 @@
           %th<
             = f.input  :workflow_status_id_eq, as: :select, include_blank: "Any status", label: false, required: false,
               collection: @workflow_status
-          %th<
+          %td<
             .btn-group
-              = link_to results_setups_path(search_cancel: true), role: "button", class: 'btn btn-danger btn-sm' do
-                %span.sr-only Clear
-                %i.fa.fa-fw.fa-close
-
               - disable_with = "<i id='disable-me' class='fa fa-spinner fa-spin fa-fw'></i>"
               = button_tag type: "submit", class: "btn btn-success btn-sm", data: {disable_with: disable_with} do
                 %span.sr-only Search
                 %i.fa.fa-fw.fa-search
+              = link_to results_setups_path(search_cancel: true), role: "button", class: 'btn btn-danger btn-sm' do
+                %span.sr-only Clear
+                %i.fa.fa-fw.fa-close
+
 
       %tbody
         - @setups.to_a.uniq.each_with_index do |setup, idx|

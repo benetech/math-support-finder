@@ -18,10 +18,18 @@ $ ->
     Analytical.track()
 
   $(document).on 'page:change', ->
+    window.sort_links = () ->
+      $('.sort_link').each () ->
+        if $(@).hasClass('desc')
+          $(@).html($(@).text().replace('▼', '<span aria-hidden="true">▼</span> <span class="sr-only">Descending</span>'))
+        else if $(@).hasClass('asc')
+          $(@).html($(@).text().replace('▲', '<span aria-hidden="true">▲</span> <span class="sr-only">Ascending</span>'))
+        $(@).attr('title', 'sorts table by this column')
+    window.sort_links()
     $('.truncate').jTruncate({length: 100})
     $('#main').removeClass('fadeOut').addClass('animated fadeIn')
     #set focus
-    $('#page-title').focus()
+    $('h1').first().focus()
 
     #allow file input for csv upload
     $('input[type=file]').bootstrapFileInput()
@@ -106,5 +114,5 @@ $ ->
       #trigger on selected
       $selects.find('option:selected').each () ->
         if @.value
-          console.log @.value
+          #console.log @.value
           $(@).parents('select').trigger('change')
