@@ -51,7 +51,7 @@ class Setup < ActiveRecord::Base
   paginates_per 50
 
   scope :sorted, -> { joins(:platform_version, :assistive_technology_version, :browser_reader_version).order('platform_version.title asc, assistive_technology_version.title asc, browser_reader_version.title asc') }
-  default_scope  {order('updated_at desc')}
+  default_scope  {order('workflow_status_id asc, updated_at desc')}
 
   def other_affordances
     a_ids = capabilities.map(&:affordance_id)

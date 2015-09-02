@@ -106,6 +106,7 @@ $ ->
     if $results.length > 0
       $selects = $('select', $results)
       $selects.change () ->
+        $results.find('button').removeClass('btn-sm') #visual cue
         #console.log('changed')
         window.triggerCount = 0
         #reset all
