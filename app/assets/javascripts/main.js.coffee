@@ -26,7 +26,10 @@ $ ->
           $(@).html($(@).text().replace('▲', '<span aria-hidden="true">▲</span> <span class="sr-only">Ascending</span>'))
         $(@).attr('title', 'sorts table by this column')
     window.sort_links()
-    $('.truncate').jTruncate({length: 100})
+    $('.truncate').readmore
+      moreLink: '<a href="#">More</a>'
+      lessLink: '<a href="#">Less</a>'
+      collapsedHeight: 196
     $('#main').removeClass('fadeOut').addClass('animated fadeIn')
     #set focus
     $('h1').first().focus()
