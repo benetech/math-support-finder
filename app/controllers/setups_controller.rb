@@ -13,6 +13,7 @@ class SetupsController < ApplicationController
   # GET /setups/1
   def show
     @outputs = Output.all
+    @affordances = Affordance.all
   end
 
   # GET /setups/new
