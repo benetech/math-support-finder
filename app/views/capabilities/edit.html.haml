@@ -1,9 +1,8 @@
 -title = "Editing #{@capability}"
 -meta title: title
--cache ['v1', admin?,  @capability] do
-  .entity-outer
-    .entity
-      .entity-inner
-        %header
-          %h1#page-title{tabindex: -1}=title
-        = render 'form'
+.entity-outer
+  .entity
+    .entity-inner
+      %header
+        %h1#page-title{tabindex: -1}=title
+      = render 'form'

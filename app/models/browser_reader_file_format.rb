@@ -16,8 +16,8 @@
 
 class BrowserReaderFileFormat < ActiveRecord::Base
 
-  belongs_to :browser_reader
-  belongs_to :file_format
+  belongs_to :browser_reader, touch: true
+  belongs_to :file_format, touch: true
 
   validates :browser_reader_id, uniqueness: {scope: :file_format_id}
   validates_presence_of :browser_reader, :file_format

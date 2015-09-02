@@ -16,8 +16,8 @@
 
 class BrowserReaderRenderer < ActiveRecord::Base
 
-  belongs_to :browser_reader
-  belongs_to :renderer
+  belongs_to :browser_reader, touch: true
+  belongs_to :renderer, touch: true
 
   validates :browser_reader, uniqueness: {scope: :renderer}
   validates_presence_of :renderer, :browser_reader

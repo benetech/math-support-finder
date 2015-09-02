@@ -15,8 +15,8 @@
 #
 
 class BrowserReaderAssistiveTechnology < ActiveRecord::Base
-  belongs_to :browser_reader
-  belongs_to :assistive_technology
+  belongs_to :browser_reader, touch: true
+  belongs_to :assistive_technology, touch: true
 
   validates :assistive_technology_id, uniqueness: {scope: :browser_reader_id}
   validates_presence_of :assistive_technology, :browser_reader
