@@ -7,7 +7,7 @@
     -if admin?
       - toggle = !capability.verification_status
       - disable_with = "<i id='disable-me' class='fa fa-spinner fa-spin fa-fw'></i>"
-      - klass='btn btn-' 
+      - klass='label label-' 
       - klass += capability.verification_status ? "success" : "warning"
 
       = button_to capability_path(capability), params: {"capability[verification_status]": toggle },
