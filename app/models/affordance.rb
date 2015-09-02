@@ -19,8 +19,8 @@ class Affordance < ActiveRecord::Base
   has_many :setups, through: :capabilities
   has_many :capabilities, dependent: :destroy
 
-  belongs_to :feature
-  belongs_to :output
+  belongs_to :feature, touch: true
+  belongs_to :output, touch: true
 
   validates_presence_of :feature, :output
   validates_associated :feature, :output

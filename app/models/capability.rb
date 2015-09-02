@@ -17,7 +17,7 @@
 
 class Capability < ActiveRecord::Base
 
-  belongs_to :affordance
+  belongs_to :affordance, touch: true
   belongs_to :setup, touch: true
 
   validates_presence_of :affordance, :setup

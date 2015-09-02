@@ -1,7 +1,7 @@
 .results#setups-results
   %header
     %h1#setups-results-title{tabindex: -1}<
-      %span.badge= @setups.total_count
+      = @setups.total_count
       Results
       %small
         =link_to request.url do
@@ -56,14 +56,13 @@
             = f.input  :workflow_status_id_eq, as: :select, include_blank: "Any status", label: false, required: false,
               collection: @workflow_status
           %td<
-            .btn-group
-              - disable_with = "<i id='disable-me' class='fa fa-spinner fa-spin fa-fw'></i>"
-              = button_tag type: "submit", class: "btn btn-success btn-sm", data: {disable_with: disable_with} do
-                %span.sr-only Search
-                %i.fa.fa-fw.fa-search
-              = link_to results_setups_path(search_cancel: true), role: "button", class: 'btn btn-danger btn-sm' do
-                %span.sr-only Clear
-                %i.fa.fa-fw.fa-close
+            - disable_with = "<i id='disable-me' class='fa fa-spinner fa-spin fa-fw'></i>"
+            = button_tag type: "submit", class: "btn btn-success btn-sm", data: {disable_with: disable_with} do
+              Search
+            %br
+            %br
+            = link_to results_setups_path(search_cancel: true), role: "button", class: 'btn btn-danger btn-sm' do
+              Clear filters
 
 
       %tbody
