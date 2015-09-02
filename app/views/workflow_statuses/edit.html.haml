@@ -1,9 +1,8 @@
 -title = "Editing #{@workflow_status}"
 -meta title: title
--cache ['v1', admin?,  @workflow_status] do
-  .entity-outer
-    .entity
-      .entity-inner
-        %header
-          %h1#page-title{tabindex: -1}=title
-        = render 'form'
+.entity-outer
+  .entity
+    .entity-inner
+      %header
+        %h1#page-title{tabindex: -1}=title
+      = render 'form'

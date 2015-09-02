@@ -16,8 +16,8 @@
 
 class PlatformAssistiveTechnology < ActiveRecord::Base
 
-  belongs_to :platform
-  belongs_to :assistive_technology
+  belongs_to :platform, touch: true
+  belongs_to :assistive_technology, touch: true
 
   validates :platform_id, uniqueness: {scope: :assistive_technology_id}
   validates_presence_of :assistive_technology, :platform
