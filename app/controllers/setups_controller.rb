@@ -1,6 +1,9 @@
 class SetupsController < ApplicationController
   before_action :set_setup, only: [:show, :edit, :update, :destroy]
-  respond_to :html, :json
+  before_action :clear_search_index, :only => [:index, :results]
+  before_filter :admin, except: [:show, :index, :new, :create, :results, :search]
+
+  respond_to :html, :json, :js
 
   # GET /setups
   def index
@@ -13,7 +16,16 @@ class SetupsController < ApplicationController
 
   # GET /setups/new
   def new
-    @setup = Setup.new
+    if params[:id]
+      setup = Setup.find(params[:id])
+      @setup = setup.dup
+      @setup.affordances  = setup.affordances
+      @setup.content_sources = setup.content_sources
+      puts @setup.attributes
+      flash[:notice] = "We have copied over the previous setup."
+    else
+      @setup = Setup.new
+    end
   end
 
   # GET /setups/1/edit
@@ -40,6 +52,10 @@ class SetupsController < ApplicationController
     respond_with @setup
   end
 
+  def results
+    prep_setup_search
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_setup
@@ -48,6 +64,6 @@ class SetupsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def setup_params
-      params.require(:setup).permit(:platform_version_id, :renderer_version_id, :browser_reader_version_id, :assistive_technology_version_id, :file_format_id, :workflow_status_id, :notes, content_sources_id: [])
+      params.require(:setup).permit(:platform_version_id, :renderer_id, :browser_reader_version_id, :assistive_technology_version_id, :file_format_id, :workflow_status_id, :notes, content_sources_id: [], affordance_ids: [])
     end
 end

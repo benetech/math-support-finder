@@ -16,11 +16,13 @@
 
 class BrowserReaderVersion < ActiveRecord::Base
   has_many :setups, dependent: :nullify
-  belongs_to :browser_reader
+  belongs_to :browser_reader, touch: true
 
   validates_associated :browser_reader
   validates_presence_of :browser_reader, :version
-  validates :version, numericality: true
+  validates :version, uniqueness: {scope: :browser_reader_id}
+
+  default_scope { joins(:browser_reader).order('LOWER(title), LOWER(version)') }
 
   def to_s
     [browser_reader.to_s, version.to_s].join(" ")

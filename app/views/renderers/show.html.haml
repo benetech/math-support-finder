@@ -27,14 +27,14 @@
         -object = @renderer
         -multi = ["browser_readers"]
         = render "entity", multi: multi, object: object
-        = render "versions", object: object
 
         %nav.show-nav{role:"navigation"}
           = link_to renderers_path, class: 'btn btn-info', title: "View the renderers index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Renderers
-          = link_to edit_renderer_path(@renderer), title: "Edit this Renderer", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
-          = link_to new_renderer_path(@renderer), class: 'btn btn-success' do
-            Add another Renderer
+          -if admin?
+            = link_to edit_renderer_path(@renderer), title: "Edit this Renderer", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_renderer_path(@renderer), class: 'btn btn-success' do
+              Add another Renderer

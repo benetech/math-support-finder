@@ -26,7 +26,7 @@
           %h1#page-title{tabindex: -1}=title
         .row
           .col-md-8
-            = raw to_html(@content_source.notes)
+            = to_html(@content_source.notes)
           .col-md-4
             .panel.panel-default
               %h2.panel-heading
@@ -36,11 +36,11 @@
                   %li.list-group-item
                     = link_to s, setup_path(s)
 
-        -if admin?
-          %nav.show-nav{role:"navigation"}
-            = link_to content_sources_path, class: 'btn btn-info', title: "View the content_sources index" do
-              %i.fa.fa-fw.fa-list{title: 'List'}
-              Content Sources
+        %nav.show-nav{role:"navigation"}
+          = link_to content_sources_path, class: 'btn btn-info', title: "View the content_sources index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            Content Sources
+          -if admin?
             = link_to edit_content_source_path(@content_source), title: "Edit this Content Source", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit

@@ -69,3 +69,41 @@ $ ->
     #ajax search
     $(".autosubmit select").off().change (e) ->
       $(this).closest('form').submit()
+
+    #strongly suggesting options for setups filtering
+    window.triggerCount = 0
+    triggerMappings = (mappings) ->
+      window.triggerCount++
+      #console.log window.triggerCount
+      #console.log mappings
+      if triggerCount < 5
+        for id, options of mappings
+          if options.length > 0
+            css_id = '#q_' + id
+            #console.log css_id, options
+            $('option', css_id).each () ->
+              #console.log @.value, options
+              if @.value && options.indexOf(parseInt(@.value)) == -1
+                #console.log 'disabling ', @
+                $(@).attr('disabled', true)
+              else if options.indexOf(@.value) > -1 and $(@).is(':selected')
+                triggerMappings($(@).data('mappings'))
+
+    $results =$('#setups-results, #setup_search')
+    if $results.length > 0
+      $selects = $('select', $results)
+      $selects.change () ->
+        #console.log('changed')
+        window.triggerCount = 0
+        #reset all
+        $results.find('option').removeProp('disabled')
+        $selected = $('option:selected', this)
+        mappings =  $selected.data('mappings')
+        #console.log mappings
+        triggerMappings(mappings)
+
+      #trigger on selected
+      $selects.find('option:selected').each () ->
+        if @.value
+          console.log @.value
+          $(@).parents('select').trigger('change')

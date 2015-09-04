@@ -37,7 +37,7 @@
               %th{scope: "row"}<
                 Notes
               %td<
-                = raw to_html(@feature.notes)
+                = to_html(@feature.notes)
 
             -object = @feature
             -multi = ["outputs"]
@@ -48,8 +48,9 @@
           = link_to features_path, class: 'btn btn-info', title: "View the features index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Features
-          = link_to edit_feature_path(@feature), title: "Edit this Feature", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
-          = link_to new_feature_path(@feature), class: 'btn btn-success' do
-            Add another Feature
+          -if admin?
+            = link_to edit_feature_path(@feature), title: "Edit this Feature", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_feature_path(@feature), class: 'btn btn-success' do
+              Add another Feature

@@ -15,12 +15,14 @@
 #
 
 class PlatformVersion < ActiveRecord::Base
-  belongs_to :platform
+  belongs_to :platform, touch: true
   has_many :setups, dependent: :nullify
 
   validates_associated :platform
   validates_presence_of :platform, :version
-  validates :version, numericality: true
+  validates :version, uniqueness: {scope: :platform_id}
+
+  default_scope { joins(:platform).order('LOWER(title), LOWER(version)') }
 
   def to_s
     [platform.to_s, version.to_s].join(" ")

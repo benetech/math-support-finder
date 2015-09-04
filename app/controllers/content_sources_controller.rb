@@ -1,5 +1,7 @@
 class ContentSourcesController < ApplicationController
   before_action :set_content_source, only: [:show, :edit, :update, :destroy]
+  before_filter :admin, except: [:show, :index]
+
   respond_to :html, :json
 
   # GET /content_sources

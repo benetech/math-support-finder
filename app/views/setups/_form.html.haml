@@ -1,14 +1,16 @@
 = simple_form_for @setup, validate: true, html: {multipart: true, class: 'form-horizontal'}, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input} do |f|
   = f.error_notification
   .form-inputs
-    = f.association :platform_version 
-    = f.association :renderer_version 
-    = f.association :browser_reader_version 
-    = f.association :assistive_technology_version 
-    = f.association :file_format 
+    = f.association :platform_version, prompt: "Please pick a platform"
+    = f.association :assistive_technology_version , prompt: "Please pick an assistive technology"
+    = f.association :browser_reader_version , prompt: "Please pick a browser reader"
+    = f.association :file_format, prompt: "Please pick a file format"
+    = f.association :renderer, prompt: "Please pick a renderer"
     %hr
-    = f.association :workflow_status 
+    = f.association :workflow_status, prompt: "Please indicate a file format"
     = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
+    %hr
+    = f.association :affordances, as: :check_boxes, collection: Affordance.all.sorted
     %hr
     = f.association :content_sources, as: :check_boxes
 

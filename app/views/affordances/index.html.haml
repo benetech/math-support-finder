@@ -41,12 +41,14 @@
                 %td.text-right<
                   = link_to affordance, class: "btn btn-show", title: "Show #{affordance}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
-                  = link_to edit_affordance_path(affordance), class: "btn btn-edit", title: "Edit #{affordance}"  do
-                    %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to affordance, title: "Delete this Affordance" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{affordance}?"} do
-                    %i.fa.fa-fw.fa-trash{title: "Trash can"}
+                  -if admin?
+                    = link_to edit_affordance_path(affordance), class: "btn btn-edit", title: "Edit #{affordance}"  do
+                      %i.fa.fa-fw.fa-pencil{title: "Pencil"}
+                    = link_to affordance, title: "Delete this Affordance" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{affordance}?"} do
+                      %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
-        %nav.index-nav{role:"navigation"}
-          = link_to new_affordance_path, class: 'btn btn-success new-link' do
-            %i.fa.fa-fw.fa-plus{title: "Plus"}
-            New Affordance
+        -if admin?
+          %nav.index-nav{role:"navigation"}
+            = link_to new_affordance_path, class: 'btn btn-success new-link' do
+              %i.fa.fa-fw.fa-plus{title: "Plus"}
+              New Affordance

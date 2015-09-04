@@ -1,5 +1,7 @@
 class PlatformAssistiveTechnologiesController < ApplicationController
   before_action :set_platform_assistive_technology, only: [:show, :edit, :update, :destroy]
+  before_filter :admin, except: [:show, :index]
+
   respond_to :html, :json
 
   # GET /platform_assistive_technologies

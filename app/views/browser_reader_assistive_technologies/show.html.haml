@@ -43,8 +43,9 @@
           = link_to browser_reader_assistive_technologies_path, class: 'btn btn-info', title: "View the browser_reader_assistive_technologies index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Browser Reader Assistive Technologies
-          = link_to edit_browser_reader_assistive_technology_path(@browser_reader_assistive_technology), title: "Edit this Browser Reader Assistive Technology", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
-          = link_to new_browser_reader_assistive_technology_path(@browser_reader_assistive_technology), class: 'btn btn-success' do
-            Add another Browser Reader Assistive Technology
+          -if admin?
+            = link_to edit_browser_reader_assistive_technology_path(@browser_reader_assistive_technology), title: "Edit this Browser Reader Assistive Technology", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_browser_reader_assistive_technology_path(@browser_reader_assistive_technology), class: 'btn btn-success' do
+              Add another Browser Reader Assistive Technology

@@ -1,9 +1,15 @@
-= simple_form_for @capability, validate: true, html: {multipart: true, class: 'form-horizontal'}, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input} do |f|
+= simple_form_for @capability, validate: true, html: {multipart: true, class: 'form-horizontal'}, wrapper: :horizontal_form, wrapper_mappings: { check_boxes: :horizontal_radio_and_checkboxes, radio_buttons: :horizontal_radio_and_checkboxes, file: :horizontal_file_input, boolean: :horizontal_boolean} do |f|
   = f.error_notification
   .form-inputs
-    = f.association :affordance 
-    = f.association :setup , selected: params[:setup_id]
-    = f.association :verification_status 
+    -if @setup
+      = f.association :setup , selected: @setup.id
+      - disallowed_ids = @setup.affordances.collect{|a| a.id}
+      - affordance_options = Affordance.all.collect{|a| a unless disallowed_ids.include?(a.id)}.compact
+      = f.association :affordance, prompt: "Pick your affordance", collection: affordance_options
+    -else
+      = f.association :setup, prompt: "Please pick your setup"
+      = f.association :affordance, prompt: "Pick your affordance"
+    = f.input :verification_status, label: "Verified?"
 
   .form-actions
     .form-actions-inner
@@ -14,8 +20,8 @@
         = link_to @capability, class: 'btn btn-info' do
           %i.fa.fa-fw.fa-eye{title: "Eye"}
           View this capability
-      %br
-      %br
-      = link_to capabilities_path, class: 'btn btn-info' do
+      -#%br
+      -#%br
+      -#= link_to capabilities_path, class: 'btn btn-info' do
         %i.fa.fa-fw.fa-list{title: "List"}
         View all Capabilities

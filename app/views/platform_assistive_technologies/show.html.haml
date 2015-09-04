@@ -43,8 +43,9 @@
           = link_to platform_assistive_technologies_path, class: 'btn btn-info', title: "View the platform_assistive_technologies index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Platform Assistive Technologies
-          = link_to edit_platform_assistive_technology_path(@platform_assistive_technology), title: "Edit this Platform Assistive Technology", class: 'btn btn-primary' do
-            %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
-            Edit
-          = link_to new_platform_assistive_technology_path(@platform_assistive_technology), class: 'btn btn-success' do
-            Add another Platform Assistive Technology
+          -if admin?
+            = link_to edit_platform_assistive_technology_path(@platform_assistive_technology), title: "Edit this Platform Assistive Technology", class: 'btn btn-primary' do
+              %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
+              Edit
+            = link_to new_platform_assistive_technology_path(@platform_assistive_technology), class: 'btn btn-success' do
+              Add another Platform Assistive Technology

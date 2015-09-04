@@ -9,31 +9,18 @@
   %nav#bs-navbar.collapse.navbar-collapse{role: "navigation"}
     %h2.sr-only Navigation
     %ul.nav.navbar-nav
+      %li<
+        = link_to results_setups_path, class: "" do
+          Browse
       -if admin?
-        -#- models = ["setups", "capabilities", "content_sources"] 
         %li<
           = link_to "Setups", setups_path
-        -#%li.divider{:role => "separator"}
-        -# versioned entities
-        -#- models = [ "assistive_technologies", "browser_readers",  "platforms", "renderers"]
-        -#- models.each do |m|
-          -#%li.dropdown{:role => "presentation"}
-            -#%a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
-              -#Affordances
-              -#%span.caret
-            -#%ul.dropdown-menu
-            -#- models = ["features", "outputs"]
-            -#- models.each do |m|
-              -#%li<
-                -#= link_to  m.titleize, send("#{m}_path")
-        -#%li<
-          -#= link_to "File Formats", file_formats_path
         %li.dropdown{:role => "presentation"}<
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}<
             Components
             %span.caret
           %ul.dropdown-menu
-            - models = [ "assistive_technologies", "browser_readers",  "platforms", "renderers", "file_formats"]
+            - models = [ "platforms", "assistive_technologies", "browser_readers",  "renderers", "file_formats"]
             - models.each do |m|
               %li= link_to  m.titleize, send("#{m}_path")
         %li.dropdown{:role => "presentation"}<
@@ -41,34 +28,32 @@
             Affordances
             %span.caret
           %ul.dropdown-menu
-            - models = ["capabilities", "features", "outputs"]
+            - models = ["features", "outputs"]
             - models.each do |m|
               %li= link_to  m.titleize, send("#{m}_path")
         %li<
           = link_to "Content Sources", content_sources_path
-        -#invisible joins and non-editable statuses
-        -#"browser_reader_file_formats", "browser_reader_renderers", "platform_browser_readers", "browser_reader_assistive_technologies", "platform_assistive_technologies", 
-          "verification_statuses", "workflow_statuses", "content_source_setups", "affordances",
+
+
     %h2.sr-only Global Actions
     .navbar-right
-      - if admin?
+      - if current_user
         %p.navbar-text
           Hello
-          = link_to root_path, class: "navbar-link" do
-            =current_user
+          =current_user
       %ul.nav.navbar-nav
         %li<
           %a{href: "mailto:math-support-matrix@seeread.info", target: "_blank"}
             %i.fa.fa-fw.fa-support
-            Support
+            Email Support
 
-        - if admin?
+        - if current_user
           %li<
             = link_to destroy_user_session_path, :method => :delete do 
               %i.fa.fa-fw.fa-sign-out
-              Log out
+              Log Out
         - else
           %li<
             = link_to user_session_path do
               %i.fa.fa-fw.fa-sign-in
-              Log in
+              Admin Log In

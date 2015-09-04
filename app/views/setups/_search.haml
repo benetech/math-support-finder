@@ -1,15 +1,22 @@
 .panel.panel-default#simple-search
   %h2.panel-heading
-    Search for a setup or 
-    = link_to setups_path(format: :js), remote: true do
-      browse
-  -#= search_form_for(q, html: {multipart: true, class: 'form-vertical', remote: true}, format: 'js', wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
-  = search_form_for(q, html: {multipart: true, class: 'form-vertical', remote: true}, format: 'js', wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
+    Search for a setup
+  = search_form_for(@q, url: {controller: "setups", action: "results"}, html: {multipart: true, class: 'form-vertical'}, wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
 
     .panel-body
       .form-inputs
-        = f.input  :browser_reader_version_browser_reader_id_eq, collection: @browser_readers, as: :select, prompt: "Pick your browser reader", label: "Browser Reader", required: false
-        = f.input  :assistive_technology_version_assistive_technology_id_eq, collection: @assistive_technologies, as: :select, prompt: "Pick your assistive technology", label: "Assistive Technology", required: false
-        = f.input  :file_format_id_eq, collection: @file_formats, as: :select, prompt: "Pick your file format", label: "File Format", required: false
+        = f.input  :platform_version_platform_id_eq, as: :select, include_blank: "Any platform", label: "Pick a platform", required: false,
+          collection: @platforms.map{|e| [e.title, e.id, {data: {mappings: {assistive_technology_version_assistive_technology_id_eq: e.assistive_technologies.map{|a| a.id}.flatten, browser_reader_version_browser_reader_id_eq: e.browser_readers.map{|a| a.id}.flatten }}}]}
+        = f.input  :assistive_technology_version_assistive_technology_id_eq, as: :select, include_blank: "Any assistive technology", label: "Pick an assistive technology", required: false,
+          collection: @assistive_technologies.map{|e| [e.title, e.id, {data: {mappings: {browser_reader_version_browser_reader_id_eq: e.browser_readers.map{|a| a.id}.flatten, platform_version_platform_id_eq: e.platforms.map{|a| a.id}.flatten }}}]}
+        = f.input  :browser_reader_version_browser_reader_id_eq, as: :select, include_blank: "Any reader", label: "Read with", required: false,
+          collection: @browser_readers.map{|e| [e.title, e.id, {data: {mappings: {assistive_technology_version_assistive_technology_id_eq: e.assistive_technologies.map{|a| a.id}.flatten, file_format_id_eq: e.file_formats.map{|a| a.id}.flatten, renderer_id_eq: e.renderers.map{|a| a.id}.flatten, platform_version_platform_id_eq: e.platforms.map{|a| a.id}.flatten }}}]}
+        = f.input  :file_format_id_eq, as: :select, include_blank: "Any file format", label: "Pick a file format", required: false,
+          collection: @file_formats.map{|e| [e.title, e.id, {data: {mappings: {browser_reader_version_browser_reader_id_eq: e.browser_readers.map{|a| a.id}.flatten}}}]}
+        = f.input  :outputs_id_eq, as: :select, include_blank: "Any output", label: "Pick an output", required: false,
+          collection: @outputs
+
+
+
     .panel-footer
-      = f.button :submit, class: 'btn btn-success'
+      = f.button :submit, class: 'btn btn-success btn-lg'

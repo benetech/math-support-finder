@@ -1,5 +1,7 @@
 class OutputsController < ApplicationController
   before_action :set_output, only: [:show, :edit, :update, :destroy]
+  before_filter :admin, except: [:show, :index]
+
   respond_to :html, :json
 
   # GET /outputs

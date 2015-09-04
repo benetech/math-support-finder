@@ -11,7 +11,11 @@ Plate::Application.routes.draw do
   resources :browser_reader_renderers
   resources :content_source_setups
   resources :content_sources
-  resources :setups
+  resources :setups do
+    get :results, on: :collection 
+    #match 'search' => 'setups#search', via: [:get, :post], as: :search
+  end
+
   resources :assistive_technology_versions
   resources :assistive_technologies do
     #resources :assistive_technology_versions
@@ -20,11 +24,7 @@ Plate::Application.routes.draw do
   resources :browser_readers do
     #resources :browser_reader_versions
   end
-
-  resources :renderer_versions
-  resources :renderers do
-    #resources :renderer_versions
-  end
+  resources :renderers
   resources :platform_versions
   resources :platforms do
     #resources :platform_versions

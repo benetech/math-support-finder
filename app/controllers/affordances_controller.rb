@@ -1,5 +1,7 @@
 class AffordancesController < ApplicationController
   before_action :set_affordance, only: [:show, :edit, :update, :destroy]
+  before_filter :admin, except: [:show, :index]
+
   respond_to :html, :json
 
   # GET /affordances

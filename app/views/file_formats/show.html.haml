@@ -28,11 +28,11 @@
         -object = @file_format
         -multi = ["browser_readers"]
         = render "entity", multi: multi, object: object
-        -if admin?
-          %nav.show-nav{role:"navigation"}
-            = link_to file_formats_path, class: 'btn btn-info', title: "View the file_formats index" do
-              %i.fa.fa-fw.fa-list{title: 'List'}
-              File Formats
+        %nav.show-nav{role:"navigation"}
+          = link_to file_formats_path, class: 'btn btn-info', title: "View the file_formats index" do
+            %i.fa.fa-fw.fa-list{title: 'List'}
+            File Formats
+          -if admin?
             = link_to edit_file_format_path(@file_format), title: "Edit this File Format", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805161912) do
+ActiveRecord::Schema.define(version: 20150831212413) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -93,14 +93,13 @@ ActiveRecord::Schema.define(version: 20150805161912) do
   create_table "capabilities", force: :cascade do |t|
     t.integer  "affordance_id"
     t.integer  "setup_id"
-    t.integer  "verification_status_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "verification_status", default: false
   end
 
   add_index "capabilities", ["affordance_id"], name: "index_capabilities_on_affordance_id", using: :btree
   add_index "capabilities", ["setup_id"], name: "index_capabilities_on_setup_id", using: :btree
-  add_index "capabilities", ["verification_status_id"], name: "index_capabilities_on_verification_status_id", using: :btree
 
   create_table "content_source_setups", force: :cascade do |t|
     t.integer  "setup_id"
@@ -177,16 +176,6 @@ ActiveRecord::Schema.define(version: 20150805161912) do
     t.datetime "updated_at"
   end
 
-  create_table "renderer_versions", force: :cascade do |t|
-    t.integer  "renderer_id"
-    t.string   "version"
-    t.text     "notes"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "renderer_versions", ["renderer_id"], name: "index_renderer_versions_on_renderer_id", using: :btree
-
   create_table "renderers", force: :cascade do |t|
     t.string   "title"
     t.text     "notes"
@@ -196,7 +185,6 @@ ActiveRecord::Schema.define(version: 20150805161912) do
 
   create_table "setups", force: :cascade do |t|
     t.integer  "platform_version_id"
-    t.integer  "renderer_version_id"
     t.integer  "browser_reader_version_id"
     t.integer  "assistive_technology_version_id"
     t.integer  "file_format_id"
@@ -204,13 +192,14 @@ ActiveRecord::Schema.define(version: 20150805161912) do
     t.text     "notes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "renderer_id"
   end
 
   add_index "setups", ["assistive_technology_version_id"], name: "index_setups_on_assistive_technology_version_id", using: :btree
   add_index "setups", ["browser_reader_version_id"], name: "index_setups_on_browser_reader_version_id", using: :btree
   add_index "setups", ["file_format_id"], name: "index_setups_on_file_format_id", using: :btree
   add_index "setups", ["platform_version_id"], name: "index_setups_on_platform_version_id", using: :btree
-  add_index "setups", ["renderer_version_id"], name: "index_setups_on_renderer_version_id", using: :btree
+  add_index "setups", ["renderer_id"], name: "index_setups_on_renderer_id", using: :btree
   add_index "setups", ["workflow_status_id"], name: "index_setups_on_workflow_status_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
@@ -254,12 +243,6 @@ ActiveRecord::Schema.define(version: 20150805161912) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "verification_statuses", force: :cascade do |t|
-    t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "workflow_statuses", force: :cascade do |t|
     t.string   "title"
     t.datetime "created_at"
@@ -278,7 +261,6 @@ ActiveRecord::Schema.define(version: 20150805161912) do
   add_foreign_key "browser_reader_versions", "browser_readers"
   add_foreign_key "capabilities", "affordances"
   add_foreign_key "capabilities", "setups"
-  add_foreign_key "capabilities", "verification_statuses"
   add_foreign_key "content_source_setups", "content_sources"
   add_foreign_key "content_source_setups", "setups"
   add_foreign_key "platform_assistive_technologies", "assistive_technologies"
@@ -286,11 +268,9 @@ ActiveRecord::Schema.define(version: 20150805161912) do
   add_foreign_key "platform_browser_readers", "browser_readers"
   add_foreign_key "platform_browser_readers", "platforms"
   add_foreign_key "platform_versions", "platforms"
-  add_foreign_key "renderer_versions", "renderers"
   add_foreign_key "setups", "assistive_technology_versions"
   add_foreign_key "setups", "browser_reader_versions"
   add_foreign_key "setups", "file_formats"
   add_foreign_key "setups", "platform_versions"
-  add_foreign_key "setups", "renderer_versions"
   add_foreign_key "setups", "workflow_statuses"
 end

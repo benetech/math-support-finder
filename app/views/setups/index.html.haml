@@ -1,4 +1,4 @@
--title = 'Listing Setups'
+-title = 'Listing setups'
 -meta title: title
 -#- source = setups_url
 -#- caption = ""
@@ -22,22 +22,23 @@
       .index-inner
         %header
           %h1#page-title{tabindex: -1}=title
+        = paginate @setups
         %table.index-table
           %caption.sr-only Index table for Setups
           %thead
             %tr
               %th{scope: "col"}<
-                Workflow status
-              %th{scope: "col"}<
-                Browser reader 
+                Platform 
               %th{scope: "col"}<
                 Assistive technology 
               %th{scope: "col"}<
+                Read with
+              %th{scope: "col"}<
                 File format
               %th{scope: "col"}<
-                Platform 
-              %th{scope: "col"}<
                 Renderer
+              %th{scope: "col"}<
+                Workflow status
               %th{scope: "col"}<
                 Actions
 
@@ -47,12 +48,12 @@
               - klass += setup.workflow_status.css_class
 
               %tr{class: klass}
-                %td= labeled setup.workflow_status
-                %td= setup.browser_reader_version
-                %td= setup.assistive_technology_version
-                %td= setup.file_format
-                %td= setup.platform_version
-                %td= setup.renderer_version
+                %td= link_to setup.platform_version, platform_version_path(setup.platform_version)
+                %td= link_to setup.assistive_technology_version, assistive_technology_path(setup.assistive_technology_version)
+                %td= link_to setup.browser_reader_version, browser_reader_version_path(setup.browser_reader_version)
+                %td= link_to setup.file_format, file_format_path(setup.file_format)
+                %td= link_to setup.renderer, renderer_path(setup.renderer)
+                %td= link_to labeled(setup.workflow_status), workflow_status_path(setup.workflow_status)
                 %td.text-right<
                   = link_to setup, class: "btn btn-show", title: "Show #{setup}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
@@ -60,8 +61,14 @@
                     %i.fa.fa-fw.fa-pencil{title: "Pencil"}
                   = link_to setup, title: "Delete this Setup" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{setup}?"} do
                     %i.fa.fa-fw.fa-trash{title: "Trash can"}
+                  = link_to new_setup_path(id: setup.id), class: 'btn' do
+                    %i.fa.fa-fw.fa-mail-forward{title: 'forward arrow'}
+                    %span.sr-only Copy this setup
+
 
         %nav.index-nav{role:"navigation"}
           = link_to new_setup_path, class: 'btn btn-success new-link' do
             %i.fa.fa-fw.fa-plus{title: "Plus"}
             New Setup
+      .col-md-6
+        =render "search", q: @q

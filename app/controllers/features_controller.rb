@@ -1,5 +1,7 @@
 class FeaturesController < ApplicationController
   before_action :set_feature, only: [:show, :edit, :update, :destroy]
+  before_filter :admin, except: [:show, :index]
+
   respond_to :html, :json
 
   # GET /features

@@ -28,8 +28,16 @@ class BrowserReader < ActiveRecord::Base
 
   validates_presence_of :title
 
+  default_scope { order('LOWER(title)') }
+
   def to_s
     title
   end
+  def versions
+    browser_reader_versions
+  end
 
+  def version_ids
+    versions.collect{|v| v.id}
+  end
 end

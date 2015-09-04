@@ -1,5 +1,7 @@
 class BrowserReaderVersionsController < ApplicationController
   before_action :set_browser_reader_version, only: [:show, :edit, :update, :destroy]
+  before_filter :admin, except: [:show, :index]
+
   respond_to :html, :json
 
   # GET /browser_reader_versions

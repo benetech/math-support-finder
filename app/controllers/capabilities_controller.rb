@@ -1,5 +1,8 @@
 class CapabilitiesController < ApplicationController
   before_action :set_capability, only: [:show, :edit, :update, :destroy]
+  before_action :set_setup, only: [:new]
+  before_filter :admin, except: [:show, :index]
+
   respond_to :html, :json
 
   # GET /capabilities
@@ -48,6 +51,10 @@ class CapabilitiesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def capability_params
-      params.require(:capability).permit(:affordance_id, :setup_id, :verification_status_id)
+      params.require(:capability).permit(:affordance_id, :setup_id, :verification_status)
+    end
+
+    def set_setup
+      @setup = Setup.find(params[:setup_id]) if params[:setup_id]
     end
 end

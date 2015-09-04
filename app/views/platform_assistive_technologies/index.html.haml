@@ -41,12 +41,14 @@
                 %td.text-right<
                   = link_to platform_assistive_technology, class: "btn btn-show", title: "Show #{platform_assistive_technology}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
-                  = link_to edit_platform_assistive_technology_path(platform_assistive_technology), class: "btn btn-edit", title: "Edit #{platform_assistive_technology}"  do
-                    %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                  = link_to platform_assistive_technology, title: "Delete this Platform Assistive Technology" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform_assistive_technology}?"} do
-                    %i.fa.fa-fw.fa-trash{title: "Trash can"}
+                  -if admin?
+                    = link_to edit_platform_assistive_technology_path(platform_assistive_technology), class: "btn btn-edit", title: "Edit #{platform_assistive_technology}"  do
+                      %i.fa.fa-fw.fa-pencil{title: "Pencil"}
+                    = link_to platform_assistive_technology, title: "Delete this Platform Assistive Technology" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform_assistive_technology}?"} do
+                      %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
-        %nav.index-nav{role:"navigation"}
-          = link_to new_platform_assistive_technology_path, class: 'btn btn-success new-link' do
-            %i.fa.fa-fw.fa-plus{title: "Plus"}
-            New Platform assistive technology
+        -if admin?
+          %nav.index-nav{role:"navigation"}
+            = link_to new_platform_assistive_technology_path, class: 'btn btn-success new-link' do
+              %i.fa.fa-fw.fa-plus{title: "Plus"}
+              New Platform assistive technology
