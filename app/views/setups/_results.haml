@@ -1,8 +1,7 @@
 .results#setups-results
   %header
     %h1#setups-results-title{tabindex: -1}<
-      = @setups.total_count.to_s +  " "
-      Results
+      = @setups.total_count.to_s +  " Results"
       %small
         =link_to request.url do
           %span.sr-only Link to these results
