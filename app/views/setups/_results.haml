@@ -20,7 +20,7 @@
           %th{scope: "col"}<
             = sort_link @q, :assistive_technology_version_assistive_technology_title, 'Assistive Technology'
           %th{scope: "col"}<
-            = sort_link @q, :browser_reader_version_browser_reader_title, 'Read with'
+            = sort_link @q, :browser_reader_version_browser_reader_title, 'Application'
           %th{scope: "col"}<
             = sort_link @q, :file_format_title, 'File Format'
           %th{scope: "col"}<
@@ -41,7 +41,7 @@
             = f.input  :assistive_technology_version_assistive_technology_id_eq, as: :select, include_blank: "Any assistive technology", label: false, required: false,
               collection: @assistive_technologies.map{|e| [e.title, e.id, {data: {mappings: {browser_reader_version_browser_reader_id_eq: e.browser_readers.map{|a| a.id}.flatten, platform_version_platform_id_eq: e.platforms.map{|a| a.id}.flatten }}}]}
           %th<
-            = f.input  :browser_reader_version_browser_reader_id_eq, as: :select, include_blank: "Any reader", label: false, required: false,
+            = f.input  :browser_reader_version_browser_reader_id_eq, as: :select, include_blank: "Any application", label: false, required: false,
               collection: @browser_readers.map{|e| [e.title, e.id, {data: {mappings: {assistive_technology_version_assistive_technology_id_eq: e.assistive_technologies.map{|a| a.id}.flatten, file_format_id_eq: e.file_formats.map{|a| a.id}.flatten, renderer_id_eq: e.renderers.map{|a| a.id}.flatten, platform_version_platform_id_eq: e.platforms.map{|a| a.id}.flatten }}}]}
           %th<
             = f.input  :file_format_id_eq, as: :select, include_blank: "Any file format", label: false, required: false,

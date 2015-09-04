@@ -1,4 +1,4 @@
--title = 'Listing Platform Browser Readers'
+-title = 'Listing Platform Applications'
 -meta title: title
 -#- source = platform_browser_readers_url
 -#- caption = ""
@@ -23,13 +23,13 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for Platform Browser Readers
+          %caption.sr-only Index table for Platform Applications
           %thead
             %tr
               %th{scope: "col"}<
                 Platform
               %th{scope: "col"}<
-                Browser reader
+                Application
               %th{scope: "col"}<
                 Actions
 
@@ -44,11 +44,11 @@
                   -if admin?
                     = link_to edit_platform_browser_reader_path(platform_browser_reader), class: "btn btn-edit", title: "Edit #{platform_browser_reader}"  do
                       %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                    = link_to platform_browser_reader, title: "Delete this Platform Browser Reader" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform_browser_reader}?"} do
+                    = link_to platform_browser_reader, title: "Delete this Platform Application" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{platform_browser_reader}?"} do
                       %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         -if admin?
           %nav.index-nav{role:"navigation"}
             = link_to new_platform_browser_reader_path, class: 'btn btn-success new-link' do
               %i.fa.fa-fw.fa-plus{title: "Plus"}
-              New Platform browser reader
+              New Platform Application

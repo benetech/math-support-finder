@@ -6,7 +6,7 @@
 
       = f.association :assistive_technology_version , prompt: "Please pick an assistive technology", collection: AssistiveTechnologyVersion.all.map{|e| [e, e.id, {data: {mappings: {setup_browser_reader_version_id: e.assistive_technology.browser_readers.map{|a| a.id}.flatten, setup_platform_version_id: e.assistive_technology.platforms.map{|a| a.id}.flatten }}}]}
 
-      = f.association :browser_reader_version , prompt: "Please pick a browser reader", collection: BrowserReaderVersion.all.map{|e| [e, e.id, {data: {mappings: {setup_assistive_technology_version_id: e.browser_reader.assistive_technologies.map{|a| a.id}.flatten, setup_file_format_id: e.browser_reader.file_formats.map{|a| a.id}.flatten, setup_renderer_id: e.browser_reader.renderers.map{|a| a.id}.flatten, platform_version_id: e.browser_reader.platforms.map{|a| a.id}.flatten }}}]}
+      = f.association :browser_reader_version , prompt: "Please pick an application", collection: BrowserReaderVersion.all.map{|e| [e, e.id, {data: {mappings: {setup_assistive_technology_version_id: e.browser_reader.assistive_technologies.map{|a| a.id}.flatten, setup_file_format_id: e.browser_reader.file_formats.map{|a| a.id}.flatten, setup_renderer_id: e.browser_reader.renderers.map{|a| a.id}.flatten, platform_version_id: e.browser_reader.platforms.map{|a| a.id}.flatten }}}]}
 
       = f.association :file_format, prompt: "Please pick a file format", collection: FileFormat.all.map{|e| [e, e.id, {data: {mappings: {setup_browser_reader_id: e.browser_readers.map{|a| a.id}.flatten}}}]}
 

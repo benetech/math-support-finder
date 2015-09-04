@@ -25,11 +25,11 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Attributes for Browser Reader File Format
+          %caption.sr-only Attributes for Application File Format
           %tbody
             %tr
               %th{scope: "row"}<
-                Browser reader
+                Application
               %td<
                 = @browser_reader_file_format.browser_reader
 
@@ -42,9 +42,9 @@
         %nav.show-nav{role:"navigation"}
           = link_to browser_reader_file_formats_path, class: 'btn btn-info', title: "View the browser_reader_file_formats index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
-            Browser Reader File Formats
-          = link_to edit_browser_reader_file_format_path(@browser_reader_file_format), title: "Edit this Browser Reader File Format", class: 'btn btn-primary' do
+            Application File Formats
+          = link_to edit_browser_reader_file_format_path(@browser_reader_file_format), title: "Edit this Application File Format", class: 'btn btn-primary' do
             %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
             Edit
           = link_to new_browser_reader_file_format_path(@browser_reader_file_format), class: 'btn btn-success' do
-            Add another Browser Reader File Format
+            Add another Application File Format

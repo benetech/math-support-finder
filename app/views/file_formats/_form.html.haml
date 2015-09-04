@@ -3,7 +3,7 @@
   .form-inputs
     = f.input :title 
     = f.input :notes , :as => :pagedown, :input_html => { :preview => true }
-    = f.association :browser_readers, as: :check_boxes       
+    = f.association :browser_readers, as: :check_boxes, label: "Applications"
 
   .form-actions
     .form-actions-inner

@@ -25,7 +25,7 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Attributes for Platform Browser Reader
+          %caption.sr-only Attributes for Platform Application
           %tbody
             %tr
               %th{scope: "row"}<
@@ -35,17 +35,17 @@
 
             %tr
               %th{scope: "row"}<
-                Browser reader
+                Application
               %td<
                 = @platform_browser_reader.browser_reader
 
         %nav.show-nav{role:"navigation"}
           = link_to platform_browser_readers_path, class: 'btn btn-info', title: "View the platform_browser_readers index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
-            Platform Browser Readers
+            Platform Applications
           -if admin?
-            = link_to edit_platform_browser_reader_path(@platform_browser_reader), title: "Edit this Platform Browser Reader", class: 'btn btn-primary' do
+            = link_to edit_platform_browser_reader_path(@platform_browser_reader), title: "Edit this Platform Application", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit
             = link_to new_platform_browser_reader_path(@platform_browser_reader), class: 'btn btn-success' do
-              Add another Platform Browser Reader
+              Add another Platform Application
