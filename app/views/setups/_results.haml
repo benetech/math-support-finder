@@ -1,7 +1,7 @@
 .results#setups-results
   %header
     %h1#setups-results-title{tabindex: -1}<
-      = @setups.total_count
+      = @setups.total_count.to_s +  " "
       Results
       %small
         =link_to request.url do
@@ -11,7 +11,7 @@
   = paginate @setups
   = search_form_for(@q, url: {controller: :setups, action: :results},  html: {multipart: true, class: 'form-vertical'}, wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
 
-    %table.index-table.table-responsive
+    %table.index-table.table-responsive.results
       %caption.sr-only Results table for setups
       %thead
         %tr
@@ -58,11 +58,13 @@
           %td<
             - disable_with = "<i id='disable-me' class='fa fa-spinner fa-spin fa-fw'></i>"
             = button_tag type: "submit", class: "btn btn-success btn-sm", data: {disable_with: disable_with} do
-              Search
-            %br
-            %br
+              %span.sr-only
+                Search
+              %i.fa.fa-fw.fa-search
             = link_to results_setups_path(search_cancel: true), role: "button", class: 'btn btn-danger btn-sm' do
-              Clear filters
+              %span.sr-only
+                Clear filters
+              %i.fa.fa-fw.fa-refresh
 
 
       %tbody

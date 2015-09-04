@@ -21,9 +21,9 @@ $ ->
     window.sort_links = () ->
       $('.sort_link').each () ->
         if $(@).hasClass('desc')
-          $(@).html($(@).text().replace('▼', '<span aria-hidden="true">▼</span> <span class="sr-only">Descending</span>'))
+          $(@).html($(@).text().replace('▼', '<i  aria-hidden="true" class="fa fa-fw fa-chevron-down"></i> <span class="sr-only">Descending</span>'))
         else if $(@).hasClass('asc')
-          $(@).html($(@).text().replace('▲', '<span aria-hidden="true">▲</span> <span class="sr-only">Ascending</span>'))
+          $(@).html($(@).text().replace('▲', '<i aria-hidden="true" class="fa fa-fw fa-chevron-up"></i> <span class="sr-only">Ascending</span>'))
         $(@).attr('title', 'sorts table by this column')
     window.sort_links()
     $('.truncate').readmore
@@ -109,7 +109,8 @@ $ ->
     if $results.length > 0
       $selects = $('select', $results)
       $selects.change () ->
-        $results.find('button').removeClass('btn-sm') #visual cue
+        if $results.find('#warning').length == 0 and $results.attr('id') == 'setups-results'
+          $results.find('thead').append('<tr id="warning"><td colspan=8 class="alert-danger">* Results do not match current column selections.  Click search to recalculate.</td></tr>') 
         #console.log('changed')
         window.triggerCount = 0
         #reset all
