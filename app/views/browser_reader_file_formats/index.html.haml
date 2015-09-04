@@ -1,4 +1,4 @@
--title = 'Listing Browser Reader File Formats'
+-title = 'Listing Application File Formats'
 -meta title: title
 -#- source = browser_reader_file_formats_url
 -#- caption = ""
@@ -23,11 +23,11 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for Browser Reader File Formats
+          %caption.sr-only Index table for Application File Formats
           %thead
             %tr
               %th{scope: "col"}<
-                Browser reader
+                Application
               %th{scope: "col"}<
                 File format
               %th{scope: "col"}<
@@ -44,11 +44,11 @@
                   -if admin?
                     = link_to edit_browser_reader_file_format_path(browser_reader_file_format), class: "btn btn-edit", title: "Edit #{browser_reader_file_format}"  do
                       %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                    = link_to browser_reader_file_format, title: "Delete this Browser Reader File Format" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{browser_reader_file_format}?"} do
+                    = link_to browser_reader_file_format, title: "Delete this Application File Format" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{browser_reader_file_format}?"} do
                       %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         -if admin?
           %nav.index-nav{role:"navigation"}
             = link_to new_browser_reader_file_format_path, class: 'btn btn-success new-link' do
               %i.fa.fa-fw.fa-plus{title: "Plus"}
-              New Browser reader file format
+              New Application file format

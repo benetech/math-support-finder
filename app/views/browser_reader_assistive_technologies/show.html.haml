@@ -25,11 +25,11 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.entity-table
-          %caption.sr-only Attributes for Browser Reader Assistive Technology
+          %caption.sr-only Attributes for Application Assistive Technology
           %tbody
             %tr
               %th{scope: "row"}<
-                Browser reader
+                Application
               %td<
                 = @browser_reader_assistive_technology.browser_reader
 
@@ -42,10 +42,10 @@
         %nav.show-nav{role:"navigation"}
           = link_to browser_reader_assistive_technologies_path, class: 'btn btn-info', title: "View the browser_reader_assistive_technologies index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
-            Browser Reader Assistive Technologies
+            Application Assistive Technologies
           -if admin?
-            = link_to edit_browser_reader_assistive_technology_path(@browser_reader_assistive_technology), title: "Edit this Browser Reader Assistive Technology", class: 'btn btn-primary' do
+            = link_to edit_browser_reader_assistive_technology_path(@browser_reader_assistive_technology), title: "Edit this Application Assistive Technology", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit
             = link_to new_browser_reader_assistive_technology_path(@browser_reader_assistive_technology), class: 'btn btn-success' do
-              Add another Browser Reader Assistive Technology
+              Add another Application Assistive Technology

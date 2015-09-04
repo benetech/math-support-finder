@@ -1,4 +1,4 @@
--title = 'Listing Browser Reader Renderers'
+-title = 'Listing Application Renderers'
 -meta title: title
 -#- source = browser_reader_renderers_url
 -#- caption = ""
@@ -23,11 +23,11 @@
         %header
           %h1#page-title{tabindex: -1}=title
         %table.index-table
-          %caption.sr-only Index table for Browser Reader Renderers
+          %caption.sr-only Index table for Application Renderers
           %thead
             %tr
               %th{scope: "col"}<
-                Browser reader
+                Application
               %th{scope: "col"}<
                 Renderer
               %th{scope: "col"}<
@@ -44,11 +44,11 @@
                   -if admin?
                     = link_to edit_browser_reader_renderer_path(browser_reader_renderer), class: "btn btn-edit", title: "Edit #{browser_reader_renderer}"  do
                       %i.fa.fa-fw.fa-pencil{title: "Pencil"}
-                    = link_to browser_reader_renderer, title: "Delete this Browser Reader Renderer" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{browser_reader_renderer}?"} do
+                    = link_to browser_reader_renderer, title: "Delete this Application Renderer" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{browser_reader_renderer}?"} do
                       %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
         -if admin?
           %nav.index-nav{role:"navigation"}
             = link_to new_browser_reader_renderer_path, class: 'btn btn-success new-link' do
               %i.fa.fa-fw.fa-plus{title: "Plus"}
-              New Browser reader renderer
+              New Application renderer

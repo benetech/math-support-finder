@@ -2,7 +2,7 @@
   = f.error_notification
   .form-inputs
     = f.association :platform 
-    = f.association :browser_reader 
+    = f.association :browser_reader, label: "Application"
 
 
   .form-actions
@@ -18,4 +18,4 @@
       %br
       = link_to platform_browser_readers_path, class: 'btn btn-info' do
         %i.fa.fa-fw.fa-list{title: "List"}
-        View all Platform Browser Readers
+        View all Platform Applications
