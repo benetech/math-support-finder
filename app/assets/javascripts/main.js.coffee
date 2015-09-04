@@ -110,18 +110,24 @@ $ ->
       $selects = $('select', $results)
       $selects.change () ->
         if $results.find('#warning').length == 0 and $results.attr('id') == 'setups-results'
-          $results.find('thead').append('<tr id="warning"><td colspan=8 class="alert-danger">* Results do not match current column selections.  Click search to recalculate.</td></tr>') 
+          $warning  = $('<tr id="warning" style="display:none;"><td colspan=8 class="alert-danger">* Results do not match current column selections.  Click search to recalculate.</td></tr>')
+          $results.find('thead').append $warning
+          $warning.slideDown('slow')
         #console.log('changed')
         window.triggerCount = 0
         #reset all
         $results.find('option').removeProp('disabled')
         $selected = $('option:selected', this)
+
         mappings =  $selected.data('mappings')
         #console.log mappings
         triggerMappings(mappings, $results.attr('id'))
 
-      #trigger on selected
+      #trigger mappings on load
       $selects.find('option:selected').each () ->
         if @.value
-          #console.log @.value
-          $(@).parents('select').trigger('change')
+          $selected = $(@)
+
+          mappings =  $selected.data('mappings')
+          #console.log mappings
+          triggerMappings(mappings, $results.attr('id'))
