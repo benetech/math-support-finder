@@ -17,8 +17,9 @@
       - versions.each do |v|
         %tr{class: "item"}
           %td= link_to v.version, v
-          %td
-            =to_text(v.notes).truncate(50)
+          %td<
+            .truncate=to_html(v.notes)
+
           -if admin?
             %td<
               = link_to send("edit_" + object.model_name.singular + "_version_path", v), class: "btn btn-edit", title: "Edit #{v}"  do

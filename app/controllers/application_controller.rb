@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
 
     if !current_user
       @workflow_status= WorkflowStatus.where(id: [2, 3, 4])
-      @setups = @q.result.where(workflow_status_id: [2,3])
+      @setups = @q.result.where(workflow_status_id: [2,3,4])
     else
       @workflow_status= WorkflowStatus.all
       @setups = @q.result

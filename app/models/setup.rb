@@ -61,4 +61,8 @@ class Setup < ActiveRecord::Base
   def to_s
     "Setup " + id.to_s
   end
+
+  def to_better_s
+    [platform_version.to_s, assistive_technology_version.to_s, browser_reader_version.to_s, file_format.to_s, renderer.to_s, ].join(', ')
+  end
 end
