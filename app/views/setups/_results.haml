@@ -10,6 +10,9 @@
   = paginate @setups
   = search_form_for(@q, url: {controller: :setups, action: :results},  html: {multipart: true, class: 'form-vertical'}, wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
 
+    - disable_with = "<i id='disable-me' class='fa fa-spinner fa-spin fa-fw'></i>"
+    = button_tag "Detect my settings", type: "button", id: "detector", class: "detector btn btn-info", data: {disable_with: disable_with}
+
     %table.index-table.table-responsive.results
       %caption.sr-only Results table for setups
       %thead
