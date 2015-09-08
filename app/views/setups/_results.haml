@@ -10,8 +10,7 @@
   = paginate @setups
   = search_form_for(@q, url: {controller: :setups, action: :results},  html: {multipart: true, class: 'form-vertical'}, wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
 
-    - disable_with = "<i id='disable-me' class='fa fa-spinner fa-spin fa-fw'></i>"
-    = button_tag "Detect my settings", type: "button", id: "detector", class: "detector btn btn-info", data: {disable_with: disable_with}
+    = button_tag "Detect my settings", type: "button", id: "detector", class: "detector btn btn-info"
 
     %table.index-table.table-responsive.results
       %caption.sr-only Results table for setups
@@ -98,4 +97,12 @@
 
   - if  @setups.count == 0
     %h3
-      There are no supported results for your search.  Please try changing your parameters.  If you still can’t find the setup you need, <a href="mailto:math-support-matrix@seeread.info">email support</a> to request it or learn more.
+      - email_address = "math-support-matrix@seeread.info"
+      - title = url_encode "MSM Setup Request"
+      - body = "Hi Benetech,\nWould you please test this setup?\n\n" + request.original_url + "\n\nThanks!"
+      - body = url_encode body
+      - mailto = "mailto:" + email_address + "?subject=" + title + "&body=" + body
+      There are no supported results for your search.  Please try changing your parameters. 
+      If you still can’t find the setup you need, <a href=#{mailto} target="_blank"></a>
+      = link_to "email your search", mailto, target: "_blank"
+      to request it.

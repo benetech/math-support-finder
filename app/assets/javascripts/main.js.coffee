@@ -161,6 +161,9 @@ $ ->
               #console.log($(@))
               reader_set = true
               return false
+        if reader_set || os_set
+          $warning  = $('<tr id="warning" style="display:none;"><td colspan=8 class="alert-danger">* Results do not match current column selections.  Click search to recalculate.</td></tr>')
+          $results.find('thead').append $warning
 
       #on change event
       $selects = $('select', $results)
