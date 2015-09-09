@@ -99,11 +99,13 @@ $ ->
             else
               css_id = '#q_' + id
             #console.log css_id, options
+            $select = $(css_id)
             $('option', css_id).each () ->
               #console.log @.value, options
               if @.value && options.indexOf(parseInt(@.value)) == -1
-                #console.log 'disabling ', @
-                $(@).attr('disabled', true)
+                #console.log 'disabling ', $(@).text()
+                $select.hideOption(@.value)
+                #$(@).attr('disabled', true)
               else if options.indexOf(@.value) > -1 and $(@).is(':selected')
                 triggerMappings($(@).data('mappings'), form_id)
 
@@ -142,7 +144,7 @@ $ ->
           plat_type =  "mobile"
         else
           plat_type =  "desktop"
-        console.log(plat_type)
+        #console.log(plat_type)
         #set application
         id = 'browser_reader_version_browser_reader_id_eq'
         if $results.attr('id').indexOf('-form') > -1
@@ -175,9 +177,18 @@ $ ->
         #console.log('changed')
         window.triggerCount = 0
         #reset all
-        $results.find('option').removeProp('disabled')
-        $selected = $('option:selected', this)
+        #$results.find('option').removeProp('disabled')
+        $selects.each () ->
+          $select = $(@)
+          if $select.data()
+            $.each $select.data(),  (k, v) ->
+              #console.log $select, k, k.indexOf('opt') > -1, k.indexOf('Modified') == -1, v
+              window.v = v
+              if(k.indexOf('opt') > -1 && k.indexOf('Modified') == -1)
+                $select.showOption(v.attr('value'))
 
+        
+        $selected = $('option:selected', this)
         mappings =  $selected.data('mappings')
         #console.log mappings
         triggerMappings(mappings, $results.attr('id'))
