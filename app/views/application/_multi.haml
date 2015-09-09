@@ -7,6 +7,6 @@
     %tr
       %th{scope: "row"}=m.titleize
       %td<
-        %ul.list-inline
+        %ul
           - entities.each do |entity|
             %li=link_to entity, send("#{m.singularize}_path", entity)

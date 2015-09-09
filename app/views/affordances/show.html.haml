@@ -24,25 +24,53 @@
       .entity-inner
         %header
           %h1#page-title{tabindex: -1}=title
-        %table.entity-table
-          %caption.sr-only Attributes for Affordance
-          %tbody
-            %tr
-              %th{scope: "row"}<
-                Output
-              %td<
-                = link_to @affordance.output, output_path(@affordance.output)
-            %tr
-              %th{scope: "row"}<
-                Feature
-              %td<
-                = link_to @affordance.feature, feature_path(@affordance.feature)
 
-            %tr
-              %th{scope: "row"}<
-                Notes
-              %td<
-                =to_html @affordance.notes
+        -object = @affordance
+        -multi = ["browser_readers"]
+        -if !@affordance.notes.blank?
+          %h2 Notes
+          = to_html @affordance.notes
+        -if !current_user
+          - capabilities = @affordance.capabilities.collect{|c| c if [2, 3, 4].include? c.setup.workflow_status_id }.compact
+        -else
+          - capabilities = @affordance.capabilities
+        - if capabilities.length > 0
+          .panel.panel-default
+            %h2.panel-heading Setups
+            %table.table
+              %caption.sr-only Setups table 
+              %thead
+                %tr<
+                  %th Verification Status
+                  %th Platform
+                  %th Assistive Technology
+                  %th Browser Reader
+                  %th File Format
+                  %th Renderer
+                  %th Link
+              %tbody
+                - capabilities.each do |c|
+                  - setup = c.setup
+                  - klass = "item "
+                  - klass += c.verification_status ? "success" : "warning"
+
+                  %tr{class: klass}<
+                    %td<
+                      - klass ='label label-' 
+                      - klass += c.verification_status ? "success" : "warning"
+                      %span{class: klass}= c.verification_text
+                    %td= setup.platform_version
+                    %td= setup.assistive_technology_version
+                    %td= setup.browser_reader_version
+                    %td= setup.file_format
+                    %td= setup.renderer
+                    %td<
+                      =link_to setup_path(setup), class: 'btn btn-primary' do
+                        Details
+
+
+
+
 
         %nav.show-nav{role:"navigation"}
           = link_to affordances_path, class: 'btn btn-info', title: "View the affordances index" do

@@ -1,0 +1,27 @@
+.panel.panel-default
+  %h2.panel-heading Setups
+  %table.table
+    %caption.sr-only Setups table 
+    %thead
+      %tr<
+        %th Platform
+        %th Assistive Technology
+        %th Browser Reader
+        %th File Format
+        %th Renderer
+        %th Link
+    %tbody
+      - setups.each do |setup|
+        -klass = "item "
+        -klass += setup.workflow_status.css_class
+        %tr{class: klass}<
+          %td= setup.platform_version
+          %td= setup.assistive_technology_version
+          %td= setup.browser_reader_version
+          %td= setup.file_format
+          %td= setup.renderer
+          %td<
+            =link_to setup_path(setup), class: 'btn btn-primary' do
+              Details
+
+

@@ -1,9 +1,17 @@
-.row
-  .col-md-8
-    = to_html object.notes
-  .col-md-4
-    .panel.panel-default
-      %h2.panel-heading Related 
-      %table.table
-        %tbody
-          = render "multi", multi: multi, object: object
+- include_setups ||= false
+-if !object.notes.blank?
+  %h2 Notes
+  = to_html object.notes
+- if include_setups
+  -if !current_user
+    - setups = object.setups.collect{|s| s if [2, 3, 4].include? s.workflow_status_id }.compact
+  -else
+    - setups = object.setups
+  - if setups.length > 0
+    = render "setups_table", setups: setups
+
+.panel.panel-default
+  %h2.panel-heading Related 
+  %table.table
+    %tbody
+      = render "multi", multi: multi, object: object

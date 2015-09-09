@@ -26,7 +26,7 @@
           %h1#page-title{tabindex: -1}=title
         -object = @renderer
         -multi = ["browser_readers"]
-        = render "entity", multi: multi, object: object
+        = render "entity", multi: multi, object: object, include_setups: true
 
         %nav.show-nav{role:"navigation"}
           = link_to renderers_path, class: 'btn btn-info', title: "View the renderers index" do
