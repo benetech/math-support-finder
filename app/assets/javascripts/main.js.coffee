@@ -29,9 +29,9 @@ $ ->
         $(@).attr('title', 'sorts table by this column')
     window.sort_links()
     $('.truncate').readmore
-      moreLink: '<a href="#">More</a>'
-      lessLink: '<a href="#">Less</a>'
-      collapsedHeight: 196
+      moreLink: '<a class="truncate-toggle" href="#"><i class="fa fa-fw fa-plus-circle"></i>More</a>'
+      lessLink: '<a class="truncate-toggle" href="#"><i class="fa fa-fw fa-minus-circle"></i>Less</a>'
+      collapsedHeight: 100
     $('#main').removeClass('fadeOut').addClass('animated fadeIn')
     #set focus
     $('h1').first().focus()
