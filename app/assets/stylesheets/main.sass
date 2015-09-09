@@ -70,10 +70,23 @@ option:disabled
 +table-row-variant('danger', lighten($state-danger-bg, 3%))
 +table-row-variant('success', lighten($state-success-bg, 3%))
 
-table.results > thead >  tr:first-child > th
-  border: 1px solid #ddd
-  i
-    float: right
+table.results 
+  > thead >  tr:first-child > th
+    border: 1px solid #ddd
+    i
+      float: right
+  .form-group
+    margin-bottom: 0
+  thead > tr > td, thead > tr > th, tbody > tr > td, tbody > tr > th
+    vertical-align: middle
+    text-align: center
+thead td.action
+  border-bottom: 2px solid #ddd
+.action
+  width: 195px
+  //text-align: right
 
 .detector
   margin-bottom: 1em
+td
+

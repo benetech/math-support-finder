@@ -12,7 +12,7 @@
 
     = button_tag "Detect my settings", type: "button", id: "detector", class: "detector btn btn-info"
 
-    %table.index-table.table-responsive.results
+    %table.table.table-responsive.results
       %caption.sr-only Results table for setups
       %thead
         %tr
@@ -30,7 +30,7 @@
             = sort_link @q, :outputs_count, 'Outputs' #TODO improve perf
           %th{scope: "col"}<
             = sort_link @q, :status_title, 'Status'
-          %th{scope: "col"}<
+          %th.action{scope: "col"}<
             Action
         %tr
           -#-if admin?
@@ -56,16 +56,14 @@
           %th<
             = f.input  :workflow_status_id_eq, as: :select, include_blank: "Any status", label: false, required: false,
               collection: @workflow_status
-          %td<
+          %td.action<
             - disable_with = "<i id='disable-me' class='fa fa-spinner fa-spin fa-fw'></i>"
             = button_tag type: "submit", class: "btn btn-success btn-sm", data: {disable_with: disable_with} do
-              %span.sr-only
-                Search
               %i.fa.fa-fw.fa-search
+              Search
             = link_to results_setups_path(search_cancel: true), role: "button", class: 'btn btn-danger btn-sm' do
-              %span.sr-only
-                Clear filters
               %i.fa.fa-fw.fa-refresh
+              Clear 
 
 
       %tbody
@@ -80,18 +78,17 @@
             %td= setup.browser_reader_version
             %td= setup.file_format
             %td= setup.renderer
-            %td
+            %td<
               -setup.outputs.uniq.each do |a|
                 #{a}
                 %br
-            %td
-              %p.text-center
-                = raw setup.workflow_status.label
-              %p.text-center
-                %small.text-center
-                  On
-                  %time= setup.updated_at.strftime("%a, %d %b %Y")
-            %td
+            %td<
+              = raw setup.workflow_status.label
+              %br
+              %small<
+                on
+                %time= setup.updated_at.strftime("%a, %d %b %Y")
+            %td.action<
               =link_to setup_path(setup), class: 'btn btn-primary' do
                 Details
 
