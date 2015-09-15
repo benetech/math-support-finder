@@ -18,7 +18,7 @@
 -#- img_size =  browser.mobile? ? :index : :grande
 -#-cache ['v1', admin?,  img_size, @setup] do
 
--cache ['v1', admin?,  @setup, @affordances, @outputs] do
+-cache ['v1', admin?,  @setup, @affordances, @outputs, @setup.file_format, @setup.renderer] do
   .entity-outer
     .entity
       .entity-inner
