@@ -6,7 +6,7 @@
   = parent
 
 -if !current_user
-  - setups = object.setups.collect{|s| s if [2, 3, 4].include? s.workflow_status_id }.compact
+  - setups = object.setups.collect{|s| s if [2, 3].include? s.workflow_status_id }.compact
 -else
   - setups = object.setups
 - if setups.length > 0

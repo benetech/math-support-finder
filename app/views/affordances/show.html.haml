@@ -31,7 +31,7 @@
           %h2 Notes
           = to_html @affordance.notes
         -if !current_user
-          - capabilities = @affordance.capabilities.collect{|c| c if [2, 3, 4].include? c.setup.workflow_status_id }.compact
+          - capabilities = @affordance.capabilities.collect{|c| c if [2, 3].include? c.setup.workflow_status_id }.compact
         -else
           - capabilities = @affordance.capabilities
         - if capabilities.length > 0
