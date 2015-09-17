@@ -71,18 +71,29 @@ option:disabled
 +table-row-variant('success', lighten($state-success-bg, 3%))
 
 table.results 
-  > thead >  tr:first-child > th
-    border: 1px solid #ddd
-    i
-      float: right
+  border: 1px solid #ddd
+  > thead >  tr
+    &:first-child 
+      > th, > td
+        border-top: 1px solid #ddd
+        border-bottom: 0px solid #ddd
+        border-left: 1px solid #ddd
+        border-right: 1px solid #ddd
+        i
+          float: right
+    &:last-child 
+      > th, > td
+        border-left: 1px solid #ddd
+        border-right: 1px solid #ddd
+        border-top: 0px solid #ddd
   .form-group
     margin-bottom: 0
   thead > tr > td, thead > tr > th, tbody > tr > td, tbody > tr > th
     vertical-align: middle
     text-align: center
-thead td.action
-  border-bottom: 2px solid #ddd
-  min-width: 195px
+  thead td.action
+    border-bottom: 2px solid #ddd
+    min-width: 195px
 
 .detector
   margin-bottom: 1em
