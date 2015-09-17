@@ -36,26 +36,6 @@ table
   img
     max-width: 100px
 
-html.turbolinks-progress-bar::before 
-  background-color: $brand-primary !important
-  height: 5px !important
-
-#footer
-  margin-top: 2em
-
-#simple-search
-  .form-group:last-child
-    margin-bottom: 0
-#setups-results .btn-group
-  min-width: 75px
-
-
-//show views
-.new-link
-  margin-bottom: ms(0)
-  +min-screen($phone-wide + 1)
-    float: right
-
 ul
   list-style: initial
 
@@ -65,11 +45,29 @@ option:disabled
 .float-right
   float: right
 
+html.turbolinks-progress-bar::before 
+  background-color: $brand-primary !important
+  height: 5px !important
+
+.dropdown-menu > li > a
+  color: #337ab7
+
+#footer
+  margin-top: 2em
+
+#simple-search
+  .form-group:last-child
+    margin-bottom: 0
+.detector
+  margin-bottom: 1em
+
 +table-row-variant('info', lighten($state-info-bg, 3%))
 +table-row-variant('warning', lighten($state-warning-bg, 3%))
 +table-row-variant('danger', lighten($state-danger-bg, 3%))
 +table-row-variant('success', lighten($state-success-bg, 3%))
 
+#setups-results .btn-group
+  min-width: 75px
 table.results 
   border: 1px solid #ddd
   > thead >  tr
@@ -81,6 +79,7 @@ table.results
         border-right: 1px solid #ddd
         i
           float: right
+        
     &:last-child 
       > th, > td
         border-left: 1px solid #ddd
@@ -95,11 +94,11 @@ table.results
     border-bottom: 2px solid #ddd
     min-width: 195px
 
-.detector
-  margin-bottom: 1em
-
+//show views
+.new-link
+  margin-bottom: ms(0)
+  +min-screen($phone-wide + 1)
+    float: right
 .truncate-toggle
   font-size: 16px
   
-.dropdown-menu > li > a
-  color: #337ab7
