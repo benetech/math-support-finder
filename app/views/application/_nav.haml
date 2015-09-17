@@ -22,7 +22,10 @@
           %ul.dropdown-menu
             - models = [ "platforms", "assistive_technologies", "browser_readers",  "file_formats", "renderers", "affordances", "features", "outputs", "content_sources"]
             - models.each do |m|
-              %li= link_to  m.titleize, send("#{m}_path")
+              - if m == "browser_readers"
+                %li= link_to  "Applications", send("#{m}_path")
+              - else
+                %li= link_to  m.titleize, send("#{m}_path")
 
 
     %h2.sr-only Global Actions

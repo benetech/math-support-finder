@@ -20,19 +20,24 @@ $ ->
     Analytical.track()
 
   $(document).on 'page:change', ->
-    window.sort_links = () ->
-      $('.sort_link').each () ->
-        if $(@).hasClass('desc')
-          $(@).html($(@).text().replace('▼', '<i  aria-hidden="true" class="fa fa-fw fa-chevron-down"></i> <span class="sr-only">Descending</span>'))
-        else if $(@).hasClass('asc')
-          $(@).html($(@).text().replace('▲', '<i aria-hidden="true" class="fa fa-fw fa-chevron-up"></i> <span class="sr-only">Ascending</span>'))
-        $(@).attr('title', 'sorts table by this column')
-    window.sort_links()
+
+    #clean up ui for sort
+    $('.sort_link').each () ->
+      if $(@).hasClass('desc')
+        $(@).html($(@).text().replace('▼', '<i  aria-hidden="true" class="fa fa-fw fa-chevron-down"></i> <span class="sr-only">Descending</span>'))
+      else if $(@).hasClass('asc')
+        $(@).html($(@).text().replace('▲', '<i aria-hidden="true" class="fa fa-fw fa-chevron-up"></i> <span class="sr-only">Ascending</span>'))
+      $(@).attr('title', 'sorts table by this column')
+
+    #truncate table text
     $('.truncate').readmore
       moreLink: '<a class="truncate-toggle" href="#"><i class="fa fa-fw fa-plus-circle"></i>More</a>'
       lessLink: '<a class="truncate-toggle" href="#"><i class="fa fa-fw fa-minus-circle"></i>Less</a>'
       collapsedHeight: 100
+
+    #fade in/out content
     $('#main').removeClass('fadeOut').addClass('animated fadeIn')
+    
     #set focus
     $('h1').first().focus()
 
@@ -47,7 +52,7 @@ $ ->
       $(@).toggleClass 'fa-check'
           .toggleClass 'fa-times'
 
-    #bulk actions
+    #bulk actions for admin editing index pages
     $('.bulk').off().on 'click', (e) ->
       bulk          = $(@).data('bulk') #used for strong params
       url           = $(@).data('url')
@@ -79,13 +84,8 @@ $ ->
         error: (jqXHR, textStatus, errorThrown) ->
           alert textStatus, errorThrown
 
-
-    #ajax search
-    $(".autosubmit select").off().change (e) ->
-      $(this).closest('form').submit()
-
     #strongly suggesting options for setups filtering
-    window.triggerCount = 0
+    window.triggerCount = 0 #limit triggering to prevent endless loop
     triggerMappings = (mappings, form_id) ->
       window.triggerCount++
       #console.log window.triggerCount
@@ -94,110 +94,89 @@ $ ->
         for id, options of mappings
           if options.length > 0
             #console.log form_id
-            if form_id.indexOf('-form') > -1
-              css_id = id
-            else
-              css_id = '#q_' + id
-            #console.log css_id, options
-            $select = $(css_id)
-            $('option', css_id).each () ->
+            $select = if form_id.indexOf('-form') > -1 then $(id) else $('#q_' + id)
+            $('option', $select).each () ->
               #console.log @.value, options
+              #we want an intersection of the options implied by the current mappings
               if @.value && options.indexOf(parseInt(@.value)) == -1
                 #console.log 'disabling ', $(@).text()
-                $select.hideOption(@.value)
                 #$(@).attr('disabled', true)
+                $select.hideOption(@.value) #uses a plugin
               else if options.indexOf(@.value) > -1 and $(@).is(':selected')
                 triggerMappings($(@).data('mappings'), form_id)
 
+    #select box magic for searching
     $results =$('#setups-results, #setup_search, #setup-form')
     if $results.length > 0
-
+      suggestClickingSearch = () ->
+          $warning  = $('<tr id="warning" style="display:none;"><td colspan=8 class="alert-danger">* Results do not match current column selections.  Click search to recalculate.</td></tr>')
+          $results.find('thead').append $warning
+          $warning.slideDown('slow')
+      $selects = $('select', $results)
       #auto detect
       #TODO dry
       $detect = $("#detector")
       $detect.click () ->
+        #os, platform, mobile check
         #https://github.com/bestiejs/platform.js/
         info = platform.parse(navigator.userAgent)
         os = platform.os.toString()
         reader = platform.name
-        is_mobile = window.mobileAndTabletcheck()
-        #console.log(os, reader, is_mobile)
+        plat_type = if window.mobileAndTabletcheck() then "mobile" else plat_type =  "desktop"
+        #console.log(os, reader, plat_type)
 
-        #set platform
+        #set platform 
+        ##pattern repeated for application...should be abstracted
+        ##id varies between version of the search form
         id = 'platform_version_platform_id_eq'
-        if $results.attr('id').indexOf('-form') > -1
-          css_id = id
-        else
-          css_id = '#q_' + id
-        $label = $('label[for="' + $(css_id).attr('id') + '"]')
+        $platformSelect = if $results.attr('id').indexOf('-form') > -1 then $(id) else $platformSelect = $('#q_' + id)
+        $label = $('label[for="' + $platformSelect.attr('id') + '"]')
         $label.append(" (Detected as " + os + ")").data('detected', true) unless $label.data('detected')
-        $options = $('option', css_id)
+        $options = $('option', $platformSelect)
         os_set = false
+        #console.log $options
+
         $options.each () ->
           val = $(@).text()
-          if val.length > 0
-            if ( os.indexOf(val) > -1 || ( val == "Mac"  &&  os.indexOf("OS X") > -1))
-              $(@).prop('selected', true)
-              os_set = true
-              return false
-        if is_mobile
-          plat_type =  "mobile"
-        else
-          plat_type =  "desktop"
-        #console.log(plat_type)
+          if val.length > 0 && ( os.indexOf(val) > -1 || ( val == "Mac"  &&  os.indexOf("OS X") > -1))
+            $(@).prop('selected', true)
+            $platformSelect.trigger('change')
+            os_set = true
+            return false
+
         #set application
         id = 'browser_reader_version_browser_reader_id_eq'
-        if $results.attr('id').indexOf('-form') > -1
-          css_id = id
-        else
-          css_id = '#q_' + id
-        $label = $('label[for="' + $(css_id).attr('id') + '"]')
+        $applicationSelect = if $results.attr('id').indexOf('-form') > -1 then $(id) else $applicationSelect = $('#q_' + id)
+        $label = $('label[for="' + $applicationSelect.attr('id') + '"]')
         $label.append(" (Detected as " + reader + ")").data('detected', true) unless $label.data('detected')
-        $options = $('option', css_id)
+        $options = $('option', $applicationSelect)
         reader_set = false
+
         $options.each () ->
           val = $(@).text()
-          if val.length > 0
-            if ( (val.indexOf(reader) > -1 || (reader == 'IE' && val.indexOf('Internet Explorer') > -1 )) &&  val.indexOf(plat_type) > -1 )
-              $(@).prop('selected', true)
-              #console.log($(@))
-              reader_set = true
-              return false
-        if reader_set || os_set
-          $warning  = $('<tr id="warning" style="display:none;"><td colspan=8 class="alert-danger">* Results do not match current column selections.  Click search to recalculate.</td></tr>')
-          $results.find('thead').append $warning
+          if val.length > 0 && ( (val.indexOf(reader) > -1 || (reader == 'IE' && val.indexOf('Internet Explorer') > -1 )) &&  val.indexOf(plat_type) > -1 )
+            $(@).prop('selected', true)
+            $applicationSelect.trigger('change')
+            #console.log($(@))
+            reader_set = true
+            return false
 
       #on change event
-      $selects = $('select', $results)
       $selects.change () ->
-        if $results.find('#warning').length == 0 and $results.attr('id') == 'setups-results'
-          $warning  = $('<tr id="warning" style="display:none;"><td colspan=8 class="alert-danger">* Results do not match current column selections.  Click search to recalculate.</td></tr>')
-          $results.find('thead').append $warning
-          $warning.slideDown('slow')
-        #console.log('changed')
         window.triggerCount = 0
-        #reset all
+        suggestClickingSearch()
+        console.log('changed')
+        #reset all --- a bit more involved because of the hide plugin
         #$results.find('option').removeProp('disabled')
         $selects.each () ->
           $select = $(@)
           if $select.data()
             $.each $select.data(),  (k, v) ->
-              #console.log $select, k, k.indexOf('opt') > -1, k.indexOf('Modified') == -1, v
-              window.v = v
-              if(k.indexOf('opt') > -1 && k.indexOf('Modified') == -1)
-                $select.showOption(v.attr('value'))
+              console.log $select, k, k.indexOf('opt') > -1, k.indexOf('Modified') == -1, v
+              $select.showOption(v.attr('value')) if(k.indexOf('opt') > -1 && k.indexOf('Modified') == -1)
 
-        
-        $selected = $('option:selected', this)
-        mappings =  $selected.data('mappings')
-        #console.log mappings
-        triggerMappings(mappings, $results.attr('id'))
+        triggerMappings($('option:selected', this).data('mappings'), $results.attr('id'))
 
       #trigger mappings on load
       $selects.find('option:selected').each () ->
-        if @.value
-          $selected = $(@)
-
-          mappings =  $selected.data('mappings')
-          #console.log mappings
-          triggerMappings(mappings, $results.attr('id'))
+        triggerMappings($(@).data('mappings'), $results.attr('id')) if @.value
