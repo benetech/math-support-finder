@@ -39,7 +39,8 @@
             - @assistive_technologies.each_with_index do |assistive_technology, idx|
               %tr{class: "item"}
                 %td= assistive_technology.title
-                %td= to_text(assistive_technology.notes).truncate(50)
+                %td<
+                  .truncate= to_html assistive_technology.notes
                 %td<
                   -assistive_technology.assistive_technology_versions.each do |v|
                     =link_to v.version, assistive_technology_version_path(v)

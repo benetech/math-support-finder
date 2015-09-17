@@ -40,7 +40,8 @@
               %tr{class: "item"}
                 %td= assistive_technology_version.assistive_technology
                 %td= assistive_technology_version.version
-                %td= to_text(assistive_technology_version.notes).truncate(50)
+                %td<
+                  .truncate= to_html assistive_technology_version.notes
 
                 %td.text-right<
                   = link_to assistive_technology_version, class: "btn btn-show", title: "Show #{assistive_technology_version}" do

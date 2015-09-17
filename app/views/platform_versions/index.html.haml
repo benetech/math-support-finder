@@ -40,7 +40,9 @@
               %tr{class: "item"}
                 %td= platform_version.platform
                 %td= platform_version.version
-                %td= to_text(platform_version.notes).truncate(50)
+
+                %td<
+                  .truncate= to_html platform_version.notes
 
                 %td.text-right<
                   = link_to platform_version, class: "btn btn-show", title: "Show #{platform_version}" do

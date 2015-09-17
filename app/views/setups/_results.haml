@@ -2,10 +2,6 @@
   %header
     %h1#setups-results-title{tabindex: -1}<
       = @setups.total_count.to_s +  " Results"
-      %small
-        =link_to request.url do
-          %span.sr-only Link to these results
-          %i.fa.fa-link.fa-fw
 
   = paginate @setups
   = search_form_for(@q, url: {controller: :setups, action: :results},  html: {multipart: true, class: 'form-vertical'}, wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|

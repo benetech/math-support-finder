@@ -37,7 +37,9 @@
             - @renderers.each_with_index do |renderer, idx|
               %tr{class: "item"}
                 %td= renderer.title
-                %td= to_text(renderer.notes).truncate(50)
+                %td<
+                  .truncate= to_html renderer.notes
+
                 %td.text-right<
                   = link_to renderer, class: "btn btn-show", title: "Show #{renderer}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}

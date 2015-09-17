@@ -39,7 +39,9 @@
             - @platforms.each_with_index do |platform, idx|
               %tr{class: "item"}
                 %td= platform.title
-                %td= to_text(platform.notes).truncate(50)
+                %td<
+                  .truncate= to_html platform.notes
+
 
                 %td<
                   -platform.platform_versions.each do |v|
