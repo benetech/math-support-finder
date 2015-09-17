@@ -19,24 +19,20 @@
 -#-cache ['v1', admin?,  img_size, @setup] do
 
 -cache ['v1', admin?,  @setup, @affordances, @outputs, @setup.file_format, @setup.renderer] do
-  .entity-outer
-    .entity
-      .entity-inner
-        %header
+  .entity-outer<
+    .entity<
+      .entity-inner<
+        %header<
           %h1#page-title{tabindex: -1}
             =title
             %small
               Last Updated:
               %time= @setup.updated_at.strftime("%a, %d %b %Y")
             
-            
-        %h2 Notes
-        = to_html(@setup.notes)
-
-        .panel.panel-default
-          %table.table
+        .panel.panel-default<
+          %table.table<
             %caption.sr-only Attributes for #{@setup}
-            %thead
+            %thead<
               %tr<
                 %th<
                 %th<
@@ -76,14 +72,10 @@
                 %td=labeled @setup.workflow_status
                 %td
 
-        -if @setup.content_sources.length > 0
-          %h2 Content Sources
-          %ul
-            - @setup.content_sources.each do |c|
-              %li= link_to c, content_source_path(c)
+        %h2 Notes
+        = to_html(@setup.notes)
 
-
-        .panel.panel-default
+        .panel.panel-default<
           %h2.panel-heading Access Mode
           %table.table<
             %tbody<
@@ -112,9 +104,12 @@
                       -else
                         %td.disabled
 
-          -#-if admin? and @setup.capabilities.count < Affordance.all.count
-            -#.panel-footer= link_to "Add another capability", new_capability_path(setup_id: @setup.id), class: 'btn btn-success'
-
+        -if @setup.content_sources.length > 0
+          .panel.panel-default<
+            %h2.panel-heading Content Sources
+            %ul<
+              - @setup.content_sources.each do |c|
+                %li= link_to c, content_source_path(c)
 
         -if admin?
           %nav.show-nav{role:"navigation"}
