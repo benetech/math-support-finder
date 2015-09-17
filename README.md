@@ -1,6 +1,11 @@
-#MathSupportMatrix
+#Math Support Finder
 
-The MathSupportMatrix (MSM) is a discovery and reference tool for pairing math content sources with accessible setups.
+The Math Support Finder (MSF) is a discovery and reference tool for pairing math content sources with accessible setups.
+
+Note: the project was previously called the Math Support Matrix.
+
+<http://mathmlcoud.org/msf>
+
 
 ##About
 
@@ -12,7 +17,7 @@ The site streamlines the process of adding new setups, versions of renderers, br
 
 Users will eventually contribute content sources that work well with one or more setups. Benetech staff, for now, will be responsible for approving submitted setups by testing them manually and then changing their status to an approved state that will allow these setups to be live on the website. User ratings and comments about setups could follow as well.
 
-MSM is built with Ruby on Rails, CoffeeScript, and SASS.
+MSF is built with Ruby on Rails, CoffeeScript, and SASS.
 
 ##Setup
 
@@ -95,7 +100,7 @@ To generate the data model diagram, you can do:
 
 Here's a representation of it for [nomnoml](http://nomnoml.com)
 
-    [<frame>Math Support Matrix data model|
+    [<frame>Math Support Finder data model|
       [User | id: int | email: string | admin: bool | timestamps]
 
       [Setup | id: int | title: str | notes: text | status_id: reference | file_format_id: reference | 

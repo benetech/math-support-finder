@@ -94,8 +94,8 @@
 
   - if  @setups.count == 0
     %h3
-      - email_address = "math-support-matrix@seeread.info"
-      - title = url_encode "MSM Setup Request"
+      - email_address = "support_finder@mathmlcloud.org"
+      - title = url_encode "Math Support Finder Request"
       - body = "Hi Benetech,\nWould you please test this setup?\n\n" + request.original_url + "\n\nThanks!"
       - body = url_encode body
       - mailto = "mailto:" + email_address + "?subject=" + title + "&body=" + body
