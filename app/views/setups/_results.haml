@@ -90,12 +90,15 @@
                 Details
 
   - if  @setups.count == 0
+    - email_address = "msf@mathmlcloud.org."
+    - title = url_encode "Math Support Finder Request"
+    - body = "Hi Benetech,\nWould you please test this setup?\n\n" 
+    - body += current_setup_search(@q.base.conditions )
+    - body += request.original_url  + "\n\n" + "\n\nThanks!"
+    - body = url_encode body
+    - mailto = "mailto:" + email_address + "?subject=" + title + "&body=" + body
+
     %h3
-      - email_address = "support_finder@mathmlcloud.org"
-      - title = url_encode "Math Support Finder Request"
-      - body = "Hi Benetech,\nWould you please test this setup?\n\n" + request.original_url + "\n\nThanks!"
-      - body = url_encode body
-      - mailto = "mailto:" + email_address + "?subject=" + title + "&body=" + body
       There are no supported results for your search.  Please try changing your parameters. 
       If you still can’t find the setup you need, <a href=#{mailto} target="_blank"></a>
       = link_to "email your search", mailto, target: "_blank"

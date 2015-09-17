@@ -54,7 +54,6 @@ class ApplicationController < ActionController::Base
 
     @setups = @setups.page(params[:page])
 
-
     @cache_key = [@q, @setups , @platforms , @browser_readers , @renderers , @assistive_technologies , @file_formats , @workflow_status , @outputs].to_set.hash
   end
 

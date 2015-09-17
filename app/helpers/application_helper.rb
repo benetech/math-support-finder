@@ -70,4 +70,20 @@ module ApplicationHelper
       ''
     end
   end
+
+
+  def current_setup_search(conditions, models = [Platform, AssistiveTechnology, BrowserReader, FileFormat, Renderer, Output])
+    str = ''
+    models.each do |model|
+      if model.to_s == "Browser Reader"
+        str +=  "\nApplication: "
+      else
+        str +=  "\n#{model}: " 
+      end
+      c = conditions.select{|c| c.attributes.first.name.include?(model.to_s.underscore)}.first
+      str += c.nil? ? "Any" :  model.find(c.values.first.value.to_i).to_s
+    end
+    str
+  end
+
 end
