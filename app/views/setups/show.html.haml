@@ -72,8 +72,10 @@
                 %td=labeled @setup.workflow_status
                 %td
 
-        %h2 Notes
-        = to_html(@setup.notes)
+        -unless @setup.notes.blank?
+          .panel.panel-default
+            %h2.panel-heading Notes
+            .panel-body= to_html(@setup.notes)
 
         .panel.panel-default<
           %h2.panel-heading Access Mode
@@ -107,9 +109,9 @@
         -if @setup.content_sources.length > 0
           .panel.panel-default<
             %h2.panel-heading Content Sources
-            %ul<
+            %ul.list-group<
               - @setup.content_sources.each do |c|
-                %li= link_to c, content_source_path(c)
+                %li.list-group-item= link_to c, content_source_path(c)
 
         -if admin?
           %nav.show-nav{role:"navigation"}
