@@ -108,10 +108,6 @@ $ ->
     #select box magic for searching
     $results =$('#setups-results, #setup_search, #setup-form')
     if $results.length > 0
-      suggestClickingSearch = () ->
-          $warning  = $('<tr id="warning" style="display:none;"><td colspan=8 class="alert-danger">* Results do not match current column selections.  Click search to recalculate.</td></tr>')
-          $results.find('thead').append $warning
-          $warning.slideDown('slow')
       $selects = $('select', $results)
       #auto detect
       #TODO dry
@@ -165,14 +161,18 @@ $ ->
       $selects.change () ->
         window.triggerCount = 0
         suggestClickingSearch()
-        console.log('changed')
+        if  $('#warning').length < 0
+          $warning  = $('<tr id="warning" style="display:none;"><td colspan=8 class="alert-danger">* Results do not match current column selections.  Click search to recalculate.</td></tr>')
+          $results.find('thead').append $warning
+          $warning.slideDown('slow')
+        #console.log('changed')
         #reset all --- a bit more involved because of the hide plugin
         #$results.find('option').removeProp('disabled')
         $selects.each () ->
           $select = $(@)
           if $select.data()
             $.each $select.data(),  (k, v) ->
-              console.log $select, k, k.indexOf('opt') > -1, k.indexOf('Modified') == -1, v
+              #console.log $select, k, k.indexOf('opt') > -1, k.indexOf('Modified') == -1, v
               $select.showOption(v.attr('value')) if(k.indexOf('opt') > -1 && k.indexOf('Modified') == -1)
 
         triggerMappings($('option:selected', this).data('mappings'), $results.attr('id'))
