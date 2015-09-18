@@ -36,7 +36,8 @@ class ApplicationController < ActionController::Base
 
     @q = Setup.ransack(params[:q])
 
-    nested = ['platform_version_version desc',  'assistive_technology_version desc', 'browser_reader_version desc']
+    nested = ['platform_version_version desc',  'assistive_technology_name desc', 'assistive_technology_version desc', 
+              'browser_reader_name_title desc', 'browser_reader_version_version desc', 'file_format_title desc', 'renderer_title desc']
     if @q.sorts.empty?
       @q.sorts = ['platform_version_platform_title asc']  + nested
     else
