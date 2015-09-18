@@ -1,9 +1,10 @@
 .panel.panel-default
   %h2.panel-heading Setups
   %table.table
-    %caption.sr-only Setups table 
+    %caption.sr-only Setups table
     %thead
       %tr<
+        %th Workflow Status
         %th Platform
         %th Assistive Technology
         %th Application
@@ -15,6 +16,12 @@
         -klass = "item "
         -klass += setup.workflow_status.css_class
         %tr{class: klass}<
+          %td<
+            = raw setup.workflow_status.label
+            %br
+            %small<
+              on
+              %time= setup.updated_at.strftime("%a, %d %b %Y")
           %td= setup.platform_version
           %td= setup.assistive_technology_version
           %td= setup.browser_reader_version
@@ -23,5 +30,3 @@
           %td<
             =link_to setup_path(setup), class: 'btn btn-primary' do
               Details
-
-
