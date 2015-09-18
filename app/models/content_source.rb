@@ -12,7 +12,7 @@
 class ContentSource < ActiveRecord::Base
 
   has_many :content_source_setups, dependent: :destroy
-  has_many :setups, through: :content_source_setups
+  has_many :setups, through: :content_source_setups, :after_remove => proc { |a| a.touch }
 
   validates_presence_of :title
 

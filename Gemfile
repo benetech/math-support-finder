@@ -49,7 +49,6 @@ gem 'oj' #optimized json
 #gem 'rack-timeout' #helpful for api blocking
 #gem 'rack-raw-upload' #helpful for uploads
 #gem 'recipient_interceptor' #email interception
-gem 'redis-rails'
 gem "thin", ">= 1.6.3" # webserver
 gem 'turbolinks' #crazy fake ajax
 gem 'responders' #respond_with ala  http://www.justinweiss.com/blog/2014/11/03/respond-to-without-all-the-pain/

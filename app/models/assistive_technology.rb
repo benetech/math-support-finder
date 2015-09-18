@@ -14,10 +14,10 @@ class AssistiveTechnology < ActiveRecord::Base
   has_many :setups, through: :assistive_technology_versions
 
   has_many :platform_assistive_technologies, dependent: :destroy
-  has_many :platforms, through: :platform_assistive_technologies
+  has_many :platforms, through: :platform_assistive_technologies, :after_remove => proc { |a| a.touch }
 
   has_many :browser_reader_assistive_technologies, dependent: :destroy
-  has_many :browser_readers, through: :browser_reader_assistive_technologies
+  has_many :browser_readers, through: :browser_reader_assistive_technologies, :after_remove => proc { |a| a.touch }
 
   validates_presence_of :title
 

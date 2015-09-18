@@ -36,13 +36,13 @@ class Setup < ActiveRecord::Base
 
   belongs_to :renderer, touch: true
   belongs_to :file_format, touch: true
-  belongs_to :workflow_status
+  belongs_to :workflow_status, touch: true
 
   has_many :content_source_setups, dependent: :destroy
-  has_many :content_sources, through: :content_source_setups
+  has_many :content_sources, through: :content_source_setups, :after_remove => proc { |a| a.touch }
 
   has_many :capabilities, dependent: :destroy
-  has_many :affordances, through: :capabilities
+  has_many :affordances, through: :capabilities, :after_remove => proc { |a| a.touch }
   has_many :outputs, through: :affordances
 
   validates_presence_of :platform_version, :renderer, :browser_reader_version, :assistive_technology_version, :file_format, :workflow_status
