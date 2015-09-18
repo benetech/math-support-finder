@@ -25,6 +25,8 @@ class Capability < ActiveRecord::Base
   #validates :setup_id, uniqueness: {scope: [:feature_id, :affordance_id]}
   validates_uniqueness_of :setup_id, :scope => [:affordance_id]
 
+  default_scope 'vertification_status desc'
+
   def to_s
     [setup.to_s, affordance.to_s].join(" – ")
   end
