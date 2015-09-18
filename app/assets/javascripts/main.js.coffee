@@ -160,7 +160,6 @@ $ ->
       #on change event
       $selects.change () ->
         window.triggerCount = 0
-        suggestClickingSearch()
         if  $('#warning').length < 0
           $warning  = $('<tr id="warning" style="display:none;"><td colspan=8 class="alert-danger">* Results do not match current column selections.  Click search to recalculate.</td></tr>')
           $results.find('thead').append $warning
