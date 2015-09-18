@@ -5,7 +5,10 @@
   - entities = object.send(m)
   - if entities.length > 0
     %tr
-      %th{scope: "row"}=m.titleize
+      -if m.titleize == "Browser Readers"
+        %th{scope: "row"} Applications
+      -else
+        %th{scope: "row"}=m.titleize
       %td<
         %ul
           - entities.each do |entity|
