@@ -20,6 +20,8 @@ class Platform < ActiveRecord::Base
 
   has_many :setups, through: :platform_versions
 
+  after_touch :clear_association_cache
+
   validates_presence_of :title
   default_scope { order('LOWER(title)') }
 

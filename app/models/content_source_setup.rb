@@ -16,8 +16,8 @@
 
 class ContentSourceSetup < ActiveRecord::Base
 
-  belongs_to :setup
-  belongs_to :content_source
+  belongs_to :setup, touch: true
+  belongs_to :content_source, touch: true
 
   validates_presence_of :setup, :content_source
   validates_associated :setup, :content_source

@@ -26,6 +26,9 @@ class BrowserReader < ActiveRecord::Base
 
   has_many :setups, through: :browser_reader_versions
 
+  after_touch :clear_association_cache
+
+
   validates_presence_of :title
 
   default_scope { order('LOWER(title)') }

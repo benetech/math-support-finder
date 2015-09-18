@@ -15,6 +15,8 @@ class Feature < ActiveRecord::Base
   has_many :affordances, dependent: :destroy
   has_many :outputs, through: :affordances
 
+  after_touch :clear_association_cache
+
   validates_presence_of :title
   #default_scope { order(:title) }
 

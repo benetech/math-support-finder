@@ -34,8 +34,8 @@ class Setup < ActiveRecord::Base
   belongs_to :assistive_technology_version, touch: true
   delegate  :assistive_technology, to: :assistive_technology_version, allow_nil: true
 
-  belongs_to :renderer
-  belongs_to :file_format
+  belongs_to :renderer, touch: true
+  belongs_to :file_format, touch: true
   belongs_to :workflow_status
 
   has_many :content_source_setups, dependent: :destroy
@@ -47,6 +47,8 @@ class Setup < ActiveRecord::Base
 
   validates_presence_of :platform_version, :renderer, :browser_reader_version, :assistive_technology_version, :file_format, :workflow_status
   validates_associated :platform_version, :renderer, :browser_reader_version, :assistive_technology_version, :file_format, :workflow_status
+
+  after_touch :clear_association_cache
 
   paginates_per 50
 
