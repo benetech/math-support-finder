@@ -22,9 +22,6 @@ class Affordance < ActiveRecord::Base
   belongs_to :feature, touch: true
   belongs_to :output, touch: true
 
-  after_touch :clear_association_cache
-
-
   validates_presence_of :feature, :output
   validates_associated :feature, :output
   validates :feature_id, uniqueness: {scope: :output_id}

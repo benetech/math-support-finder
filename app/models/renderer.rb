@@ -16,8 +16,6 @@ class Renderer < ActiveRecord::Base
   has_many :browser_reader_renderers, dependent: :destroy
   has_many :browser_readers, through: :browser_reader_renderers
 
-  after_touch :clear_association_cache
-
   validates_presence_of :title
   default_scope { order('LOWER(title)') }
 

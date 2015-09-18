@@ -48,8 +48,6 @@ class Setup < ActiveRecord::Base
   validates_presence_of :platform_version, :renderer, :browser_reader_version, :assistive_technology_version, :file_format, :workflow_status
   validates_associated :platform_version, :renderer, :browser_reader_version, :assistive_technology_version, :file_format, :workflow_status
 
-  after_touch :clear_association_cache
-
   paginates_per 50
 
   scope :sorted, -> { joins(:platform_version, :assistive_technology_version, :browser_reader_version).order('platform_version.title asc, assistive_technology_version.title asc, browser_reader_version.title asc') }

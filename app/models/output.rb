@@ -17,8 +17,6 @@ class Output < ActiveRecord::Base
   validates_presence_of :title
   default_scope { order(:title) }
 
-  after_touch :clear_association_cache
-
   def to_s
     title
   end

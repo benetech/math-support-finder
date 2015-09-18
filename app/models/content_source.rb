@@ -14,8 +14,6 @@ class ContentSource < ActiveRecord::Base
   has_many :content_source_setups, dependent: :destroy
   has_many :setups, through: :content_source_setups
 
-  after_touch :clear_association_cache
-
   validates_presence_of :title
 
   def to_s
