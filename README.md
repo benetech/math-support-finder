@@ -29,6 +29,8 @@ You may need to edit ```.env.development``` and if you are deploying, you will n
 
 You can set it up locally with your own PostGRES if you like or ...
 
+You may need to add an entry for ```db``` pointing to ```127.0.0.1``` to your ```/etc/hosts``` file to accomodate our ```.env.development``` setting for db.
+
 To run the tests while you are developing, run ```guard``` in another terminal:
 
     guard
