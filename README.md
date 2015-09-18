@@ -35,6 +35,7 @@ To run the tests while you are developing, run ```guard``` in another terminal:
 
     guard
 
+Memcached or Redis is needed for full caching functionality (otherwise caches won't update when entries in join tables are destroyed).
 
 ###With Vagrant
 
