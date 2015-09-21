@@ -92,6 +92,14 @@ Also, you may need to issue this in a separate terminal on your local box if the
 
 Again, the password is ```vagrant```.
 
+##Creating a new admin
+
+Register the user thru the site and then via the rails console on the server run:
+
+    u = User.last
+    u.admin = true
+    u.save
+
 
 ##Data model
 To generate the data model diagram, you can do:
