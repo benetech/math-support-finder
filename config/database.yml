@@ -14,6 +14,8 @@ default: &default
   database: <%= ENV['DATABASE_NAME'] %>
 development: 
   <<: *default
+qa:
+  <<: *default
 staging:
   <<: *default
 test: &test
