@@ -9,3 +9,5 @@ staging:
   <<: *defaults
 test:
   <<: *defaults
+qa:
+  <<: *defaults
