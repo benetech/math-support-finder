@@ -1,4 +1,4 @@
-- title= "Welcome to the Math Support Finder"
+- title= "Welcome to the Math Support Finder (in Beta)"
 - if admin?
   -title += ", #{current_user}!"
 -meta title: title,
@@ -9,12 +9,44 @@
   .container
     %header
       %h1#page-title=title
-    .row
-      .col-md-6
-        %p<
-          The Math Support Finder is a discovery and reference tool for pairing math content sources with accessible setups.
 
-      .col-md-6
+      %h3 Find Accessible Tools for Reading Math
+      %p<
+      Math Support Finder (MSF) is an online tool that helps you identify the right combination of technologies needed to read math accessibly. Simply select your favorite tool(s) and access mode(s), then let MSF show you the unique combination of technologies required to read math using braille, audio, or however you prefer.
+      %p<
+      - email_address = "msf@mathmlcloud.org."
+      - title = url_encode "Math Support Finder Request"
+      - body = "Hi Benetech,\n\nI would like to get involved.\n"
+      - body += "\n\nThanks!"
+      - body = url_encode body
+      - mailto = "mailto:" + email_address + "?subject=" + title + "&body=" + body
+      Math Support Finder is currently in BETA. We invite you to give it a try as well as share your feedback and additional requests. We are also interested in chatting with partners interested in developing more accessible math reading tools or individual looking to help grow our database of supported setups.
+      = link_to "Contact us", mailto, target:"_blank"
+      to get involved!
+    %p
+    .row
+      .col-md-5
+        %p
+        %h3 How to use this tool:
+        %ul#bullet
+          %li
+            Specify your preferences using the provided dropdown menus.
+          %ul#bulletnest
+            %li
+              %strong Note:
+              You do NOT need to specify a dropdown; they are all optional
+            %li
+              To specify multiple values for a dropdown, conduct separate searches or use the "Any..." option to select all values
+          %p
+          %li
+            Or, click on the "Detect My Settings" button to have MSF auto-populate the dropdown options using your current device and technology settings.
+          %p
+          %li
+            Or,view the full list of accessible setups using
+            = link_to "Browse", '/setups/results', target: "_new"
+            which is also available in the main navigation bar above.
+      .col-md-7
+        %p
         =render "setups/search"
     #setups-results-wrap{style: "display: none;"}
       =render "setups/results"

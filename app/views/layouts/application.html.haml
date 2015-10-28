@@ -45,7 +45,7 @@
     = render "alerts"
     %main#main{role: "main", tabindex: "-1"}
       = yield
-    = render "footer"
+    = render "shared/footer"
     #loading
     = raw analytical.body_append_javascript
 = body_class
