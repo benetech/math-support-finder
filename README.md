@@ -4,7 +4,7 @@ The Math Support Finder (MSF) is a discovery and reference tool for pairing math
 
 Note: the project was previously called the Math Support Matrix.
 
-<http://mathmlcoud.org/msf>
+<http://msf.mathmlcloud.org/>
 
 
 ##About
