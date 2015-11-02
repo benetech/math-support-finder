@@ -93,8 +93,8 @@ Also, you may need to issue this in a separate terminal on your local box if the
     
 If the above doesn't work , another way to start the server is :
 ```
-    cd /vagrant
-    rails s -b 0.0.0.0
+cd /vagrant
+rails s -b 0.0.0.0
 ```
  Now you should be able to see the webpage hosted at http://0.0.0.0:3000/   
 
