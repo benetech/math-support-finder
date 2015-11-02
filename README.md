@@ -89,6 +89,13 @@ Once you do that, you can go to [http://localhost:3000/](http://localhost:3000/)
 Also, you may need to issue this in a separate terminal on your local box if the port forwarding for port 3000 on VirtualBox isn't setup:
 
     ssh -N -L 3000:localhost:3000 vagrant@localhost -p 2222
+    
+If the above doesn't work , another way to start the server is :
+```
+    cd /vagrant
+    rails s -b 0.0.0.0
+```
+ Now you should be able to see the webpage hosted at http://0.0.0.0:3000/   
 
 Again, the password is ```vagrant```.
 
