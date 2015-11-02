@@ -93,6 +93,7 @@ Also, you may need to issue this in a separate terminal on your local box if the
     
 If the above doesn't work , another way to start the server is :
 ```
+vagrant ssh #if you have not already
 cd /vagrant
 rails s -b 0.0.0.0
 ```
