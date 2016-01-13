@@ -86,4 +86,8 @@ module ApplicationHelper
     str
   end
 
+   def current_year
+     Time.zone.today.year
+   end
+
 end
