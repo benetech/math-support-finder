@@ -15,7 +15,7 @@ We will seek to incorporate community feedback to identify more sources and setu
 
 The site streamlines the process of adding new setups, versions of renderers, browsers/readers, platforms, and assistive technologies. 
 
-Users will eventually contribute content sources that work well with one or more setups. Benetech staff, for now, will be responsible for approving submitted setups by testing them manually and then changing their status to an approved state that will allow these setups to be live on the website. User ratings and comments about setups could follow as well.
+Users will eventually contribute content sources that work well with one or more setups. Beneficent Technology staff, for now, will be responsible for approving submitted setups by testing them manually and then changing their status to an approved state that will allow these setups to be live on the website. User ratings and comments about setups could follow as well.
 
 MSF is built with Ruby on Rails, CoffeeScript, and SASS.
 
@@ -269,7 +269,7 @@ Then we generated our scaffolds:
 
 ##Links
 - [benetech/math-support-matrix repo](http://github.com/benetech/math-support-matrix)
-- [Benetech](http://benetech.org)
+- [Beneficent Technology](http://benetech.org)
 - [A11Y Guidelines](http://a11yproject.com/)
 - [Tenon](http://tenon.io) for accessibility debugging and [Tenon Check](https://chrome.google.com/webstore/detail/tenon-check/bmibjbhkgepmnehjfhjaalkikngikhgj?hl=en-US) in Chrome
 - [aXe](https://github.com/dequelabs/axe-core)
