@@ -6,7 +6,7 @@
     - if  @setups.count == 0
       - email_address = "msf@mathmlcloud.org."
       - title = url_encode "Math Support Finder Request"
-      - body = "Hi Beneficent Technology,\n\nWould you please test this setup?\n"
+      - body = "Hi Benetech,\n\nWould you please test this setup?\n"
       - body += current_setup_search(@q.base.conditions )
       - body += "\n\n" + request.original_url + "\n\nThanks!"
       - body = url_encode body
@@ -20,7 +20,7 @@
     -else
       - email_address = "msf@mathmlcloud.org."
       - title = url_encode "Math Support Finder Request"
-      - body = "Hi Beneficent Technology,\n\nWould you please test this setup?\n"
+      - body = "Hi Benetech,\n\nWould you please test this setup?\n"
       - body += current_setup_search(@q.base.conditions )
       - body += "\n\n" + request.original_url + "\n\nThanks!"
       - body = url_encode body
