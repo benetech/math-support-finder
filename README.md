@@ -21,7 +21,7 @@ MSF is built with Ruby on Rails, CoffeeScript, and SASS.
 
 ##Setup
 
-This command will clone the repository into a directory called math-support-matrix. This will be the directory we will be working in.
+This command will clone the repository into a directory called math-support-finder. This will be the directory we will be working in.
 
     git clone http://github.com/benetech/math-support-matrix
 
