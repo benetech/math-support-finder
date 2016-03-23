@@ -58,5 +58,6 @@
   sg_div.setAttribute("role", 'dialog');
   sg_div.style.display = "none";
   document.body.appendChild(sg_div);
-  $(window).load(function(){$('#sg-popup').modal('show');});
+  //$(window).load(function(){$('#sg-popup').modal('show');});
+  $(window).load(function(){setTimeout(function () {$('#sg-popup').modal('show');},30000)});
   
