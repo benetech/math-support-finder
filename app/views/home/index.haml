@@ -52,17 +52,11 @@
       =render "setups/results"
 %script{:type=>"text/javascript"}
   var sg_div = document.createElement("div");
-  sg_div.innerHTML = "<p>We'd like to hear your thoughts about our new Math Support Finder (Beta). Please consider filling out this survey each time you use the tool so we can track frequency of use and how learning impacts your use. You also have the option to access this survey at any time by using the \"Survey\" link provided in the menu bar.</p><p>Please take a few moments to share your feedback.</p><a href=\"#\" class=\"btn btn-primary btn-sm\" role=\"button\" onclick=\"document.getElementById('sg-popup').style.display = 'none';return false;\">No, thanks</a>&nbsp;&nbsp;<a href=\"http://www.surveygizmo.com/s3/2310294/Math-Support-Matrix-User-Feedback\" class=\"btn btn-primary btn-sm\" role=\"button\">Complete now</a> ";
+  sg_div.innerHTML = "<div class=\"modal-dialog\" role=\"document\"> <div class=\"modal-content\"> <div class=\"modal-header\"> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button> <h4 class=\"modal-title\" id=\"myModalLabel\">Survey</h4> </div><div class=\"modal-body\"><p>We'd like to hear your thoughts about our new Math Support Finder (Beta). Please consider filling out this survey each time you use the tool so we can track frequency of use and how learning impacts your use. You also have the option to access this survey at any time by using the \"Survey\" link provided in the menu bar.</p><p>Please take a few moments to share your feedback.</p></div> <div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">No, Thanks</button> <a href=\"http://www.surveygizmo.com/s3/2310294/Math-Support-Matrix-User-Feedback\"><button type=\"button\" class=\"btn btn-primary\">Complete now</button></a> </div> </div> </div> ";
   sg_div.id = "sg-popup";
-  sg_div.style.position = "absolute";
-  sg_div.style.width = "500px";
-  sg_div.style.top = "100px";
-  sg_div.style.left = "400px";
-  sg_div.style.backgroundColor = "#FFFFFF";
-  sg_div.style.borderColor = "#000000 !important";
-  sg_div.style.borderStyle = "solid !important";
-  sg_div.style.borderWidth = "thin !important";
-  sg_div.style.padding = "20px";
-  sg_div.style.fontSize = "16px";
+  sg_div.setAttribute("class",'modal fade');
+  sg_div.setAttribute("role", 'dialog');
+  sg_div.style.display = "none";
   document.body.appendChild(sg_div);
-  sg_div.focus();
+  $(window).load(function(){$('#sg-popup').modal('show');});
+  
