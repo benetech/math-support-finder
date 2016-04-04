@@ -50,14 +50,4 @@
         =render "setups/search"
     #setups-results-wrap{style: "display: none;"}
       =render "setups/results"
-%script{:type=>"text/javascript"}
-  var sg_div = document.createElement("div");
-  sg_div.innerHTML = "<div class=\"modal-dialog\" role=\"document\"> <div class=\"modal-content\"> <div class=\"modal-header\"> <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\"><span aria-hidden=\"true\">&times;</span></button> <h4 class=\"modal-title\" id=\"myModalLabel\">Survey</h4> </div><div class=\"modal-body\"><p>We'd like to hear your thoughts about our new Math Support Finder (Beta). Please consider filling out this survey each time you use the tool so we can track frequency of use and how learning impacts your use. You also have the option to access this survey at any time by using the \"Survey\" link provided in the menu bar.</p><p>Please take a few moments to share your feedback.</p></div> <div class=\"modal-footer\"><button type=\"button\" class=\"btn btn-default\" data-dismiss=\"modal\">No, Thanks</button> <a href=\"http://www.surveygizmo.com/s3/2310294/Math-Support-Matrix-User-Feedback\"><button type=\"button\" class=\"btn btn-primary\">Complete now</button></a> </div> </div> </div> ";
-  sg_div.id = "sg-popup";
-  sg_div.setAttribute("class",'modal fade');
-  sg_div.setAttribute("role", 'dialog');
-  sg_div.style.display = "none";
-  document.body.appendChild(sg_div);
-  $(window).load(function(){$('#sg-popup').modal('show');});
-  
   
