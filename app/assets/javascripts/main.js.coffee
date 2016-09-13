@@ -127,7 +127,8 @@ $ ->
         id = 'platform_version_platform_id_eq'
         $platformSelect = if $results.attr('id').indexOf('-form') > -1 then $(id) else $platformSelect = $('#q_' + id)
         $label = $('label[for="' + $platformSelect.attr('id') + '"]')
-        $label.append(" (Detected as " + os + ")").data('detected', true) unless $label.data('detected')
+        ##$label.append(" (Detected as " + os + ")").data('detected', true) unless $label.data('detected')
+        $label.append(" (Detected)").data('detected', true) unless $label.data('detected')
         $options = $('option', $platformSelect)
         os_set = false
         #console.log $options
