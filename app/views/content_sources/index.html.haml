@@ -36,7 +36,7 @@
           %tbody
             - @content_sources.each_with_index do |content_source, idx|
               %tr{class: "item"}
-                %td= content_source.title
+                %td= content_sources.title
                 %td<
                   .truncate= to_html content_sources.notes
 
