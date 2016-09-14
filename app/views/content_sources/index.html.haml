@@ -34,11 +34,11 @@
                 Actions
 
           %tbody
-            - @content_sources.each_with_index do |content_sources, idx|
+            - @content_sources.each_with_index do |content_source, idx|
               %tr{class: "item"}
-                %td= content_sources.title
+                %td= content_source.title
                 %td<
-                  .truncate= to_html content_sources.notes
+                  .truncate= to_html content_source.notes
 
 
                 %td.text-right<
