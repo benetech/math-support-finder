@@ -4,7 +4,7 @@
   = search_form_for(@q, url: {controller: "setups", action: "results"}, html: {multipart: true, class: 'form-vertical'}, wrapper: :vertical_form, wrapper_mappings: { check_boxes: :vertical_radio_and_checkboxes, radio_buttons: :vertical_radio_and_checkboxes}) do |f|
 
     .panel-body
-      = button_tag "Detect my settings", type: "button", id: "detector", class: "detector btn btn-info"
+      = button_tag "Detect my settings", type: "button", id: "detector", class: "btn btn-info"
       .form-inputs
         = f.input  :platform_version_platform_id_eq, as: :select, include_blank: "Any platform", label: "Pick a platform", required: false,
           collection: @platforms.map{|e| [e.title, e.id, {data: {mappings: {assistive_technology_version_assistive_technology_id_eq: e.assistive_technologies.map{|a| a.id}.flatten, browser_reader_version_browser_reader_id_eq: e.browser_readers.map{|a| a.id}.flatten }}}]}
