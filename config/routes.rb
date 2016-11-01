@@ -31,9 +31,9 @@ Plate::Application.routes.draw do
   end
   resources :file_formats
   resources :workflow_statuses
-  #scope "/admin" do
+  scope "/admin" do
   resources :users
-  #end
+  end
   devise_for :users, :controllers => { registrations: 'registrations' }
   root :to => "home#index"
 
