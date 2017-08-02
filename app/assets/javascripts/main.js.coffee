@@ -157,6 +157,8 @@ $ ->
             #console.log($(@))
             reader_set = true
             return false
+        $("#statusbar").text "Your settings have been detected."
+
 
       #on change event
       $selects.change () ->
@@ -180,5 +182,4 @@ $ ->
       #trigger mappings on load
       $selects.find('option:selected').each () ->
         triggerMappings($(@).data('mappings'), $results.attr('id')) if @.value
-        $("#statusbar").text "Your settings have been detected."
 
