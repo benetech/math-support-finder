@@ -180,3 +180,5 @@ $ ->
       #trigger mappings on load
       $selects.find('option:selected').each () ->
         triggerMappings($(@).data('mappings'), $results.attr('id')) if @.value
+        $("#statusbar").text "Your settings have been detected."
+
