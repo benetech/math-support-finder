@@ -157,7 +157,7 @@ $ ->
             #console.log($(@))
             reader_set = true
             return false
-        $("#statusbar").text "Your settings have been detected."
+        $("#alertbar").text "Your settings have been detected."
 
 
       #on change event
