@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :admin
+  require_role :admin
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   respond_to :html, :json
 
@@ -49,6 +49,11 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :admin)
+      user_params = params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :role)
+      if user_params[:password].blank? && user_params[:password_confirmation].blank?
+        user_params.delete(:password)
+        user_params.delete(:password_confirmation)
+      end
+      user_params
     end
 end

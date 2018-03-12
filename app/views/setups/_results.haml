@@ -67,7 +67,7 @@
           %th.action{scope: "col"}<
             Action
         %tr
-          -#-if admin?
+          -#-if editor?
             -#%th<
           %th<
             = f.input  :platform_version_platform_id_eq, as: :select, include_blank: "Any platform", label: false, required: false,
@@ -105,7 +105,7 @@
           -klass = "item "
           -klass += setup.workflow_status.css_class
           %tr{class: klass}
-            -#-if admin?
+            -#-if editor?
               -#%td= setup.id
             %td= setup.platform_version
             %td= setup.assistive_technology_version

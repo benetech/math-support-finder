@@ -1,6 +1,6 @@
 -title = "Showing  #{@user}"
 -meta title: title
--cache ['v1', admin?,  @user] do
+-cache ['v1', editor?,  @user] do
   .entity-outer
     .entity
       .entity-inner
@@ -26,9 +26,9 @@
                 = @user.email
             %tr
               %th{scope: "row"}<
-                Admin
+                Role
               %td<
-                = @user.admin
+                = @user.role.titleize
         %nav.show-nav{role:"navigation"}
           = link_to users_path, class: 'btn btn-info', title: "View the users index" do
             %i.fa.fa-fw.fa-list{title: 'List'}

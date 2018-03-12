@@ -1,6 +1,6 @@
 class PlatformsController < ApplicationController
   before_action :set_platform, only: [:show, :edit, :update, :destroy]
-  before_filter :admin, except: [:show, :index]
+  require_role :admin, :editor, except: [:show, :index]
 
   respond_to :html, :json
 

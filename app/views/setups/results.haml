@@ -15,7 +15,7 @@
     -#url: request.url,
   -#}
 -#img_size =  browser.mobile? ? :index : :grande
--#cache ['v1', admin?,  img_size, @setups] do
-- cache ['v1', admin?,  'results', @cache_key] do
+-#cache ['v1', editor?,  img_size, @setups] do
+- cache ['v1', editor?,  'results', @cache_key] do
   .container
     =render 'results'

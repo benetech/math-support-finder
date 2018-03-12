@@ -1,6 +1,6 @@
 -title = 'Listing Users'
 -meta title: title
-- cache ['v1', admin?,  @users] do
+- cache ['v1', editor?,  @users] do
   .index-outer
     .index
       .index-inner
@@ -27,7 +27,7 @@
                 %td= user.first_name
                 %td= user.last_name
                 %td= user.email
-                %td= user.admin ? "Admin" : "Regular"
+                %td= user.role.titleize
                 %td.text-right<
                   = link_to user, class: "btn btn-show", title: "Show this user" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}

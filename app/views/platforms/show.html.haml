@@ -16,9 +16,9 @@
     -#url: request.url,
   -#}
 -#- img_size =  browser.mobile? ? :index : :grande
--#-cache ['v1', admin?,  img_size, @platform] do
+-#-cache ['v1', editor?,  img_size, @platform] do
 
--cache ['v1', admin?,  @platform] do
+-cache ['v1', editor?,  @platform] do
   .entity-outer
     .entity
       .entity-inner
@@ -34,7 +34,7 @@
           = link_to platforms_path, class: 'btn btn-info', title: "View the platforms index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Platforms
-          -if admin?
+          -if editor?
             = link_to edit_platform_path(@platform), title: "Edit this Platform", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit

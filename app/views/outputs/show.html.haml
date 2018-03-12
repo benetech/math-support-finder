@@ -16,9 +16,9 @@
     -#url: request.url,
   -#}
 -#- img_size =  browser.mobile? ? :index : :grande
--#-cache ['v1', admin?,  img_size, @output] do
+-#-cache ['v1', editor?,  img_size, @output] do
 
--cache ['v1', admin?,  @output] do
+-cache ['v1', editor?,  @output] do
   .entity-outer
     .entity
       .entity-inner
@@ -43,7 +43,7 @@
           = link_to outputs_path, class: 'btn btn-info', title: "View the outputs index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Outputs
-          -if admin?
+          -if editor?
             = link_to edit_output_path(@output), title: "Edit this Output", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit

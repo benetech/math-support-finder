@@ -4,7 +4,9 @@
     = f.input :first_name
     = f.input :last_name
     = f.input :email
-    = f.input :admin
+    = f.input :password, input_html: {autocomplete: "off"}
+    = f.input :password_confirmation, input_html: {autocomplete: "off"}
+    = f.input :role, as: :radio_buttons, collection: User.roles.keys, label_method: :titleize
 
 
   .form-actions

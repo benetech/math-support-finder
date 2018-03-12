@@ -16,9 +16,9 @@
     -#url: request.url,
   -#}
 -#- img_size =  browser.mobile? ? :index : :grande
--#-cache ['v1', admin?,  img_size, @capability] do
+-#-cache ['v1', editor?,  img_size, @capability] do
 
--cache ['v1', admin?,  @capability] do
+-cache ['v1', editor?,  @capability] do
   .entity-outer
     .entity
       .entity-inner
@@ -46,7 +46,7 @@
                 %span{class: klass}=@capability.verification_status.to_s.titleize
 
 
-        -if admin?
+        -if editor?
           %nav.show-nav{role:"navigation"}
             -#= link_to capabilities_path, class: 'btn btn-info', title: "View the capabilities index" do
               %i.fa.fa-fw.fa-list{title: 'List'}

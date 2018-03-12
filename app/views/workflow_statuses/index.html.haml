@@ -15,8 +15,8 @@
     -#url: request.url,
   -#}
 -#img_size =  browser.mobile? ? :index : :grande
--#cache ['v1', admin?,  img_size, @workflow_statuses] do
-- cache ['v1', admin?,  @workflow_statuses] do
+-#cache ['v1', editor?,  img_size, @workflow_statuses] do
+- cache ['v1', editor?,  @workflow_statuses] do
   .index-outer
     .index
       .index-inner
@@ -38,13 +38,13 @@
                 %td.text-right<
                   = link_to workflow_status, class: "btn btn-show", title: "Show #{workflow_status}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
-                  -if admin?
+                  -if editor?
                     = link_to edit_workflow_status_path(workflow_status), class: "btn btn-edit", title: "Edit #{workflow_status}"  do
                       %i.fa.fa-fw.fa-pencil{title: "Pencil"}
                     = link_to workflow_status, title: "Delete this Workflow Status" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{workflow_status}?"} do
                       %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
-        -if admin?
+        -if editor?
           %nav.index-nav{role:"navigation"}
             = link_to new_workflow_status_path, class: 'btn btn-success new-link' do
               %i.fa.fa-fw.fa-plus{title: "Plus"}

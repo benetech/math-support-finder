@@ -16,9 +16,9 @@
     -#url: request.url,
   -#}
 -#- img_size =  browser.mobile? ? :index : :grande
--#-cache ['v1', admin?,  img_size, @file_format] do
+-#-cache ['v1', editor?,  img_size, @file_format] do
 
--cache ['v1', admin?,  @file_format] do
+-cache ['v1', editor?,  @file_format] do
   .entity-outer
     .entity
       .entity-inner
@@ -32,7 +32,7 @@
           = link_to file_formats_path, class: 'btn btn-info', title: "View the file_formats index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             File Formats
-          -if admin?
+          -if editor?
             = link_to edit_file_format_path(@file_format), title: "Edit this File Format", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit

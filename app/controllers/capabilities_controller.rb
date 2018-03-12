@@ -1,7 +1,7 @@
 class CapabilitiesController < ApplicationController
   before_action :set_capability, only: [:show, :edit, :update, :destroy]
   before_action :set_setup, only: [:new]
-  before_filter :admin, except: [:show, :index]
+  require_role :admin, :editor, except: [:show, :index]
 
   respond_to :html, :json
 

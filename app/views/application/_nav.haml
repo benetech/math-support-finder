@@ -17,10 +17,10 @@
       %li<
         = link_to results_setups_path, class: "" do
           Browse
-      -if admin?
+      -if editor?
         %li<
           = link_to "Setups", setups_path
-        %li.dropdown{:role => "presentation"}<
+        %li.dropdown
           %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}<
             Components
             %span.caret
@@ -31,6 +31,8 @@
                 %li= link_to  "Applications", send("#{m}_path")
               - else
                 %li= link_to  m.titleize, send("#{m}_path")
+            - if admin?
+              %li= link_to "Users", users_path
 
       %li=link_to "About", page_path('about')
 
@@ -41,19 +43,24 @@
           Hello
           =current_user
       %ul.nav.navbar-nav
+        - if current_user
+          %li<
+            = link_to edit_user_registration_path do
+              %i.fa.fa-fw.fa-user
+              Edit Profile
         %li<
           %a{href: "http://surveygizmo.com/s3/2310294/Math-Support-Matrix-User-Feedback", target: "_blank"}
             %i.fa.fa-fw.fa-support
-            Survey 
-          
+            Survey
+
         %li<
           %a{href: "mailto:msf@mathmlcloud.org", target: "_blank"}
             %i.fa.fa-fw.fa-envelope
             Email
-            
+
         - if current_user
           %li<
-            = link_to destroy_user_session_path, :method => :delete do 
+            = link_to destroy_user_session_path, :method => :delete do
               %i.fa.fa-fw.fa-sign-out
               Log Out
         - else

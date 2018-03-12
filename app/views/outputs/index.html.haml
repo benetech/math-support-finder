@@ -15,8 +15,8 @@
     -#url: request.url,
   -#}
 -#img_size =  browser.mobile? ? :index : :grande
--#cache ['v1', admin?,  img_size, @outputs] do
-- cache ['v1', admin?,  @outputs] do
+-#cache ['v1', editor?,  img_size, @outputs] do
+- cache ['v1', editor?,  @outputs] do
   .index-outer
     .index
       .index-inner
@@ -39,13 +39,13 @@
                 %td.text-right<
                   = link_to output, class: "btn btn-show", title: "Show #{output}" do
                     %i.fa.fa-fw.fa-eye{title: "Eye"}
-                  -if admin?
+                  -if editor?
                     = link_to edit_output_path(output), class: "btn btn-edit", title: "Edit #{output}"  do
                       %i.fa.fa-fw.fa-pencil{title: "Pencil"}
                     = link_to output, title: "Delete this Output" , class: "btn btn-delete",  :method => :delete, :data => { :confirm => "Are you sure you want to delete #{output}?"} do
                       %i.fa.fa-fw.fa-trash{title: "Trash can"}
 
-        -if admin?
+        -if editor?
           %nav.index-nav{role:"navigation"}
             = link_to new_output_path, class: 'btn btn-success new-link' do
               %i.fa.fa-fw.fa-plus{title: "Plus"}

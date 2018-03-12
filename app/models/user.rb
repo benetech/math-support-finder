@@ -15,9 +15,9 @@
 #  last_sign_in_ip        :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
-#  admin                  :boolean          default(FALSE)
 #  first_name             :string
 #  last_name              :string
+#  role                   :integer          default(0)
 #
 # Indexes
 #
@@ -26,10 +26,22 @@
 #
 
 class User < ActiveRecord::Base
+  after_create :send_confirmation_emails
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  enum role: {
+    regular: 0,
+    editor: 1,
+    admin: 2
+  }
+
+  def to_email
+    "#{to_s} <#{email}>"
+  end
 
   def to_s
     if !first_name.blank? or !last_name.blank?
@@ -39,4 +51,10 @@ class User < ActiveRecord::Base
     end
   end
 
+  private
+
+  def send_confirmation_emails
+    UserConfirmation.for_admins(self).deliver
+    UserConfirmation.for_user(self).deliver
+  end
 end

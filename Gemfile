@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 gem 'dotenv-rails'
 gem 'dotenv-deployment'
-gem 'rails', '4.2.2'
+gem 'rails', '< 4.3'
 gem 'language_list'
-gem 'sass-rails', '~> 5.0.1' #sass and sprockets upgrades can be delicate 
+gem 'sass-rails', '~> 5.0.1' #sass and sprockets upgrades can be delicate
 gem 'compass-rails', '~> 2.0.4'
 gem 'bootstrap-sass', '>= 3.2'
 gem 'sprockets'
@@ -71,7 +71,7 @@ gem 'execjs'
 gem 'uglifier', '>= 2.7.1' #js compression
 gem "validate_url"
 gem 'tilt' #template interface
-gem "haml-rails"
+gem "haml-rails", "~> 1.0"
 #gem 'haml_assets' #haml + moustache
 #gem 'hogan_assets' #js template compilaton
 gem 'sitemap_generator'
@@ -79,6 +79,8 @@ gem 'whenever'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'apipie-rails' #for api documentation
 gem 'jbuilder' #json builder
+gem 'inky-rb', require: 'inky'
+gem 'premailer-rails', '1.9.0'
 
 group :development do
   gem "better_errors"
