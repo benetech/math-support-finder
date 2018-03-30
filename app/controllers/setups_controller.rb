@@ -1,7 +1,7 @@
 class SetupsController < ApplicationController
   before_action :set_setup, only: [:show, :edit, :update, :destroy]
   before_action :clear_search_index, :only => [:index, :results]
-  before_filter :admin, except: [:show, :index, :new, :create, :results, :search]
+  require_role :admin, :editor, except: [:show, :index, :new, :create, :results, :search]
 
   respond_to :html, :json, :js
 

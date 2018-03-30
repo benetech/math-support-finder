@@ -16,9 +16,9 @@
     -#url: request.url,
   -#}
 -#- img_size =  browser.mobile? ? :index : :grande
--#-cache ['v1', admin?,  img_size, @browser_reader_file_format] do
+-#-cache ['v1', editor?,  img_size, @browser_reader_file_format] do
 
--cache ['v1', admin?,  @browser_reader_file_format] do
+-cache ['v1', editor?,  @browser_reader_file_format] do
   .entity-outer
     .entity
       .entity-inner

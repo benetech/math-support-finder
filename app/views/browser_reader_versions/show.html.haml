@@ -16,9 +16,9 @@
     -#url: request.url,
   -#}
 -#- img_size =  browser.mobile? ? :index : :grande
--#-cache ['v1', admin?,  img_size, @browser_reader_version] do
+-#-cache ['v1', editor?,  img_size, @browser_reader_version] do
 
--cache ['v1', admin?,  @browser_reader_version] do
+-cache ['v1', editor?,  @browser_reader_version] do
   .entity-outer
     .entity
       .entity-inner
@@ -29,7 +29,7 @@
         - parent= link_to @browser_reader_version.browser_reader, browser_reader_path( @browser_reader_version.browser_reader)
         = render "version", object: object, parent: parent
 
-        -if admin?
+        -if editor?
           %nav.show-nav{role:"navigation"}
             = link_to browser_reader_versions_path, class: 'btn btn-info', title: "View the browser_reader_versions index" do
               %i.fa.fa-fw.fa-list{title: 'List'}

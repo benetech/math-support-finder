@@ -16,9 +16,9 @@
     -#url: request.url,
   -#}
 -#- img_size =  browser.mobile? ? :index : :grande
--#-cache ['v1', admin?,  img_size, @setup] do
+-#-cache ['v1', editor?,  img_size, @setup] do
 
--cache ['v1', admin?,  @setup, @affordances, @outputs, @setup.file_format, @setup.renderer] do
+-cache ['v1', editor?,  @setup, @affordances, @outputs, @setup.file_format, @setup.renderer] do
   .entity-outer<
     .entity<
       .entity-inner<
@@ -113,7 +113,7 @@
               - @setup.content_sources.each do |c|
                 %li.list-group-item= link_to c, content_source_path(c)
 
-        -if admin?
+        -if editor?
           %nav.show-nav{role:"navigation"}
             = link_to edit_setup_path(@setup), title: "Edit this Setup", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}

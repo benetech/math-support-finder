@@ -1,11 +1,11 @@
 - title= "Welcome to the Math Support Finder BETA"
-- if admin?
+- if editor?
   -title += ", #{current_user}!"
 -meta title: title,
   og: { title: title,
     url: request.url,
   }
-- cache ['v1', admin?, 'home',  @cache_key] do
+- cache ['v1', editor?, 'home',  @cache_key] do
   .container
     %header
       %h1#page-title=title

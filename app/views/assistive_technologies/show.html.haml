@@ -16,9 +16,9 @@
     -#url: request.url,
   -#}
 -#- img_size =  browser.mobile? ? :index : :grande
--#-cache ['v1', admin?,  img_size, @assistive_technology] do
+-#-cache ['v1', editor?,  img_size, @assistive_technology] do
 
--cache ['v1', admin?,  @assistive_technology] do
+-cache ['v1', editor?,  @assistive_technology] do
   .entity-outer
     .entity
       .entity-inner
@@ -33,7 +33,7 @@
           = link_to assistive_technologies_path, class: 'btn btn-info', title: "View the assistive_technologies index" do
             %i.fa.fa-fw.fa-list{title: 'List'}
             Assistive Technologies
-          -if admin?
+          -if editor?
             = link_to edit_assistive_technology_path(@assistive_technology), title: "Edit this Assistive Technology", class: 'btn btn-primary' do
               %i.fa.fa-fw.fa-pencil{title: 'Pencil'}
               Edit

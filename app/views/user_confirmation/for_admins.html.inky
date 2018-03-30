@@ -1,0 +1,4 @@
+%h2 New User Signup
+%p #{@user} just signed up for Math Support Finder. You can view their details here:
+%h3= link_to user_url(@user), user_url(@user)
+%p Happy editing!

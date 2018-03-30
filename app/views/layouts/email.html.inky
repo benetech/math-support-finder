@@ -1,0 +1,31 @@
+!!! Strict
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "width=device-width", :name => "viewport"}/
+    = stylesheet_link_tag "email"
+  %body
+    %table.body
+      %tr
+        %td.center{:align => "center", :valign => "top"}
+          %center
+            %spacer(size="32")
+            %container
+              %spacer(size="32")
+              %row
+                %columns(large="3")
+                  %h1 Math Support Finder
+                  %spacer(size="16")
+                  %hr
+              %spacer(size="16")
+              %row
+                %columns(large="3")
+                  = yield
+                  %spacer(size="32")
+                  %hr
+              %row
+                %columns(large="3")
+                  Sent from
+                  %a(href="http://msf.mathmlcloud.org/") msf.mathmlcloud.org
+              %spacer(size="16")
+            %spacer(size="32")

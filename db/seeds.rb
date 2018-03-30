@@ -1,5 +1,5 @@
 User.create!([
-  {id: 1, email: "admin@mathmlcloud.org", password: "12341234", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, created_at: "2015-07-27 17:11:14", updated_at: "2015-07-27 17:11:14", admin: true, first_name: "Admin", last_name: "User"}
+  {id: 1, email: "admin@mathmlcloud.org", password: "12341234", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 0, current_sign_in_at: nil, last_sign_in_at: nil, current_sign_in_ip: nil, last_sign_in_ip: nil, created_at: "2015-07-27 17:11:14", updated_at: "2015-07-27 17:11:14", role: "admin", first_name: "Admin", last_name: "User"}
 ])
 #VerificationStatus.create!([
   #{id: 1, title: "Verified", created_at: "2015-07-27 15:01:30", updated_at: "2015-07-27 15:01:30"},
@@ -13,9 +13,9 @@ WorkflowStatus.create!([
   {id: 5, title: "Desired", created_at: "2015-07-27 14:54:33", updated_at: "2015-07-27 14:54:33"}
 ])
 Output.create!([
-  {id: 1, title: "Braile", notes: "", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"},
-  {id: 2, title: "Speech", notes: "", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"},
-  {id: 3, title: "Visual", notes: "", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"}
+  {id: 1, title: "Braile", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"},
+  {id: 2, title: "Speech", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"},
+  {id: 3, title: "Visual", created_at: "2015-07-27 15:35:08", updated_at: "2015-07-27 15:35:08"}
 ])
 AssistiveTechnology.create!([
   {id: 1, title: "Chromevox", notes: "", created_at: "2015-07-27 14:47:39", updated_at: "2015-07-27 14:47:39"},
@@ -78,11 +78,11 @@ BrowserReaderVersion.create!([
   {id: 1, browser_reader_id: 1, version: 1.0, notes: "", created_at: "2015-07-27 15:13:20", updated_at: "2015-07-27 15:13:20"}
 ])
 Feature.create!([
-  {id: 1, title: "Navigation", notes: "", created_at: "2015-07-27 15:25:18", updated_at: "2015-07-27 15:25:18"},
-  {id: 2, title: "Focus highlighting", notes: "", created_at: "2015-07-27 15:25:18", updated_at: "2015-07-27 15:25:18"},
-  {id: 3, title: "Procity", notes: "", created_at: "2015-07-27 15:25:18", updated_at: "2015-07-27 15:25:18"},
-  {id: 4, title: "Sound effects", notes: "", created_at: "2015-07-27 15:25:18", updated_at: "2015-07-27 15:25:18"},
-  {id: 5, title: "Zoom (magnification)", notes: "", created_at: "2015-07-27 15:25:18", updated_at: "2015-07-27 15:25:18"},
+  {id: 1, title: "Navigation", created_at: "2015-07-27 15:25:18", updated_at: "2015-07-27 15:25:18"},
+  {id: 2, title: "Focus highlighting", created_at: "2015-07-27 15:25:18", updated_at: "2015-07-27 15:25:18"},
+  {id: 3, title: "Procity", created_at: "2015-07-27 15:25:18", updated_at: "2015-07-27 15:25:18"},
+  {id: 4, title: "Sound effects", created_at: "2015-07-27 15:25:18", updated_at: "2015-07-27 15:25:18"},
+  {id: 5, title: "Zoom (magnification)", created_at: "2015-07-27 15:25:18", updated_at: "2015-07-27 15:25:18"},
 ])
 ContentSource.create!([
   {id: 1, title: "Wikipedia", notes: "", created_at: "2015-07-27 15:42:58", updated_at: "2015-07-27 15:42:58"}
@@ -115,7 +115,7 @@ Affordance.create!([
   {id: 1, output_id: 1, feature_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}
 ])
 Capability.create!([
-  {id: 1, affordance_id: 1, setup_id: 1, verification_status_id: 1, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}
+  {id: 1, affordance_id: 1, setup_id: 1, verification_status: true, created_at: "2015-07-27 17:35:41", updated_at: "2015-07-27 17:35:41"}
 ])
 ContentSourceSetup.create!([
   {id: 1, setup_id: 1, content_source_id: 1, created_at: "2015-07-27 17:33:26", updated_at: "2015-07-27 17:33:26"}

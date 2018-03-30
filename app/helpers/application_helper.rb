@@ -39,6 +39,10 @@ module ApplicationHelper
     current_user && current_user.admin?
   end
 
+  def editor?
+    admin? || current_user && current_user.editor?
+  end
+
   def set_markdown
     @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, autolink: true, tables: true)
   end

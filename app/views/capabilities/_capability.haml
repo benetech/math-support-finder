@@ -4,7 +4,7 @@
   %div{style: "float: left; width:50%"}<
     =link_to capability.affordance.feature, affordance_path(capability.affordance)
   %div{style: "float: right; width:50%; text-align:right;"}<
-    -if admin?
+    -if editor?
       - toggle = !capability.verification_status
       - disable_with = "<i id='disable-me' class='fa fa-spinner fa-spin fa-fw'></i>"
       - klass='label label-' 

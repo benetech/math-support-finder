@@ -9,6 +9,19 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, :alert => exception.message
   end unless :devise_controller?
 
+  def self.require_role(*roles)
+    # Grab any before_action options and clean up the roles
+    options = roles.extract_options!
+    roles = roles.map(&:to_s)
+
+    # Require the correct role in a before_action
+    before_action(options) do
+      unless current_user and current_user.role.in?(roles)
+       redirect_to(root_url)
+      end
+    end
+  end
+
   def search_params
     params[:q]
   end
@@ -59,11 +72,8 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-    def admin
-      redirect_to(root_url) unless current_user and current_user.admin?
-    end
 
-    def users
-      redirect_to(root_url) if current_user.nil?
-    end
+  def users
+    redirect_to(root_url) if current_user.nil?
+  end
 end
