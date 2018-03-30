@@ -110,8 +110,5 @@ Plate::Application.configure do
     :fog_host => ENV['S3_HOST_ALIAS']
   }
   
-  config.action_mailer.sendmail_settings = {
-    location: '/bin/echo'
-  }
   config.action_mailer.perform_deliveries = true
 end
