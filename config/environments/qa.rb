@@ -50,16 +50,16 @@ Plate::Application.configure do
   # Use a different logger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
   config.logger = Logger.new(STDOUT)
-  
+
 
   #Use a different cache store in production.
-  #config.cache_store = :redis_store, {  
+  #config.cache_store = :redis_store, {
     #host: "",
     #port: 6379,
     #expires_in: 90.minutes ,
     #namespace: 'msf'
   #}
-  
+
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -73,14 +73,6 @@ Plate::Application.configure do
   config.assets.initialize_on_precompile = false
   config.assets.prefix = "/assets"
 
-
-  # Ignore bad email addresses and do not raise email delivery errors.
-  # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  config.action_mailer.default_url_options = { :host => "msf.mathmlcloud.org" }
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.default :charset => "utf-8"
 
   #config.action_mailer.raise_delivery_errors = false
 
@@ -109,6 +101,23 @@ Plate::Application.configure do
     :fog_directory => ENV['FOG_DIRECTORY'],
     :fog_host => ENV['S3_HOST_ALIAS']
   }
-  
+
+  config.action_mailer.sendmail_settings = {
+    location: '/bin/echo'
+  }
   config.action_mailer.perform_deliveries = true
+
+  # Configure ActionMailer to use ENV variables
+  config.action_mailer.default_url_options = { host: ENV['HOST'] }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default charset: "utf-8"
+  config.action_mailer.smtp_settings = {
+    address: ENV['SMTP_HOST'],
+    port: ENV['SMTP_PORT'],
+    user_name: ENV['SMTP_USER'],
+    password: ENV['SMTP_PASSWORD'],
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 end
